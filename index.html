@@ -286,12 +286,41 @@
             border-radius: 12px;
             padding: 14px;
             margin-top: 10px;
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
             font-size: 12px;
             line-height: 1.5;
             font-family: 'Courier New', monospace;
             white-space: pre-wrap;
+        }
+        .rpl-preview table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 11px;
+            margin: 4px 0;
+        }
+        .rpl-preview table td,
+        .rpl-preview table th {
+            border: 1px solid #ccc;
+            padding: 4px 6px;
+            vertical-align: top;
+        }
+        .rpl-preview table th {
+            background: #e8edff;
+            font-weight: 700;
+        }
+        .rpl-preview .rpl-title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--primary);
+            margin: 6px 0;
+        }
+        .rpl-preview .rpl-subtitle {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px 0 6px 0;
         }
         .lkpd-box {
             background: #F7FAFC;
@@ -387,7 +416,7 @@
             margin-right: 6px;
         }
 
-        /* ===== REFLEKSI CETAK 1 LEMBAR (PADAT) ===== */
+        /* ===== REFLEKSI CETAK 1 LEMBAR ===== */
         .refleksi-print-wrapper {
             max-width: 100%;
             margin: 0 auto;
@@ -568,6 +597,11 @@
                 overflow: visible;
                 font-size: 10px;
                 padding: 8px;
+            }
+            .rpl-preview table td,
+            .rpl-preview table th {
+                border: 1px solid #999;
+                padding: 3px 5px;
             }
             .materi-view {
                 max-height: none;
@@ -900,7 +934,7 @@
                 </div>
             </div>
 
-            <!-- Tab KUIS - LINK BISA DIBUKA SISWA -->
+            <!-- Tab KUIS -->
             <div id="tab-kuis" class="tab-content">
                 <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📱 Kuis Online untuk Siswa</h4>
@@ -927,7 +961,6 @@
                     </div>
                 </div>
 
-                <!-- PREVIEW KUIS -->
                 <div style="background:#f8f5fc;border-radius:12px;padding:16px;margin-top:12px;border:1px solid #e0d6e8;">
                     <p style="font-weight:700;color:#2d1b4a;">📱 Preview Kuis - <span id="previewJudul">Kenali Dirimu, Temukan Potensimu</span></p>
                     <p style="font-size:11px;color:#9a8aaa;margin-bottom:8px;">Bagikan link ke siswa</p>
@@ -973,10 +1006,10 @@
 
     <script>
         // ================================================================
-        // DATA MATERI LENGKAP - DENGAN MATERI & RPL DARI FILE ANDA
+        // DATA MATERI LENGKAP - DENGAN RPL FORMAT TABEL
         // ================================================================
 
-        // ========== MATERI KENALI DIRIMU, TEMUKAN POTENSIMU (SMP KELAS 7) ==========
+        // ========== MATERI 1: KENALI DIRIMU, TEMUKAN POTENSIMU ==========
         const materiKenaliDiri = {
             id: 701,
             judul: "Kenali Dirimu, Temukan Potensimu",
@@ -1021,65 +1054,159 @@
             rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
-        A. SPESIFIKASI
-        Satuan Pendidikan   : SMP
-        Nama Guru           : 
-        Kelas               : VII / Fase D
-        Waktu               : 60 menit
-        Materi Layanan      : Kenali Dirimu, Temukan Potensimu
-        Bidang Bimbingan    : Pribadi dan Belajar
+        +----------------------+--------------------------------------------------+
+        | A. SPESIFIKASI       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Satuan Pendidikan | SMP                                               |
+        | 2. Nama Guru         |                                                   |
+        | 3. Kelas             | VII / Fase D                                      |
+        | 4. Waktu             | 60 menit                                          |
+        | 5. Materi Layanan    | Kenali Dirimu, Temukan Potensimu                  |
+        | 6. Bidang Bimbingan  | Pribadi dan Belajar                               |
+        +----------------------+--------------------------------------------------+
 
-        B. IDENTIFIKASI
-        1. Kesiapan Murid:
-           Pengetahuan Awal: Siswa telah memiliki pengalaman mengikuti kegiatan belajar, organisasi, ekstrakurikuler, maupun aktivitas sosial di sekolah. Sebagian siswa sudah mengenali beberapa hal yang disukai, tetapi belum mampu menghubungkannya dengan potensi diri. Sebagian siswa masih menilai dirinya berdasarkan nilai akademik, prestasi, atau perbandingan dengan teman.
-           
-           Kebutuhan: Mengenali minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan sebagai petunjuk potensi. Memahami bahwa potensi berbeda pada setiap orang dan dapat dikembangkan. Mengurangi kebiasaan membandingkan diri secara tidak sehat. Menentukan satu potensi yang ingin dikembangkan dan langkah nyata untuk mengembangkannya.
+        +----------------------+--------------------------------------------------+
+        | B. IDENTIFIKASI      |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kesiapan Murid    | Pengetahuan Awal: Siswa telah memiliki           |
+        |                      | pengalaman mengikuti kegiatan belajar,            |
+        |                      | organisasi, ekstrakurikuler, maupun aktivitas     |
+        |                      | sosial di sekolah. Sebagian siswa sudah           |
+        |                      | mengenali beberapa hal yang disukai, tetapi      |
+        |                      | belum mampu menghubungkannya dengan potensi       |
+        |                      | diri. Sebagian siswa masih menilai dirinya        |
+        |                      | berdasarkan nilai akademik, prestasi, atau        |
+        |                      | perbandingan dengan teman.                        |
+        |                      |                                                   |
+        |                      | Kebutuhan: Mengenali minat, kekuatan,             |
+        |                      | pengalaman, nilai diri, dan respons terhadap      |
+        |                      | tantangan sebagai petunjuk potensi. Memahami      |
+        |                      | bahwa potensi berbeda pada setiap orang dan       |
+        |                      | dapat dikembangkan. Mengurangi kebiasaan          |
+        |                      | membandingkan diri secara tidak sehat.            |
+        |                      | Menentukan satu potensi yang ingin dikembangkan   |
+        |                      | dan langkah nyata untuk mengembangkannya.         |
+        +----------------------+--------------------------------------------------+
+        | 2. Karakteristik     | Jenis Pengetahuan: Pengetahuan Esensial:          |
+        |    Materi Layanan    | pengertian mengenal diri dan potensi serta        |
+        |                      | pentingnya pengenalan diri. Pengetahuan           |
+        |                      | Aplikatif: mengidentifikasi minat, kekuatan,      |
+        |                      | pengalaman, nilai diri, dan respons terhadap      |
+        |                      | tantangan; menganalisis studi kasus; serta        |
+        |                      | menyusun langkah pengembangan potensi.            |
+        |                      | Pengetahuan Nilai dan Karakter: percaya diri,     |
+        |                      | kemandirian, reflektif, menghargai keunikan       |
+        |                      | diri, terbuka terhadap umpan balik, dan mau       |
+        |                      | bertumbuh. Relevansi: sangat relevan karena       |
+        |                      | siswa perlu mengenali kekuatan dan arah           |
+        |                      | pengembangan dirinya dalam belajar, memilih       |
+        |                      | kegiatan, membangun relasi, merencanakan          |
+        |                      | karier, dan mengambil keputusan.                  |
+        +----------------------+--------------------------------------------------+
+        | 3. Dimensi Profil    | [V] Kemandirian   [V] Penalaran Kritis           |
+        |    Lulusan           | [V] Kolaborasi    [V] Komunikasi                 |
+        |                      | [V] Kreativitas                                   |
+        +----------------------+--------------------------------------------------+
 
-        2. Karakteristik Materi Layanan:
-           Jenis Pengetahuan: Pengetahuan Esensial: pengertian mengenal diri dan potensi serta pentingnya pengenalan diri. Pengetahuan Aplikatif: mengidentifikasi minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan; menganalisis studi kasus; serta menyusun langkah pengembangan potensi. Pengetahuan Nilai dan Karakter: percaya diri, kemandirian, reflektif, menghargai keunikan diri, terbuka terhadap umpan balik, dan mau bertumbuh.
+        +----------------------+--------------------------------------------------+
+        | C. DESAIN LAYANAN    |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Capaian Layanan   | Siswa memahami karakteristik dirinya, mampu      |
+        |                      | mengenali potensi melalui minat, kekuatan,        |
+        |                      | pengalaman, nilai diri, dan respons terhadap      |
+        |                      | tantangan, serta mampu menentukan satu langkah    |
+        |                      | nyata untuk mengembangkan potensi secara          |
+        |                      | bertahap.                                         |
+        +----------------------+--------------------------------------------------+
+        | 2. Topik Layanan     | "Kenali Dirimu, Temukan Potensimu: Aku Punya      |
+        |    Kontekstual       | Kekuatan yang Bisa Dikembangkan!"                 |
+        +----------------------+--------------------------------------------------+
+        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan       |
+        |                      |    makna mengenal diri dan potensi. Siswa mampu   |
+        |                      |    menyebutkan sumber petunjuk potensi diri.      |
+        |                      |    Siswa mampu membedakan potensi dengan          |
+        |                      |    kemampuan yang sudah terlatih.                 |
+        |                      | b. Akomodasi (A): Siswa menyadari bahwa setiap    |
+        |                      |    individu memiliki kekuatan yang berbeda.       |
+        |                      |    Siswa menerima dirinya tanpa harus             |
+        |                      |    menyamakan diri dengan teman. Siswa memiliki   |
+        |                      |    keyakinan bahwa potensi dapat dikembangkan     |
+        |                      |    melalui pengalaman dan latihan.                |
+        |                      | c. Tindakan (P): Siswa mampu mengidentifikasi     |
+        |                      |    minimal tiga petunjuk potensi dirinya.         |
+        |                      |    Siswa mampu menganalisis studi kasus dan       |
+        |                      |    memberikan solusi yang relevan. Siswa mampu    |
+        |                      |    memilih satu potensi yang akan dikembangkan    |
+        |                      |    dan menyusun langkah pertama yang realistis.   |
+        +----------------------+--------------------------------------------------+
 
-           Relevansi: sangat relevan karena siswa perlu mengenali kekuatan dan arah pengembangan dirinya dalam belajar, memilih kegiatan, membangun relasi, merencanakan karier, dan mengambil keputusan.
+        +----------------------+--------------------------------------------------+
+        | D. PENGALAMAN        |                                                  |
+        |    BELAJAR           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kegiatan Awal     | Guru memberi salam, mengajak berdoa, menanyakan  |
+        |    (10 menit)        | kabar, dan mengondisikan kelas. Guru              |
+        |                      | menyampaikan tujuan layanan dan manfaat           |
+        |                      | mengenal diri. Ice breaking "Aku Hebat            |
+        |                      | Karena...". Apersepsi melalui pertanyaan tentang  |
+        |                      | kegiatan yang disukai, hal yang sering dimintai   |
+        |                      | bantuan, dan situasi ketika siswa merasa          |
+        |                      | percaya diri.                                     |
+        +----------------------+--------------------------------------------------+
+        | 2. Kegiatan Inti     | Memahami: Guru menjelaskan pentingnya mengenal    |
+        |    (40 menit)        | diri dan makna potensi. Guru menjelaskan lima     |
+        |                      | petunjuk potensi: minat, kekuatan, pengalaman,    |
+        |                      | nilai diri, dan respons terhadap tantangan.       |
+        |                      | Guru membahas bahwa potensi tidak sama dengan     |
+        |                      | kemampuan yang sudah mahir. Guru mengenalkan      |
+        |                      | formula KENALI - COBA - KEMBANGKAN.               |
+        |                      |                                                   |
+        |                      | Mengaplikasi: Siswa dibagi menjadi kelompok       |
+        |                      | 4-5 orang. Guru memberikan studi kasus Raka.      |
+        |                      | Kelompok mengidentifikasi masalah, menemukan      |
+        |                      | petunjuk potensi Raka, menganalisis cara          |
+        |                      | berpikir Raka, dan memberikan saran. Siswa        |
+        |                      | mengerjakan LKPD "Jejak Potensiku". Siswa         |
+        |                      | melakukan aktivitas rekomendasi teman.            |
+        |                      | Beberapa kelompok menyampaikan hasil diskusi.     |
+        |                      |                                                   |
+        |                      | Merefleksi: Siswa menuliskan potensi yang mulai   |
+        |                      | dikenali. Siswa menuliskan bagian diri yang       |
+        |                      | ingin dikembangkan. Siswa menuliskan satu         |
+        |                      | langkah nyata yang akan dilakukan dalam satu      |
+        |                      | bulan ke depan.                                   |
+        +----------------------+--------------------------------------------------+
+        | 3. Kegiatan Penutup  | Siswa bersama guru menyimpulkan bahwa setiap     |
+        |    (10 menit)        | orang memiliki kekuatan yang berbeda dan potensi  |
+        |                      | perlu dikembangkan. Siswa melengkapi kalimat:     |
+        |                      | "Hari ini saya menyadari bahwa ...", "Potensi     |
+        |                      | yang ingin saya kembangkan ...", dan "Langkah     |
+        |                      | pertama saya ...". Guru menyampaikan kata bijak.  |
+        |                      | Layanan diakhiri dengan doa dan salam.            |
+        +----------------------+--------------------------------------------------+
 
-        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis, Kolaborasi, Komunikasi, Kreativitas
-
-        C. DESAIN LAYANAN
-        1. Capaian Layanan: Siswa memahami karakteristik dirinya, mampu mengenali potensi melalui minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan, serta mampu menentukan satu langkah nyata untuk mengembangkan potensi secara bertahap.
-
-        2. Topik Layanan Kontekstual: "Kenali Dirimu, Temukan Potensimu: Aku Punya Kekuatan yang Bisa Dikembangkan!"
-
-        3. Tujuan Layanan:
-           a. Pengenalan (C): Siswa mampu menjelaskan makna mengenal diri dan potensi. Siswa mampu menyebutkan sumber petunjuk potensi diri. Siswa mampu membedakan potensi dengan kemampuan yang sudah terlatih.
-           b. Akomodasi (A): Siswa menyadari bahwa setiap individu memiliki kekuatan yang berbeda. Siswa menerima dirinya tanpa harus menyamakan diri dengan teman. Siswa memiliki keyakinan bahwa potensi dapat dikembangkan melalui pengalaman dan latihan.
-           c. Tindakan (P): Siswa mampu mengidentifikasi minimal tiga petunjuk potensi dirinya. Siswa mampu menganalisis studi kasus dan memberikan solusi yang relevan. Siswa mampu memilih satu potensi yang akan dikembangkan dan menyusun langkah pertama yang realistis.
-
-        4. Kerangka Layanan:
-           a. Praktik Pedagogik: Model Experiential Learning. Metode: ice breaking "Aku Hebat Karena...", apersepsi, diskusi kelompok, studi kasus, LKPD "Jejak Potensiku", presentasi singkat, refleksi, dan komitmen.
-           b. Kemitraan Pembelajaran: Guru BK sebagai pendamping proses pengenalan diri dan pengembangan potensi. Teman sebaya sebagai sumber umpan balik positif.
-           c. Lingkungan Pembelajaran: Fisik: kelas yang aman, tidak menghakimi, dan memberi kesempatan siswa menyampaikan kekuatan dirinya. Budaya belajar: menghargai perbedaan, berani mencoba, reflektif, dan tidak mudah memberi label pada diri sendiri.
-
-        D. PENGALAMAN BELAJAR
-        1. Kegiatan Awal (10 menit): Guru memberi salam, mengajak berdoa, menanyakan kabar, dan mengondisikan kelas. Guru menyampaikan tujuan layanan dan manfaat mengenal diri. Ice breaking "Aku Hebat Karena...". Apersepsi melalui pertanyaan tentang kegiatan yang disukai, hal yang sering dimintai bantuan, dan situasi ketika siswa merasa percaya diri.
-
-        2. Kegiatan Inti (40 menit):
-           - Memahami: Guru menjelaskan pentingnya mengenal diri dan makna potensi. Guru menjelaskan lima petunjuk potensi: minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan. Guru membahas bahwa potensi tidak sama dengan kemampuan yang sudah mahir. Guru mengenalkan formula KENALI - COBA - KEMBANGKAN.
-           - Mengaplikasi: Siswa dibagi menjadi kelompok 4-5 orang. Guru memberikan studi kasus Raka. Kelompok mengidentifikasi masalah, menemukan petunjuk potensi Raka, menganalisis cara berpikir Raka, dan memberikan saran. Siswa mengerjakan LKPD "Jejak Potensiku". Siswa melakukan aktivitas rekomendasi teman. Beberapa kelompok menyampaikan hasil diskusi.
-           - Merefleksi: Siswa menuliskan potensi yang mulai dikenali. Siswa menuliskan bagian diri yang ingin dikembangkan. Siswa menuliskan satu langkah nyata yang akan dilakukan dalam satu bulan ke depan.
-
-        3. Kegiatan Penutup (10 menit): Siswa bersama guru menyimpulkan bahwa setiap orang memiliki kekuatan yang berbeda dan potensi perlu dikembangkan. Siswa melengkapi kalimat: "Hari ini saya menyadari bahwa ...", "Potensi yang ingin saya kembangkan ...", dan "Langkah pertama saya ...". Guru menyampaikan kata bijak. Layanan diakhiri dengan doa dan salam.
-
-        E. ASESMEN
-        1. Asesmen Awal: Teknik: ice breaking "Aku Hebat Karena..." dan apersepsi.
-        2. Asesmen Proses: Teknik: observasi partisipasi, kemampuan mendengarkan, kualitas diskusi, kemampuan menemukan petunjuk potensi dalam kasus.
-        3. Asesmen Akhir: Teknik: LKPD "Jejak Potensiku" dan refleksi individu.
+        +----------------------+--------------------------------------------------+
+        | E. ASESMEN           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Asesmen Awal      | Teknik: ice breaking "Aku Hebat Karena..." dan    |
+        |                      | apersepsi.                                        |
+        +----------------------+--------------------------------------------------+
+        | 2. Asesmen Proses    | Teknik: observasi partisipasi, kemampuan          |
+        |                      | mendengarkan, kualitas diskusi, kemampuan         |
+        |                      | menemukan petunjuk potensi dalam kasus.           |
+        +----------------------+--------------------------------------------------+
+        | 3. Asesmen Akhir     | Teknik: LKPD "Jejak Potensiku" dan refleksi       |
+        |                      | individu.                                         |
+        +----------------------+--------------------------------------------------+
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        1. Bangun Pagi: Mendorong siswa memulai aktivitas secara teratur dan menyiapkan waktu untuk refleksi.
-        2. Beribadah: Menguatkan rasa syukur atas keunikan diri dan menggunakan nilai-nilai positif sebagai arah pengembangan diri.
-        3. Berolahraga: Mengingatkan siswa bahwa potensi juga dapat ditemukan melalui aktivitas fisik.
-        4. Makan Sehat & Bergizi: Menjaga tubuh membantu kesiapan belajar dan eksplorasi diri.
-        5. Gemar Belajar: Mendorong siswa mencoba pengalaman baru, mencari pengetahuan, berlatih, dan menerima umpan balik.
-        6. Bermasyarakat: Mengembangkan kemampuan mengenali kekuatan orang lain, memberi apresiasi, dan bekerja sama.
-        7. Tidur Lebih Awal/Cukup: Mendorong keseimbangan hidup agar siswa memiliki energi untuk belajar dan mengembangkan potensi.`,
+        1. Bangun Pagi: Mendorong siswa memulai aktivitas secara teratur.
+        2. Beribadah: Menguatkan rasa syukur atas keunikan diri.
+        3. Berolahraga: Mengingatkan potensi ditemukan melalui aktivitas fisik.
+        4. Makan Sehat: Menjaga tubuh membantu eksplorasi diri.
+        5. Gemar Belajar: Mendorong siswa mencoba pengalaman baru.
+        6. Bermasyarakat: Mengembangkan kemampuan mengenali kekuatan orang lain.
+        7. Tidur Cukup: Mendorong keseimbangan hidup.`,
             refleksi: `REFLEKSI DIRI (1 LEMBAR PADAT)
         Kenali Dirimu, Temukan Potensimu
 
@@ -1154,11 +1281,296 @@
             }
         };
 
+        // ========== MATERI 2: AKU BANGGA MENJADI SISWA SMP ==========
+        const materiAkuBangga = {
+            id: 702,
+            judul: "Aku Bangga Menjadi Siswa SMP",
+            jenjang: "SMP",
+            kelas: "VII / Fase D",
+            semester: 1,
+            bidang: "Pribadi",
+            durasiDefault: 60,
+            topik: '"Aku Bangga Menjadi Siswa SMP"',
+            ice: `🎮 "Tepuk Bangga" atau "Yel-yel Semangat SMP" (7 Menit)\nGuru mengajak siswa melakukan tepuk semangat yang menggambarkan kebanggaan menjadi siswa SMP. Atau siswa diajak membuat yel-yel singkat yang berisi kata-kata semangat dan kebanggaan terhadap sekolah barunya. Tujuan: mencairkan suasana dan menumbuhkan energi positif sebelum memasuki materi utama.`,
+            apersepsi: `💬 "Apa yang Kalian Rasakan Sekarang Setelah Resmi Menjadi Siswa SMP?" (5 Menit)\nGuru mengajukan pertanyaan pemantik:\n\n1. Apa perbedaan paling mencolok yang kamu rasakan antara menjadi siswa SD dan siswa SMP?\n2. Hal apa yang paling membuatmu bangga saat ini?\n3. Apa tantangan terbesar yang kamu hadapi sebagai siswa baru?\n4. Apa harapanmu selama menjadi siswa SMP?\n\nGuru menghubungkan jawaban siswa dengan pentingnya menerima peran baru dan menumbuhkan rasa bangga sebagai siswa SMP.`,
+            diskusi: `🗣️ Diskusi Kelompok "Bangga Menjadi Siswa SMP" (20 Menit)\nSiswa dibagi dalam kelompok 4-5 orang. Setiap kelompok mendiskusikan:\n\n1. Hal-hal apa saja yang membanggakan dari menjadi siswa SMP?\n2. Apa perbedaan tanggung jawab antara siswa SD dan siswa SMP?\n3. Apa yang harus dilakukan agar nama baik sekolah tetap terjaga?\n4. Bagaimana cara menunjukkan kebanggaan menjadi siswa SMP dalam kehidupan sehari-hari?\n\nSetiap kelompok menuliskan hasil diskusi dan menyiapkan presentasi singkat.`,
+            materi: `MATERI AKU BANGGA MENJADI SISWA SMP
+
+        A. Makna Menjadi Siswa SMP
+        Menjadi siswa SMP adalah sebuah pencapaian penting dalam perjalanan pendidikan. Ini adalah masa transisi dari anak-anak menuju remaja, di mana tanggung jawab dan kemandirian mulai meningkat. Siswa SMP tidak lagi dianggap sebagai anak kecil, tetapi sudah mulai dipandang sebagai remaja yang mampu berpikir kritis, bertanggung jawab, dan berkontribusi positif di lingkungan sekolah dan masyarakat.
+
+        B. Perbedaan Peran dan Tanggung Jawab
+        1. Siswa SD: Lebih banyak dibimbing, diawasi, dan diarahkan oleh guru.
+        2. Siswa SMP: Mulai dituntut untuk mandiri, bertanggung jawab atas tugas, dan mampu mengatur waktu dengan baik.
+
+        C. Hal-Hal yang Membanggakan dari Menjadi Siswa SMP
+        1. Mendapatkan seragam baru dan identitas sekolah yang baru.
+        2. Bertemu dengan teman-teman baru dari berbagai latar belakang.
+        3. Memiliki guru-guru baru dengan keahlian yang berbeda.
+        4. Mendapatkan kesempatan untuk mengembangkan minat dan bakat melalui ekstrakurikuler.
+        5. Mulai belajar mata pelajaran yang lebih beragam dan menantang.
+        6. Menjadi bagian dari komunitas sekolah yang lebih besar.
+
+        D. Tantangan Menjadi Siswa SMP
+        1. Menyesuaikan diri dengan lingkungan dan teman baru.
+        2. Mengatur waktu antara belajar dan kegiatan lain.
+        3. Menghadapi pelajaran yang lebih sulit dan kompleks.
+        4. Membangun kepercayaan diri di lingkungan yang baru.
+
+        E. Cara Menumbuhkan Rasa Bangga Menjadi Siswa SMP
+        1. Menjaga nama baik sekolah di mana pun berada.
+        2. Mengikuti kegiatan sekolah dengan antusias.
+        3. Berperilaku sopan dan santun kepada guru dan teman.
+        4. Mencintai dan menjaga kebersihan lingkungan sekolah.
+        5. Belajar dengan giat dan meraih prestasi.
+        6. Menghargai perbedaan dan menjalin pertemanan yang positif.
+
+        F. Sikap Positif yang Harus Ditunjukkan
+        1. Percaya diri dalam menjalani peran sebagai siswa SMP.
+        2. Bertanggung jawab terhadap tugas dan kewajiban.
+        3. Disiplin dalam mengikuti aturan sekolah.
+        4. Berani menyampaikan pendapat dan bertanya.
+        5. Kerja sama dan gotong royong dengan teman.
+
+        G. Komitmen Diri
+        Sebagai siswa SMP, setiap siswa harus memiliki komitmen untuk:\n- Menjaga kehormatan diri dan sekolah.\n- Mengembangkan potensi diri secara maksimal.\n- Menjadi teladan yang baik bagi adik kelas.\n- Mempersiapkan diri menuju jenjang pendidikan yang lebih tinggi.`,
+            rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        LAYANAN BIMBINGAN KLASIKAL
+
+        +----------------------+--------------------------------------------------+
+        | A. SPESIFIKASI       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Satuan Pendidikan | SMP Negeri                                       |
+        | 2. Nama Guru         |                                                   |
+        | 3. Kelas             | VII / Fase D                                      |
+        | 4. Waktu             | 60 menit                                          |
+        | 5. Materi Layanan    | Aku Bangga Menjadi Siswa SMP                      |
+        | 6. Bidang Bimbingan  | Pribadi                                           |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | B. IDENTIFIKASI      |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kesiapan Murid    | a. Pengetahuan Awal: Murid baru kelas VII        |
+        |                      |    mengalami transisi status dari siswa SD       |
+        |                      |    menjadi siswa SMP, yang membawa perubahan     |
+        |                      |    tanggung jawab, tuntutan kemandirian, dan     |
+        |                      |    lingkungan yang lebih luas. Sebagian murid    |
+        |                      |    merasa bangga dan antusias dengan status      |
+        |                      |    barunya, namun ada pula yang masih merasa     |
+        |                      |    canggung, belum percaya diri, atau bahkan     |
+        |                      |    rindu suasana SD sehingga belum sepenuhnya    |
+        |                      |    menerima peran barunya sebagai siswa SMP.     |
+        |                      |                                                   |
+        |                      | b. Kebutuhan Belajar: Suasana yang menumbuhkan   |
+        |                      |    rasa bangga dan percaya diri. Contoh konkret  |
+        |                      |    peran dan tanggung jawab sebagai siswa SMP.   |
+        |                      |    Kesempatan merefleksikan perasaan dan         |
+        |                      |    harapan terhadap status baru. Media yang      |
+        |                      |    menarik (yel-yel, simbol identitas, papan     |
+        |                      |    afirmasi).                                     |
+        +----------------------+--------------------------------------------------+
+        | 2. Karakteristik     | a. Jenis Pengetahuan: Pengetahuan Esensial       |
+        |    Materi Layanan    |    (perubahan status, peran, dan tanggung        |
+        |                      |    jawab sebagai siswa SMP). Pengetahuan         |
+        |                      |    Aplikatif (cara menumbuhkan rasa percaya      |
+        |                      |    diri dan sikap positif terhadap identitas     |
+        |                      |    baru). Pengetahuan Nilai dan Karakter         |
+        |                      |    (bangga, tanggung jawab, semangat, dan rasa   |
+        |                      |    memiliki terhadap sekolah).                    |
+        |                      |                                                   |
+        |                      | b. Relevansi: Sangat relevan, karena penerimaan  |
+        |                      |    diri terhadap status dan peran baru sebagai   |
+        |                      |    siswa SMP akan mendorong semangat belajar,    |
+        |                      |    rasa percaya diri, dan kesiapan menghadapi    |
+        |                      |    tantangan di jenjang pendidikan yang baru.    |
+        +----------------------+--------------------------------------------------+
+        | 3. Dimensi Profil    | [V] Iman & Takwa pada Tuhan YME [V] Kewargaan    |
+        |    Lulusan           | [V] Kemandirian                                   |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | C. DESAIN LAYANAN    |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Capaian Layanan   | Siswa memahami perubahan peran dan tanggung      |
+        |                      | jawab sebagai siswa SMP, mampu menumbuhkan       |
+        |                      | rasa bangga dan percaya diri terhadap status     |
+        |                      | barunya, serta menunjukkan sikap positif dalam   |
+        |                      | menjalani kehidupan sekolah sebagai siswa SMP.   |
+        +----------------------+--------------------------------------------------+
+        | 2. Topik Layanan     | "Aku Bangga Menjadi Siswa SMP"                   |
+        |    Kontekstual       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan       |
+        |                      |    perbedaan peran dan tanggung jawab antara     |
+        |                      |    siswa SD dan siswa SMP. Siswa mampu           |
+        |                      |    mengidentifikasi hal-hal yang membanggakan    |
+        |                      |    dari menjadi siswa SMP.                       |
+        |                      | b. Akomodasi (A): Siswa mampu menumbuhkan rasa   |
+        |                      |    bangga, percaya diri, dan rasa memiliki       |
+        |                      |    terhadap status dan sekolah barunya.          |
+        |                      | c. Tindakan (P): Siswa mampu menunjukkan sikap   |
+        |                      |    dan perilaku positif sebagai wujud            |
+        |                      |    kebanggaan menjadi siswa SMP dalam            |
+        |                      |    kehidupan sehari-hari di sekolah.             |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | D. PENGALAMAN        |                                                  |
+        |    BELAJAR           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kegiatan Awal     | - Guru memberi salam, mengajak berdoa,           |
+        |    (10 menit)        |   menanyakan kabar murid.                        |
+        |                      | - Mengabsen dan mengapresiasi kehadiran.         |
+        |                      | - Menyampaikan tujuan layanan.                   |
+        |                      | - Ice breaking: "tepuk bangga" atau "yel-yel     |
+        |                      |   semangat SMP" agar suasana lebih cair.         |
+        |                      | - Apersepsi: "Apa yang kalian rasakan sekarang   |
+        |                      |   setelah resmi menjadi siswa SMP?"              |
+        +----------------------+--------------------------------------------------+
+        | 2. Kegiatan Inti     | Memahami: Guru mengajak murid membandingkan      |
+        |    (40 menit)        | gambaran kehidupan sebagai siswa SD dan siswa    |
+        |                      | SMP, dari segi tanggung jawab, kegiatan, dan     |
+        |                      | harapan. Murid diajak berdiskusi tentang         |
+        |                      | perubahan apa saja yang mereka rasakan. Guru     |
+        |                      | membagi murid menjadi kelompok kecil. Tiap       |
+        |                      | kelompok mendiskusikan hal-hal yang              |
+        |                      | membanggakan dan tantangan menjadi siswa SMP.    |
+        |                      |                                                   |
+        |                      | Mengaplikasi: Tiap murid menuliskan pada kartu   |
+        |                      | afirmasi tentang alasan mengapa ia bangga        |
+        |                      | menjadi siswa SMP dan apa yang ingin             |
+        |                      | dicapainya. Tiap kelompok menyusun yel-yel atau  |
+        |                      | simbol kebanggaan kelas sebagai wujud identitas  |
+        |                      | dan semangat kebersamaan. Guru mendampingi       |
+        |                      | kelompok yang kesulitan.                         |
+        |                      |                                                   |
+        |                      | Merefleksi: Tiap kelompok menampilkan             |
+        |                      | yel-yel/simbol kebanggaan yang telah dibuat di   |
+        |                      | depan kelas. Guru memberi penguatan tentang      |
+        |                      | pentingnya menjaga nama baik sekolah dan diri    |
+        |                      | sendiri. Diskusi reflektif: "Sikap apa yang      |
+        |                      | perlu kalian tunjukkan agar bisa dibanggakan     |
+        |                      | sebagai siswa SMP?" Murid menuliskan komitmen    |
+        |                      | pribadi untuk berperilaku positif sebagai        |
+        |                      | siswa SMP.                                       |
+        +----------------------+--------------------------------------------------+
+        | 3. Kegiatan Penutup  | - Murid bersama-sama menyimpulkan isi layanan.   |
+        |    (10 menit)        | - Guru memberi motivasi untuk terus bangga dan   |
+        |                      |   bersemangat menjalani kehidupan sebagai siswa  |
+        |                      |   SMP.                                           |
+        |                      | - Informasi kegiatan lanjutan: menerapkan sikap  |
+        |                      |   dan perilaku positif yang mencerminkan         |
+        |                      |   kebanggaan sebagai siswa SMP dalam keseharian. |
+        |                      | - Penutup dengan doa dan salam.                  |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | E. ASESMEN           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Asesmen Awal      | Teknik: Kuesioner singkat tentang perasaan dan   |
+        |                      | harapan siswa terhadap status barunya sebagai    |
+        |                      | siswa SMP.                                       |
+        +----------------------+--------------------------------------------------+
+        | 2. Asesmen Proses    | Teknik: Observasi keaktifan, antusiasme, dan     |
+        |                      | kerja sama siswa dalam diskusi serta penyusunan  |
+        |                      | yel-yel/simbol kebanggaan.                       |
+        +----------------------+--------------------------------------------------+
+        | 3. Asesmen Akhir     | Teknik: Kuesioner tertutup (pemahaman peran      |
+        |                      | sebagai siswa SMP dan komitmen berperilaku       |
+        |                      | positif).                                        |
+        +----------------------+--------------------------------------------------+
+
+        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        1. Bangun Pagi: Datang tepat waktu sebagai wujud tanggung jawab siswa SMP.
+        2. Beribadah: Berdoa sebelum dan sesudah kegiatan sebagai rasa syukur.
+        3. Berolahraga: Mengikuti ice breaking dan permainan kelompok dengan semangat.
+        4. Makan Sehat: Menjaga pola makan sehat agar tetap bugar.
+        5. Gemar Belajar: Bersemangat mengikuti pembelajaran sebagai wujud kebanggaan.
+        6. Bermasyarakat: Bekerja sama dan menjaga kekompakan dalam kelompok.
+        7. Tidur Cukup: Istirahat cukup agar selalu siap dan bersemangat.`,
+            refleksi: `REFLEKSI DIRI (1 LEMBAR PADAT)
+        Aku Bangga Menjadi Siswa SMP
+
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        1. Perasaan saya setelah menjadi siswa SMP:
+        ___________________________________________________
+
+        2. Hal yang paling membanggakan dari menjadi siswa SMP adalah:
+        ___________________________________________________
+
+        3. Tantangan terbesar yang saya hadapi sebagai siswa SMP:
+        ___________________________________________________
+
+        4. Komitmen saya untuk menjadi siswa SMP yang membanggakan:
+        ___________________________________________________
+
+        5. Sikap positif yang akan saya tunjukkan sehari-hari:
+        ___________________________________________________
+
+        6. Harapan saya selama menjadi siswa SMP:
+        ___________________________________________________
+
+        Tanda tangan siswa: _______________`,
+            lkpd: `LKPD "Bangga Menjadi Siswa SMP" (1 LEMBAR)
+        Aku Bangga Menjadi Siswa SMP
+
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        A. PERBANDINGAN SD DAN SMP
+        1. Hal yang berbeda antara SD dan SMP:
+           _________________________________________________
+
+        2. Tanggung jawab baru yang saya dapatkan:
+           _________________________________________________
+
+        B. HAL YANG MEMBANGGAKAN
+        1. Tiga hal yang membanggakan dari menjadi siswa SMP:
+           a. _______________________________________________
+           b. _______________________________________________
+           c. _______________________________________________
+
+        C. KOMITMEN DIRI
+        1. Saya berkomitmen untuk:
+           _________________________________________________
+
+        2. Sikap positif yang akan saya tunjukkan:
+           _________________________________________________
+
+        D. YEL-YEL KEBANGGAAN KELAS
+        (Tulis yel-yel yang dibuat kelompokmu)
+        _________________________________________________
+        _________________________________________________
+        _________________________________________________
+
+        "Aku bangga menjadi siswa SMP!"`,
+            kuis: {
+                soal: [
+                    { q: "Apa perbedaan utama antara siswa SD dan siswa SMP?", options: ["Seragam berbeda",
+                            "Tanggung jawab lebih besar", "Teman lebih banyak", "Guru lebih galak"
+                        ] },
+                    { q: "Apa yang harus dilakukan untuk menjaga nama baik sekolah?", options: [
+                            "Berperilaku sopan", "Mendapat nilai tinggi", "Ikut lomba", "Berteman dengan semua orang"
+                        ] },
+                    { q: "Bagaimana cara menumbuhkan rasa bangga menjadi siswa SMP?", options: [
+                            "Mengikuti kegiatan sekolah", "Membandingkan diri", "Menghindari tanggung jawab",
+                            "Mengeluh terus"
+                        ] },
+                    { q: "Apa tantangan terbesar menjadi siswa SMP?", options: ["Adaptasi", "Nilai sulit",
+                            "Teman banyak", "Guru killer"
+                        ] },
+                    { q: "Sikap apa yang harus ditunjukkan sebagai siswa SMP?", options: ["Percaya diri",
+                            "Minder", "Menyendiri", "Acuh tak acuh"
+                        ] }
+                ]
+            }
+        };
+
         // ================================================================
-        // DATA MATERI LAINNYA (GENERATE OTOMATIS UNTUK JENJANG LAIN)
+        // DATA MATERI LAINNYA (GENERATE OTOMATIS)
         // ================================================================
 
-        // Fungsi untuk generate materi lain dengan format sederhana
         function generateMateriLain(judulList, bidangList, studiKasusList, prefix, kelas, semester) {
             const result = [];
             for (let i = 0; i < judulList.length; i++) {
@@ -1202,36 +1614,59 @@
                     `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`;
                 const diskusi =
                     `Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
+
                 const rpl = `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
-        A. SPESIFIKASI
-        Satuan Pendidikan   : 
-        Nama Guru           : 
-        Kelas               : ${kelas}
-        Waktu               : 60 menit
-        Materi Layanan      : ${judul}
-        Bidang Bimbingan    : ${bidang}
+        +----------------------+--------------------------------------------------+
+        | A. SPESIFIKASI       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Satuan Pendidikan | SMP                                               |
+        | 2. Nama Guru         |                                                   |
+        | 3. Kelas             | ${kelas}                                          |
+        | 4. Waktu             | 60 menit                                          |
+        | 5. Materi Layanan    | ${judul}                                          |
+        | 6. Bidang Bimbingan  | ${bidang}                                         |
+        +----------------------+--------------------------------------------------+
 
-        B. IDENTIFIKASI
-        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
-        2. Karakteristik Materi: Konsep dan penerapan.
-        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis
+        +----------------------+--------------------------------------------------+
+        | B. IDENTIFIKASI      |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kesiapan Murid    | Murid ${kelas} perlu memahami ${judul.toLowerCase()}. |
+        | 2. Karakteristik     | Konsep dan penerapan.                             |
+        |    Materi Layanan    |                                                  |
+        | 3. Dimensi Profil    | Kemandirian, Penalaran Kritis                     |
+        |    Lulusan           |                                                  |
+        +----------------------+--------------------------------------------------+
 
-        C. DESAIN LAYANAN
-        1. Capaian: Murid mampu memahami dan menerapkan.
-        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
-        3. Tujuan: Memahami dan menerapkan.
+        +----------------------+--------------------------------------------------+
+        | C. DESAIN LAYANAN    |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Capaian Layanan   | Murid mampu memahami dan menerapkan.              |
+        | 2. Topik Layanan     | "${judul} untuk Masa Depan Lebih Baik"            |
+        |    Kontekstual       |                                                  |
+        | 3. Tujuan Layanan    | Memahami dan menerapkan.                          |
+        +----------------------+--------------------------------------------------+
 
-        D. PENGALAMAN BELAJAR
-        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
-        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
-        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
+        +----------------------+--------------------------------------------------+
+        | D. PENGALAMAN        |                                                  |
+        |    BELAJAR           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kegiatan Awal     | Ice breaking, apersepsi, tujuan.                  |
+        |    (10 menit)        |                                                  |
+        | 2. Kegiatan Inti     | Materi, LKPD, diskusi, refleksi.                  |
+        |    (40 menit)        |                                                  |
+        | 3. Kegiatan Penutup  | Kesimpulan, komitmen, doa.                        |
+        |    (10 menit)        |                                                  |
+        +----------------------+--------------------------------------------------+
 
-        E. ASESMEN
-        1. Asesmen Awal: Tanya jawab
-        2. Asesmen Proses: Observasi
-        3. Asesmen Akhir: LKPD dan Refleksi
+        +----------------------+--------------------------------------------------+
+        | E. ASESMEN           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Asesmen Awal      | Tanya jawab                                       |
+        | 2. Asesmen Proses    | Observasi                                         |
+        | 3. Asesmen Akhir     | LKPD dan Refleksi                                 |
+        +----------------------+--------------------------------------------------+
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
         1. Bangun Pagi
@@ -1330,9 +1765,7 @@
 
         // ==================== DATA JUDUL MATERI SEMUA KELAS ====================
 
-        // SMP KELAS 7 - SISANYA (selain Kenali Dirimu)
         const judulSMP7S1Lain = [
-            "Aku Bangga Menjadi Siswa SMP",
             "Membangun Kepercayaan Diri di Sekolah Baru",
             "Aku dan Teman Baru: Membangun Pertemanan Positif",
             "Mengenal Guru, Teman, dan Warga Sekolah",
@@ -1344,11 +1777,10 @@
             "Aku dan Masa Depanku",
             "Mengenal Berbagai Profesi di Sekitarku"
         ];
-        const bidangSMP7S1Lain = ["Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+        const bidangSMP7S1Lain = ["Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
             "Karier", "Karier", "Karier"
         ];
         const studiKasusSMP7S1Lain = [
-            "Andi adalah siswa baru di SMP. Dia merasa canggung karena harus berganti seragam dan memiliki guru baru.",
             "Maya adalah siswa baru yang pendiam. Dia merasa tidak percaya diri karena merasa tidak sebaik teman-temannya.",
             "Toni adalah siswa baru yang pendiam. Dia sulit bergaul karena merasa malu.",
             "Rudi tidak mengenal siapa pun di sekolahnya. Dia kesulitan mencari ruang UKS.",
@@ -1394,13 +1826,13 @@
         ];
 
         // ================================================================
-        // GABUNGKAN SEMUA DATA KE DALAM DATABASE
+        // GABUNGKAN SEMUA DATA
         // ================================================================
 
-        // Data SMP Kelas 7 Semester 1 - dengan Kenali Dirimu sebagai materi pertama
         const smp7s1Data = [
             materiKenaliDiri,
-            ...generateMateriLain(judulSMP7S1Lain, bidangSMP7S1Lain, studiKasusSMP7S1Lain, 702, "VII / Fase D", 1)
+            materiAkuBangga,
+            ...generateMateriLain(judulSMP7S1Lain, bidangSMP7S1Lain, studiKasusSMP7S1Lain, 703, "VII / Fase D", 1)
         ];
 
         const materiDatabase = {
@@ -2036,29 +2468,30 @@
                 <h4>🏷️ Topik</h4><p><em>${m.topik || 'Belum tersedia'}</em></p>
             `;
 
-            // RPL
+            // RPL dengan format tabel
             let rpl = m.rpl || 'RPL belum tersedia.';
+            // Ganti placeholder
             rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
             rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
             rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas || ''}`);
             rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
             rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul || ''}`);
             rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang || ''}`);
-            // Hapus garis-garis berlebih
+            // Hapus garis berlebih
             rpl = rpl.replace(/───+/g, '');
             rpl = rpl.replace(/─+/g, '');
             rpl = rpl.replace(/━+/g, '');
             rpl = rpl.replace(/⎯+/g, '');
             rplContent.textContent = rpl;
 
-            // LKPD - gunakan lkpd dari data atau aktivitas
+            // LKPD
             if (m.lkpd) {
                 lkpdText.value = m.lkpd;
             } else {
                 lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
             }
 
-            // === REFLEKSI 1 LEMBAR PADAT ===
+            // REFLEKSI
             if (m.refleksi) {
                 const lines = m.refleksi.split('\n').filter(line => line.trim());
                 let soalItems = [];
@@ -2295,11 +2728,9 @@
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? m.judul : 'LKPD';
 
-            // Format LKPD menjadi 1 lembar
             const lines = content.split('\n').filter(line => line.trim());
             let lkpdHTML = '';
             let isKasus = false;
-            let isPertanyaan = false;
 
             for (let line of lines) {
                 line = line.trim();
@@ -2307,7 +2738,6 @@
                     isKasus = true;
                     lkpdHTML += `<div style="margin:4px 0;font-weight:700;color:#1A2A6A;">${line}</div>`;
                 } else if (line.match(/^\d+\./)) {
-                    isPertanyaan = true;
                     lkpdHTML +=
                         `<div class="soal-lkpd"><span class="nomor">${line}</span><span class="jawaban-garis"></span></div>`;
                 } else if (line.includes('Nama') || line.includes('Kelas') || line.includes('Tanggal')) {
@@ -2335,7 +2765,6 @@
                     .soal-lkpd .nomor { font-weight: 600; color: #1A2A6A; font-size: 10px; }
                     .soal-lkpd .jawaban-garis { display: block; border-bottom: 1px solid #ccc; height: 20px; margin-top: 1px; }
                     .footer { margin-top: 6px; border-top: 2px solid #1A2A6A; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; color: #718096; }
-                    .kasus-text { font-size: 11px; padding-left: 10px; margin: 2px 0; }
                     @media print { body { padding: 8px; } .soal-lkpd .jawaban-garis { height: 22px; border-bottom: 1px solid #aaa; } }
                 </style>
                 </head>
@@ -2363,7 +2792,6 @@
             printWin.document.close();
         }
 
-        // === CETAK REFLEKSI 1 LEMBAR PADAT ===
         function cetakRefleksi() {
             const m = getMateri(parseInt(materiSelect.value));
             if (!m) { showModal('⚠️ Peringatan', 'Pilih materi dulu.'); return; }
@@ -2751,7 +3179,8 @@
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`Total materi: ${totalMateri} materi dari semua jenjang dan kelas`);
-        console.log('📝 Materi "Kenali Dirimu, Temukan Potensimu" sudah dimasukkan dengan RPL lengkap!');
+        console.log('📝 RPL menggunakan format tabel (kolom) seperti file Anda');
+        console.log('📝 Materi "Aku Bangga Menjadi Siswa SMP" sudah dimasukkan dengan RPL lengkap!');
         console.log('📝 LKPD & Refleksi dicetak 1 lembar PADAT');
         console.log('🔗 Link kuis bisa dibuka siswa!');
     </script>
