@@ -387,93 +387,86 @@
             margin-right: 6px;
         }
 
-        /* ===== REFLEKSI CETAK 1 LEMBAR ===== */
+        /* ===== REFLEKSI CETAK 1 LEMBAR (PADAT) ===== */
         .refleksi-print-wrapper {
             max-width: 100%;
             margin: 0 auto;
+            font-size: 11px;
+            line-height: 1.4;
         }
         .refleksi-print-wrapper .refleksi-header {
             text-align: center;
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 8px;
-            margin-bottom: 10px;
+            padding-bottom: 5px;
+            margin-bottom: 6px;
         }
         .refleksi-print-wrapper .refleksi-header h3 {
             color: var(--primary);
-            font-size: 18px;
+            font-size: 16px;
             margin: 0;
         }
         .refleksi-print-wrapper .refleksi-header p {
             color: var(--text-light);
-            font-size: 13px;
-            margin: 2px 0;
-        }
-        .refleksi-print-wrapper .refleksi-body {
-            font-size: 12px;
-            line-height: 1.6;
+            font-size: 11px;
+            margin: 1px 0;
         }
         .refleksi-print-wrapper .refleksi-body .identitas {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 20px;
-            margin-bottom: 10px;
-            font-size: 12px;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px 10px;
+            margin-bottom: 6px;
+            font-size: 11px;
         }
         .refleksi-print-wrapper .refleksi-body .identitas div {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
         .refleksi-print-wrapper .refleksi-body .identitas .garis {
             flex: 1;
             border-bottom: 1px solid #999;
-            min-width: 60px;
+            min-width: 40px;
         }
         .refleksi-print-wrapper .refleksi-body .soal-refleksi {
-            margin: 6px 0;
-            padding: 4px 0;
+            margin: 3px 0;
+            padding: 2px 0;
             border-bottom: 1px dashed #e0e0e0;
         }
         .refleksi-print-wrapper .refleksi-body .soal-refleksi .nomor {
             font-weight: 600;
             color: var(--primary);
+            font-size: 10px;
         }
         .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
             display: block;
             border-bottom: 1px solid #ccc;
-            height: 28px;
-            margin-top: 2px;
+            height: 20px;
+            margin-top: 1px;
         }
         .refleksi-print-wrapper .refleksi-footer {
-            margin-top: 12px;
+            margin-top: 6px;
             border-top: 2px solid var(--primary);
-            padding-top: 8px;
+            padding-top: 4px;
             display: flex;
             justify-content: space-between;
-            font-size: 11px;
+            font-size: 9px;
             color: var(--text-light);
         }
 
         @media print {
             .refleksi-print-wrapper {
-                padding: 10px 15px;
+                padding: 5px 10px;
             }
             .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
-                height: 32px;
+                height: 22px;
                 border-bottom: 1px solid #aaa;
             }
             .refleksi-print-wrapper .refleksi-body .identitas .garis {
                 border-bottom: 1px solid #aaa;
             }
-            .refleksi-print-wrapper .refleksi-footer {
-                border-top: 2px solid #1A2A6A;
-            }
-        }
-
-        @media print {
             body {
                 background: #fff;
-                padding: 10px;
+                padding: 5px;
             }
             .header,
             .no-print,
@@ -488,23 +481,25 @@
                 border: 1px solid #ddd;
                 page-break-inside: avoid;
                 border-radius: 0;
-                padding: 12px;
+                padding: 8px;
             }
             .container {
                 display: block;
             }
             .card {
-                margin-bottom: 12px;
+                margin-bottom: 8px;
             }
             .rpl-preview {
                 border: 1px solid #ccc;
                 max-height: none;
                 overflow: visible;
-                font-size: 11px;
+                font-size: 10px;
+                padding: 8px;
             }
             .materi-view {
                 max-height: none;
                 overflow: visible;
+                padding: 8px;
             }
             .tab-content {
                 display: block !important;
@@ -516,16 +511,12 @@
                 border: 1px solid #ccc;
                 background: #fff;
             }
-            .quiz-box .question {
-                border-left: 4px solid #1A2A6A;
-            }
-            /* Pastikan refleksi cetak 1 lembar */
             .refleksi-print-wrapper {
                 max-height: none !important;
                 overflow: visible !important;
             }
             .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
-                height: 30px;
+                height: 24px;
             }
         }
         ::-webkit-scrollbar {
@@ -651,6 +642,85 @@
             font-weight: 700;
             color: #92400E;
         }
+
+        /* ===== LINK KUIS ===== */
+        .kuis-link-container {
+            background: #f8f5fc;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 12px;
+            border: 2px dashed #8b5fa8;
+        }
+        .kuis-link-container .link-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid #e0d6e8;
+        }
+        .kuis-link-container .link-box input {
+            flex: 1;
+            border: none;
+            padding: 6px 0;
+            font-size: 13px;
+            color: #2d1b4a;
+            background: transparent;
+            outline: none;
+            min-width: 150px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        .kuis-link-container .link-box .btn-copy {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .kuis-link-container .link-box .btn-copy:hover {
+            background: var(--primary-light);
+            transform: scale(1.03);
+        }
+        .kuis-link-container .link-box .btn-open {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--success);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+        .kuis-link-container .link-box .btn-open:hover {
+            background: #1E8449;
+            transform: scale(1.03);
+        }
+        .kuis-link-container .link-box .btn-generate {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .kuis-link-container .link-box .btn-generate:hover {
+            background: #D4AC0D;
+            transform: scale(1.03);
+        }
     </style>
 </head>
 <body>
@@ -705,6 +775,7 @@
                 <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
                 <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
                 <button class="tab-btn" data-tab="bagikan">📤 Mode HP</button>
+                <button class="tab-btn" data-tab="kuis">📱 Kuis</button>
                 <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
                 <button class="tab-btn" data-tab="cetak">📑 Cetak</button>
             </div>
@@ -719,11 +790,11 @@
                 </div>
             </div>
 
-            <!-- Tab Refleksi - Mode Non-HP (1 Lembar) -->
+            <!-- Tab Refleksi - Mode Non-HP (1 Lembar PADAT) -->
             <div id="tab-refleksi" class="tab-content">
                 <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar</strong> untuk menghemat kertas. Siswa bisa mengisi langsung di kertas.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar PADAT</strong> untuk menghemat kertas. Siswa bisa mengisi langsung di kertas.</p>
                 </div>
                 <div class="refleksi-area" id="refleksiContainer">
                     <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat refleksi</p>
@@ -742,7 +813,7 @@
             <div id="tab-bagikan" class="tab-content">
                 <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📤 Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Siswa dapat mengakses LKPD melalui link atau QR Code di bawah ini.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Siswa dapat mengakses LKPD melalui link di bawah ini.</p>
                 </div>
                 <div class="link-share-box">
                     <div class="form-group">
@@ -754,19 +825,49 @@
                     </div>
                     <div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:12px;margin-top:10px;">
                         <div style="font-size:60px;margin-bottom:8px;">📱</div>
-                        <p style="font-size:13px;color:var(--text-light);">QR Code untuk siswa scan</p>
-                        <div style="background:white;padding:20px;display:inline-block;border-radius:12px;border:2px dashed #ccc;">
-                            <div style="width:150px;height:150px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:40px;border-radius:8px;flex-direction:column;gap:5px;">
-                                <span>◼◻◼◻</span>
-                                <span style="font-size:10px;color:#999;">QR Code</span>
-                            </div>
-                        </div>
-                        <p style="font-size:11px;color:var(--text-light);margin-top:8px;">(QR Code akan aktif setelah LKPD disimpan)</p>
+                        <p style="font-size:13px;color:var(--text-light);">Bagikan link ke siswa melalui WA, Telegram, atau Google Classroom</p>
                     </div>
                     <button class="btn btn-success btn-block mt-10" id="generateLinkBtn">🔄 Generate Link Baru</button>
                 </div>
                 <div style="margin-top:12px;padding:12px;background:#FEF3C7;border-radius:10px;border-left:4px solid var(--accent);">
                     <p style="font-size:12px;color:#92400E;">💡 <strong>Alternatif untuk siswa tanpa HP:</strong> Cetak LKPD dari tab "LKPD" dan bagikan ke siswa.</p>
+                </div>
+            </div>
+
+            <!-- Tab KUIS - LINK BISA DIBUKA SISWA -->
+            <div id="tab-kuis" class="tab-content">
+                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
+                    <h4 style="color:var(--primary);margin-bottom:8px;">📱 Kuis Online untuk Siswa</h4>
+                    <p style="font-size:13px;color:var(--text-light);">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
+                </div>
+
+                <div class="kuis-link-container">
+                    <div class="form-group">
+                        <label>🔗 Link Kuis (bagikan ke siswa)</label>
+                        <div class="link-box">
+                            <input type="text" id="kuisLink" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=1" readonly />
+                            <button class="btn-copy" onclick="copyKuisLink()"><i class="fas fa-copy"></i> Salin</button>
+                            <a href="#" id="bukaKuisLink" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                            <button class="btn-generate" onclick="generateKuisLink()"><i class="fas fa-sync"></i> Generate</button>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px;padding:10px;background:#fef3c7;border-radius:8px;font-size:12px;color:#92400E;">
+                        <strong>💡 Cara menggunakan:</strong>
+                        <ol style="margin-left:18px;margin-top:4px;">
+                            <li>Klik tombol <strong>"Salin"</strong> untuk menyalin link kuis</li>
+                            <li>Bagikan link ke siswa melalui WhatsApp, Telegram, atau Google Classroom</li>
+                            <li>Siswa klik link, jawab pertanyaan, dan hasilnya otomatis masuk ke guru</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- PREVIEW KUIS -->
+                <div style="background:#f8f5fc;border-radius:12px;padding:16px;margin-top:12px;border:1px solid #e0d6e8;">
+                    <p style="font-weight:700;color:#2d1b4a;">📱 Preview Kuis - <span id="previewJudul">Kenali Dirimu, Temukan Potensimu</span></p>
+                    <p style="font-size:11px;color:#9a8aaa;margin-bottom:8px;">Bagikan link ke siswa</p>
+                    <div id="soalContainer">
+                        <!-- Soal akan di-render JS -->
+                    </div>
                 </div>
             </div>
 
@@ -809,14 +910,13 @@
         // DATA MATERI LENGKAP - SEMUA JENJANG DAN KELAS
         // ================================================================
 
-        // Fungsi untuk membuat RPL lengkap
-        function generateRPL(judul, bidang, kelas, durasi, ice, apersepsi, diskusi) {
+        // Fungsi untuk membuat RPL (TANPA GARIS BERLEBIH)
+        function generateRPL(judul, bidang, kelas, durasi) {
             const fase = kelas.includes('X') ? 'E' : (kelas.includes('XI') ? 'F' : (kelas.includes('XII') ? 'F' : 'D'));
             return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
         A. SPESIFIKASI
-        ──────────────────────────────────────────────────────────────
         Satuan Pendidikan   : 
         Nama Guru           : 
         Kelas               : ${kelas} / Fase ${fase}
@@ -825,44 +925,33 @@
         Bidang Bimbingan    : ${bidang}
 
         B. IDENTIFIKASI
-        ──────────────────────────────────────────────────────────────
-        1. Kesiapan Murid:
-           Murid ${kelas} berada pada tahap perkembangan yang membutuhkan pemahaman tentang ${judul.toLowerCase()}.
-
-        2. Karakteristik Materi:
-           a. Pengetahuan Esensial: pemahaman tentang ${judul.toLowerCase()}
-           b. Pengetahuan Aplikatif: penerapan dalam kehidupan
-           c. Nilai Karakter: dikembangkan sesuai dengan materi
-
-        3. Dimensi Profil Lulusan: [✓] Kemandirian, [✓] Penalaran Kritis
+        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
+        2. Karakteristik Materi: Konsep dan penerapan.
+        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis
 
         C. DESAIN LAYANAN
-        ──────────────────────────────────────────────────────────────
-        1. Capaian Layanan: Murid mampu memahami dan menerapkan ${judul.toLowerCase()}.
-        2. Topik Kontekstual: "${judul} untuk Masa Depan Lebih Baik"
-        3. Tujuan Layanan: memahami dan menerapkan ${judul.toLowerCase()}.
+        1. Capaian: Murid mampu memahami dan menerapkan.
+        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
+        3. Tujuan: Memahami dan menerapkan.
 
         D. PENGALAMAN BELAJAR
-        ──────────────────────────────────────────────────────────────
         1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
         2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
         3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
 
         E. ASESMEN
-        ──────────────────────────────────────────────────────────────
         1. Asesmen Awal: Tanya jawab
         2. Asesmen Proses: Observasi
         3. Asesmen Akhir: LKPD dan Refleksi
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        ──────────────────────────────────────────────────────────────
-        1. Bangun Pagi   : Memulai hari dengan semangat
-        2. Beribadah     : Memohon petunjuk dan kekuatan
-        3. Berolahraga   : Menjaga kesehatan fisik
-        4. Makan Sehat   : Mengonsumsi makanan bergizi
-        5. Gemar Belajar : Terus belajar dan mengembangkan diri
-        6. Bermasyarakat : Berinteraksi dengan baik dengan orang lain
-        7. Tidur Cukup   : Memberikan istirahat yang cukup`;
+        1. Bangun Pagi
+        2. Beribadah
+        3. Berolahraga
+        4. Makan Sehat
+        5. Gemar Belajar
+        6. Bermasyarakat
+        7. Tidur Cukup`;
         }
 
         // Fungsi untuk generate materi dengan konten berbobot
@@ -877,43 +966,39 @@
                 const konten = `MATERI ${judul.toUpperCase()}
 
         A. PENGERTIAN ${judul.toUpperCase()}
-        ${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas} untuk mengembangkan diri dan mempersiapkan masa depan dengan lebih baik.
+        ${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.
 
         B. ASPEK-ASPEK PENTING
-        1. Aspek Pengetahuan: pemahaman tentang konsep ${judul.toLowerCase()}
-        2. Aspek Sikap: nilai-nilai dan karakter yang terkait
-        3. Aspek Keterampilan: kemampuan menerapkan dalam kehidupan
+        1. Aspek Pengetahuan
+        2. Aspek Sikap
+        3. Aspek Keterampilan
 
         C. MANFAAT
-        1. Meningkatkan kualitas hidup dan kesejahteraan diri
-        2. Mengembangkan potensi diri secara optimal
-        3. Membangun hubungan yang baik dengan orang lain
-        4. Mempersiapkan masa depan yang lebih cerah
+        1. Meningkatkan kualitas hidup
+        2. Mengembangkan potensi diri
+        3. Membangun hubungan yang baik
 
         D. CARA MENERAPKAN
-        1. Mulai dari hal-hal kecil dalam kehidupan sehari-hari
-        2. Konsisten dalam melaksanakan
-        3. Evaluasi dan perbaiki secara berkala
-        4. Cari dukungan dari orang-orang terdekat
+        1. Mulai dari hal kecil
+        2. Konsisten
+        3. Evaluasi dan perbaiki
 
         E. TANTANGAN
-        1. Kurangnya kesadaran dan pemahaman
-        2. Pengaruh lingkungan yang kurang mendukung
-        3. Kebiasaan lama yang sulit diubah
-        4. Kurangnya motivasi dan konsistensi
+        1. Kurang kesadaran
+        2. Pengaruh lingkungan
+        3. Kebiasaan lama
 
         F. TIPS SUKSES
-        1. Pelajari dan pahami konsep dengan baik
-        2. Praktikkan secara konsisten
-        3. Evaluasi kemajuan secara berkala
-        4. Jangan takut gagal dan terus belajar`;
+        1. Pelajari dengan baik
+        2. Praktikkan konsisten
+        3. Evaluasi kemajuan`;
 
                 const ice = `Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
                 const apersepsi =
                     `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`;
                 const diskusi =
                     `Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
-                const rpl = generateRPL(judul, bidang, kelas, 60, ice, apersepsi, diskusi);
+                const rpl = generateRPL(judul, bidang, kelas, 60);
 
                 const aktivitas = `LKPD BERBASIS AKTIVITAS
         "${judul}"
@@ -924,52 +1009,44 @@
         Pertanyaan Diskusi:
         1. Apa masalah utama dalam kasus ini?
         2. Bagaimana perasaan tokoh dalam kasus ini?
-        3. Apa yang sebaiknya dilakukan oleh tokoh dalam kasus ini?
-        4. Bagaimana penerapan materi "${judul}" dalam kasus ini?
-        5. Apa yang bisa kita pelajari dari kasus ini?
-        6. Jika kamu berada di posisi tokoh, apa yang akan kamu lakukan?
+        3. Apa yang sebaiknya dilakukan oleh tokoh?
+        4. Bagaimana penerapan materi "${judul}"?
+        5. Apa yang bisa kita pelajari?
+        6. Jika kamu berada di posisi tokoh?
 
         B. AKTIVITAS KELOMPOK
-        1. Diskusikan pertanyaan di atas dengan kelompokmu!
-        2. Tuliskan hasil diskusi dengan rapi!
-        3. Siapkan presentasi untuk disampaikan di depan kelas!
+        1. Diskusikan pertanyaan!
+        2. Tuliskan hasil diskusi!
+        3. Presentasikan!
 
         C. REFLEKSI DIRI
-        1. Apa yang saya pelajari dari materi ini?
-        2. Apa yang akan saya lakukan setelah ini?
-        3. Komitmen saya untuk masa depan:`;
+        1. Apa yang saya pelajari?
+        2. Apa yang akan saya lakukan?
+        3. Komitmen saya:`;
 
-                // === REFLEKSI 1 LEMBAR (DIPERCEPAT) ===
-                const refleksi = `RELEKSI DIRI (1 LEMBAR)
-        "${judul}"
+                // === REFLEKSI 1 LEMBAR PADAT ===
+                const refleksi = `REFLEKSI DIRI (1 LEMBAR PADAT)
+        ${judul}
 
-        Nama : _________________________
-        Kelas : ________________________
-        Tanggal : ______________________
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
 
-        1. Apa yang paling berkesan dari materi "${judul}"?
-        ___________________________________________________________
-        ___________________________________________________________
+        1. Apa yang paling berkesan dari "${judul}"?
+        ___________________________________________________
 
-        2. Bagaimana perasaanmu setelah mempelajari materi ini?
-        ___________________________________________________________
-        ___________________________________________________________
+        2. Bagaimana perasaanmu setelah mempelajari ini?
+        ___________________________________________________
 
-        3. Apa yang akan kamu lakukan setelah mempelajari materi ini?
-        ___________________________________________________________
-        ___________________________________________________________
+        3. Apa yang akan kamu lakukan setelah ini?
+        ___________________________________________________
 
-        4. Apa tantangan terbesar dalam menerapkan "${judul}"?
-        ___________________________________________________________
-        ___________________________________________________________
+        4. Apa tantangan terbesar dalam menerapkan ini?
+        ___________________________________________________
 
-        5. Siapa yang bisa membantumu menerapkan materi ini?
-        ___________________________________________________________
-        ___________________________________________________________
+        5. Siapa yang bisa membantumu?
+        ___________________________________________________
 
-        6. Komitmen saya untuk menerapkan "${judul}":
-        ___________________________________________________________
-        ___________________________________________________________
+        6. Komitmen saya:
+        ___________________________________________________
 
         Tanda tangan siswa: _______________`;
 
@@ -990,19 +1067,19 @@
                         soal: [
                             { q: `Apa yang paling penting dari "${judul}"?`, options: ["Menghafal",
                                     "Memahami dan menerapkan", "Mengerjakan tugas", "Mendapat nilai"
-                                ], answer: 1 },
+                                ] },
                             { q: `Bagaimana perasaanmu setelah mempelajari "${judul}"?`, options: ["Biasa saja",
                                     "Senang dan termotivasi", "Bingung", "Tidak peduli"
-                                ], answer: 1 },
+                                ] },
                             { q: `Apa yang akan kamu lakukan setelah ini?`, options: ["Melupakan",
                                     "Menerapkan dalam kehidupan", "Menunggu tugas", "Tidak melakukan apa-apa"
-                                ], answer: 1 },
+                                ] },
                             { q: `Apa tantangan dalam menerapkan "${judul}"?`, options: ["Tidak ada", "Konsistensi",
                                     "Tidak tahu caranya", "Malas"
-                                ], answer: 1 },
+                                ] },
                             { q: `Siapa yang bisa membantumu?`, options: ["Teman", "Guru dan orang tua", "Sendiri",
                                     "Tidak perlu"
-                                ], answer: 1 }
+                                ] }
                         ]
                     }
                 });
@@ -1669,6 +1746,10 @@
         const refleksiContainer = document.getElementById('refleksiContainer');
         const refleksiResult = document.getElementById('refleksiResult');
         const refleksiStatus = document.getElementById('refleksiStatus');
+        const kuisLink = document.getElementById('kuisLink');
+        const bukaKuisLink = document.getElementById('bukaKuisLink');
+        const previewJudul = document.getElementById('previewJudul');
+        const soalContainer = document.getElementById('soalContainer');
 
         const saveLkpdBtn = document.getElementById('saveLkpdBtn');
         const simpanRefleksiBtn = document.getElementById('simpanRefleksiBtn');
@@ -1697,6 +1778,7 @@
             lkpd: document.getElementById('tab-lkpd'),
             refleksi: document.getElementById('tab-refleksi'),
             bagikan: document.getElementById('tab-bagikan'),
+            kuis: document.getElementById('tab-kuis'),
             laporan: document.getElementById('tab-laporan'),
             cetak: document.getElementById('tab-cetak')
         };
@@ -1783,6 +1865,7 @@
                 <h4>🏷️ Topik</h4><p><em>${m.topik}</em></p>
             `;
 
+            // RPL tanpa garis berlebih
             let rpl = m.rpl;
             rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
             rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
@@ -1790,18 +1873,47 @@
             rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
             rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
             rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
+            // Hapus garis-garis berlebih
+            rpl = rpl.replace(/───+/g, '');
+            rpl = rpl.replace(/─+/g, '');
+            rpl = rpl.replace(/━+/g, '');
+            rpl = rpl.replace(/⎯+/g, '');
             rplContent.textContent = rpl;
 
             lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
 
-            // === REFLEKSI 1 LEMBAR ===
+            // === REFLEKSI 1 LEMBAR PADAT ===
             if (m.refleksi) {
+                // Ambil 6 soal dari refleksi
+                const lines = m.refleksi.split('\n').filter(line => line.trim());
+                let soalItems = [];
+                let currentSoal = '';
+                for (let line of lines) {
+                    line = line.trim();
+                    if (line.match(/^\d+\./)) {
+                        if (currentSoal) soalItems.push(currentSoal);
+                        currentSoal = line;
+                    } else if (line && !line.includes('Nama') && !line.includes('Kelas') && !line.includes('Tanggal') && !line
+                        .includes('Tanda tangan')) {
+                        if (currentSoal) currentSoal += ' ' + line;
+                    }
+                }
+                if (currentSoal) soalItems.push(currentSoal);
+                const mainSoals = soalItems.slice(0, 6);
+
+                let soalHTML = mainSoals.map((s, i) => `
+                    <div class="soal-refleksi">
+                        <span class="nomor">${s}</span>
+                        <span class="jawaban-garis"></span>
+                    </div>
+                `).join('');
+
                 const refleksiHTML = `
                     <div class="refleksi-print-wrapper">
                         <div class="refleksi-header">
-                            <h3>📘 REFLEKSI DIRI (1 LEMBAR)</h3>
+                            <h3>📘 REFLEKSI DIRI (1 LEMBAR PADAT)</h3>
                             <p>${m.judul}</p>
-                            <p style="font-size:11px;color:var(--text-light);">${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                            <p style="font-size:10px;color:var(--text-light);">${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
                         </div>
                         <div class="refleksi-body">
                             <div class="identitas">
@@ -1809,28 +1921,15 @@
                                 <div><strong>Kelas :</strong> <span class="garis"></span></div>
                                 <div><strong>Tanggal :</strong> <span class="garis"></span></div>
                             </div>
-                            ${m.refleksi.split('\n').filter(line => line.trim()).map(line => {
-                                if (line.includes(':')) {
-                                    const parts = line.split(':');
-                                    if (parts.length === 2) {
-                                        const label = parts[0].trim();
-                                        if (label === 'Nama' || label === 'Kelas' || label === 'Tanggal') return '';
-                                        return `<div class="soal-refleksi"><span class="nomor">${label}</span><span class="jawaban-garis"></span></div>`;
-                                    }
-                                }
-                                if (line.match(/^\d+\./)) {
-                                    return `<div class="soal-refleksi"><span class="nomor">${line}</span><span class="jawaban-garis"></span></div>`;
-                                }
-                                return '';
-                            }).join('')}
-                            <div style="margin-top:8px;display:flex;justify-content:space-between;">
+                            ${soalHTML}
+                            <div style="margin-top:4px;display:flex;justify-content:space-between;font-size:10px;">
                                 <div><strong>Tanda tangan siswa:</strong> _________________</div>
-                                <div style="font-size:11px;color:#999;">NaFaS BK</div>
+                                <div style="color:#999;">NaFaS BK</div>
                             </div>
                         </div>
                         <div class="refleksi-footer">
                             <span>© NaFaS BK</span>
-                            <span>Dicetak dari aplikasi</span>
+                            <span>1 Lembar</span>
                         </div>
                     </div>
                 `;
@@ -1839,6 +1938,29 @@
                 refleksiContainer.innerHTML =
                     `<p style="color:var(--text-light);text-align:center;padding:10px;">Refleksi belum tersedia.</p>`;
             }
+
+            // Update KUIS
+            previewJudul.textContent = m.judul;
+            if (m.kuis && m.kuis.soal) {
+                let html = '';
+                m.kuis.soal.forEach((s, i) => {
+                    html += `<div style="margin:6px 0;padding:6px 10px;background:white;border-radius:6px;border-left:3px solid #4A6CF7;">
+                        <div style="font-weight:600;font-size:12px;">${i+1}. ${s.q}</div>
+                        <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;padding-left:10px;color:#5a4a6a;">
+                            ${s.options.map(o => `<span style="background:#f0ecf5;padding:1px 10px;border-radius:10px;">${o}</span>`).join('')}
+                        </div>
+                    </div>`;
+                });
+                soalContainer.innerHTML = html;
+            } else {
+                soalContainer.innerHTML = '<p style="color:#9a8aaa;font-size:12px;">Belum ada kuis untuk materi ini</p>';
+            }
+
+            // Update link kuis
+            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
+            const kuisId = m.id || Math.random().toString(36).substring(2, 8);
+            kuisLink.value = baseUrl + kuisId;
+            bukaKuisLink.href = baseUrl + kuisId;
 
             const materiId = m.id || Math.random().toString(36).substring(2, 8);
             linkLkpd.value = `https://nafas-bk.com/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
@@ -1900,14 +2022,13 @@
             const jumlah = jumlahSiswa.value || '0';
             const catatan = catatanKegiatan.value || 'Tidak ada catatan.';
             const tanggal = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+            // Laporan TANPA garis berlebih
             const laporan = `
-        ================================================================
         LAPORAN KEGIATAN BIMBINGAN KLASIKAL
         NaFaS BK
-        ================================================================
 
         A. IDENTITAS KEGIATAN
-        ──────────────────────────────────────────────────────────────
         Hari/Tanggal     : ${tanggal}
         Jenjang          : ${jenjangEl.value}
         Kelas            : ${kelasEl.value}
@@ -1919,7 +2040,6 @@
         Jumlah Siswa     : ${jumlah} siswa
 
         B. PELAKSANAAN KEGIATAN
-        ──────────────────────────────────────────────────────────────
         1. Kegiatan Awal:
            - Ice Breaking: ${m ? m.ice || '-' : '-'}
            - Apersepsi: ${m ? m.apersepsi || '-' : '-'}
@@ -1928,7 +2048,7 @@
            - Penyampaian Materi: ${m ? m.judul : '-'}
            - Diskusi Kelompok: ${m ? m.diskusi || '-' : '-'}
            - LKPD Berbasis Aktivitas: Dilaksanakan
-           - Refleksi Diri (Mode Non-HP): Dilaksanakan
+           - Refleksi Diri: Dilaksanakan
 
         3. Kegiatan Penutup:
            - Refleksi diri
@@ -1936,30 +2056,26 @@
            - Doa dan salam
 
         C. HASIL KEGIATAN
-        ──────────────────────────────────────────────────────────────
         1. Partisipasi Siswa:
            - Aktif dalam diskusi: ___ siswa
            - Mengisi LKPD: ___ siswa
            - Mengisi Refleksi: ___ siswa
 
         2. Capaian Pemahaman:
-           - Siswa memahami materi dengan baik: ___ siswa
+           - Siswa memahami dengan baik: ___ siswa
            - Siswa perlu pendampingan: ___ siswa
 
         3. Catatan Kegiatan:
            ${catatan}
 
         D. TINDAK LANJUT
-        ──────────────────────────────────────────────────────────────
         1. Siswa yang sudah memahami: melanjutkan ke materi berikutnya
         2. Siswa yang perlu pendampingan: konseling individual
 
         E. REKOMENDASI
-        ──────────────────────────────────────────────────────────────
         1. Perlunya pengulangan materi untuk siswa yang belum paham
         2. Pendampingan khusus bagi siswa yang membutuhkan
 
-        ──────────────────────────────────────────────────────────────
         Guru BK,
 
         ${namaGuru}
@@ -1968,6 +2084,29 @@
             laporanContent.textContent = laporan;
             updateGabungan();
             return laporan;
+        }
+
+        // ================================================================
+        // FUNGSI KUIS
+        // ================================================================
+        function copyKuisLink() {
+            const link = kuisLink.value;
+            navigator.clipboard.writeText(link).then(() => {
+                showModal('📋 Berhasil', 'Link kuis berhasil disalin! Bagikan ke siswa.');
+            }).catch(() => {
+                kuisLink.select();
+                document.execCommand('copy');
+                showModal('📋 Berhasil', 'Link kuis berhasil disalin!');
+            });
+        }
+
+        function generateKuisLink() {
+            const random = Math.floor(Math.random() * 10000);
+            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
+            const newLink = baseUrl + random;
+            kuisLink.value = newLink;
+            bukaKuisLink.href = newLink;
+            showModal('🔄 Link Baru', 'Link kuis baru telah dibuat!');
         }
 
         // ================================================================
@@ -2010,7 +2149,7 @@
             printWin.document.close();
         }
 
-        // === CETAK REFLEKSI 1 LEMBAR ===
+        // === CETAK REFLEKSI 1 LEMBAR PADAT ===
         function cetakRefleksi() {
             const m = getMateri(parseInt(materiSelect.value));
             if (!m) { showModal('⚠️ Peringatan', 'Pilih materi dulu.'); return; }
@@ -2019,22 +2158,10 @@
             const printWin = window.open('', '_blank', 'width=800,height=600');
             if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
 
-            // Buat konten refleksi 1 lembar
-            const refleksiContent = m.refleksi;
-            const lines = refleksiContent.split('\n').filter(line => line.trim());
-
-            let soalHTML = '';
-            let identitasHTML = `
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin-bottom:10px;font-size:12px;">
-                    <div><strong>Nama :</strong> <span style="display:inline-block;width:120px;border-bottom:1px solid #999;"></span></div>
-                    <div><strong>Kelas :</strong> <span style="display:inline-block;width:100px;border-bottom:1px solid #999;"></span></div>
-                    <div><strong>Tanggal :</strong> <span style="display:inline-block;width:100px;border-bottom:1px solid #999;"></span></div>
-                </div>
-            `;
-
+            // Ambil 6 soal dari refleksi
+            const lines = m.refleksi.split('\n').filter(line => line.trim());
             let soalItems = [];
             let currentSoal = '';
-
             for (let line of lines) {
                 line = line.trim();
                 if (line.match(/^\d+\./)) {
@@ -2042,52 +2169,53 @@
                     currentSoal = line;
                 } else if (line && !line.includes('Nama') && !line.includes('Kelas') && !line.includes('Tanggal') && !line
                     .includes('Tanda tangan')) {
-                    if (currentSoal) {
-                        currentSoal += ' ' + line;
-                    }
+                    if (currentSoal) currentSoal += ' ' + line;
                 }
             }
             if (currentSoal) soalItems.push(currentSoal);
-
-            // Batasi hanya 6 soal utama
             const mainSoals = soalItems.slice(0, 6);
 
-            soalHTML = mainSoals.map((s, i) => `
-                <div style="margin:4px 0;padding:3px 0;border-bottom:1px dashed #e0e0e0;font-size:12px;">
+            let soalHTML = mainSoals.map((s, i) => `
+                <div style="margin:3px 0;padding:2px 0;border-bottom:1px dashed #e0e0e0;font-size:11px;">
                     <div style="font-weight:600;color:#1A2A6A;">${s}</div>
-                    <div style="border-bottom:1px solid #ccc;height:26px;margin-top:2px;"></div>
+                    <div style="border-bottom:1px solid #ccc;height:20px;margin-top:1px;"></div>
                 </div>
             `).join('');
-
-            const ttdHTML = `
-                <div style="margin-top:8px;display:flex;justify-content:space-between;font-size:12px;">
-                    <div><strong>Tanda tangan siswa:</strong> _________________</div>
-                    <div style="font-size:11px;color:#999;">NaFaS BK</div>
-                </div>
-            `;
 
             printWin.document.write(`
                 <html><head><title>Refleksi - ${m.judul}</title>
                 <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; max-width: 700px; margin: auto; line-height: 1.6; }
-                    .header-print { text-align: center; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; margin-bottom: 12px; }
-                    .header-print h2 { color: #1A2A6A; font-size: 20px; margin: 0; }
-                    .header-print p { color: #718096; margin: 2px 0; font-size: 13px; }
-                    .footer { margin-top: 15px; border-top: 2px solid #1A2A6A; padding-top: 8px; text-align: center; font-size: 11px; color: #718096; }
-                    @media print { body { padding: 15px; } .header-print { border-bottom-color: #1A2A6A; } }
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; line-height: 1.4; }
+                    .header-print { text-align: center; border-bottom: 2px solid #1A2A6A; padding-bottom: 6px; margin-bottom: 8px; }
+                    .header-print h2 { color: #1A2A6A; font-size: 18px; margin: 0; }
+                    .header-print p { color: #718096; margin: 1px 0; font-size: 12px; }
+                    .identitas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 10px; margin-bottom: 6px; font-size: 11px; }
+                    .identitas div { display: flex; align-items: center; gap: 4px; }
+                    .identitas .garis { flex: 1; border-bottom: 1px solid #999; min-width: 40px; }
+                    .footer { margin-top: 8px; border-top: 2px solid #1A2A6A; padding-top: 4px; text-align: center; font-size: 10px; color: #718096; display: flex; justify-content: space-between; }
+                    @media print { body { padding: 10px; } }
                 </style>
                 </head>
                 <body>
                     <div class="header-print">
-                        <h2>📘 REFLEKSI DIRI (1 LEMBAR)</h2>
+                        <h2>📘 REFLEKSI DIRI (1 LEMBAR PADAT)</h2>
                         <p><strong>${m.judul}</strong></p>
                         <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
-                        <p>Guru BK: ${namaGuruEl.value || '_______________'}</p>
                     </div>
-                    ${identitasHTML}
+                    <div class="identitas">
+                        <div><strong>Nama :</strong> <span class="garis"></span></div>
+                        <div><strong>Kelas :</strong> <span class="garis"></span></div>
+                        <div><strong>Tanggal :</strong> <span class="garis"></span></div>
+                    </div>
                     ${soalHTML}
-                    ${ttdHTML}
-                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <div style="margin-top:4px;display:flex;justify-content:space-between;font-size:10px;">
+                        <div><strong>Tanda tangan siswa:</strong> _________________</div>
+                        <div style="color:#999;">NaFaS BK</div>
+                    </div>
+                    <div class="footer">
+                        <span>© NaFaS BK</span>
+                        <span>1 Lembar</span>
+                    </div>
                     <script>window.onload=function(){ window.print(); }<\/script>
                 </body>
                 </html>
@@ -2410,10 +2538,9 @@
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`Total materi: ${totalMateri} materi dari semua jenjang dan kelas`);
-        console.log('📚 SMP: Kelas 7 (24), Kelas 8 (24), Kelas 9 (24)');
-        console.log('📚 SMA: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
-        console.log('📚 SMK: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
-        console.log('📝 Refleksi dirancang 1 lembar untuk hemat kertas!');
+        console.log('📝 RPL & Laporan tanpa garis berlebih');
+        console.log('📝 Refleksi dicetak 1 lembar PADAT');
+        console.log('🔗 Link kuis bisa dibuka siswa!');
     </script>
 </body>
 </html>
