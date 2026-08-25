@@ -3,780 +3,2236 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NaFaS BK - Aplikasi Bimbingan Klasikal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <title>NaFaS BK - Bimbingan Klasikal Lengkap SMP, SMA, SMK</title>
     <style>
-        /* ===== RESET & GLOBAL ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+        :root {
+            --primary: #1A2A6A;
+            --primary-light: #2C3E8F;
+            --primary-lighter: #4A6CF7;
+            --secondary: #E74C3C;
+            --accent: #F1C40F;
+            --success: #27AE60;
+            --bg: #F0F4FF;
+            --card: #FFFFFF;
+            --text: #2D3748;
+            --text-light: #718096;
+            --shadow: 0 8px 30px rgba(26, 42, 106, 0.12);
+            --radius: 16px;
+        }
         body {
-            font-family: 'Poppins', sans-serif;
-            background: #f0ecf5;
-            color: #2d1b4a;
-            padding: 20px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 15px;
         }
-
-        /* ===== CONTAINER ===== */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        }
-
-        /* ===== HEADER ===== */
         .header {
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #f0ecf5;
-            margin-bottom: 25px;
-        }
-        .header .logo {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: #2d1b4a;
-        }
-        .header .logo span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .header .sub {
-            color: #7a6a8a;
-            font-size: 0.95rem;
-            margin-top: 2px;
-        }
-        .header .brand-line {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            padding: 18px 28px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
             gap: 12px;
-            margin-top: 8px;
-            font-size: 0.8rem;
-            color: #9a8aaa;
         }
-        .header .brand-line span {
-            background: #f9d976;
-            color: #2d1b4a;
-            padding: 2px 14px;
-            border-radius: 20px;
+        .header h1 {
+            color: white;
+            font-size: 24px;
             font-weight: 700;
         }
-
-        /* ===== BANNER SELAMAT DATANG ===== */
-        .welcome-banner {
-            background: linear-gradient(135deg, #f3e5f5, #fce4ec);
-            border-radius: 16px;
-            padding: 16px 24px;
-            text-align: center;
-            margin-bottom: 25px;
-            border-left: 5px solid #f9d976;
+        .header h1 small {
+            font-size: 13px;
+            font-weight: 400;
+            opacity: 0.85;
+            display: block;
         }
-        .welcome-banner h2 {
-            font-size: 1.3rem;
+        .header .badge {
+            background: var(--accent);
+            color: var(--primary);
+            padding: 5px 16px;
+            border-radius: 30px;
             font-weight: 700;
-            color: #2d1b4a;
+            font-size: 13px;
         }
-        .welcome-banner h2 span {
-            color: #7B1FA2;
-        }
-        .welcome-banner p {
-            font-size: 0.9rem;
-            color: #5a4a6a;
-            margin-top: 2px;
-        }
-
-        /* ===== FORM ===== */
-        .form-grid {
+        .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px 25px;
-            background: #f8f5fc;
+            gap: 20px;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        @media(max-width:1024px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
             padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 25px;
+            box-shadow: var(--shadow);
+        }
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px solid var(--bg);
+            padding-bottom: 10px;
         }
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
+            margin-bottom: 12px;
         }
         .form-group label {
-            font-size: 0.8rem;
+            display: block;
             font-weight: 600;
-            color: #5a4a6a;
+            font-size: 13px;
+            color: var(--text-light);
+            margin-bottom: 3px;
         }
-        .form-group input,
-        .form-group select {
-            padding: 10px 14px;
-            border: 2px solid #e8e0f0;
-            border-radius: 12px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            background: white;
+        .form-group .required {
+            color: var(--secondary);
+        }
+        select,
+        input,
+        textarea {
+            width: 100%;
+            padding: 9px 12px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: .3s;
+            background: #FAFBFF;
+            color: var(--text);
+            font-family: inherit;
+        }
+        select:focus,
+        input:focus,
+        textarea:focus {
             outline: none;
-            transition: 0.3s;
+            border-color: var(--primary-lighter);
+            box-shadow: 0 0 0 4px rgba(74, 108, 247, 0.1);
         }
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: #8b5fa8;
+        textarea {
+            resize: vertical;
+            min-height: 50px;
         }
-        .form-group .hint {
-            font-size: 0.7rem;
-            color: #9a8aaa;
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
-        .form-full {
-            grid-column: 1 / -1;
+        .row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
         }
-
-        /* ===== SECTION CARD ===== */
-        .section-card {
-            background: #faf8fc;
-            border-radius: 16px;
-            padding: 20px 24px;
-            margin-bottom: 20px;
-            border-left: 4px solid #8b5fa8;
+        @media(max-width:600px) {
+            .row-2,
+            .row-3 {
+                grid-template-columns: 1fr;
+            }
         }
-        .section-card .title {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #2d1b4a;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .section-card .title i {
-            color: #8b5fa8;
-        }
-        .section-card .content {
-            font-size: 0.9rem;
-            color: #5a4a6a;
-            line-height: 1.7;
-            white-space: pre-wrap;
-        }
-        .section-card .content ul {
-            padding-left: 20px;
-        }
-        .section-card .content ul li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== BUTTONS ===== */
         .btn {
-            padding: 10px 24px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 30px;
+            border-radius: 10px;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 13px;
             cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
+            transition: .3s;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 7px;
             text-decoration: none;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
+            background: var(--primary);
+            color: #fff;
         }
         .btn-primary:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 15px rgba(45, 27, 74, 0.25);
+            background: var(--primary-light);
+            transform: translateY(-2px);
         }
         .btn-success {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
+            background: var(--success);
+            color: #fff;
         }
         .btn-success:hover {
-            transform: scale(1.03);
-        }
-        .btn-warning {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            color: #2d1b4a;
-        }
-        .btn-warning:hover {
-            transform: scale(1.03);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #e8e0f0;
-            color: #5a4a6a;
-        }
-        .btn-outline:hover {
-            background: #f0ecf5;
+            background: #1E8449;
+            transform: translateY(-2px);
         }
         .btn-danger {
-            background: #f8d7da;
-            color: #721c24;
+            background: var(--secondary);
+            color: #fff;
         }
         .btn-danger:hover {
-            background: #f5c6cb;
+            background: #C0392B;
+            transform: translateY(-2px);
+        }
+        .btn-warning {
+            background: var(--accent);
+            color: var(--primary);
+        }
+        .btn-warning:hover {
+            background: #D4AC0D;
+            transform: translateY(-2px);
         }
         .btn-sm {
-            padding: 6px 16px;
-            font-size: 0.75rem;
+            padding: 6px 14px;
+            font-size: 12px;
         }
-
+        .btn-block {
+            width: 100%;
+        }
         .btn-group {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             margin-top: 10px;
         }
-
-        /* ===== KUIS LINK ===== */
-        .kuis-link-box {
+        .btn-group .btn {
+            flex: 1;
+            min-width: 80px;
+        }
+        .tab-wrapper {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            background: white;
-            padding: 10px 16px;
+            gap: 4px;
+            background: var(--bg);
+            padding: 4px;
             border-radius: 12px;
-            border: 2px solid #e8e0f0;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: .3s;
+            min-width: 60px;
+        }
+        .tab-btn.active {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .materi-view {
+            background: var(--bg);
+            padding: 14px;
+            border-radius: 12px;
+            margin-top: 8px;
+            max-height: 500px;
+            overflow-y: auto;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        .materi-view h4 {
+            color: var(--primary);
+            margin: 12px 0 6px 0;
+        }
+        .materi-view h4:first-child {
+            margin-top: 0;
+        }
+        .materi-view ul,
+        .materi-view ol {
+            padding-left: 20px;
+            margin: 6px 0;
+        }
+        .materi-view li {
+            margin: 3px 0;
+        }
+        .materi-view .highlight-box {
+            background: #e8edff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin: 10px 0;
+        }
+        .materi-view .quote-box {
+            background: #fef3c7;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        .rpl-preview {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 14px;
+            margin-top: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 12px;
+            line-height: 1.5;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+        }
+        .lkpd-box {
+            background: #F7FAFC;
+            border-radius: 12px;
+            padding: 14px;
+            border: 2px dashed #CBD5E0;
+        }
+        .lkpd-box textarea {
+            background: #fff;
+            min-height: 100px;
+        }
+        .file-upload {
+            border: 2px dashed var(--primary-lighter);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: .3s;
+            position: relative;
             margin-top: 8px;
         }
-        .kuis-link-box input {
-            flex: 1;
-            border: none;
-            padding: 6px 0;
-            font-size: 0.85rem;
-            color: #2d1b4a;
-            background: transparent;
-            outline: none;
-            min-width: 150px;
-            font-family: 'Poppins', sans-serif;
+        .file-upload:hover {
+            background: #E8EDFF;
+            border-color: var(--primary);
         }
-
-        /* ===== KUIS PREVIEW ===== */
-        .kuis-preview {
-            background: white;
-            border-radius: 12px;
-            padding: 16px 20px;
-            border: 2px dashed #d5c8e0;
-            margin-top: 12px;
+        .file-upload input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
         }
-        .kuis-preview .soal {
+        .badge-info {
+            background: #DBEAFE;
+            color: #1E40AF;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 600;
-            color: #2d1b4a;
-            margin: 8px 0 4px;
         }
-        .kuis-preview .opsi {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            font-size: 0.85rem;
-            color: #5a4a6a;
-            padding-left: 10px;
+        .mt-10 {
+            margin-top: 10px;
         }
-        .kuis-preview .opsi span {
-            background: #f8f5fc;
-            padding: 2px 12px;
+        .print-btn {
+            background: var(--primary);
+            color: #fff;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .print-btn:hover {
+            background: var(--primary-light);
+        }
+        .quiz-box {
+            background: #f0f7ff;
             border-radius: 12px;
+            padding: 14px;
+            margin-top: 10px;
+            border: 1px solid #d4e2f7;
         }
-
-        /* ===== HASIL ===== */
-        .hasil-item {
-            background: white;
-            border-radius: 12px;
-            padding: 14px 18px;
-            margin-bottom: 10px;
-            border-left: 4px solid #f9d976;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        .quiz-box .question {
+            background: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--primary-lighter);
         }
-        .hasil-item .nama {
-            font-weight: 700;
-            color: #2d1b4a;
+        .quiz-box .question .q-text {
+            font-weight: 600;
+            margin-bottom: 4px;
         }
-        .hasil-item .jawaban {
-            font-size: 0.9rem;
-            color: #5a4a6a;
-            margin-top: 4px;
+        .quiz-box .question .options {
+            padding-left: 16px;
+            font-size: 13px;
         }
-        .hasil-item .meta {
-            font-size: 0.75rem;
-            color: #9a8aaa;
+        .quiz-box .question .options label {
+            display: block;
+            font-weight: 400;
+            margin: 2px 0;
+            font-size: 13px;
         }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 700px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .container {
-                padding: 16px;
-            }
-            .kuis-link-box {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .kuis-link-box input {
-                text-align: center;
-            }
+        .quiz-box .question .options input[type="radio"] {
+            width: auto;
+            margin-right: 6px;
         }
-        @media (max-width: 500px) {
+        @media print {
             body {
+                background: #fff;
                 padding: 10px;
             }
-            .header .logo {
-                font-size: 1.8rem;
+            .header,
+            .no-print,
+            .btn,
+            .tab-wrapper,
+            .file-upload,
+            .print-btn {
+                display: none !important;
             }
-            .welcome-banner h2 {
-                font-size: 1.1rem;
+            .card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                border-radius: 0;
+                padding: 12px;
             }
-            .section-card {
-                padding: 14px 16px;
+            .container {
+                display: block;
             }
-            .btn-group .btn {
-                flex: 1;
-                justify-content: center;
-                font-size: 0.75rem;
-                padding: 8px 12px;
+            .card {
+                margin-bottom: 12px;
             }
+            .rpl-preview {
+                border: 1px solid #ccc;
+                max-height: none;
+                overflow: visible;
+                font-size: 11px;
+            }
+            .materi-view {
+                max-height: none;
+                overflow: visible;
+            }
+            .tab-content {
+                display: block !important;
+            }
+            .tab-btn {
+                display: none;
+            }
+            .quiz-box {
+                border: 1px solid #ccc;
+                background: #fff;
+            }
+            .quiz-box .question {
+                border-left: 4px solid #1A2A6A;
+            }
+        }
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-lighter);
+            border-radius: 10px;
+        }
+        @media(max-width:480px) {
+            .header h1 {
+                font-size: 18px;
+            }
+            .card {
+                padding: 14px;
+            }
+            .btn {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 25px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .modal-box h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .laporan-area {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .laporan-area pre {
+            white-space: pre-wrap;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 13px;
+        }
+        .refleksi-area {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #bbf7d0;
+            margin-top: 10px;
+        }
+        .refleksi-area textarea {
+            background: #fff;
+            min-height: 80px;
+        }
+        .link-share-box {
+            background: #ebf5fb;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #b8d4e8;
+            margin-top: 10px;
+        }
+        .link-share-box input {
+            background: #fff;
+        }
+        .mode-badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .mode-hp {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+        .mode-nonhp {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        .studi-kasus-box {
+            background: #fef3c7;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+            margin: 8px 0;
+        }
+        .studi-kasus-box .label {
+            font-weight: 700;
+            color: #92400E;
         }
     </style>
 </head>
 <body>
 
+    <header class="header">
+        <div>
+            <h1>📘 NaFaS BK <small>Aplikasi Bimbingan Klasikal Lengkap</small></h1>
+        </div>
+        <div class="badge">© NaFaS BK</div>
+    </header>
+
     <div class="container">
 
-        <!-- ===== HEADER ===== -->
-        <div class="header">
-            <div class="logo">🌟 NaFaS <span>BK</span></div>
-            <div class="sub">Aplikasi Bimbingan Klasikal</div>
-            <div class="brand-line">
-                <span>PREMIUM</span>
-                <span>© NaFaS BK</span>
+        <!-- KOLOM KIRI -->
+        <div class="card">
+            <div class="card-title">📚 Materi & RPL</div>
+            <div class="row-3">
+                <div class="form-group"><label>Jenjang <span class="required">*</span></label>
+                    <select id="jenjang"><option value="SMP">SMP</option><option value="SMA">SMA</option><option value="SMK">SMK</option></select></div>
+                <div class="form-group"><label>Kelas <span class="required">*</span></label>
+                    <select id="kelas"><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></div>
+                <div class="form-group"><label>Semester <span class="required">*</span></label>
+                    <select id="semester"><option value="1">Semester 1</option><option value="2">Semester 2</option></select></div>
+            </div>
+            <div class="form-group"><label>Pilih Materi <span class="required">*</span></label>
+                <select id="materiSelect"><option value="0">-- Pilih Materi --</option></select></div>
+            <div class="row-2">
+                <div class="form-group"><label>Durasi (menit)</label><input type="number" id="durasi" value="60" min="30" max="120" /></div>
+                <div class="form-group"><label>Nama Guru BK</label><input type="text" id="namaGuru" placeholder="Nama Guru BK" /></div>
+            </div>
+            <div class="materi-view" id="materiDisplay"><p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p></div>
+            <div class="btn-group no-print">
+                <button class="btn btn-primary btn-sm" id="downloadMateriPdf">📄 Unduh Materi PDF</button>
+                <button class="btn btn-success btn-sm" id="downloadMateriWord">📝 Unduh Materi Word</button>
+            </div>
+            <div style="margin-top:14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;">
+                    <strong>📋 RPL Pembelajaran Mendalam</strong><span class="badge-info">Otomatis</span>
+                </div>
+                <div class="rpl-preview" id="rplContent">RPL akan muncul setelah memilih materi.</div>
+                <div class="btn-group no-print">
+                    <button class="btn btn-primary btn-sm" id="downloadRplPdf">📄 Unduh RPL PDF</button>
+                    <button class="btn btn-success btn-sm" id="downloadRplWord">📝 Unduh RPL Word</button>
+                </div>
             </div>
         </div>
 
-        <!-- ===== BANNER SELAMAT DATANG ===== -->
-        <div class="welcome-banner">
-            <h2>👋 Selamat Datang, <span>Guru BK</span>!</h2>
-            <p>Semangat membimbing generasi hebat Indonesia ✨</p>
-        </div>
-
-        <!-- ===== FORM FILTER ===== -->
-        <div class="form-grid">
-            <div class="form-group">
-                <label>📚 Jenjang</label>
-                <select id="filterJenjang">
-                    <option value="all">Semua Jenjang</option>
-                    <option value="smp">SMP</option>
-                    <option value="sma">SMA</option>
-                    <option value="smk">SMK</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>📅 Semester</label>
-                <select id="filterSemester">
-                    <option value="all">Semua Semester</option>
-                    <option value="1">Semester 1</option>
-                    <option value="2">Semester 2</option>
-                </select>
-            </div>
-            <div class="form-group form-full">
-                <label>📖 Pilih Materi</label>
-                <select id="materiSelect">
-                    <option value="">-- Pilih Materi --</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>👤 Nama Guru BK</label>
-                <input type="text" id="namaGuru" placeholder="Nama Guru BK" value="Sy NaFaS" />
-            </div>
-            <div class="form-group">
-                <label>⏱️ Durasi (menit)</label>
-                <input type="number" id="durasiInput" value="60" />
-            </div>
-        </div>
-
-        <!-- ===== KONTEN MATERI ===== -->
-        <div id="materiContainer">
-
-            <!-- ICE BREAKING -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-brain"></i> Ice Breaking</div>
-                <div class="content" id="iceBreaking">Pilih materi terlebih dahulu</div>
+        <!-- KOLOM KANAN -->
+        <div class="card">
+            <div class="card-title">📝 LKPD, Kuis & Laporan</div>
+            <div class="tab-wrapper no-print">
+                <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
+                <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
+                <button class="tab-btn" data-tab="bagikan">📤 Mode HP</button>
+                <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
+                <button class="tab-btn" data-tab="cetak">📑 Cetak</button>
             </div>
 
-            <!-- APERSEPSI -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-lightbulb"></i> Apersepsi</div>
-                <div class="content" id="apersepsi">Pilih materi terlebih dahulu</div>
+            <!-- Tab LKPD -->
+            <div id="tab-lkpd" class="tab-content active">
+                <div class="lkpd-box">
+                    <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
+                    <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
+                    <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
+                    <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD</button>
+                </div>
             </div>
 
-            <!-- DISKUSI -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-comments"></i> Diskusi</div>
-                <div class="content" id="diskusi">Pilih materi terlebih dahulu</div>
+            <!-- Tab Refleksi - Mode Non-HP -->
+            <div id="tab-refleksi" class="tab-content">
+                <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
+                    <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
+                    <p style="font-size:13px;color:var(--text-light);">Jawablah pertanyaan refleksi berikut dengan jujur. Bisa dicetak dan dibagikan ke siswa tanpa HP.</p>
+                </div>
+                <div class="refleksi-area" id="refleksiContainer">
+                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat pertanyaan refleksi</p>
+                </div>
+                <div class="btn-group no-print" style="margin-top:10px;">
+                    <button class="btn btn-primary" id="simpanRefleksiBtn">💾 Simpan Refleksi</button>
+                    <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi</button>
+                </div>
+                <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
+                    <p><strong>✅ Refleksi Tersimpan:</strong></p>
+                    <p id="refleksiStatus">Refleksi telah disimpan.</p>
+                </div>
             </div>
 
-            <!-- MATERI -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-book-open"></i> Materi</div>
-                <div class="content" id="materiContent">Pilih materi terlebih dahulu</div>
+            <!-- Tab Bagikan - Mode HP -->
+            <div id="tab-bagikan" class="tab-content">
+                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
+                    <h4 style="color:var(--primary);margin-bottom:8px;">📤 Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
+                    <p style="font-size:13px;color:var(--text-light);">Siswa dapat mengakses LKPD melalui link atau QR Code di bawah ini.</p>
+                </div>
+                <div class="link-share-box">
+                    <div class="form-group">
+                        <label>Link LKPD (bagikan ke siswa)</label>
+                        <div style="display:flex;gap:8px;">
+                            <input type="text" id="linkLkpd" value="" readonly style="flex:1;font-size:12px;" />
+                            <button class="btn btn-primary btn-sm" id="copyLinkBtn">📋 Salin</button>
+                        </div>
+                    </div>
+                    <div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:12px;margin-top:10px;">
+                        <div style="font-size:60px;margin-bottom:8px;">📱</div>
+                        <p style="font-size:13px;color:var(--text-light);">QR Code untuk siswa scan</p>
+                        <div style="background:white;padding:20px;display:inline-block;border-radius:12px;border:2px dashed #ccc;">
+                            <div style="width:150px;height:150px;background:#eee;display:flex;align-items:center;justify-content:center;font-size:40px;border-radius:8px;flex-direction:column;gap:5px;">
+                                <span>◼◻◼◻</span>
+                                <span style="font-size:10px;color:#999;">QR Code</span>
+                            </div>
+                        </div>
+                        <p style="font-size:11px;color:var(--text-light);margin-top:8px;">(QR Code akan aktif setelah LKPD disimpan)</p>
+                    </div>
+                    <button class="btn btn-success btn-block mt-10" id="generateLinkBtn">🔄 Generate Link Baru</button>
+                </div>
+                <div style="margin-top:12px;padding:12px;background:#FEF3C7;border-radius:10px;border-left:4px solid var(--accent);">
+                    <p style="font-size:12px;color:#92400E;">💡 <strong>Alternatif untuk siswa tanpa HP:</strong> Cetak LKPD dari tab "LKPD" dan bagikan ke siswa.</p>
+                </div>
             </div>
 
-            <!-- LKPD -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-pencil-alt"></i> LKPD</div>
-                <div class="content" id="lkpdContent">Pilih materi terlebih dahulu</div>
+            <!-- Tab Laporan -->
+            <div id="tab-laporan" class="tab-content">
+                <div style="background:#FEF3C7;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--accent);">
+                    <p style="font-size:13px;color:#92400E;">📊 <strong>Laporan Kegiatan Bimbingan Klasikal</strong><br>Lengkap dengan data materi, jumlah siswa, dan hasil kegiatan.</p>
+                </div>
+                <div class="form-group"><label>Jumlah Siswa Hadir</label><input type="number" id="jumlahSiswa" value="32" min="1" max="40" /></div>
+                <div class="form-group"><label>Catatan Kegiatan</label><textarea id="catatanKegiatan" rows="3" placeholder="Catatan selama kegiatan..."></textarea></div>
+                <button class="btn btn-primary btn-block" id="generateLaporanBtn">📊 Generate Laporan</button>
+                <div class="laporan-area" id="laporanArea" style="margin-top:10px;"><pre id="laporanContent">Silakan generate laporan terlebih dahulu.</pre></div>
+                <button class="btn btn-success btn-block mt-10" id="cetakLaporanBtn">🖨️ Cetak Laporan</button>
             </div>
 
-            <!-- RPL -->
-            <div class="section-card">
-                <div class="title"><i class="fas fa-file-alt"></i> RPL Pembelajaran Mendalam</div>
-                <div class="content" id="rplContent">Pilih materi terlebih dahulu</div>
+            <!-- Tab Cetak -->
+            <div id="tab-cetak" class="tab-content">
+                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
+                    <h4 style="color:var(--primary);margin-bottom:8px;">📑 Dokumen Lengkap</h4>
+                    <p style="font-size:13px;color:var(--text-light);">Gabungan LKPD + Refleksi + Laporan dalam satu dokumen siap cetak.</p>
+                </div>
+                <div class="form-group"><label>Dokumen Lengkap</label><textarea id="gabunganText" rows="12" readonly style="background:#F7FAFC;font-size:12px;font-family:'Courier New',monospace;"></textarea></div>
                 <div class="btn-group">
-                    <button class="btn btn-primary btn-sm" onclick="unduhRPL()"><i class="fas fa-download"></i> Unduh RPL</button>
+                    <button class="btn btn-success" id="cetakPdfBtn">🖨️ Cetak / PDF</button>
+                    <button class="btn btn-warning" id="downloadWordBtn">📄 Download Word</button>
                 </div>
             </div>
-        </div>
 
-        <!-- ===== KUIS ONLINE ===== -->
-        <div style="margin-top:25px;border-top:2px solid #f0ecf5;padding-top:20px;">
-            <h3 style="font-size:1.2rem;margin-bottom:10px;"><i class="fas fa-qrcode"></i> Kuis Online untuk Siswa</h3>
-            <p style="color:#7a6a8a;font-size:0.9rem;margin-bottom:10px;">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
-
-            <div class="kuis-link-box">
-                <input type="text" id="kuisLink" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=1" readonly />
-                <button class="btn btn-primary btn-sm" onclick="copyKuisLink()"><i class="fas fa-copy"></i> Salin Link</button>
-                <button class="btn btn-warning btn-sm" onclick="generateLink()"><i class="fas fa-sync"></i> Generate Link Baru</button>
-                <a href="#" id="bukaKuisLink" target="_blank" class="btn btn-success btn-sm"><i class="fas fa-external-link-alt"></i> Buka Kuis</a>
-            </div>
-
-            <!-- PREVIEW KUIS -->
-            <div class="kuis-preview" id="kuisPreview">
-                <p style="font-weight:700;color:#2d1b4a;">📱 Preview Kuis - <span id="previewJudul">Kenali Dirimu, Temukan Potensimu</span></p>
-                <p style="font-size:0.8rem;color:#9a8aaa;margin-bottom:8px;">Bagikan link ke siswa</p>
-                <div id="soalContainer">
-                    <!-- Soal akan di-render JS -->
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== HASIL SISWA ===== -->
-        <div style="margin-top:25px;border-top:2px solid #f0ecf5;padding-top:20px;">
-            <h3 style="font-size:1.2rem;margin-bottom:10px;"><i class="fas fa-chart-bar"></i> Jawaban Siswa</h3>
-            <div id="hasilContainer">
-                <p style="color:#9a8aaa;">Belum ada jawaban siswa</p>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-danger btn-sm" onclick="resetData()"><i class="fas fa-trash"></i> Reset Semua Data</button>
-                <button class="btn btn-primary btn-sm" onclick="exportHasil()"><i class="fas fa-download"></i> Export Hasil</button>
-            </div>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:2px solid #f0ecf5;font-size:0.8rem;color:#9a8aaa;">
-            <p>📘 NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</p>
-            <p>© NaFaS BK</p>
+            <button class="btn btn-danger btn-block mt-10 no-print" id="resetBtn">🔄 Reset Semua Data</button>
         </div>
 
     </div>
 
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box"><button class="modal-close" id="modalClose">&times;</button><h3 id="modalTitle">Informasi</h3><div id="modalBody"><p>Konten modal di sini.</p></div><button class="btn btn-primary btn-block mt-10" id="modalOk">OK</button></div>
+    </div>
+
     <script>
-        // ============================================================
-        // DATA MATERI (SESUAI DENGAN FILE NaFaS BK.txt)
-        // ============================================================
-        const dataMateri = [{
-            id: 1,
-            judul: "Kenali Dirimu, Temukan Potensimu",
-            jenjang: "smp",
-            semester: 1,
-            kelas: "7 / Fase D",
-            durasi: 60,
-            topik: "Kenali Dirimu, Temukan Potensimu untuk Masa Depan Lebih Baik",
-            iceBreaking: "Permainan interaktif tentang 'Kenali Dirimu, Temukan Potensimu' - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.",
-            apersepsi: "Guru bertanya: 'Apa yang kamu ketahui tentang \"Kenali Dirimu, Temukan Potensimu\"?' Waktu 5 menit.",
-            diskusi: "Diskusi kelompok tentang 'Kenali Dirimu, Temukan Potensimu'. Waktu 20 menit.",
-            materi: `MATERI KENALI DIRIMU, TEMUKAN POTENSIMU\n\nA. PENGERTIAN\nKenali Dirimu, Temukan Potensimu adalah topik penting yang perlu dipahami oleh siswa 7 / Fase D.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`,
-            lkpd: `📌 STUDI KASUS\nStudi kasus tentang "Kenali Dirimu, Temukan Potensimu" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini.\n\nLKPD BERBASIS AKTIVITAS\n"Kenali Dirimu, Temukan Potensimu"\n\nA. STUDI KASUS\nStudi kasus tentang "Kenali Dirimu, Temukan Potensimu" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n6. Jika kamu di posisi tokoh?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`,
-            rpl: `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan : SMP\nNama Guru         : _______________\nKelas             : 7 / Fase D\nWaktu             : 60 menit\nMateri Layanan    : Kenali Dirimu, Temukan Potensimu\nBidang Bimbingan  : Pribadi\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid 7 / Fase D perlu memahami kenali dirimu, temukan potensimu.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "Kenali Dirimu, Temukan Potensimu untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Kuis\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`,
-            kuis: {
-                soal: [
-                    "Apa yang paling penting dari 'Kenali Dirimu, Temukan Potensimu'?",
-                    "Bagaimana perasaanmu setelah mempelajari 'Kenali Dirimu, Temukan Potensimu'?",
-                    "Apa yang akan kamu lakukan setelah mempelajari 'Kenali Dirimu, Temukan Potensimu'?",
-                    "Apa tantangan terbesar dalam menerapkan 'Kenali Dirimu, Temukan Potensimu'?",
-                    "Siapa yang bisa membantumu menerapkan 'Kenali Dirimu, Temukan Potensimu'?"
-                ],
-                opsi: [
-                    ["A. Menghafal", "B. Memahami dan menerapkan", "C. Mengerjakan tugas", "D. Mendapat nilai"],
-                    ["A. Biasa saja", "B. Senang dan termotivasi", "C. Bingung", "D. Tidak peduli"],
-                    ["A. Melupakan", "B. Menerapkan dalam kehidupan", "C. Menunggu tugas", "D. Tidak melakukan apa-apa"],
-                    ["A. Tidak ada", "B. Konsistensi", "C. Tidak tahu caranya", "D. Malas"],
-                    ["A. Teman", "B. Guru dan orang tua", "C. Sendiri", "D. Tidak perlu"]
-                ]
-            }
-        }];
+        // ================================================================
+        // DATA MATERI LENGKAP - SEMUA JENJANG DAN KELAS
+        // ================================================================
 
-        // ============================================================
-        // STATE
-        // ============================================================
-        let hasilSiswa = JSON.parse(localStorage.getItem('hasilBK') || '[]');
-        let materiTerpilih = dataMateri[0];
-
-        // ============================================================
-        // DOM REFS
-        // ============================================================
-        const filterJenjang = document.getElementById('filterJenjang');
-        const filterSemester = document.getElementById('filterSemester');
-        const materiSelect = document.getElementById('materiSelect');
-        const namaGuru = document.getElementById('namaGuru');
-        const durasiInput = document.getElementById('durasiInput');
-
-        const iceBreaking = document.getElementById('iceBreaking');
-        const apersepsi = document.getElementById('apersepsi');
-        const diskusi = document.getElementById('diskusi');
-        const materiContent = document.getElementById('materiContent');
-        const lkpdContent = document.getElementById('lkpdContent');
-        const rplContent = document.getElementById('rplContent');
-
-        const kuisLink = document.getElementById('kuisLink');
-        const previewJudul = document.getElementById('previewJudul');
-        const soalContainer = document.getElementById('soalContainer');
-        const hasilContainer = document.getElementById('hasilContainer');
-
-        // ============================================================
-        // RENDER MATERI
-        // ============================================================
-        function renderMateri() {
-            const jenjang = filterJenjang.value;
-            const semester = filterSemester.value;
-
-            let filtered = dataMateri.filter(m => {
-                const matchJenjang = jenjang === 'all' || m.jenjang === jenjang;
-                const matchSemester = semester === 'all' || m.semester === parseInt(semester);
-                return matchJenjang && matchSemester;
-            });
-
-            if (filtered.length === 0) filtered = dataMateri;
-
-            materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>' +
-                filtered.map(m => `<option value="${m.id}">${m.judul} (${m.jenjang.toUpperCase()} - Semester ${m.semester})</option>`).join('');
-
-            if (materiTerpilih && filtered.some(m => m.id === materiTerpilih.id)) {
-                materiSelect.value = materiTerpilih.id;
-            } else {
-                materiSelect.value = filtered.length > 0 ? filtered[0].id : '';
-            }
-
-            if (materiSelect.value) {
-                const id = parseInt(materiSelect.value);
-                materiTerpilih = dataMateri.find(m => m.id === id) || dataMateri[0];
-                tampilkanMateri(materiTerpilih);
-            }
-        }
-
-        function tampilkanMateri(m) {
-            if (!m) return;
-
-            iceBreaking.textContent = m.iceBreaking;
-            apersepsi.textContent = m.apersepsi;
-            diskusi.textContent = m.diskusi;
-            materiContent.textContent = m.materi;
-            lkpdContent.textContent = m.lkpd;
-
-            // RPL dengan nama guru dan durasi
-            let rplText = m.rpl;
-            rplText = rplText.replace(/Nama Guru\s*:\s*_+/g, `Nama Guru         : ${namaGuru.value || '_______________'}`);
-            rplText = rplText.replace(/Waktu\s*:\s*\d+/g, `Waktu             : ${durasiInput.value || 60} menit`);
-            rplText = rplText.replace(/7 \/ Fase D/g, m.kelas || '7 / Fase D');
-            rplContent.textContent = rplText;
-
-            // Update kuis
-            previewJudul.textContent = m.judul;
-            if (m.kuis) {
-                let html = '';
-                for (let i = 0; i < m.kuis.soal.length; i++) {
-                    html += `<div class="soal">${i+1}. ${m.kuis.soal[i]}</div>`;
-                    html += `<div class="opsi">${m.kuis.opsi[i].map(o => `<span>${o}</span>`).join('')}</div>`;
-                }
-                soalContainer.innerHTML = html;
-            } else {
-                soalContainer.innerHTML = '<p style="color:#9a8aaa;">Belum ada kuis untuk materi ini</p>';
-            }
-
-            // Update link kuis
-            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
-            kuisLink.value = baseUrl + m.id;
-            document.getElementById('bukaKuisLink').href = baseUrl + m.id;
-
-            renderHasil();
-        }
-
-        // ============================================================
-        // EVENT LISTENERS
-        // ============================================================
-        filterJenjang.addEventListener('change', renderMateri);
-        filterSemester.addEventListener('change', renderMateri);
-
-        materiSelect.addEventListener('change', function() {
-            if (this.value) {
-                const id = parseInt(this.value);
-                materiTerpilih = dataMateri.find(m => m.id === id) || dataMateri[0];
-                tampilkanMateri(materiTerpilih);
-            }
-        });
-
-        namaGuru.addEventListener('input', function() {
-            if (materiTerpilih) tampilkanMateri(materiTerpilih);
-        });
-
-        durasiInput.addEventListener('input', function() {
-            if (materiTerpilih) tampilkanMateri(materiTerpilih);
-        });
-
-        // ============================================================
-        // KUIS FUNCTIONS
-        // ============================================================
-        function copyKuisLink() {
-            const link = kuisLink.value;
-            navigator.clipboard.writeText(link).then(() => {
-                alert('✅ Link kuis berhasil disalin! Bagikan ke siswa.');
-            }).catch(() => {
-                // Fallback
-                kuisLink.select();
-                document.execCommand('copy');
-                alert('✅ Link kuis berhasil disalin!');
-            });
-        }
-
-        function generateLink() {
-            const random = Math.floor(Math.random() * 10000);
-            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
-            const newLink = baseUrl + random;
-            kuisLink.value = newLink;
-            document.getElementById('bukaKuisLink').href = newLink;
-            alert('🔄 Link baru telah dibuat!');
-        }
-
-        // ============================================================
-        // RPL DOWNLOAD
-        // ============================================================
-        function unduhRPL() {
-            if (!materiTerpilih) return;
-            const m = materiTerpilih;
-            let rplText = m.rpl;
-            rplText = rplText.replace(/Nama Guru\s*:\s*_+/g, `Nama Guru         : ${namaGuru.value || '_______________'}`);
-            rplText = rplText.replace(/Waktu\s*:\s*\d+/g, `Waktu             : ${durasiInput.value || 60} menit`);
-            rplText = rplText.replace(/7 \/ Fase D/g, m.kelas || '7 / Fase D');
-
-            const teks = `
-        ========================================
-        RENCANA PELAKSANAAN LAYANAN (RPL)
+        // Fungsi untuk membuat RPL lengkap
+        function generateRPL(judul, bidang, kelas, durasi, ice, apersepsi, diskusi) {
+            const fase = kelas.includes('X') ? 'E' : (kelas.includes('XI') ? 'F' : (kelas.includes('XII') ? 'F' : 'D'));
+            return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
-        ========================================
 
-        ${rplText}
+        A. SPESIFIKASI
+        ──────────────────────────────────────────────────────────────
+        Satuan Pendidikan   : 
+        Nama Guru           : 
+        Kelas               : ${kelas} / Fase ${fase}
+        Waktu               : ${durasi} menit
+        Materi Layanan      : ${judul}
+        Bidang Bimbingan    : ${bidang}
 
-        ========================================
-        NaFaS BK - Aplikasi Bimbingan Klasikal
-        © NaFaS BK
-        ========================================
+        B. IDENTIFIKASI
+        ──────────────────────────────────────────────────────────────
+        1. Kesiapan Murid:
+           Murid ${kelas} berada pada tahap perkembangan yang membutuhkan pemahaman tentang ${judul.toLowerCase()}.
+
+        2. Karakteristik Materi:
+           a. Pengetahuan Esensial: pemahaman tentang ${judul.toLowerCase()}
+           b. Pengetahuan Aplikatif: penerapan dalam kehidupan
+           c. Nilai Karakter: dikembangkan sesuai dengan materi
+
+        3. Dimensi Profil Lulusan: [✓] Kemandirian, [✓] Penalaran Kritis
+
+        C. DESAIN LAYANAN
+        ──────────────────────────────────────────────────────────────
+        1. Capaian Layanan: Murid mampu memahami dan menerapkan ${judul.toLowerCase()}.
+        2. Topik Kontekstual: "${judul} untuk Masa Depan Lebih Baik"
+        3. Tujuan Layanan: memahami dan menerapkan ${judul.toLowerCase()}.
+
+        D. PENGALAMAN BELAJAR
+        ──────────────────────────────────────────────────────────────
+        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
+        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
+        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
+
+        E. ASESMEN
+        ──────────────────────────────────────────────────────────────
+        1. Asesmen Awal: Tanya jawab
+        2. Asesmen Proses: Observasi
+        3. Asesmen Akhir: LKPD dan Refleksi
+
+        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        ──────────────────────────────────────────────────────────────
+        1. Bangun Pagi   : Memulai hari dengan semangat
+        2. Beribadah     : Memohon petunjuk dan kekuatan
+        3. Berolahraga   : Menjaga kesehatan fisik
+        4. Makan Sehat   : Mengonsumsi makanan bergizi
+        5. Gemar Belajar : Terus belajar dan mengembangkan diri
+        6. Bermasyarakat : Berinteraksi dengan baik dengan orang lain
+        7. Tidur Cukup   : Memberikan istirahat yang cukup`;
+        }
+
+        // Fungsi untuk generate materi dengan konten berbobot
+        function generateMateri(judulList, bidangList, studiKasusList, prefix, kelas, semester) {
+            const result = [];
+            for (let i = 0; i < judulList.length; i++) {
+                const id = prefix + i;
+                const judul = judulList[i];
+                const bidang = bidangList[i];
+                const studiKasus = studiKasusList[i] || `Studi kasus tentang ${judul}`;
+
+                const konten = `MATERI ${judul.toUpperCase()}
+
+        A. PENGERTIAN ${judul.toUpperCase()}
+        ${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas} untuk mengembangkan diri dan mempersiapkan masa depan dengan lebih baik.
+
+        B. ASPEK-ASPEK PENTING
+        1. Aspek Pengetahuan: pemahaman tentang konsep ${judul.toLowerCase()}
+        2. Aspek Sikap: nilai-nilai dan karakter yang terkait
+        3. Aspek Keterampilan: kemampuan menerapkan dalam kehidupan
+
+        C. MANFAAT
+        1. Meningkatkan kualitas hidup dan kesejahteraan diri
+        2. Mengembangkan potensi diri secara optimal
+        3. Membangun hubungan yang baik dengan orang lain
+        4. Mempersiapkan masa depan yang lebih cerah
+
+        D. CARA MENERAPKAN
+        1. Mulai dari hal-hal kecil dalam kehidupan sehari-hari
+        2. Konsisten dalam melaksanakan
+        3. Evaluasi dan perbaiki secara berkala
+        4. Cari dukungan dari orang-orang terdekat
+
+        E. TANTANGAN
+        1. Kurangnya kesadaran dan pemahaman
+        2. Pengaruh lingkungan yang kurang mendukung
+        3. Kebiasaan lama yang sulit diubah
+        4. Kurangnya motivasi dan konsistensi
+
+        F. TIPS SUKSES
+        1. Pelajari dan pahami konsep dengan baik
+        2. Praktikkan secara konsisten
+        3. Evaluasi kemajuan secara berkala
+        4. Jangan takut gagal dan terus belajar`;
+
+                const ice = `Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
+                const apersepsi =
+                    `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`;
+                const diskusi =
+                    `Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
+                const rpl = generateRPL(judul, bidang, kelas, 60, ice, apersepsi, diskusi);
+
+                const aktivitas = `LKPD BERBASIS AKTIVITAS
+        "${judul}"
+
+        A. STUDI KASUS
+        ${studiKasus}
+
+        Pertanyaan Diskusi:
+        1. Apa masalah utama dalam kasus ini?
+        2. Bagaimana perasaan tokoh dalam kasus ini?
+        3. Apa yang sebaiknya dilakukan oleh tokoh dalam kasus ini?
+        4. Bagaimana penerapan materi "${judul}" dalam kasus ini?
+        5. Apa yang bisa kita pelajari dari kasus ini?
+        6. Jika kamu berada di posisi tokoh, apa yang akan kamu lakukan?
+
+        B. AKTIVITAS KELOMPOK
+        1. Diskusikan pertanyaan di atas dengan kelompokmu!
+        2. Tuliskan hasil diskusi dengan rapi!
+        3. Siapkan presentasi untuk disampaikan di depan kelas!
+
+        C. REFLEKSI DIRI
+        1. Apa yang saya pelajari dari materi ini?
+        2. Apa yang akan saya lakukan setelah ini?
+        3. Komitmen saya untuk masa depan:`;
+
+                const refleksi = `PERTANYAAN REFLEKSI DAN EVALUASI DIRI (Mode Non-HP)
+        "${judul}"
+
+        Nama : _________________________
+        Kelas : ________________________
+        Tanggal : ______________________
+
+        Jawablah pertanyaan berikut dengan jujur!
+
+        1. Apa yang paling berkesan dari materi "${judul}"?
+           ___________________________________________________________
+
+        2. Bagaimana perasaanmu setelah mempelajari materi ini?
+           ___________________________________________________________
+
+        3. Apa yang akan kamu lakukan setelah mempelajari materi ini?
+           ___________________________________________________________
+
+        4. Apa tantangan terbesar dalam menerapkan "${judul}"?
+           ___________________________________________________________
+
+        5. Siapa yang bisa membantumu menerapkan materi ini?
+           ___________________________________________________________
+
+        6. Komitmen saya untuk menerapkan "${judul}":
+           ___________________________________________________________
+
+        Tanda tangan siswa: _______________`;
+
+                result.push({
+                    id: id,
+                    judul: judul,
+                    bidang: bidang,
+                    kelas: kelas,
+                    topik: `"${judul} untuk Masa Depan Lebih Baik"`,
+                    ice: ice,
+                    apersepsi: apersepsi,
+                    diskusi: diskusi,
+                    konten: konten,
+                    rpl: rpl,
+                    aktivitas: aktivitas,
+                    refleksi: refleksi,
+                    kuis: {
+                        soal: [
+                            { q: `Apa yang paling penting dari "${judul}"?`, options: ["Menghafal",
+                                    "Memahami dan menerapkan", "Mengerjakan tugas", "Mendapat nilai"
+                                ], answer: 1 },
+                            { q: `Bagaimana perasaanmu setelah mempelajari "${judul}"?`, options: ["Biasa saja",
+                                    "Senang dan termotivasi", "Bingung", "Tidak peduli"
+                                ], answer: 1 },
+                            { q: `Apa yang akan kamu lakukan setelah ini?`, options: ["Melupakan",
+                                    "Menerapkan dalam kehidupan", "Menunggu tugas", "Tidak melakukan apa-apa"
+                                ], answer: 1 },
+                            { q: `Apa tantangan dalam menerapkan "${judul}"?`, options: ["Tidak ada", "Konsistensi",
+                                    "Tidak tahu caranya", "Malas"
+                                ], answer: 1 },
+                            { q: `Siapa yang bisa membantumu?`, options: ["Teman", "Guru dan orang tua", "Sendiri",
+                                    "Tidak perlu"
+                                ], answer: 1 }
+                        ]
+                    }
+                });
+            }
+            return result;
+        }
+
+        // ==================== DATA JUDUL MATERI SEMUA KELAS ====================
+
+        // SMP KELAS 7
+        const judulSMP7S1 = [
+            "Kenali Dirimu, Temukan Potensimu",
+            "Aku Bangga Menjadi Siswa SMP",
+            "Membangun Kepercayaan Diri di Sekolah Baru",
+            "Aku dan Teman Baru: Membangun Pertemanan Positif",
+            "Mengenal Guru, Teman, dan Warga Sekolah",
+            "Stop Bullying: Jadilah Teman yang Aman",
+            "Belajar Efektif di Sekolah Baru",
+            "Kenali Gaya Belajarmu, Raih Prestasimu",
+            "Mengatur Waktu antara Belajar dan Bermain",
+            "Mengenal Potensi dan Cita-Citaku",
+            "Aku dan Masa Depanku",
+            "Mengenal Berbagai Profesi di Sekitarku"
+        ];
+        const bidangSMP7S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP7S1 = [
+            "Rina adalah siswa baru di SMP. Dia merasa canggung dan sulit bergaul karena merasa tidak memiliki kelebihan.",
+            "Andi adalah siswa baru di SMP. Dia merasa canggung karena harus berganti seragam dan memiliki guru baru.",
+            "Maya adalah siswa baru yang pendiam. Dia merasa tidak percaya diri karena merasa tidak sebaik teman-temannya.",
+            "Toni adalah siswa baru yang pendiam. Dia sulit bergaul karena merasa malu.",
+            "Rudi tidak mengenal siapa pun di sekolahnya. Dia kesulitan mencari ruang UKS.",
+            "Budi sering diejek teman-temannya karena fisiknya. Dia menjadi pendiam dan tidak mau pergi ke sekolah.",
+            "Siti merasa kesulitan mengikuti pelajaran di SMP. Cara belajarnya tidak efektif lagi.",
+            "Rudi selalu belajar dengan mendengarkan musik, tetapi nilainya tetap rendah.",
+            "Didi selalu bermain game sampai larut malam sehingga kelelahan dan tidak konsentrasi di sekolah.",
+            "Dina bercita-cita menjadi dokter. Dia rajin belajar dan suka membantu teman yang sakit.",
+            "Beni tidak tahu apa yang ingin dia lakukan di masa depan. Dia hanya mengikuti arus.",
+            "Rina tertarik menjadi dokter. Dia sering melihat dokter di rumah sakit dan ingin membantu orang sakit."
+        ];
+
+        const judulSMP7S2 = [
+            "Menghargai Waktu dan Manajemen Waktu",
+            "Kebersihan dan Kerapian Diri",
+            "Berpikir Positif dan Optimis",
+            "Kerja Sama dan Gotong Royong",
+            "Menentukan Tujuan Hidup",
+            "Mengelola Uang Saku dengan Bijak",
+            "Mempersiapkan Diri Menghadapi Ujian",
+            "Menjadi Remaja yang Berkarakter",
+            "Komunikasi Efektif dengan Teman dan Guru",
+            "Mengatasi Rasa Takut dan Kecemasan",
+            "Mengembangkan Minat dan Bakat",
+            "Membangun Motivasi Belajar"
+        ];
+        const bidangSMP7S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP7S2 = [
+            "Rina sering terlambat dan tidak bisa mengatur waktu dengan baik.",
+            "Budi jarang mandi dan tidak menjaga kebersihan dirinya.",
+            "Siti selalu berpikir negatif dan mudah menyerah.",
+            "Doni kesulitan bekerja sama dengan teman-temannya.",
+            "Rina belum punya tujuan hidup yang jelas.",
+            "Budi selalu menghabiskan uang sakunya tanpa menabung.",
+            "Siti selalu panik saat menghadapi ujian.",
+            "Rina sering berkata kasar dan tidak sopan.",
+            "Doni kesulitan berkomunikasi dengan guru dan teman.",
+            "Rina sering merasa takut dan cemas tanpa alasan.",
+            "Budi belum tahu apa minat dan bakatnya.",
+            "Siti sering malas belajar dan tidak punya motivasi."
+        ];
+
+        // SMP KELAS 8
+        const judulSMP8S1 = [
+            "Aku di Usia Remaja: Apa yang Berubah?",
+            "Mengenal Kekuatan dan Kelemahan Diri",
+            "Growth Mindset: Aku Bisa Bertumbuh",
+            "Membangun Pertemanan yang Sehat",
+            "Berani Berkata Tidak pada Ajakan Negatif",
+            "Komunikasi Asertif: Berani Bicara dengan Tepat",
+            "Menemukan Strategi Belajar yang Cocok untukku",
+            "Mengatasi Prokrastinasi Akademik",
+            "Fokus Belajar di Tengah Gangguan Gadget",
+            "Mengenal Bakat dan Minat Lebih Dalam",
+            "Hobi Bisa Menjadi Potensi Masa Depan",
+            "Mengenal Berbagai Jalur Pendidikan Setelah SMP"
+        ];
+        const bidangSMP8S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP8S1 = [
+            "Rina bingung dengan perubahan tubuh yang dialaminya.",
+            "Budi merasa tidak memiliki kelebihan apapun.",
+            "Siti sering berkata 'aku tidak bisa' ketika menghadapi pelajaran sulit.",
+            "Ani dan Rina bersahabat, tetapi Ani mulai menjauh karena Rina terlalu posesif.",
+            "Doni diajak temannya untuk mencoba rokok. Doni bingung harus bersikap.",
+            "Dina kesulitan menyampaikan pendapatnya. Dia sering diam meskipun tidak setuju.",
+            "Rudi sudah berusaha belajar keras tetapi nilainya tetap rendah.",
+            "Didi sering menunda mengerjakan tugas dan lebih memilih bermain game.",
+            "Rina sering kehilangan fokus saat belajar karena gadgetnya.",
+            "Doni senang menggambar dan selalu mendapat pujian dari teman-temannya.",
+            "Siti sangat suka memasak dan sering membantu ibunya di dapur.",
+            "Beni bingung mau melanjutkan ke SMA atau SMK setelah lulus SMP."
+        ];
+
+        const judulSMP8S2 = [
+            "Mengelola Konflik dengan Bijak",
+            "Kemandirian dalam Belajar",
+            "Perencanaan Karir dan Masa Depan",
+            "Kesehatan Mental Remaja",
+            "Menjaga Hubungan Sosial yang Positif",
+            "Mengembangkan Soft Skill",
+            "Menghadapi Perubahan dengan Bijak",
+            "Kreativitas dan Inovasi",
+            "Etika dan Moral dalam Kehidupan",
+            "Kepemimpinan Remaja",
+            "Membangun Relasi Positif",
+            "Mempersiapkan Masa Depan"
+        ];
+        const bidangSMP8S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP8S2 = [
+            "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
+            "Budi selalu bergantung pada orang tua untuk belajar.",
+            "Siti bingung memilih karir untuk masa depannya.",
+            "Doni sering merasa stres dan cemas tanpa alasan yang jelas.",
+            "Rina kesulitan menjaga hubungan dengan teman-temannya.",
+            "Budi belum memiliki soft skill yang cukup.",
+            "Siti kesulitan menghadapi perubahan di lingkungannya.",
+            "Rina belum bisa mengembangkan kreativitasnya.",
+            "Doni sering melanggar aturan dan tidak memiliki etika.",
+            "Siti ingin menjadi pemimpin tetapi belum punya keberanian.",
+            "Rudi kesulitan membangun relasi dengan orang baru.",
+            "Budi belum punya rencana untuk masa depannya."
+        ];
+
+        // SMP KELAS 9
+        const judulSMP9S1 = [
+            "Perencanaan Studi Lanjut dan Karir",
+            "Mengenal Dunia Kerja dan Profesi",
+            "Membangun Mental Juara",
+            "Mengelola Kecemasan Masa Depan",
+            "Memilih Jurusan yang Tepat di SMA/SMK",
+            "Mengembangkan Potensi Diri",
+            "Keterampilan Hidup (Life Skills)",
+            "Membangun Kepercayaan Diri",
+            "Etika Profesi dan Dunia Kerja",
+            "Menghadapi Tantangan Hidup",
+            "Membangun Jaringan dan Relasi",
+            "Persiapan Menghadapi Dunia Baru"
+        ];
+        const bidangSMP9S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP9S1 = [
+            "Rudi merasa terbebani dengan ujian kelulusan dan bingung memilih sekolah lanjutan.",
+            "Siti ingin bekerja setelah lulus tetapi belum tahu dunia kerja yang sebenarnya.",
+            "Budi sering menyerah saat menghadapi kegagalan dan tidak punya mental juara.",
+            "Rina sering cemas memikirkan masa depannya dan tidak bisa tidur.",
+            "Doni bingung memilih jurusan di SMA/SMK yang sesuai dengan bakatnya.",
+            "Siti belum bisa mengembangkan potensi yang dimilikinya.",
+            "Rudi tidak memiliki keterampilan hidup yang cukup.",
+            "Maya sering merasa tidak percaya diri dengan kemampuannya.",
+            "Budi tidak tahu etika yang baik di dunia kerja.",
+            "Rina sering menghindari tantangan dan tidak berani mencoba hal baru.",
+            "Doni tidak memiliki jaringan pertemanan yang luas.",
+            "Siti takut menghadapi dunia baru setelah lulus SMP."
+        ];
+
+        const judulSMP9S2 = [
+            "Mempersiapkan Diri Menghadapi Dunia Baru",
+            "Mengembangkan Keterampilan",
+            "Membangun Mental Tangguh",
+            "Menentukan Pilihan Karir",
+            "Mengelola Keuangan Pribadi",
+            "Kewirausahaan dan Peluang Usaha",
+            "Etika di Tempat Kerja",
+            "Membangun Portofolio Diri",
+            "Menghadapi Seleksi Masuk Sekolah",
+            "Mengembangkan Sikap Profesional",
+            "Membangun Jaringan Sosial",
+            "Menjadi Pribadi yang Produktif"
+        ];
+        const bidangSMP9S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMP9S2 = [
+            "Rina takut menghadapi lingkungan SMA yang baru.",
+            "Budi belum memiliki keterampilan yang cukup untuk masa depan.",
+            "Siti sering menyerah saat menghadapi kesulitan.",
+            "Doni bingung menentukan pilihan karirnya.",
+            "Rina tidak bisa mengelola keuangannya dengan baik.",
+            "Budi ingin berwirausaha tetapi tidak tahu caranya.",
+            "Siti tidak tahu etika yang baik di tempat kerja.",
+            "Rina belum memiliki portofolio untuk masa depannya.",
+            "Doni takut menghadapi seleksi masuk sekolah lanjutan.",
+            "Siti belum memiliki sikap profesional.",
+            "Rudi kesulitan membangun jaringan sosial.",
+            "Budi sering malas dan tidak produktif."
+        ];
+
+        // SMA KELAS 10
+        const judulSMA10S1 = [
+            "Selamat Datang di SMA: Saatnya Bertumbuh",
+            "Mengenal Identitas dan Potensi Diri",
+            "Membangun Kepercayaan Diri sebagai Siswa SMA",
+            "Membangun Pertemanan Positif di SMA",
+            "Komunikasi Efektif dengan Teman dan Guru",
+            "Bijak Bermedia Sosial di Era Digital",
+            "Adaptasi dengan Pola Belajar SMA",
+            "Kenali Gaya Belajar dan Strategi Belajarmu",
+            "Manajemen Waktu Siswa SMA",
+            "Kenali Bakat, Minat, dan Potensi Akademikmu",
+            "Mengenal Dunia Perkuliahan dan Berbagai Jurusan",
+            "Cita-Cita Bukan Sekadar Impian: Mulai Merancang Masa Depan"
+        ];
+        const bidangSMA10S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA10S1 = [
+            "Rina baru masuk SMA dan merasa canggung dengan lingkungan baru.",
+            "Budi merasa bingung dengan identitasnya di lingkungan SMA.",
+            "Siti sering merasa tidak percaya diri karena lingkungan SMA yang baru.",
+            "Doni kesulitan mencari teman di SMA karena dia pemalu.",
+            "Rina kesulitan berkomunikasi dengan gurunya.",
+            "Ani sering kecanduan media sosial dan menghabiskan waktu berjam-jam.",
+            "Budi kaget dengan volume pelajaran di SMA yang jauh lebih banyak.",
+            "Siti belum menemukan gaya belajar yang cocok.",
+            "Doni sering kelelahan karena tidak bisa mengatur waktu.",
+            "Rina belum tahu apa bakat dan minatnya.",
+            "Budi tertarik kuliah di jurusan teknik.",
+            "Siti memiliki cita-cita menjadi pengacara."
+        ];
+
+        const judulSMA10S2 = [
+            "Growth Mindset: Belum Bisa Bukan Berarti Tidak Bisa",
+            "Mengelola Emosi dan Stres sebagai Pelajar",
+            "Membangun Kebiasaan Positif untuk Masa Depan",
+            "Pertemanan Sehat dan Batasan Diri",
+            "Belajar Menghargai Perbedaan",
+            "Menyelesaikan Konflik Tanpa Drama",
+            "Mengatasi Prokrastinasi Akademik",
+            "Meningkatkan Motivasi dan Konsentrasi Belajar",
+            "Strategi Belajar Menghadapi Penilaian",
+            "Eksplorasi Jurusan Kuliah Sesuai Potensi",
+            "Mengenal Beasiswa dan Peluang Pendidikan",
+            "Career Journey: Dari SMA Menuju Masa Depan"
+        ];
+        const bidangSMA10S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA10S2 = [
+            "Doni sering berkata 'aku tidak bisa matematika' dan menyerah sebelum mencoba.",
+            "Rina sering stres menghadapi tekanan akademik.",
+            "Budi ingin membangun kebiasaan belajar yang baik tetapi sering tergoda.",
+            "Siti memiliki teman yang sering mempengaruhinya negatif.",
+            "Ani sering merasa kesal dengan teman-temannya yang berbeda pandangan.",
+            "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
+            "Doni sering menunda belajar dan lebih memilih bermain game.",
+            "Siti sering kehilangan fokus saat belajar.",
+            "Rudi selalu panik saat menghadapi ujian.",
+            "Rina ingin kuliah di jurusan psikologi.",
+            "Budi ingin kuliah tetapi khawatir dengan biaya.",
+            "Siti ingin membuat peta karir dari SMA menuju masa depan."
+        ];
+
+        // SMA KELAS 11
+        const judulSMA11S1 = [
+            "Mengenal Diri Lebih Dalam di Masa Remaja Akhir",
+            "Mengelola Stres dan Tekanan Akademik",
+            "Membangun Resiliensi: Bangkit Saat Mengalami Kegagalan",
+            "Membangun Relasi Sehat di Masa Remaja",
+            "Komunikasi Asertif dalam Kehidupan Sehari-hari",
+            "Menjadi Teman yang Supportive",
+            "Strategi Belajar untuk Mencapai Target Akademik",
+            "Manajemen Waktu dan Prioritas",
+            "Mengatasi Burnout dan Kelelahan Belajar",
+            "Mengenal Potensi Diri untuk Pilihan Masa Depan",
+            "Eksplorasi Jurusan Kuliah dan Prospeknya",
+            "Mengenal Dunia Perkuliahan dan Dunia Kerja"
+        ];
+        const bidangSMA11S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA11S1 = [
+            "Rina merasa bingung dengan identitasnya di masa remaja akhir.",
+            "Budi selalu stres menghadapi ujian dan tugas yang menumpuk.",
+            "Siti gagal dalam lomba akademik dan merasa sangat kecewa.",
+            "Doni merasa hubungannya dengan Rina tidak sehat.",
+            "Ani kesulitan menyampaikan pendapatnya.",
+            "Rudi bingung bagaimana membantu temannya yang sedang bermasalah.",
+            "Siti ingin mencapai peringkat 10 besar di kelas.",
+            "Doni sering kewalahan mengatur waktu.",
+            "Rina merasa sangat lelah dan kehilangan motivasi belajar.",
+            "Budi belum tahu potensi apa yang dia miliki.",
+            "Siti tertarik dengan jurusan psikologi.",
+            "Rudi ingin tahu bagaimana dunia perkuliahan dan dunia kerja."
+        ];
+
+        const judulSMA11S2 = [
+            "Membangun Mental Tangguh Menghadapi Masa Depan",
+            "Mengambil Keputusan dengan Bijak",
+            "Personal Responsibility: Aku Bertanggung Jawab atas Masa Depanku",
+            "Membangun Networking Sejak Sekolah",
+            "Etika Komunikasi di Dunia Digital",
+            "Kolaborasi dan Kerja Tim untuk Masa Depan",
+            "Strategi Belajar Efektif Menuju Kelas XII",
+            "Menentukan Target Akademik Kelas XII",
+            "Belajar Cerdas, Bukan Sekadar Belajar Keras",
+            "Kuliah, Kerja, atau Wirausaha? Kenali Pilihanmu",
+            "Menyusun Rencana Karier Setelah SMA",
+            "Personal Branding untuk Masa Depan"
+        ];
+        const bidangSMA11S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA11S2 = [
+            "Rina sering merasa cemas menghadapi masa depan.",
+            "Budi bingung memilih antara keinginan orang tua atau passion-nya.",
+            "Siti sering menyalahkan orang lain atas kegagalannya.",
+            "Doni bingung bagaimana cara membangun networking yang baik.",
+            "Rina sering berkomentar negatif di media sosial.",
+            "Budi kesulitan bekerja dalam tim.",
+            "Siti ingin mempersiapkan diri menghadapi kelas XII.",
+            "Doni ingin menentukan target akademik yang realistis.",
+            "Rina sering belajar dengan sistem kebut semalam.",
+            "Budi bingung memilih antara kuliah, kerja, atau wirausaha.",
+            "Siti ingin menyusun rencana karir yang jelas.",
+            "Rudi ingin membangun citra diri yang positif."
+        ];
+
+        // SMA KELAS 12
+        const judulSMA12S1 = [
+            "Perencanaan Karir dan Masa Depan",
+            "Mengelola Kecemasan Masa Depan",
+            "Membangun Mental Tangguh",
+            "Menentukan Pilihan Studi dan Karir",
+            "Mengenal Dunia Kerja",
+            "Membangun Portofolio",
+            "Keterampilan Hidup",
+            "Mengembangkan Potensi Diri",
+            "Etika Profesi",
+            "Menghadapi Seleksi Masuk PTN",
+            "Membangun Jaringan",
+            "Persiapan Menghadapi Dunia Kerja"
+        ];
+        const bidangSMA12S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA12S1 = [
+            "Rina bingung memilih karir yang tepat untuk masa depannya.",
+            "Budi sering cemas memikirkan masa depannya setelah lulus SMA.",
+            "Siti sering menyerah saat menghadapi kegagalan.",
+            "Doni bingung memilih antara kuliah atau langsung bekerja.",
+            "Rina belum tahu bagaimana dunia kerja yang sebenarnya.",
+            "Budi belum memiliki portofolio untuk melamar kerja.",
+            "Siti tidak memiliki keterampilan hidup yang cukup.",
+            "Rina belum bisa mengembangkan potensinya.",
+            "Doni tidak tahu etika yang baik di dunia kerja.",
+            "Siti takut menghadapi seleksi masuk PTN.",
+            "Rudi belum memiliki jaringan yang luas.",
+            "Budi belum siap menghadapi dunia kerja."
+        ];
+
+        const judulSMA12S2 = [
+            "Mempersiapkan Diri Menghadapi Dunia Baru",
+            "Mengembangkan Keterampilan Profesional",
+            "Membangun Mental Siap Kerja",
+            "Menentukan Pilihan Karir",
+            "Mengelola Keuangan",
+            "Kewirausahaan",
+            "Etika di Tempat Kerja",
+            "Membangun Portofolio",
+            "Menghadapi Seleksi Kerja",
+            "Mengembangkan Sikap Profesional",
+            "Membangun Jaringan Sosial",
+            "Menjadi Pribadi yang Produktif"
+        ];
+        const bidangSMA12S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMA12S2 = [
+            "Rina takut menghadapi dunia setelah lulus SMA.",
+            "Budi belum memiliki keterampilan profesional yang cukup.",
+            "Siti sering merasa tidak siap untuk bekerja.",
+            "Doni bingung menentukan pilihan karirnya.",
+            "Rina tidak bisa mengelola keuangannya dengan baik.",
+            "Budi ingin berwirausaha tetapi tidak tahu caranya.",
+            "Siti tidak tahu etika yang baik di tempat kerja.",
+            "Rina belum memiliki portofolio yang menarik.",
+            "Doni takut menghadapi seleksi kerja.",
+            "Siti belum memiliki sikap profesional.",
+            "Rudi kesulitan membangun jaringan sosial.",
+            "Budi sering malas dan tidak produktif."
+        ];
+
+        // SMK KELAS 10
+        const judulSMK10S1 = [
+            "Aku Siap Menjadi Siswa SMK",
+            "Mengenal Potensi Diri dan Karakterku",
+            "Membangun Kepercayaan Diri di Lingkungan SMK",
+            "Membangun Pertemanan Positif di SMK",
+            "Komunikasi Efektif dengan Guru dan Teman",
+            "Budaya Positif dan Etika di Lingkungan Sekolah",
+            "Beradaptasi dengan Sistem Belajar di SMK",
+            "Belajar Efektif di Program Keahlian",
+            "Manajemen Waktu antara Teori dan Praktik",
+            "Mengenal Program Keahlian dan Prospek Kariernya",
+            "Mengenal Dunia Industri Sejak Kelas X",
+            "Dari Sekolah Menuju Dunia Kerja"
+        ];
+        const bidangSMK10S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK10S1 = [
+            "Rina baru masuk SMK dan merasa canggung dengan lingkungan baru.",
+            "Budi belum tahu apa potensi dan karakter yang dia miliki.",
+            "Siti sering merasa tidak percaya diri karena lingkungan SMK yang baru.",
+            "Doni kesulitan mencari teman di SMK karena dia pemalu.",
+            "Rina kesulitan berkomunikasi dengan gurunya.",
+            "Ani sering melanggar aturan sekolah tanpa menyadari bahwa itu tidak baik.",
+            "Budi kaget dengan sistem belajar di SMK yang menggabungkan teori dan praktik.",
+            "Siti kesulitan memahami mata pelajaran kejuruan.",
+            "Doni sering kewalahan mengatur waktu antara belajar teori dan praktik.",
+            "Rina belum tahu apa program keahlian yang dia ambil dan prospek kerjanya.",
+            "Budi belum tahu bagaimana dunia industri yang sebenarnya.",
+            "Siti bertanya-tanya bagaimana proses dari sekolah menuju dunia kerja."
+        ];
+
+        const judulSMK10S2 = [
+            "Growth Mindset: Kompetensi Bisa Dikembangkan",
+            "Disiplin, Tanggung Jawab, dan Etos Kerja",
+            "Mengelola Emosi Saat Belajar dan Praktik",
+            "Kerja Sama dalam Tim Praktik",
+            "Etika Komunikasi di Lingkungan Kerja",
+            "Menghargai Perbedaan di Lingkungan Sekolah dan Industri",
+            "Meningkatkan Kompetensi melalui Latihan dan Praktik",
+            "Mengatasi Kesulitan Belajar pada Mata Pelajaran Kejuruan",
+            "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
+            "Kompetensi yang Dicari Dunia Kerja",
+            "Soft Skill dan Hard Skill untuk Siswa SMK",
+            "Membuat Peta Karier Sesuai Kompetensi Keahlian"
+        ];
+        const bidangSMK10S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK10S2 = [
+            "Doni sering berkata 'aku tidak bisa' ketika menghadapi pelajaran kejuruan yang sulit.",
+            "Rina sering datang terlambat dan tidak mengerjakan tugas tepat waktu.",
+            "Siti sering marah dan frustasi saat mengalami kesulitan dalam praktik.",
+            "Budi kesulitan bekerja dalam tim praktik karena dia lebih suka bekerja sendiri.",
+            "Rina tidak tahu bagaimana cara berkomunikasi yang baik di lingkungan kerja.",
+            "Ani sering merasa kesal dengan teman-temannya yang berbeda latar belakang.",
+            "Doni ingin meningkatkan kompetensinya, tetapi dia belum tahu cara yang efektif.",
+            "Siti kesulitan memahami mata pelajaran kejuruan.",
+            "Budi ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
+            "Rina belum tahu kompetensi apa yang dicari oleh dunia kerja.",
+            "Siti belum tahu perbedaan antara soft skill dan hard skill.",
+            "Doni ingin membuat peta karier yang jelas."
+        ];
+
+        // SMK KELAS 11
+        const judulSMK11S1 = [
+            "Mengenal Diri dan Kompetensi di Kelas XI",
+            "Membangun Etos Kerja dan Profesionalisme",
+            "Mengelola Stres dan Tekanan di Kelas XI",
+            "Membangun Relasi Positif dengan Teman dan Guru",
+            "Komunikasi Efektif di Lingkungan Sekolah dan Praktik",
+            "Etika Profesi dan Budaya Kerja",
+            "Strategi Belajar Efektif Menghadapi Uji Kompetensi",
+            "Manajemen Waktu Kelas XI",
+            "Meningkatkan Kompetensi melalui Praktik Kerja",
+            "Mengenal Peluang Karier Sesuai Kompetensi Keahlian",
+            "Persiapan Praktik Kerja Industri (PKL)",
+            "Membangun Portofolio dan Sertifikasi Kompetensi"
+        ];
+        const bidangSMK11S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK11S1 = [
+            "Budi merasa bingung dengan kompetensi yang harus dia kuasai di kelas XI.",
+            "Rina sering datang terlambat dan malas-malasan saat praktik.",
+            "Siti sering merasa stres menghadapi uji kompetensi dan tugas yang menumpuk.",
+            "Doni sering bertengkar dengan teman sekelompoknya saat praktik.",
+            "Rina kesulitan berkomunikasi dengan instruktur praktik.",
+            "Ani sering melanggar aturan di tempat praktik tanpa menyadari.",
+            "Budi kesulitan belajar untuk menghadapi uji kompetensi.",
+            "Siti sering kewalahan mengatur waktu antara belajar, praktik, dan kegiatan lainnya.",
+            "Doni ingin meningkatkan kompetensinya, tetapi dia tidak tahu cara yang efektif.",
+            "Rina belum tahu peluang karier apa yang sesuai dengan kompetensi keahliannya.",
+            "Budi akan menjalani PKL, tetapi dia belum tahu apa yang harus dia persiapkan.",
+            "Siti belum memiliki portofolio dan sertifikasi yang mendukung karirnya."
+        ];
+
+        const judulSMK11S2 = [
+            "Membangun Mental Juara di Dunia Industri",
+            "Mengambil Keputusan dan Bertanggung Jawab",
+            "Mengelola Keuangan Pribadi dan Mandiri",
+            "Membangun Tim dan Kolaborasi di Tempat Kerja",
+            "Etika Komunikasi di Dunia Industri",
+            "Menghargai Perbedaan dan Keberagaman di Tempat Kerja",
+            "Belajar dari Pengalaman Praktik Kerja Industri",
+            "Meningkatkan Kompetensi melalui Sertifikasi dan Pelatihan",
+            "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
+            "Mengenal Dunia Kerja dan Tantangannya",
+            "Soft Skill yang Dibutuhkan Dunia Industri",
+            "Menyusun Rencana Karier dan Pengembangan Diri"
+        ];
+        const bidangSMK11S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK11S2 = [
+            "Rina sering merasa down dan tidak percaya diri saat menghadapi tantangan di dunia industri.",
+            "Budi bingung harus mengambil keputusan penting tentang masa depannya.",
+            "Siti belum bisa mengelola keuangannya dengan baik. Dia sering boros.",
+            "Doni kesulitan bekerja dalam tim di tempat PKL.",
+            "Rina tidak tahu bagaimana cara berkomunikasi yang baik di dunia industri.",
+            "Ani sering merasa kesal dengan rekan kerja yang berbeda latar belakang.",
+            "Budi ingin belajar dari pengalaman PKL-nya.",
+            "Siti ingin meningkatkan kompetensinya melalui sertifikasi.",
+            "Doni ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
+            "Rina belum tahu apa saja tantangan yang akan dia hadapi di dunia kerja.",
+            "Siti belum tahu soft skill apa yang dibutuhkan oleh dunia industri.",
+            "Budi ingin menyusun rencana karier yang jelas."
+        ];
+
+        // SMK KELAS 12
+        const judulSMK12S1 = [
+            "Selamat Datang di Tahun Terakhir: Siap Lulus, Siap Bekerja",
+            "Membangun Mental Siap Kerja",
+            "Mengelola Stres Menjelang Kelulusan dan Dunia Kerja",
+            "Etika Komunikasi Profesional",
+            "Membangun Relasi Profesional",
+            "Sikap Profesional di Dunia Kerja",
+            "Strategi Menyelesaikan Tugas Akhir dan Ujian",
+            "Mengatur Waktu antara Sekolah, PKL, dan Persiapan Kerja",
+            "Belajar Mandiri untuk Mengembangkan Kompetensi",
+            "Siap Kerja: Apa yang Harus Dipersiapkan?",
+            "CV yang Menarik untuk Lulusan SMK",
+            "Rahasia Lolos Wawancara Kerja"
+        ];
+        const bidangSMK12S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK12S1 = [
+            "Rina merasa cemas memasuki tahun terakhir SMK. Dia khawatir tidak bisa lulus.",
+            "Budi sering merasa tidak percaya diri untuk bekerja.",
+            "Siti sering stres menghadapi ujian dan tugas akhir.",
+            "Doni tidak tahu bagaimana cara berkomunikasi yang profesional di tempat kerja.",
+            "Rina belum memiliki relasi profesional yang mendukung karirnya.",
+            "Ani sering melanggar aturan di tempat PKL tanpa menyadari.",
+            "Budi kesulitan menyelesaikan tugas akhirnya.",
+            "Siti kewalahan mengatur waktu antara sekolah, PKL, dan persiapan kerja.",
+            "Doni ingin mengembangkan kompetensinya, tetapi dia belum bisa belajar mandiri.",
+            "Rina belum tahu apa yang harus dia persiapkan untuk memasuki dunia kerja.",
+            "Budi tidak tahu bagaimana membuat CV yang menarik.",
+            "Siti takut menghadapi wawancara kerja."
+        ];
+
+        const judulSMK12S2 = [
+            "Siap Menghadapi Kehidupan Setelah Lulus",
+            "Percaya Diri Memasuki Dunia Kerja",
+            "Mental Adaptif: Siap Menghadapi Perubahan",
+            "Etika di Tempat Kerja: Sikap yang Dicari Perusahaan",
+            "Bekerja dalam Tim dan Menghadapi Perbedaan",
+            "Membangun Personal Branding yang Profesional",
+            "Upskilling dan Reskilling: Terus Belajar Setelah Lulus",
+            "Membangun Kebiasaan Belajar Sepanjang Hayat",
+            "Belajar dari Kegagalan Menuju Kesuksesan",
+            "Kuliah, Kerja, atau Wirausaha? Pilih Jalanmu",
+            "Strategi Mencari dan Melamar Pekerjaan",
+            "My Career Plan: Rencana Karier Setelah Lulus SMK"
+        ];
+        const bidangSMK12S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+            "Karier", "Karier", "Karier"
+        ];
+        const studiKasusSMK12S2 = [
+            "Rina merasa takut menghadapi kehidupan setelah lulus SMK.",
+            "Budi sering merasa tidak percaya diri saat melamar pekerjaan.",
+            "Siti kesulitan beradaptasi dengan perubahan di tempat kerja.",
+            "Doni tidak tahu bagaimana etika yang baik di tempat kerja.",
+            "Rina kesulitan bekerja dalam tim.",
+            "Ani tidak memiliki personal branding yang baik.",
+            "Budi ingin terus belajar setelah lulus, tetapi dia belum tahu caranya.",
+            "Siti ingin membangun kebiasaan belajar sepanjang hayat.",
+            "Doni sering menyerah saat mengalami kegagalan.",
+            "Rina bingung memilih antara kuliah, kerja, atau wirausaha.",
+            "Budi tidak tahu bagaimana strategi mencari dan melamar pekerjaan.",
+            "Siti ingin membuat rencana karir yang jelas."
+        ];
+
+        // ================================================================
+        // GABUNGKAN SEMUA DATA KE DALAM DATABASE
+        // ================================================================
+
+        const materiDatabase = {
+            'SMP': {
+                '7': {
+                    '1': generateMateri(judulSMP7S1, bidangSMP7S1, studiKasusSMP7S1, 701, "VII / Fase D", 1),
+                    '2': generateMateri(judulSMP7S2, bidangSMP7S2, studiKasusSMP7S2, 713, "VII / Fase D", 2)
+                },
+                '8': {
+                    '1': generateMateri(judulSMP8S1, bidangSMP8S1, studiKasusSMP8S1, 801, "VIII / Fase D", 1),
+                    '2': generateMateri(judulSMP8S2, bidangSMP8S2, studiKasusSMP8S2, 813, "VIII / Fase D", 2)
+                },
+                '9': {
+                    '1': generateMateri(judulSMP9S1, bidangSMP9S1, studiKasusSMP9S1, 901, "IX / Fase D", 1),
+                    '2': generateMateri(judulSMP9S2, bidangSMP9S2, studiKasusSMP9S2, 913, "IX / Fase D", 2)
+                }
+            },
+            'SMA': {
+                '10': {
+                    '1': generateMateri(judulSMA10S1, bidangSMA10S1, studiKasusSMA10S1, 1001, "X / Fase E", 1),
+                    '2': generateMateri(judulSMA10S2, bidangSMA10S2, studiKasusSMA10S2, 1013, "X / Fase E", 2)
+                },
+                '11': {
+                    '1': generateMateri(judulSMA11S1, bidangSMA11S1, studiKasusSMA11S1, 1101, "XI / Fase F", 1),
+                    '2': generateMateri(judulSMA11S2, bidangSMA11S2, studiKasusSMA11S2, 1113, "XI / Fase F", 2)
+                },
+                '12': {
+                    '1': generateMateri(judulSMA12S1, bidangSMA12S1, studiKasusSMA12S1, 1201, "XII / Fase F", 1),
+                    '2': generateMateri(judulSMA12S2, bidangSMA12S2, studiKasusSMA12S2, 1213, "XII / Fase F", 2)
+                }
+            },
+            'SMK': {
+                '10': {
+                    '1': generateMateri(judulSMK10S1, bidangSMK10S1, studiKasusSMK10S1, 1001, "X / Fase E", 1),
+                    '2': generateMateri(judulSMK10S2, bidangSMK10S2, studiKasusSMK10S2, 1013, "X / Fase E", 2)
+                },
+                '11': {
+                    '1': generateMateri(judulSMK11S1, bidangSMK11S1, studiKasusSMK11S1, 1101, "XI / Fase F", 1),
+                    '2': generateMateri(judulSMK11S2, bidangSMK11S2, studiKasusSMK11S2, 1113, "XI / Fase F", 2)
+                },
+                '12': {
+                    '1': generateMateri(judulSMK12S1, bidangSMK12S1, studiKasusSMK12S1, 1201, "XII / Fase F", 1),
+                    '2': generateMateri(judulSMK12S2, bidangSMK12S2, studiKasusSMK12S2, 1213, "XII / Fase F", 2)
+                }
+            }
+        };
+
+        // ================================================================
+        // DOM ELEMENTS DAN FUNGSI
+        // ================================================================
+
+        const jenjangEl = document.getElementById('jenjang');
+        const kelasEl = document.getElementById('kelas');
+        const semesterEl = document.getElementById('semester');
+        const materiSelect = document.getElementById('materiSelect');
+        const durasiEl = document.getElementById('durasi');
+        const namaGuruEl = document.getElementById('namaGuru');
+        const materiDisplay = document.getElementById('materiDisplay');
+        const rplContent = document.getElementById('rplContent');
+        const lkpdText = document.getElementById('lkpdText');
+        const hasilSiswa = document.getElementById('hasilSiswa');
+        const gabunganText = document.getElementById('gabunganText');
+        const lkpdFile = document.getElementById('lkpdFile');
+        const linkLkpd = document.getElementById('linkLkpd');
+        const jumlahSiswa = document.getElementById('jumlahSiswa');
+        const catatanKegiatan = document.getElementById('catatanKegiatan');
+        const laporanContent = document.getElementById('laporanContent');
+        const refleksiContainer = document.getElementById('refleksiContainer');
+        const refleksiResult = document.getElementById('refleksiResult');
+        const refleksiStatus = document.getElementById('refleksiStatus');
+
+        const saveLkpdBtn = document.getElementById('saveLkpdBtn');
+        const simpanRefleksiBtn = document.getElementById('simpanRefleksiBtn');
+        const cetakRefleksiBtn = document.getElementById('cetakRefleksiBtn');
+        const cetakLkpdBtn = document.getElementById('cetakLkpdBtn');
+        const cetakPdfBtn = document.getElementById('cetakPdfBtn');
+        const downloadWordBtn = document.getElementById('downloadWordBtn');
+        const downloadMateriPdf = document.getElementById('downloadMateriPdf');
+        const downloadMateriWord = document.getElementById('downloadMateriWord');
+        const downloadRplPdf = document.getElementById('downloadRplPdf');
+        const downloadRplWord = document.getElementById('downloadRplWord');
+        const resetBtn = document.getElementById('resetBtn');
+        const copyLinkBtn = document.getElementById('copyLinkBtn');
+        const generateLinkBtn = document.getElementById('generateLinkBtn');
+        const generateLaporanBtn = document.getElementById('generateLaporanBtn');
+        const cetakLaporanBtn = document.getElementById('cetakLaporanBtn');
+
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalOk = document.getElementById('modalOk');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = {
+            lkpd: document.getElementById('tab-lkpd'),
+            refleksi: document.getElementById('tab-refleksi'),
+            bagikan: document.getElementById('tab-bagikan'),
+            laporan: document.getElementById('tab-laporan'),
+            cetak: document.getElementById('tab-cetak')
+        };
+
+        // Hitung total materi
+        let totalMateri = 0;
+        for (const jenjang in materiDatabase) {
+            for (const kelas in materiDatabase[jenjang]) {
+                for (const semester in materiDatabase[jenjang][kelas]) {
+                    totalMateri += materiDatabase[jenjang][kelas][semester].length;
+                }
+            }
+        }
+
+        function updateKelasOptions() {
+            const jenjang = jenjangEl.value;
+            const kelasSelect = kelasEl;
+            kelasSelect.innerHTML = '';
+            let options = [];
+            if (jenjang === 'SMP') options = ['7', '8', '9'];
+            else if (jenjang === 'SMA' || jenjang === 'SMK') options = ['10', '11', '12'];
+            options.forEach(val => { const opt = document.createElement('option');
+                opt.value = val;
+                opt.textContent = val;
+                kelasSelect.appendChild(opt); });
+        }
+
+        function getMateriList() {
+            return materiDatabase[jenjangEl.value]?.[kelasEl.value]?.[semesterEl.value] || [];
+        }
+
+        function populateMateri() {
+            const data = getMateriList();
+            materiSelect.innerHTML = '<option value="0">-- Pilih Materi --</option>';
+            data.forEach((m, i) => {
+                const opt = document.createElement('option');
+                opt.value = i + 1;
+                opt.textContent = m.judul;
+                materiSelect.appendChild(opt);
+            });
+            if (data.length > 0) { materiSelect.value = '1';
+                displayMateri(1); } else {
+                materiSelect.value = '0';
+                materiDisplay.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:20px 0;">Belum ada materi untuk jenjang ini</p>`;
+                rplContent.textContent = 'Belum ada RPL.';
+                refleksiContainer.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>`;
+            }
+        }
+
+        function getMateri(index) {
+            const data = getMateriList();
+            if (index === 0 || index > data.length) return null;
+            return data[index - 1];
+        }
+
+        function displayMateri(index) {
+            const m = getMateri(index);
+            if (!m) {
+                materiDisplay.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p>`;
+                rplContent.textContent = 'RPL akan muncul setelah memilih materi.';
+                refleksiContainer.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>`;
+                return;
+            }
+
+            const studiKasusMatch = m.aktivitas.match(/STUDI KASUS\n([\s\S]*?)(?=\n\n|$)/);
+            const studiKasusText = studiKasusMatch ? studiKasusMatch[1].trim() : '';
+
+            materiDisplay.innerHTML = `
+                <h4>🧊 Ice Breaking</h4><p>${m.ice}</p>
+                <h4>🧠 Apersepsi</h4><p>${m.apersepsi}</p>
+                <h4>💬 Diskusi</h4><p>${m.diskusi}</p>
+                <h4>📖 Materi</h4><p style="white-space:pre-wrap;line-height:1.8;">${m.konten}</p>
+                <h4>📝 LKPD Berbasis Aktivitas</h4>
+                <div class="studi-kasus-box">
+                    <div class="label">📌 STUDI KASUS</div>
+                    <p style="white-space:pre-wrap;">${studiKasusText}</p>
+                </div>
+                <p style="white-space:pre-wrap;">${m.aktivitas}</p>
+                <h4>⏱️ Durasi</h4><p>${durasiEl.value} menit</p>
+                <h4>🏷️ Topik</h4><p><em>${m.topik}</em></p>
+            `;
+
+            let rpl = m.rpl;
+            rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
+            rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
+            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas}`);
+            rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
+            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
+            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
+            rplContent.textContent = rpl;
+
+            lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
+
+            if (m.refleksi) {
+                const refleksiHTML = `
+                    <div style="font-weight:600;margin-bottom:8px;color:var(--primary);">📝 ${m.judul}</div>
+                    <textarea id="refleksiText" rows="10" style="background:#fff;width:100%;padding:10px;border-radius:8px;border:1px solid #e2e8f0;font-family:inherit;font-size:13px;">${m.refleksi}</textarea>
+                `;
+                refleksiContainer.innerHTML = refleksiHTML;
+            } else {
+                refleksiContainer.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:10px;">Refleksi belum tersedia.</p>`;
+            }
+
+            const materiId = m.id || Math.random().toString(36).substring(2, 8);
+            linkLkpd.value = `https://nafas-bk.com/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
+            updateGabungan();
+        }
+
+        function updateGabungan() {
+            const lkpd = lkpdText.value.trim() || 'LKPD belum diisi.';
+            const m = getMateri(parseInt(materiSelect.value));
+            const hasil = hasilSiswa.value.trim() || 'Hasil siswa belum diisi.';
+            const laporan = laporanContent.textContent || 'Laporan belum dibuat.';
+            const refleksi = document.getElementById('refleksiText') ? document.getElementById('refleksiText').value.trim() ||
+                'Refleksi belum diisi.' : 'Refleksi belum tersedia.';
+
+            const header = `
+        ================================================================
+        NaFaS BK - DOKUMEN BIMBINGAN KLASIKAL
+        ================================================================
+        Jenjang       : ${jenjangEl.value}
+        Kelas         : ${kelasEl.value}
+        Semester      : ${semesterEl.value}
+        Materi        : ${m ? m.judul : 'Belum dipilih'}
+        Guru BK       : ${namaGuruEl.value || '_______________'}
+        Durasi        : ${durasiEl.value} menit
+        Tanggal       : ${new Date().toLocaleDateString('id-ID')}
+        ================================================================
+
         `;
 
-            const blob = new Blob([teks], { type: 'text/plain' });
+            gabunganText.value = header +
+                `\n📄 LKPD\n${'='.repeat(60)}\n${lkpd}\n\n` +
+                `📝 REFLEKSI DIRI (Mode Non-HP)\n${'='.repeat(60)}\n${refleksi}\n\n` +
+                `📊 HASIL SISWA\n${'='.repeat(60)}\n${hasil}\n\n` +
+                `📋 RPL\n${'='.repeat(60)}\n${rplContent.textContent}\n\n` +
+                `📊 LAPORAN\n${'='.repeat(60)}\n${laporan}`;
+        }
+
+        function switchTab(tabId) {
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            const targetBtn = Array.from(tabBtns).find(b => b.dataset.tab === tabId);
+            if (targetBtn) targetBtn.classList.add('active');
+            if (tabContents[tabId]) tabContents[tabId].classList.add('active');
+            if (tabId === 'cetak') updateGabungan();
+            if (tabId === 'laporan') generateLaporan();
+        }
+
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalBody.innerHTML = `<p>${message}</p>`;
+            modalOverlay.classList.add('active');
+        }
+
+        function hideModal() { modalOverlay.classList.remove('active'); }
+
+        function generateLaporan() {
+            const m = getMateri(parseInt(materiSelect.value));
+            const namaGuru = namaGuruEl.value || '_______________';
+            const jumlah = jumlahSiswa.value || '0';
+            const catatan = catatanKegiatan.value || 'Tidak ada catatan.';
+            const tanggal = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+            const laporan = `
+        ================================================================
+        LAPORAN KEGIATAN BIMBINGAN KLASIKAL
+        NaFaS BK
+        ================================================================
+
+        A. IDENTITAS KEGIATAN
+        ──────────────────────────────────────────────────────────────
+        Hari/Tanggal     : ${tanggal}
+        Jenjang          : ${jenjangEl.value}
+        Kelas            : ${kelasEl.value}
+        Semester         : ${semesterEl.value}
+        Materi           : ${m ? m.judul : 'Belum dipilih'}
+        Bidang           : ${m ? m.bidang : '-'}
+        Guru BK          : ${namaGuru}
+        Durasi           : ${durasiEl.value} menit
+        Jumlah Siswa     : ${jumlah} siswa
+
+        B. PELAKSANAAN KEGIATAN
+        ──────────────────────────────────────────────────────────────
+        1. Kegiatan Awal:
+           - Ice Breaking: ${m ? m.ice || '-' : '-'}
+           - Apersepsi: ${m ? m.apersepsi || '-' : '-'}
+
+        2. Kegiatan Inti:
+           - Penyampaian Materi: ${m ? m.judul : '-'}
+           - Diskusi Kelompok: ${m ? m.diskusi || '-' : '-'}
+           - LKPD Berbasis Aktivitas: Dilaksanakan
+           - Refleksi Diri (Mode Non-HP): Dilaksanakan
+
+        3. Kegiatan Penutup:
+           - Refleksi diri
+           - Komitmen siswa
+           - Doa dan salam
+
+        C. HASIL KEGIATAN
+        ──────────────────────────────────────────────────────────────
+        1. Partisipasi Siswa:
+           - Aktif dalam diskusi: ___ siswa
+           - Mengisi LKPD: ___ siswa
+           - Mengisi Refleksi: ___ siswa
+
+        2. Capaian Pemahaman:
+           - Siswa memahami materi dengan baik: ___ siswa
+           - Siswa perlu pendampingan: ___ siswa
+
+        3. Catatan Kegiatan:
+           ${catatan}
+
+        D. TINDAK LANJUT
+        ──────────────────────────────────────────────────────────────
+        1. Siswa yang sudah memahami: melanjutkan ke materi berikutnya
+        2. Siswa yang perlu pendampingan: konseling individual
+
+        E. REKOMENDASI
+        ──────────────────────────────────────────────────────────────
+        1. Perlunya pengulangan materi untuk siswa yang belum paham
+        2. Pendampingan khusus bagi siswa yang membutuhkan
+
+        ──────────────────────────────────────────────────────────────
+        Guru BK,
+
+        ${namaGuru}
+        NIP. _______________
+        `;
+            laporanContent.textContent = laporan;
+            updateGabungan();
+            return laporan;
+        }
+
+        // ================================================================
+        // CETAK FUNGSI
+        // ================================================================
+
+        function cetakLKPD() {
+            const content = lkpdText.value.trim() || 'LKPD belum diisi.';
+            if (!content || content === 'LKPD belum diisi.') { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
+            const printWin = window.open('', '_blank', 'width=800,height=600');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            const m = getMateri(parseInt(materiSelect.value));
+            const title = m ? m.judul : 'LKPD';
+            printWin.document.write(`
+                <html><head><title>LKPD - ${title}</title>
+                <style>
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; max-width: 800px; margin: auto; line-height: 1.8; }
+                    .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
+                    .header-print h1 { color: #1A2A6A; font-size: 24px; margin: 0; }
+                    .header-print p { color: #718096; margin: 5px 0; }
+                    .content { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.8; padding: 10px; }
+                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
+                    @media print { body { padding: 20px; } }
+                </style>
+                </head>
+                <body>
+                    <div class="header-print">
+                        <h1>📘 NaFaS BK</h1>
+                        <p><strong>LKPD Berbasis Aktivitas</strong></p>
+                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                        <p>Materi: ${title}</p>
+                        <p>Nama Guru: ${namaGuruEl.value || '_______________'}</p>
+                    </div>
+                    <div class="content">${content}</div>
+                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <script>window.onload=function(){window.print();}<\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        }
+
+        function cetakRefleksi() {
+            const refleksiText = document.getElementById('refleksiText');
+            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
+            const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
+            const printWin = window.open('', '_blank', 'width=800,height=600');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            const m = getMateri(parseInt(materiSelect.value));
+            const title = m ? m.judul : 'Refleksi';
+            printWin.document.write(`
+                <html><head><title>Refleksi - ${title}</title>
+                <style>
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; max-width: 800px; margin: auto; line-height: 1.8; }
+                    .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
+                    .header-print h1 { color: #1A2A6A; font-size: 24px; margin: 0; }
+                    .header-print p { color: #718096; margin: 5px 0; }
+                    .content { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.8; padding: 10px; }
+                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
+                    @media print { body { padding: 20px; } }
+                </style>
+                </head>
+                <body>
+                    <div class="header-print">
+                        <h1>📘 NaFaS BK</h1>
+                        <p><strong>Refleksi dan Evaluasi Diri (Mode Non-HP)</strong></p>
+                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                        <p>Materi: ${title}</p>
+                        <p>Nama Guru: ${namaGuruEl.value || '_______________'}</p>
+                    </div>
+                    <div class="content">${content}</div>
+                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <script>window.onload=function(){window.print();}<\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        }
+
+        function cetakLaporan() {
+            const content = laporanContent.textContent;
+            if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
+                    'Generate laporan dulu.'); return; }
+            const printWin = window.open('', '_blank', 'width=900,height=700');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            printWin.document.write(`
+                <html><head><title>Laporan Bimbingan Klasikal</title>
+                <style>
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; max-width: 900px; margin: auto; line-height: 1.6; }
+                    h1 { color: #1A2A6A; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; }
+                    pre { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; }
+                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
+                    @media print { body { padding: 15px; } }
+                </style>
+                </head>
+                <body>
+                    <h1>📘 NaFaS BK - Laporan Bimbingan Klasikal</h1>
+                    <pre>${content}</pre>
+                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <script>window.onload=function(){window.print();}<\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        }
+
+        // ================================================================
+        // EVENT LISTENERS
+        // ================================================================
+
+        jenjangEl.addEventListener('change', function() { updateKelasOptions();
+            populateMateri(); });
+        [kelasEl, semesterEl].forEach(el => { el.addEventListener('change', function() { populateMateri(); }); });
+        materiSelect.addEventListener('change', function() { displayMateri(parseInt(this.value)); });
+        [durasiEl, namaGuruEl].forEach(el => { el.addEventListener('change', function() { const val = parseInt(materiSelect
+                    .value); if (val > 0) displayMateri(val); }); });
+        tabBtns.forEach(btn => { btn.addEventListener('click', function() { switchTab(this.dataset.tab); }); });
+
+        saveLkpdBtn.addEventListener('click', function() {
+            if (!lkpdText.value.trim()) { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
+            showModal('✅ Berhasil', 'LKPD disimpan!');
+            updateGabungan();
+        });
+
+        simpanRefleksiBtn.addEventListener('click', function() {
+            const refleksiText = document.getElementById('refleksiText');
+            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
+            if (!refleksiText.value.trim()) { showModal('⚠️ Peringatan', 'Refleksi kosong.'); return; }
+            refleksiResult.style.display = 'block';
+            refleksiStatus.textContent = 'Refleksi berhasil disimpan pada ' + new Date().toLocaleDateString('id-ID');
+            hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Refleksi selesai.`;
+            updateGabungan();
+            showModal('✅ Berhasil', 'Refleksi disimpan!');
+        });
+
+        cetakRefleksiBtn.addEventListener('click', cetakRefleksi);
+        cetakLkpdBtn.addEventListener('click', cetakLKPD);
+
+        copyLinkBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(linkLkpd.value).then(() => { showModal('📋 Berhasil', 'Link disalin!'); }).catch(
+                () => { linkLkpd.select();
+                    document.execCommand('copy');
+                    showModal('📋 Berhasil', 'Link disalin!'); });
+        });
+
+        generateLinkBtn.addEventListener('click', function() {
+            const newId = Math.random().toString(36).substring(2, 10);
+            linkLkpd.value = `https://nafas-bk.com/lkpd/${newId}`;
+            showModal('🔄 Link Baru', 'Link baru dibuat!');
+        });
+
+        generateLaporanBtn.addEventListener('click', function() { generateLaporan();
+            showModal('✅ Berhasil', 'Laporan digenerate!'); });
+        cetakLaporanBtn.addEventListener('click', cetakLaporan);
+
+        cetakPdfBtn.addEventListener('click', function() {
+            updateGabungan();
+            const content = gabunganText.value;
+            const printWin = window.open('', '_blank', 'width=900,height=700');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            printWin.document.write(`
+                <html><head><title>NaFaS BK - Dokumen</title>
+                <style>
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; max-width: 900px; margin: auto; line-height:1.6; }
+                    h1 { color: #1A2A6A; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; }
+                    pre { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
+                    .footer { margin-top:30px; border-top:2px solid #1A2A6A; padding-top:10px; text-align:center; font-size:12px; color:#718096; }
+                    @media print { body { padding: 15px; } pre { border: 1px solid #ccc; } }
+                </style>
+                </head>
+                <body>
+                    <h1>📘 NaFaS BK - Dokumen Bimbingan Klasikal</h1>
+                    <pre>${content}</pre>
+                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <script>window.onload=function(){window.print();}<\/script>
+                </body>
+                </html>
+            `);
+            printWin.document.close();
+        });
+
+        downloadWordBtn.addEventListener('click', function() {
+            updateGabungan();
+            const content = gabunganText.value;
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset="utf-8"><title>NaFaS BK - Dokumen</title>
+                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;}
+                .header{text-align:center;margin-bottom:20px;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+                </style>
+                </head>
+                <body>
+                    <div class="header"><h1>📘 NaFaS BK</h1><p style="color:#718096;">Dokumen Bimbingan Klasikal</p></div>
+                    <pre>${content}</pre>
+                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                </body>
+                </html>
+            `;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `RPL_${m.judul.replace(/\s/g, '_')}.txt`;
+            a.href = url;
+            a.download = `NaFaS_BK_Dokumen_${new Date().toISOString().slice(0,10)}.doc`;
+            document.body.appendChild(a);
             a.click();
-            URL.revokeObjectURL(a.href);
-        }
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
 
-        // ============================================================
-        // HASIL SISWA
-        // ============================================================
-        function renderHasil() {
-            const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
-            hasilSiswa = data;
+        downloadMateriPdf.addEventListener('click', function() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const content =
+                `
+        ================================================================
+        MATERI BIMBINGAN KLASIKAL
+        ================================================================
+        Judul       : ${m.judul}
+        Jenjang     : ${jenjangEl.value}
+        Kelas       : ${kelasEl.value}
+        Semester    : ${semesterEl.value}
+        Bidang      : ${m.bidang}
+        Durasi      : ${durasiEl.value} menit
 
-            if (data.length === 0) {
-                hasilContainer.innerHTML = '<p style="color:#9a8aaa;">Belum ada jawaban siswa</p>';
-                return;
-            }
+        TOPIK: ${m.topik}
 
-            hasilContainer.innerHTML = data.map((h, idx) => `
-                <div class="hasil-item">
-                    <div class="nama">👤 ${h.nama || 'Siswa'}</div>
-                    <div class="meta">${h.materi || ''} · ${h.waktu || ''}</div>
-                    ${h.jawaban ? h.jawaban.map((j, i) => `<div class="jawaban"><strong>Jawaban ${i+1}:</strong> ${j}</div>`).join('') : ''}
-                    <button class="btn btn-danger btn-sm" style="margin-top:6px;padding:4px 14px;" onclick="hapusHasil(${idx})">Hapus</button>
-                </div>
-            `).join('');
-        }
+        ICE BREAKING: ${m.ice}
+        APERSEPSI: ${m.apersepsi}
+        DISKUSI: ${m.diskusi}
+        KONTEN: ${m.konten}
+        LKPD: ${m.aktivitas}
+        ================================================================
+        NaFaS BK © NaFaS BK
+        `;
+            const printWin = window.open('', '_blank', 'width=800,height=600');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            printWin.document.write(`
+                <html><head><title>Materi - ${m.judul}</title>
+                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;max-width:800px;margin:auto;line-height:1.6;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:12px;color:#718096;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                <script>window.onload=function(){window.print();}<\/script>
+                </body></html>
+            `);
+            printWin.document.close();
+        });
 
-        function hapusHasil(idx) {
-            if (!confirm('Yakin ingin menghapus hasil ini?')) return;
-            const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
-            data.splice(idx, 1);
-            localStorage.setItem('hasilBK', JSON.stringify(data));
-            renderHasil();
-        }
+        downloadMateriWord.addEventListener('click', function() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const content =
+                `
+        ================================================================
+        MATERI BIMBINGAN KLASIKAL
+        ================================================================
+        Judul       : ${m.judul}
+        Jenjang     : ${jenjangEl.value}
+        Kelas       : ${kelasEl.value}
+        Semester    : ${semesterEl.value}
+        Bidang      : ${m.bidang}
+        Durasi      : ${durasiEl.value} menit
 
-        function resetData() {
-            if (!confirm('⚠️ Hapus SEMUA data jawaban siswa? Tindakan ini tidak bisa dibatalkan!')) return;
-            localStorage.removeItem('hasilBK');
-            renderHasil();
-        }
+        TOPIK: ${m.topik}
 
-        function exportHasil() {
-            const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
-            if (data.length === 0) {
-                alert('Belum ada data untuk diexport.');
-                return;
-            }
-
-            let teks = '========================================\n';
-            teks += '📊 EXPORT HASIL SISWA\n';
-            teks += 'NaFaS BK - Aplikasi Bimbingan Klasikal\n';
-            teks += `Tanggal: ${new Date().toLocaleString('id-ID')}\n`;
-            teks += `Total: ${data.length} siswa\n`;
-            teks += '========================================\n\n';
-
-            data.forEach((h, i) => {
-                teks += `--- Siswa #${i+1} ---\n`;
-                teks += `Nama: ${h.nama || 'Siswa'}\n`;
-                teks += `Materi: ${h.materi || '-'}\n`;
-                teks += `Waktu: ${h.waktu || '-'}\n`;
-                if (h.jawaban) {
-                    h.jawaban.forEach((j, idx) => {
-                        teks += `Jawaban ${idx+1}: ${j}\n`;
-                    });
-                }
-                teks += '\n';
-            });
-
-            teks += '========================================\n';
-            teks += '© NaFaS BK\n';
-
-            const blob = new Blob([teks], { type: 'text/plain' });
+        ICE BREAKING: ${m.ice}
+        APERSEPSI: ${m.apersepsi}
+        DISKUSI: ${m.diskusi}
+        KONTEN: ${m.konten}
+        LKPD: ${m.aktivitas}
+        ================================================================
+        NaFaS BK © NaFaS BK
+        `;
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset="utf-8"><title>Materi - ${m.judul}</title>
+                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                </body></html>
+            `;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = `Hasil_Siswa_NaFaS_BK_${new Date().toISOString().slice(0,10)}.txt`;
+            a.href = url;
+            a.download = `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
             a.click();
-            URL.revokeObjectURL(a.href);
-        }
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
 
-        // ============================================================
-        // INISIALISASI
-        // ============================================================
-        renderMateri();
+        downloadRplPdf.addEventListener('click', function() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const printWin = window.open('', '_blank', 'width=900,height=700');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            printWin.document.write(`
+                <html><head><title>RPL - ${m.judul}</title>
+                <style>body{font-family:'Courier New',monospace;padding:30px;max-width:900px;margin:auto;line-height:1.5;font-size:11px;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;font-family:'Segoe UI',Arial,sans-serif;}
+                pre{white-space:pre-wrap;font-family:'Courier New',monospace;font-size:11px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:11px;color:#718096;font-family:'Segoe UI',Arial,sans-serif;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                <script>window.onload=function(){window.print();}<\/script>
+                </body></html>
+            `);
+            printWin.document.close();
+        });
 
-        console.log('🌟 NaFaS BK - Aplikasi Bimbingan Klasikal siap digunakan!');
-        console.log('📚 Total materi:', dataMateri.length);
-        console.log('📊 Total hasil:', hasilSiswa.length);
+        downloadRplWord.addEventListener('click', function() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset="utf-8"><title>RPL - ${m.judul}</title>
+                <style>body{font-family:'Courier New',monospace;padding:20px;line-height:1.5;max-width:900px;margin:auto;font-size:10pt;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;font-family:'Segoe UI',Arial,sans-serif;}
+                pre{white-space:pre-wrap;font-family:'Courier New',monospace;font-size:10pt;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;font-family:'Segoe UI',Arial,sans-serif;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                </body></html>
+            `;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+        resetBtn.addEventListener('click', function() {
+            if (confirm('Reset semua data?')) {
+                lkpdText.value = '';
+                hasilSiswa.value = '';
+                gabunganText.value = '';
+                materiSelect.value = '0';
+                durasiEl.value = 60;
+                namaGuruEl.value = '';
+                lkpdFile.value = '';
+                jumlahSiswa.value = 32;
+                catatanKegiatan.value = '';
+                laporanContent.textContent = 'Silakan generate laporan terlebih dahulu.';
+                refleksiResult.style.display = 'none';
+                materiDisplay.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p>`;
+                rplContent.textContent = 'RPL akan muncul setelah memilih materi.';
+                refleksiContainer.innerHTML =
+                    `<p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>`;
+                switchTab('lkpd');
+                showModal('✅ Berhasil', 'Data direset.');
+            }
+        });
+
+        lkpdFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                lkpdText.value += `\n\n[File: ${file.name} (${(file.size/1024).toFixed(1)} KB)]`;
+                showModal('📎 Upload', `File "${file.name}" siap.`);
+            }
+        });
+
+        modalClose.addEventListener('click', hideModal);
+        modalOk.addEventListener('click', hideModal);
+        modalOverlay.addEventListener('click', function(e) { if (e.target === this) hideModal(); });
+
+        // ================================================================
+        // INIT
+        // ================================================================
+        updateKelasOptions();
+        populateMateri();
+        switchTab('lkpd');
+        const defaultId = Math.random().toString(36).substring(2, 10);
+        linkLkpd.value = `https://nafas-bk.com/lkpd/${defaultId}`;
+
+        console.log('✅ NaFaS BK siap digunakan!');
+        console.log(`Total materi: ${totalMateri} materi dari semua jenjang dan kelas`);
+        console.log('📚 SMP: Kelas 7 (24), Kelas 8 (24), Kelas 9 (24)');
+        console.log('📚 SMA: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
+        console.log('📚 SMK: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
     </script>
-
 </body>
 </html>
