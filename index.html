@@ -289,38 +289,9 @@
             max-height: 500px;
             overflow-y: auto;
             font-size: 12px;
-            line-height: 1.5;
-            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             white-space: pre-wrap;
-        }
-        .rpl-preview table {
-            border-collapse: collapse;
-            width: 100%;
-            font-size: 11px;
-            margin: 4px 0;
-        }
-        .rpl-preview table td,
-        .rpl-preview table th {
-            border: 1px solid #ccc;
-            padding: 4px 6px;
-            vertical-align: top;
-        }
-        .rpl-preview table th {
-            background: #e8edff;
-            font-weight: 700;
-        }
-        .rpl-preview .rpl-title {
-            text-align: center;
-            font-weight: 700;
-            font-size: 14px;
-            color: var(--primary);
-            margin: 6px 0;
-        }
-        .rpl-preview .rpl-subtitle {
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            margin: 2px 0 6px 0;
         }
         .lkpd-box {
             background: #F7FAFC;
@@ -367,53 +338,110 @@
         .mt-10 {
             margin-top: 10px;
         }
-        .print-btn {
-            background: var(--primary);
-            color: #fff;
-            padding: 8px 16px;
+        .mode-badge {
+            display: inline-block;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+        .mode-hp {
+            background: #DBEAFE;
+            color: #1E40AF;
+        }
+        .mode-nonhp {
+            background: #D1FAE5;
+            color: #065F46;
+        }
+        .studi-kasus-box {
+            background: #fef3c7;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+            margin: 8px 0;
+        }
+        .studi-kasus-box .label {
+            font-weight: 700;
+            color: #92400E;
+        }
+
+        /* ===== LKPD MODE HP ===== */
+        .lkpd-hp-box {
+            background: #EBF5FB;
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid #b8d4e8;
+            margin-top: 10px;
+        }
+        .lkpd-hp-box .link-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 8px 14px;
+            border-radius: 10px;
+            border: 1px solid #e0d6e8;
+        }
+        .lkpd-hp-box .link-box input {
+            flex: 1;
+            border: none;
+            padding: 6px 0;
+            font-size: 13px;
+            color: #2d1b4a;
+            background: transparent;
+            outline: none;
+            min-width: 150px;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        .lkpd-hp-box .link-box .btn-copy {
+            padding: 6px 16px;
             border: none;
             border-radius: 8px;
+            background: var(--primary);
+            color: white;
             font-weight: 600;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
+            transition: 0.3s;
+        }
+        .lkpd-hp-box .link-box .btn-copy:hover {
+            background: var(--primary-light);
+            transform: scale(1.03);
+        }
+        .lkpd-hp-box .link-box .btn-open {
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            background: var(--success);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+            transition: 0.3s;
         }
-        .print-btn:hover {
-            background: var(--primary-light);
+        .lkpd-hp-box .link-box .btn-open:hover {
+            background: #1E8449;
+            transform: scale(1.03);
         }
-        .quiz-box {
-            background: #f0f7ff;
-            border-radius: 12px;
-            padding: 14px;
-            margin-top: 10px;
-            border: 1px solid #d4e2f7;
-        }
-        .quiz-box .question {
-            background: #fff;
-            padding: 10px 14px;
+        .lkpd-hp-box .link-box .btn-generate {
+            padding: 6px 16px;
+            border: none;
             border-radius: 8px;
-            margin-bottom: 8px;
-            border-left: 4px solid var(--primary-lighter);
-        }
-        .quiz-box .question .q-text {
+            background: var(--accent);
+            color: var(--primary);
             font-weight: 600;
-            margin-bottom: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: 0.3s;
         }
-        .quiz-box .question .options {
-            padding-left: 16px;
-            font-size: 13px;
-        }
-        .quiz-box .question .options label {
-            display: block;
-            font-weight: 400;
-            margin: 2px 0;
-            font-size: 13px;
-        }
-        .quiz-box .question .options input[type="radio"] {
-            width: auto;
-            margin-right: 6px;
+        .lkpd-hp-box .link-box .btn-generate:hover {
+            background: #D4AC0D;
+            transform: scale(1.03);
         }
 
         /* ===== REFLEKSI CETAK 1 LEMBAR ===== */
@@ -574,8 +602,7 @@
             .no-print,
             .btn,
             .tab-wrapper,
-            .file-upload,
-            .print-btn {
+            .file-upload {
                 display: none !important;
             }
             .card {
@@ -595,13 +622,8 @@
                 border: 1px solid #ccc;
                 max-height: none;
                 overflow: visible;
-                font-size: 10px;
+                font-size: 11px;
                 padding: 8px;
-            }
-            .rpl-preview table td,
-            .rpl-preview table th {
-                border: 1px solid #999;
-                padding: 3px 5px;
             }
             .materi-view {
                 max-height: none;
@@ -613,10 +635,6 @@
             }
             .tab-btn {
                 display: none;
-            }
-            .quiz-box {
-                border: 1px solid #ccc;
-                background: #fff;
             }
         }
         ::-webkit-scrollbar {
@@ -716,110 +734,56 @@
         .link-share-box input {
             background: #fff;
         }
-        .mode-badge {
-            display: inline-block;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-        }
-        .mode-hp {
-            background: #DBEAFE;
-            color: #1E40AF;
-        }
-        .mode-nonhp {
-            background: #D1FAE5;
-            color: #065F46;
-        }
-        .studi-kasus-box {
-            background: #fef3c7;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border-left: 4px solid #f59e0b;
-            margin: 8px 0;
-        }
-        .studi-kasus-box .label {
-            font-weight: 700;
-            color: #92400E;
-        }
 
-        /* ===== LINK KUIS ===== */
-        .kuis-link-container {
-            background: #f8f5fc;
-            border-radius: 12px;
-            padding: 16px;
-            margin-top: 12px;
-            border: 2px dashed #8b5fa8;
-        }
-        .kuis-link-container .link-box {
+        /* BANNER SELAMAT DATANG */
+        .welcome-banner {
+            max-width: 1300px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(243, 229, 245, 0.9), rgba(225, 190, 231, 0.7), rgba(255, 248, 225, 0.9));
+            border-radius: 20px;
+            padding: 16px 28px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 18px;
             flex-wrap: wrap;
-            background: white;
-            padding: 8px 14px;
-            border-radius: 10px;
-            border: 1px solid #e0d6e8;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.08);
         }
-        .kuis-link-container .link-box input {
-            flex: 1;
-            border: none;
-            padding: 6px 0;
-            font-size: 13px;
-            color: #2d1b4a;
-            background: transparent;
-            outline: none;
-            min-width: 150px;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+        .welcome-banner .welcome-icon {
+            font-size: 2.2rem;
+            animation: floatIcon 3s ease-in-out infinite;
         }
-        .kuis-link-container .link-box .btn-copy {
-            padding: 6px 16px;
-            border: none;
-            border-radius: 8px;
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 12px;
-            transition: 0.3s;
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
         }
-        .kuis-link-container .link-box .btn-copy:hover {
-            background: var(--primary-light);
-            transform: scale(1.03);
-        }
-        .kuis-link-container .link-box .btn-open {
-            padding: 6px 16px;
-            border: none;
-            border-radius: 8px;
-            background: var(--success);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 12px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
-        .kuis-link-container .link-box .btn-open:hover {
-            background: #1E8449;
-            transform: scale(1.03);
-        }
-        .kuis-link-container .link-box .btn-generate {
-            padding: 6px 16px;
-            border: none;
-            border-radius: 8px;
-            background: var(--accent);
+        .welcome-banner .welcome-text h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
             color: var(--primary);
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 12px;
-            transition: 0.3s;
+            margin: 0;
+            line-height: 1.2;
         }
-        .kuis-link-container .link-box .btn-generate:hover {
-            background: #D4AC0D;
-            transform: scale(1.03);
+        .welcome-banner .welcome-text h2 span {
+            background: linear-gradient(135deg, var(--primary), var(--emas-gelap, #f39c12));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .welcome-banner .welcome-text p {
+            color: var(--primary-light);
+            font-size: 0.95rem;
+            margin: 2px 0 0;
+            font-weight: 500;
+        }
+        .welcome-banner .welcome-text p i {
+            color: #f9d976;
         }
     </style>
 </head>
@@ -831,6 +795,15 @@
         </div>
         <div class="badge">© NaFaS BK</div>
     </header>
+
+    <!-- BANNER SELAMAT DATANG -->
+    <div class="welcome-banner">
+        <span class="welcome-icon">👋</span>
+        <div class="welcome-text">
+            <h2>Selamat Datang, <span>Guru BK</span>!</h2>
+            <p><i class="fas fa-star"></i> Semangat membimbing generasi hebat Indonesia <i class="fas fa-star"></i></p>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -870,23 +843,53 @@
 
         <!-- KOLOM KANAN -->
         <div class="card">
-            <div class="card-title">📝 LKPD, Kuis & Laporan</div>
+            <div class="card-title">📝 LKPD & Laporan</div>
             <div class="tab-wrapper no-print">
                 <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
                 <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
-                <button class="tab-btn" data-tab="bagikan">📤 Mode HP</button>
-                <button class="tab-btn" data-tab="kuis">📱 Kuis</button>
                 <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
-                <button class="tab-btn" data-tab="cetak">📑 Cetak</button>
             </div>
 
             <!-- Tab LKPD -->
             <div id="tab-lkpd" class="tab-content active">
-                <div class="lkpd-box">
-                    <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
-                    <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
-                    <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
-                    <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
+                <!-- LKPD Mode HP -->
+                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
+                    <h4 style="color:var(--primary);margin-bottom:6px;">📱 LKPD Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
+                    <p style="font-size:13px;color:var(--text-light);">Siswa mengerjakan LKPD melalui Google Form. Hasil otomatis masuk ke spreadsheet guru.</p>
+                </div>
+                <div class="lkpd-hp-box">
+                    <div class="form-group">
+                        <label>🔗 Link Google Form (bagikan ke siswa)</label>
+                        <div class="link-box">
+                            <input type="text" id="linkLkpdHp" value="https://forms.google.com/...isi_link_disini" readonly />
+                            <button class="btn-copy" onclick="copyLinkHp()"><i class="fas fa-copy"></i> Salin</button>
+                            <a href="#" id="bukaLinkHp" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                            <button class="btn-generate" onclick="generateLinkHp()"><i class="fas fa-sync"></i> Ganti Link</button>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px;padding:10px;background:#fef3c7;border-radius:8px;font-size:12px;color:#92400E;">
+                        <strong>💡 Cara menggunakan:</strong>
+                        <ol style="margin-left:18px;margin-top:4px;">
+                            <li>Buat Google Form dengan pertanyaan sesuai LKPD</li>
+                            <li>Salin link Google Form dan tempel di atas</li>
+                            <li>Bagikan link ke siswa melalui WhatsApp/Telegram</li>
+                            <li>Hasil otomatis masuk ke spreadsheet Google</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div style="margin-top:16px;border-top:2px dashed #e0d6e8;padding-top:16px;">
+                    <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
+                        <h4 style="color:var(--primary);margin-bottom:6px;">📄 LKPD Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
+                        <p style="font-size:13px;color:var(--text-light);">Cetak LKPD dan bagikan ke siswa yang tidak punya HP.</p>
+                    </div>
+                    <div class="lkpd-box">
+                        <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="8" placeholder="LKPD akan muncul otomatis..."></textarea></div>
+                        <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
+                        <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
+                        <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
+                        <button class="btn btn-warning btn-block mt-10" id="downloadLkpdWordBtn">📝 Download LKPD Word</button>
+                    </div>
                 </div>
             </div>
 
@@ -902,71 +905,11 @@
                 <div class="btn-group no-print" style="margin-top:10px;">
                     <button class="btn btn-primary" id="simpanRefleksiBtn">💾 Simpan Refleksi</button>
                     <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi (1 Lembar)</button>
+                    <button class="btn btn-warning" id="downloadRefleksiWordBtn">📝 Download Refleksi Word</button>
                 </div>
                 <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
                     <p><strong>✅ Refleksi Tersimpan:</strong></p>
                     <p id="refleksiStatus">Refleksi telah disimpan.</p>
-                </div>
-            </div>
-
-            <!-- Tab Bagikan - Mode HP -->
-            <div id="tab-bagikan" class="tab-content">
-                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📤 Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Siswa dapat mengakses LKPD melalui link di bawah ini.</p>
-                </div>
-                <div class="link-share-box">
-                    <div class="form-group">
-                        <label>Link LKPD (bagikan ke siswa)</label>
-                        <div style="display:flex;gap:8px;">
-                            <input type="text" id="linkLkpd" value="" readonly style="flex:1;font-size:12px;" />
-                            <button class="btn btn-primary btn-sm" id="copyLinkBtn">📋 Salin</button>
-                        </div>
-                    </div>
-                    <div style="text-align:center;padding:15px;background:#f8f9fa;border-radius:12px;margin-top:10px;">
-                        <div style="font-size:60px;margin-bottom:8px;">📱</div>
-                        <p style="font-size:13px;color:var(--text-light);">Bagikan link ke siswa melalui WA, Telegram, atau Google Classroom</p>
-                    </div>
-                    <button class="btn btn-success btn-block mt-10" id="generateLinkBtn">🔄 Generate Link Baru</button>
-                </div>
-                <div style="margin-top:12px;padding:12px;background:#FEF3C7;border-radius:10px;border-left:4px solid var(--accent);">
-                    <p style="font-size:12px;color:#92400E;">💡 <strong>Alternatif untuk siswa tanpa HP:</strong> Cetak LKPD dari tab "LKPD" dan bagikan ke siswa.</p>
-                </div>
-            </div>
-
-            <!-- Tab KUIS -->
-            <div id="tab-kuis" class="tab-content">
-                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📱 Kuis Online untuk Siswa</h4>
-                    <p style="font-size:13px;color:var(--text-light);">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
-                </div>
-
-                <div class="kuis-link-container">
-                    <div class="form-group">
-                        <label>🔗 Link Kuis (bagikan ke siswa)</label>
-                        <div class="link-box">
-                            <input type="text" id="kuisLink" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=1" readonly />
-                            <button class="btn-copy" onclick="copyKuisLink()"><i class="fas fa-copy"></i> Salin</button>
-                            <a href="#" id="bukaKuisLink" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                            <button class="btn-generate" onclick="generateKuisLink()"><i class="fas fa-sync"></i> Generate</button>
-                        </div>
-                    </div>
-                    <div style="margin-top:10px;padding:10px;background:#fef3c7;border-radius:8px;font-size:12px;color:#92400E;">
-                        <strong>💡 Cara menggunakan:</strong>
-                        <ol style="margin-left:18px;margin-top:4px;">
-                            <li>Klik tombol <strong>"Salin"</strong> untuk menyalin link kuis</li>
-                            <li>Bagikan link ke siswa melalui WhatsApp, Telegram, atau Google Classroom</li>
-                            <li>Siswa klik link, jawab pertanyaan, dan hasilnya otomatis masuk ke guru</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div style="background:#f8f5fc;border-radius:12px;padding:16px;margin-top:12px;border:1px solid #e0d6e8;">
-                    <p style="font-weight:700;color:#2d1b4a;">📱 Preview Kuis - <span id="previewJudul">Kenali Dirimu, Temukan Potensimu</span></p>
-                    <p style="font-size:11px;color:#9a8aaa;margin-bottom:8px;">Bagikan link ke siswa</p>
-                    <div id="soalContainer">
-                        <!-- Soal akan di-render JS -->
-                    </div>
                 </div>
             </div>
 
@@ -980,19 +923,7 @@
                 <button class="btn btn-primary btn-block" id="generateLaporanBtn">📊 Generate Laporan</button>
                 <div class="laporan-area" id="laporanArea" style="margin-top:10px;"><pre id="laporanContent">Silakan generate laporan terlebih dahulu.</pre></div>
                 <button class="btn btn-success btn-block mt-10" id="cetakLaporanBtn">🖨️ Cetak Laporan</button>
-            </div>
-
-            <!-- Tab Cetak -->
-            <div id="tab-cetak" class="tab-content">
-                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📑 Dokumen Lengkap</h4>
-                    <p style="font-size:13px;color:var(--text-light);">Gabungan LKPD + Refleksi + Laporan dalam satu dokumen siap cetak.</p>
-                </div>
-                <div class="form-group"><label>Dokumen Lengkap</label><textarea id="gabunganText" rows="12" readonly style="background:#F7FAFC;font-size:12px;font-family:'Courier New',monospace;"></textarea></div>
-                <div class="btn-group">
-                    <button class="btn btn-success" id="cetakPdfBtn">🖨️ Cetak / PDF</button>
-                    <button class="btn btn-warning" id="downloadWordBtn">📄 Download Word</button>
-                </div>
+                <button class="btn btn-warning btn-block mt-10" id="downloadLaporanWordBtn">📝 Download Laporan Word</button>
             </div>
 
             <button class="btn btn-danger btn-block mt-10 no-print" id="resetBtn">🔄 Reset Semua Data</button>
@@ -1006,10 +937,10 @@
 
     <script>
         // ================================================================
-        // DATA MATERI LENGKAP - DENGAN RPL FORMAT TABEL
+        // DATA MATERI LENGKAP
         // ================================================================
 
-        // ========== MATERI 1: KENALI DIRIMU, TEMUKAN POTENSIMU ==========
+        // ========== MATERI 1: KENALI DIRIMU ==========
         const materiKenaliDiri = {
             id: 701,
             judul: "Kenali Dirimu, Temukan Potensimu",
@@ -1054,150 +985,51 @@
             rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
-        +----------------------+--------------------------------------------------+
-        | A. SPESIFIKASI       |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Satuan Pendidikan | SMP                                               |
-        | 2. Nama Guru         |                                                   |
-        | 3. Kelas             | VII / Fase D                                      |
-        | 4. Waktu             | 60 menit                                          |
-        | 5. Materi Layanan    | Kenali Dirimu, Temukan Potensimu                  |
-        | 6. Bidang Bimbingan  | Pribadi dan Belajar                               |
-        +----------------------+--------------------------------------------------+
+        A. SPESIFIKASI
+        Satuan Pendidikan   : SMP
+        Nama Guru           : 
+        Kelas               : VII / Fase D
+        Waktu               : 60 menit
+        Materi Layanan      : Kenali Dirimu, Temukan Potensimu
+        Bidang Bimbingan    : Pribadi dan Belajar
 
-        +----------------------+--------------------------------------------------+
-        | B. IDENTIFIKASI      |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kesiapan Murid    | Pengetahuan Awal: Siswa telah memiliki           |
-        |                      | pengalaman mengikuti kegiatan belajar,            |
-        |                      | organisasi, ekstrakurikuler, maupun aktivitas     |
-        |                      | sosial di sekolah. Sebagian siswa sudah           |
-        |                      | mengenali beberapa hal yang disukai, tetapi      |
-        |                      | belum mampu menghubungkannya dengan potensi       |
-        |                      | diri. Sebagian siswa masih menilai dirinya        |
-        |                      | berdasarkan nilai akademik, prestasi, atau        |
-        |                      | perbandingan dengan teman.                        |
-        |                      |                                                   |
-        |                      | Kebutuhan: Mengenali minat, kekuatan,             |
-        |                      | pengalaman, nilai diri, dan respons terhadap      |
-        |                      | tantangan sebagai petunjuk potensi. Memahami      |
-        |                      | bahwa potensi berbeda pada setiap orang dan       |
-        |                      | dapat dikembangkan. Mengurangi kebiasaan          |
-        |                      | membandingkan diri secara tidak sehat.            |
-        |                      | Menentukan satu potensi yang ingin dikembangkan   |
-        |                      | dan langkah nyata untuk mengembangkannya.         |
-        +----------------------+--------------------------------------------------+
-        | 2. Karakteristik     | Jenis Pengetahuan: Pengetahuan Esensial:          |
-        |    Materi Layanan    | pengertian mengenal diri dan potensi serta        |
-        |                      | pentingnya pengenalan diri. Pengetahuan           |
-        |                      | Aplikatif: mengidentifikasi minat, kekuatan,      |
-        |                      | pengalaman, nilai diri, dan respons terhadap      |
-        |                      | tantangan; menganalisis studi kasus; serta        |
-        |                      | menyusun langkah pengembangan potensi.            |
-        |                      | Pengetahuan Nilai dan Karakter: percaya diri,     |
-        |                      | kemandirian, reflektif, menghargai keunikan       |
-        |                      | diri, terbuka terhadap umpan balik, dan mau       |
-        |                      | bertumbuh. Relevansi: sangat relevan karena       |
-        |                      | siswa perlu mengenali kekuatan dan arah           |
-        |                      | pengembangan dirinya dalam belajar, memilih       |
-        |                      | kegiatan, membangun relasi, merencanakan          |
-        |                      | karier, dan mengambil keputusan.                  |
-        +----------------------+--------------------------------------------------+
-        | 3. Dimensi Profil    | [V] Kemandirian   [V] Penalaran Kritis           |
-        |    Lulusan           | [V] Kolaborasi    [V] Komunikasi                 |
-        |                      | [V] Kreativitas                                   |
-        +----------------------+--------------------------------------------------+
+        B. IDENTIFIKASI
+        1. Kesiapan Murid:
+        Pengetahuan Awal: Siswa telah memiliki pengalaman mengikuti kegiatan belajar, organisasi, ekstrakurikuler, maupun aktivitas sosial di sekolah. Sebagian siswa sudah mengenali beberapa hal yang disukai, tetapi belum mampu menghubungkannya dengan potensi diri. Sebagian siswa masih menilai dirinya berdasarkan nilai akademik, prestasi, atau perbandingan dengan teman.
 
-        +----------------------+--------------------------------------------------+
-        | C. DESAIN LAYANAN    |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Capaian Layanan   | Siswa memahami karakteristik dirinya, mampu      |
-        |                      | mengenali potensi melalui minat, kekuatan,        |
-        |                      | pengalaman, nilai diri, dan respons terhadap      |
-        |                      | tantangan, serta mampu menentukan satu langkah    |
-        |                      | nyata untuk mengembangkan potensi secara          |
-        |                      | bertahap.                                         |
-        +----------------------+--------------------------------------------------+
-        | 2. Topik Layanan     | "Kenali Dirimu, Temukan Potensimu: Aku Punya      |
-        |    Kontekstual       | Kekuatan yang Bisa Dikembangkan!"                 |
-        +----------------------+--------------------------------------------------+
-        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan       |
-        |                      |    makna mengenal diri dan potensi. Siswa mampu   |
-        |                      |    menyebutkan sumber petunjuk potensi diri.      |
-        |                      |    Siswa mampu membedakan potensi dengan          |
-        |                      |    kemampuan yang sudah terlatih.                 |
-        |                      | b. Akomodasi (A): Siswa menyadari bahwa setiap    |
-        |                      |    individu memiliki kekuatan yang berbeda.       |
-        |                      |    Siswa menerima dirinya tanpa harus             |
-        |                      |    menyamakan diri dengan teman. Siswa memiliki   |
-        |                      |    keyakinan bahwa potensi dapat dikembangkan     |
-        |                      |    melalui pengalaman dan latihan.                |
-        |                      | c. Tindakan (P): Siswa mampu mengidentifikasi     |
-        |                      |    minimal tiga petunjuk potensi dirinya.         |
-        |                      |    Siswa mampu menganalisis studi kasus dan       |
-        |                      |    memberikan solusi yang relevan. Siswa mampu    |
-        |                      |    memilih satu potensi yang akan dikembangkan    |
-        |                      |    dan menyusun langkah pertama yang realistis.   |
-        +----------------------+--------------------------------------------------+
+        Kebutuhan: Mengenali minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan sebagai petunjuk potensi. Memahami bahwa potensi berbeda pada setiap orang dan dapat dikembangkan. Mengurangi kebiasaan membandingkan diri secara tidak sehat. Menentukan satu potensi yang ingin dikembangkan dan langkah nyata untuk mengembangkannya.
 
-        +----------------------+--------------------------------------------------+
-        | D. PENGALAMAN        |                                                  |
-        |    BELAJAR           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kegiatan Awal     | Guru memberi salam, mengajak berdoa, menanyakan  |
-        |    (10 menit)        | kabar, dan mengondisikan kelas. Guru              |
-        |                      | menyampaikan tujuan layanan dan manfaat           |
-        |                      | mengenal diri. Ice breaking "Aku Hebat            |
-        |                      | Karena...". Apersepsi melalui pertanyaan tentang  |
-        |                      | kegiatan yang disukai, hal yang sering dimintai   |
-        |                      | bantuan, dan situasi ketika siswa merasa          |
-        |                      | percaya diri.                                     |
-        +----------------------+--------------------------------------------------+
-        | 2. Kegiatan Inti     | Memahami: Guru menjelaskan pentingnya mengenal    |
-        |    (40 menit)        | diri dan makna potensi. Guru menjelaskan lima     |
-        |                      | petunjuk potensi: minat, kekuatan, pengalaman,    |
-        |                      | nilai diri, dan respons terhadap tantangan.       |
-        |                      | Guru membahas bahwa potensi tidak sama dengan     |
-        |                      | kemampuan yang sudah mahir. Guru mengenalkan      |
-        |                      | formula KENALI - COBA - KEMBANGKAN.               |
-        |                      |                                                   |
-        |                      | Mengaplikasi: Siswa dibagi menjadi kelompok       |
-        |                      | 4-5 orang. Guru memberikan studi kasus Raka.      |
-        |                      | Kelompok mengidentifikasi masalah, menemukan      |
-        |                      | petunjuk potensi Raka, menganalisis cara          |
-        |                      | berpikir Raka, dan memberikan saran. Siswa        |
-        |                      | mengerjakan LKPD "Jejak Potensiku". Siswa         |
-        |                      | melakukan aktivitas rekomendasi teman.            |
-        |                      | Beberapa kelompok menyampaikan hasil diskusi.     |
-        |                      |                                                   |
-        |                      | Merefleksi: Siswa menuliskan potensi yang mulai   |
-        |                      | dikenali. Siswa menuliskan bagian diri yang       |
-        |                      | ingin dikembangkan. Siswa menuliskan satu         |
-        |                      | langkah nyata yang akan dilakukan dalam satu      |
-        |                      | bulan ke depan.                                   |
-        +----------------------+--------------------------------------------------+
-        | 3. Kegiatan Penutup  | Siswa bersama guru menyimpulkan bahwa setiap     |
-        |    (10 menit)        | orang memiliki kekuatan yang berbeda dan potensi  |
-        |                      | perlu dikembangkan. Siswa melengkapi kalimat:     |
-        |                      | "Hari ini saya menyadari bahwa ...", "Potensi     |
-        |                      | yang ingin saya kembangkan ...", dan "Langkah     |
-        |                      | pertama saya ...". Guru menyampaikan kata bijak.  |
-        |                      | Layanan diakhiri dengan doa dan salam.            |
-        +----------------------+--------------------------------------------------+
+        2. Karakteristik Materi Layanan:
+        Jenis Pengetahuan: Pengetahuan Esensial: pengertian mengenal diri dan potensi serta pentingnya pengenalan diri. Pengetahuan Aplikatif: mengidentifikasi minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan; menganalisis studi kasus; serta menyusun langkah pengembangan potensi. Pengetahuan Nilai dan Karakter: percaya diri, kemandirian, reflektif, menghargai keunikan diri, terbuka terhadap umpan balik, dan mau bertumbuh.
 
-        +----------------------+--------------------------------------------------+
-        | E. ASESMEN           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Asesmen Awal      | Teknik: ice breaking "Aku Hebat Karena..." dan    |
-        |                      | apersepsi.                                        |
-        +----------------------+--------------------------------------------------+
-        | 2. Asesmen Proses    | Teknik: observasi partisipasi, kemampuan          |
-        |                      | mendengarkan, kualitas diskusi, kemampuan         |
-        |                      | menemukan petunjuk potensi dalam kasus.           |
-        +----------------------+--------------------------------------------------+
-        | 3. Asesmen Akhir     | Teknik: LKPD "Jejak Potensiku" dan refleksi       |
-        |                      | individu.                                         |
-        +----------------------+--------------------------------------------------+
+        Relevansi: sangat relevan karena siswa perlu mengenali kekuatan dan arah pengembangan dirinya dalam belajar, memilih kegiatan, membangun relasi, merencanakan karier, dan mengambil keputusan.
+
+        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis, Kolaborasi, Komunikasi, Kreativitas
+
+        C. DESAIN LAYANAN
+        1. Capaian Layanan: Siswa memahami karakteristik dirinya, mampu mengenali potensi melalui minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan, serta mampu menentukan satu langkah nyata untuk mengembangkan potensi secara bertahap.
+
+        2. Topik Layanan Kontekstual: "Kenali Dirimu, Temukan Potensimu: Aku Punya Kekuatan yang Bisa Dikembangkan!"
+
+        3. Tujuan Layanan:
+        a. Pengenalan (C): Siswa mampu menjelaskan makna mengenal diri dan potensi. Siswa mampu menyebutkan sumber petunjuk potensi diri. Siswa mampu membedakan potensi dengan kemampuan yang sudah terlatih.
+        b. Akomodasi (A): Siswa menyadari bahwa setiap individu memiliki kekuatan yang berbeda. Siswa menerima dirinya tanpa harus menyamakan diri dengan teman. Siswa memiliki keyakinan bahwa potensi dapat dikembangkan melalui pengalaman dan latihan.
+        c. Tindakan (P): Siswa mampu mengidentifikasi minimal tiga petunjuk potensi dirinya. Siswa mampu menganalisis studi kasus dan memberikan solusi yang relevan. Siswa mampu memilih satu potensi yang akan dikembangkan dan menyusun langkah pertama yang realistis.
+
+        D. PENGALAMAN BELAJAR
+        1. Kegiatan Awal (10 menit): Guru memberi salam, mengajak berdoa, menanyakan kabar, dan mengondisikan kelas. Guru menyampaikan tujuan layanan dan manfaat mengenal diri. Ice breaking "Aku Hebat Karena...". Apersepsi melalui pertanyaan tentang kegiatan yang disukai, hal yang sering dimintai bantuan, dan situasi ketika siswa merasa percaya diri.
+
+        2. Kegiatan Inti (40 menit):
+        Memahami: Guru menjelaskan pentingnya mengenal diri dan makna potensi. Guru menjelaskan lima petunjuk potensi: minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan. Guru membahas bahwa potensi tidak sama dengan kemampuan yang sudah mahir. Guru mengenalkan formula KENALI - COBA - KEMBANGKAN.
+        Mengaplikasi: Siswa dibagi menjadi kelompok 4-5 orang. Guru memberikan studi kasus Raka. Kelompok mengidentifikasi masalah, menemukan petunjuk potensi Raka, menganalisis cara berpikir Raka, dan memberikan saran. Siswa mengerjakan LKPD "Jejak Potensiku". Siswa melakukan aktivitas rekomendasi teman. Beberapa kelompok menyampaikan hasil diskusi.
+        Merefleksi: Siswa menuliskan potensi yang mulai dikenali. Siswa menuliskan bagian diri yang ingin dikembangkan. Siswa menuliskan satu langkah nyata yang akan dilakukan dalam satu bulan ke depan.
+
+        3. Kegiatan Penutup (10 menit): Siswa bersama guru menyimpulkan bahwa setiap orang memiliki kekuatan yang berbeda dan potensi perlu dikembangkan. Siswa melengkapi kalimat: "Hari ini saya menyadari bahwa ...", "Potensi yang ingin saya kembangkan ...", dan "Langkah pertama saya ...". Guru menyampaikan kata bijak. Layanan diakhiri dengan doa dan salam.
+
+        E. ASESMEN
+        1. Asesmen Awal: Teknik: ice breaking "Aku Hebat Karena..." dan apersepsi.
+        2. Asesmen Proses: Teknik: observasi partisipasi, kemampuan mendengarkan, kualitas diskusi, kemampuan menemukan petunjuk potensi dalam kasus.
+        3. Asesmen Akhir: Teknik: LKPD "Jejak Potensiku" dan refleksi individu.
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
         1. Bangun Pagi: Mendorong siswa memulai aktivitas secara teratur.
@@ -1259,29 +1091,10 @@
         (tulis untuk satu teman di kelompokmu)
         _______________________________________________________________
 
-        Kata Bijak: "Jangan sibuk mencari siapa yang paling hebat. Kenali dirimu, temukan kekuatanmu, lalu kembangkan menjadi sesuatu yang bermanfaat."`,
-            kuis: {
-                soal: [
-                    { q: "Apa yang paling penting dari 'Kenali Dirimu, Temukan Potensimu'?", options: [
-                            "Menghafal teori", "Memahami dan menerapkan", "Mengerjakan tugas", "Mendapat nilai"
-                        ] },
-                    { q: "Bagaimana perasaanmu setelah mempelajari materi ini?", options: ["Biasa saja",
-                            "Senang dan termotivasi", "Bingung", "Tidak peduli"
-                        ] },
-                    { q: "Apa yang akan kamu lakukan setelah mempelajari materi ini?", options: ["Melupakan",
-                            "Menerapkan dalam kehidupan", "Menunggu tugas", "Tidak melakukan apa-apa"
-                        ] },
-                    { q: "Apa tantangan terbesar dalam menerapkan materi ini?", options: ["Tidak ada", "Konsistensi",
-                            "Tidak tahu caranya", "Malas"
-                        ] },
-                    { q: "Siapa yang bisa membantumu menerapkan materi ini?", options: ["Teman",
-                            "Guru dan orang tua", "Sendiri", "Tidak perlu"
-                        ] }
-                ]
-            }
+        Kata Bijak: "Jangan sibuk mencari siapa yang paling hebat. Kenali dirimu, temukan kekuatanmu, lalu kembangkan menjadi sesuatu yang bermanfaat."`
         };
 
-        // ========== MATERI 2: AKU BANGGA MENJADI SISWA SMP ==========
+        // ========== MATERI 2: AKU BANGGA ==========
         const materiAkuBangga = {
             id: 702,
             judul: "Aku Bangga Menjadi Siswa SMP",
@@ -1337,149 +1150,51 @@
             rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
-        +----------------------+--------------------------------------------------+
-        | A. SPESIFIKASI       |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Satuan Pendidikan | SMP Negeri                                       |
-        | 2. Nama Guru         |                                                   |
-        | 3. Kelas             | VII / Fase D                                      |
-        | 4. Waktu             | 60 menit                                          |
-        | 5. Materi Layanan    | Aku Bangga Menjadi Siswa SMP                      |
-        | 6. Bidang Bimbingan  | Pribadi                                           |
-        +----------------------+--------------------------------------------------+
+        A. SPESIFIKASI
+        Satuan Pendidikan   : SMP
+        Nama Guru           : 
+        Kelas               : VII / Fase D
+        Waktu               : 60 menit
+        Materi Layanan      : Aku Bangga Menjadi Siswa SMP
+        Bidang Bimbingan    : Pribadi
 
-        +----------------------+--------------------------------------------------+
-        | B. IDENTIFIKASI      |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kesiapan Murid    | a. Pengetahuan Awal: Murid baru kelas VII        |
-        |                      |    mengalami transisi status dari siswa SD       |
-        |                      |    menjadi siswa SMP, yang membawa perubahan     |
-        |                      |    tanggung jawab, tuntutan kemandirian, dan     |
-        |                      |    lingkungan yang lebih luas. Sebagian murid    |
-        |                      |    merasa bangga dan antusias dengan status      |
-        |                      |    barunya, namun ada pula yang masih merasa     |
-        |                      |    canggung, belum percaya diri, atau bahkan     |
-        |                      |    rindu suasana SD sehingga belum sepenuhnya    |
-        |                      |    menerima peran barunya sebagai siswa SMP.     |
-        |                      |                                                   |
-        |                      | b. Kebutuhan Belajar: Suasana yang menumbuhkan   |
-        |                      |    rasa bangga dan percaya diri. Contoh konkret  |
-        |                      |    peran dan tanggung jawab sebagai siswa SMP.   |
-        |                      |    Kesempatan merefleksikan perasaan dan         |
-        |                      |    harapan terhadap status baru. Media yang      |
-        |                      |    menarik (yel-yel, simbol identitas, papan     |
-        |                      |    afirmasi).                                     |
-        +----------------------+--------------------------------------------------+
-        | 2. Karakteristik     | a. Jenis Pengetahuan: Pengetahuan Esensial       |
-        |    Materi Layanan    |    (perubahan status, peran, dan tanggung        |
-        |                      |    jawab sebagai siswa SMP). Pengetahuan         |
-        |                      |    Aplikatif (cara menumbuhkan rasa percaya      |
-        |                      |    diri dan sikap positif terhadap identitas     |
-        |                      |    baru). Pengetahuan Nilai dan Karakter         |
-        |                      |    (bangga, tanggung jawab, semangat, dan rasa   |
-        |                      |    memiliki terhadap sekolah).                    |
-        |                      |                                                   |
-        |                      | b. Relevansi: Sangat relevan, karena penerimaan  |
-        |                      |    diri terhadap status dan peran baru sebagai   |
-        |                      |    siswa SMP akan mendorong semangat belajar,    |
-        |                      |    rasa percaya diri, dan kesiapan menghadapi    |
-        |                      |    tantangan di jenjang pendidikan yang baru.    |
-        +----------------------+--------------------------------------------------+
-        | 3. Dimensi Profil    | [V] Iman & Takwa pada Tuhan YME [V] Kewargaan    |
-        |    Lulusan           | [V] Kemandirian                                   |
-        +----------------------+--------------------------------------------------+
+        B. IDENTIFIKASI
+        1. Kesiapan Murid:
+        Pengetahuan Awal: Murid baru kelas VII mengalami transisi status dari siswa SD menjadi siswa SMP, yang membawa perubahan tanggung jawab, tuntutan kemandirian, dan lingkungan yang lebih luas. Sebagian murid merasa bangga dan antusias dengan status barunya, namun ada pula yang masih merasa canggung, belum percaya diri, atau bahkan rindu suasana SD sehingga belum sepenuhnya menerima peran barunya sebagai siswa SMP.
 
-        +----------------------+--------------------------------------------------+
-        | C. DESAIN LAYANAN    |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Capaian Layanan   | Siswa memahami perubahan peran dan tanggung      |
-        |                      | jawab sebagai siswa SMP, mampu menumbuhkan       |
-        |                      | rasa bangga dan percaya diri terhadap status     |
-        |                      | barunya, serta menunjukkan sikap positif dalam   |
-        |                      | menjalani kehidupan sekolah sebagai siswa SMP.   |
-        +----------------------+--------------------------------------------------+
-        | 2. Topik Layanan     | "Aku Bangga Menjadi Siswa SMP"                   |
-        |    Kontekstual       |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan       |
-        |                      |    perbedaan peran dan tanggung jawab antara     |
-        |                      |    siswa SD dan siswa SMP. Siswa mampu           |
-        |                      |    mengidentifikasi hal-hal yang membanggakan    |
-        |                      |    dari menjadi siswa SMP.                       |
-        |                      | b. Akomodasi (A): Siswa mampu menumbuhkan rasa   |
-        |                      |    bangga, percaya diri, dan rasa memiliki       |
-        |                      |    terhadap status dan sekolah barunya.          |
-        |                      | c. Tindakan (P): Siswa mampu menunjukkan sikap   |
-        |                      |    dan perilaku positif sebagai wujud            |
-        |                      |    kebanggaan menjadi siswa SMP dalam            |
-        |                      |    kehidupan sehari-hari di sekolah.             |
-        +----------------------+--------------------------------------------------+
+        Kebutuhan Belajar: Suasana yang menumbuhkan rasa bangga dan percaya diri. Contoh konkret peran dan tanggung jawab sebagai siswa SMP. Kesempatan merefleksikan perasaan dan harapan terhadap status baru. Media yang menarik (yel-yel, simbol identitas, papan afirmasi).
 
-        +----------------------+--------------------------------------------------+
-        | D. PENGALAMAN        |                                                  |
-        |    BELAJAR           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kegiatan Awal     | - Guru memberi salam, mengajak berdoa,           |
-        |    (10 menit)        |   menanyakan kabar murid.                        |
-        |                      | - Mengabsen dan mengapresiasi kehadiran.         |
-        |                      | - Menyampaikan tujuan layanan.                   |
-        |                      | - Ice breaking: "tepuk bangga" atau "yel-yel     |
-        |                      |   semangat SMP" agar suasana lebih cair.         |
-        |                      | - Apersepsi: "Apa yang kalian rasakan sekarang   |
-        |                      |   setelah resmi menjadi siswa SMP?"              |
-        +----------------------+--------------------------------------------------+
-        | 2. Kegiatan Inti     | Memahami: Guru mengajak murid membandingkan      |
-        |    (40 menit)        | gambaran kehidupan sebagai siswa SD dan siswa    |
-        |                      | SMP, dari segi tanggung jawab, kegiatan, dan     |
-        |                      | harapan. Murid diajak berdiskusi tentang         |
-        |                      | perubahan apa saja yang mereka rasakan. Guru     |
-        |                      | membagi murid menjadi kelompok kecil. Tiap       |
-        |                      | kelompok mendiskusikan hal-hal yang              |
-        |                      | membanggakan dan tantangan menjadi siswa SMP.    |
-        |                      |                                                   |
-        |                      | Mengaplikasi: Tiap murid menuliskan pada kartu   |
-        |                      | afirmasi tentang alasan mengapa ia bangga        |
-        |                      | menjadi siswa SMP dan apa yang ingin             |
-        |                      | dicapainya. Tiap kelompok menyusun yel-yel atau  |
-        |                      | simbol kebanggaan kelas sebagai wujud identitas  |
-        |                      | dan semangat kebersamaan. Guru mendampingi       |
-        |                      | kelompok yang kesulitan.                         |
-        |                      |                                                   |
-        |                      | Merefleksi: Tiap kelompok menampilkan             |
-        |                      | yel-yel/simbol kebanggaan yang telah dibuat di   |
-        |                      | depan kelas. Guru memberi penguatan tentang      |
-        |                      | pentingnya menjaga nama baik sekolah dan diri    |
-        |                      | sendiri. Diskusi reflektif: "Sikap apa yang      |
-        |                      | perlu kalian tunjukkan agar bisa dibanggakan     |
-        |                      | sebagai siswa SMP?" Murid menuliskan komitmen    |
-        |                      | pribadi untuk berperilaku positif sebagai        |
-        |                      | siswa SMP.                                       |
-        +----------------------+--------------------------------------------------+
-        | 3. Kegiatan Penutup  | - Murid bersama-sama menyimpulkan isi layanan.   |
-        |    (10 menit)        | - Guru memberi motivasi untuk terus bangga dan   |
-        |                      |   bersemangat menjalani kehidupan sebagai siswa  |
-        |                      |   SMP.                                           |
-        |                      | - Informasi kegiatan lanjutan: menerapkan sikap  |
-        |                      |   dan perilaku positif yang mencerminkan         |
-        |                      |   kebanggaan sebagai siswa SMP dalam keseharian. |
-        |                      | - Penutup dengan doa dan salam.                  |
-        +----------------------+--------------------------------------------------+
+        2. Karakteristik Materi Layanan:
+        Jenis Pengetahuan: Pengetahuan Esensial (perubahan status, peran, dan tanggung jawab sebagai siswa SMP). Pengetahuan Aplikatif (cara menumbuhkan rasa percaya diri dan sikap positif terhadap identitas baru). Pengetahuan Nilai dan Karakter (bangga, tanggung jawab, semangat, dan rasa memiliki terhadap sekolah).
 
-        +----------------------+--------------------------------------------------+
-        | E. ASESMEN           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Asesmen Awal      | Teknik: Kuesioner singkat tentang perasaan dan   |
-        |                      | harapan siswa terhadap status barunya sebagai    |
-        |                      | siswa SMP.                                       |
-        +----------------------+--------------------------------------------------+
-        | 2. Asesmen Proses    | Teknik: Observasi keaktifan, antusiasme, dan     |
-        |                      | kerja sama siswa dalam diskusi serta penyusunan  |
-        |                      | yel-yel/simbol kebanggaan.                       |
-        +----------------------+--------------------------------------------------+
-        | 3. Asesmen Akhir     | Teknik: Kuesioner tertutup (pemahaman peran      |
-        |                      | sebagai siswa SMP dan komitmen berperilaku       |
-        |                      | positif).                                        |
-        +----------------------+--------------------------------------------------+
+        Relevansi: Sangat relevan, karena penerimaan diri terhadap status dan peran baru sebagai siswa SMP akan mendorong semangat belajar, rasa percaya diri, dan kesiapan menghadapi tantangan di jenjang pendidikan yang baru.
+
+        3. Dimensi Profil Lulusan: Iman & Takwa pada Tuhan YME, Kewargaan, Kemandirian
+
+        C. DESAIN LAYANAN
+        1. Capaian Layanan: Siswa memahami perubahan peran dan tanggung jawab sebagai siswa SMP, mampu menumbuhkan rasa bangga dan percaya diri terhadap status barunya, serta menunjukkan sikap positif dalam menjalani kehidupan sekolah sebagai siswa SMP.
+
+        2. Topik Layanan Kontekstual: "Aku Bangga Menjadi Siswa SMP"
+
+        3. Tujuan Layanan:
+        a. Pengenalan (C): Siswa mampu menjelaskan perbedaan peran dan tanggung jawab antara siswa SD dan siswa SMP. Siswa mampu mengidentifikasi hal-hal yang membanggakan dari menjadi siswa SMP.
+        b. Akomodasi (A): Siswa mampu menumbuhkan rasa bangga, percaya diri, dan rasa memiliki terhadap status dan sekolah barunya.
+        c. Tindakan (P): Siswa mampu menunjukkan sikap dan perilaku positif sebagai wujud kebanggaan menjadi siswa SMP dalam kehidupan sehari-hari di sekolah.
+
+        D. PENGALAMAN BELAJAR
+        1. Kegiatan Awal (10 menit): Guru memberi salam, mengajak berdoa, menanyakan kabar murid. Mengabsen dan mengapresiasi kehadiran. Menyampaikan tujuan layanan. Ice breaking: "tepuk bangga" atau "yel-yel semangat SMP". Apersepsi: "Apa yang kalian rasakan sekarang setelah resmi menjadi siswa SMP?"
+
+        2. Kegiatan Inti (40 menit):
+        Memahami: Guru mengajak murid membandingkan gambaran kehidupan sebagai siswa SD dan siswa SMP, dari segi tanggung jawab, kegiatan, dan harapan. Murid diajak berdiskusi tentang perubahan apa saja yang mereka rasakan. Guru membagi murid menjadi kelompok kecil. Tiap kelompok mendiskusikan hal-hal yang membanggakan dan tantangan menjadi siswa SMP.
+        Mengaplikasi: Tiap murid menuliskan pada kartu afirmasi tentang alasan mengapa ia bangga menjadi siswa SMP dan apa yang ingin dicapainya. Tiap kelompok menyusun yel-yel atau simbol kebanggaan kelas sebagai wujud identitas dan semangat kebersamaan. Guru mendampingi kelompok yang kesulitan.
+        Merefleksi: Tiap kelompok menampilkan yel-yel/simbol kebanggaan yang telah dibuat di depan kelas. Guru memberi penguatan tentang pentingnya menjaga nama baik sekolah dan diri sendiri. Diskusi reflektif: "Sikap apa yang perlu kalian tunjukkan agar bisa dibanggakan sebagai siswa SMP?" Murid menuliskan komitmen pribadi untuk berperilaku positif sebagai siswa SMP.
+
+        3. Kegiatan Penutup (10 menit): Murid bersama-sama menyimpulkan isi layanan. Guru memberi motivasi untuk terus bangga dan bersemangat menjalani kehidupan sebagai siswa SMP. Informasi kegiatan lanjutan: menerapkan sikap dan perilaku positif yang mencerminkan kebanggaan sebagai siswa SMP dalam keseharian. Penutup dengan doa dan salam.
+
+        E. ASESMEN
+        1. Asesmen Awal: Teknik: Kuesioner singkat tentang perasaan dan harapan siswa terhadap status barunya sebagai siswa SMP.
+        2. Asesmen Proses: Teknik: Observasi keaktifan, antusiasme, dan kerja sama siswa dalam diskusi serta penyusunan yel-yel/simbol kebanggaan.
+        3. Asesmen Akhir: Teknik: Kuesioner tertutup (pemahaman peran sebagai siswa SMP dan komitmen berperilaku positif).
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
         1. Bangun Pagi: Datang tepat waktu sebagai wujud tanggung jawab siswa SMP.
@@ -1544,31 +1259,11 @@
         _________________________________________________
         _________________________________________________
 
-        "Aku bangga menjadi siswa SMP!"`,
-            kuis: {
-                soal: [
-                    { q: "Apa perbedaan utama antara siswa SD dan siswa SMP?", options: ["Seragam berbeda",
-                            "Tanggung jawab lebih besar", "Teman lebih banyak", "Guru lebih galak"
-                        ] },
-                    { q: "Apa yang harus dilakukan untuk menjaga nama baik sekolah?", options: [
-                            "Berperilaku sopan", "Mendapat nilai tinggi", "Ikut lomba", "Berteman dengan semua orang"
-                        ] },
-                    { q: "Bagaimana cara menumbuhkan rasa bangga menjadi siswa SMP?", options: [
-                            "Mengikuti kegiatan sekolah", "Membandingkan diri", "Menghindari tanggung jawab",
-                            "Mengeluh terus"
-                        ] },
-                    { q: "Apa tantangan terbesar menjadi siswa SMP?", options: ["Adaptasi", "Nilai sulit",
-                            "Teman banyak", "Guru killer"
-                        ] },
-                    { q: "Sikap apa yang harus ditunjukkan sebagai siswa SMP?", options: ["Percaya diri",
-                            "Minder", "Menyendiri", "Acuh tak acuh"
-                        ] }
-                ]
-            }
+        "Aku bangga menjadi siswa SMP!"`
         };
 
         // ================================================================
-        // DATA MATERI LAINNYA (GENERATE OTOMATIS)
+        // GENERATE MATERI LAIN
         // ================================================================
 
         function generateMateriLain(judulList, bidangList, studiKasusList, prefix, kelas, semester) {
@@ -1618,55 +1313,33 @@
                 const rpl = `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
-        +----------------------+--------------------------------------------------+
-        | A. SPESIFIKASI       |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Satuan Pendidikan | SMP                                               |
-        | 2. Nama Guru         |                                                   |
-        | 3. Kelas             | ${kelas}                                          |
-        | 4. Waktu             | 60 menit                                          |
-        | 5. Materi Layanan    | ${judul}                                          |
-        | 6. Bidang Bimbingan  | ${bidang}                                         |
-        +----------------------+--------------------------------------------------+
+        A. SPESIFIKASI
+        Satuan Pendidikan   : SMP
+        Nama Guru           : 
+        Kelas               : ${kelas}
+        Waktu               : 60 menit
+        Materi Layanan      : ${judul}
+        Bidang Bimbingan    : ${bidang}
 
-        +----------------------+--------------------------------------------------+
-        | B. IDENTIFIKASI      |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kesiapan Murid    | Murid ${kelas} perlu memahami ${judul.toLowerCase()}. |
-        | 2. Karakteristik     | Konsep dan penerapan.                             |
-        |    Materi Layanan    |                                                  |
-        | 3. Dimensi Profil    | Kemandirian, Penalaran Kritis                     |
-        |    Lulusan           |                                                  |
-        +----------------------+--------------------------------------------------+
+        B. IDENTIFIKASI
+        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
+        2. Karakteristik Materi: Konsep dan penerapan.
+        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis
 
-        +----------------------+--------------------------------------------------+
-        | C. DESAIN LAYANAN    |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Capaian Layanan   | Murid mampu memahami dan menerapkan.              |
-        | 2. Topik Layanan     | "${judul} untuk Masa Depan Lebih Baik"            |
-        |    Kontekstual       |                                                  |
-        | 3. Tujuan Layanan    | Memahami dan menerapkan.                          |
-        +----------------------+--------------------------------------------------+
+        C. DESAIN LAYANAN
+        1. Capaian: Murid mampu memahami dan menerapkan.
+        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
+        3. Tujuan: Memahami dan menerapkan.
 
-        +----------------------+--------------------------------------------------+
-        | D. PENGALAMAN        |                                                  |
-        |    BELAJAR           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Kegiatan Awal     | Ice breaking, apersepsi, tujuan.                  |
-        |    (10 menit)        |                                                  |
-        | 2. Kegiatan Inti     | Materi, LKPD, diskusi, refleksi.                  |
-        |    (40 menit)        |                                                  |
-        | 3. Kegiatan Penutup  | Kesimpulan, komitmen, doa.                        |
-        |    (10 menit)        |                                                  |
-        +----------------------+--------------------------------------------------+
+        D. PENGALAMAN BELAJAR
+        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
+        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
+        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
 
-        +----------------------+--------------------------------------------------+
-        | E. ASESMEN           |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Asesmen Awal      | Tanya jawab                                       |
-        | 2. Asesmen Proses    | Observasi                                         |
-        | 3. Asesmen Akhir     | LKPD dan Refleksi                                 |
-        +----------------------+--------------------------------------------------+
+        E. ASESMEN
+        1. Asesmen Awal: Tanya jawab
+        2. Asesmen Proses: Observasi
+        3. Asesmen Akhir: LKPD dan Refleksi
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
         1. Bangun Pagi
@@ -1739,31 +1412,15 @@
                     rpl: rpl,
                     aktivitas: aktivitas,
                     refleksi: refleksi,
-                    kuis: {
-                        soal: [
-                            { q: `Apa yang paling penting dari "${judul}"?`, options: ["Menghafal",
-                                    "Memahami dan menerapkan", "Mengerjakan tugas", "Mendapat nilai"
-                                ] },
-                            { q: `Bagaimana perasaanmu setelah mempelajari "${judul}"?`, options: ["Biasa saja",
-                                    "Senang dan termotivasi", "Bingung", "Tidak peduli"
-                                ] },
-                            { q: `Apa yang akan kamu lakukan setelah ini?`, options: ["Melupakan",
-                                    "Menerapkan dalam kehidupan", "Menunggu tugas", "Tidak melakukan apa-apa"
-                                ] },
-                            { q: `Apa tantangan dalam menerapkan "${judul}"?`, options: ["Tidak ada", "Konsistensi",
-                                    "Tidak tahu caranya", "Malas"
-                                ] },
-                            { q: `Siapa yang bisa membantumu?`, options: ["Teman", "Guru dan orang tua", "Sendiri",
-                                    "Tidak perlu"
-                                ] }
-                        ]
-                    }
+                    lkpd: aktivitas
                 });
             }
             return result;
         }
 
-        // ==================== DATA JUDUL MATERI SEMUA KELAS ====================
+        // ================================================================
+        // DATA MATERI
+        // ================================================================
 
         const judulSMP7S1Lain = [
             "Membangun Kepercayaan Diri di Sekolah Baru",
@@ -1826,7 +1483,7 @@
         ];
 
         // ================================================================
-        // GABUNGKAN SEMUA DATA
+        // GABUNGKAN DATA
         // ================================================================
 
         const smp7s1Data = [
@@ -2341,34 +1998,29 @@
         const materiDisplay = document.getElementById('materiDisplay');
         const rplContent = document.getElementById('rplContent');
         const lkpdText = document.getElementById('lkpdText');
-        const hasilSiswa = document.getElementById('hasilSiswa');
         const gabunganText = document.getElementById('gabunganText');
         const lkpdFile = document.getElementById('lkpdFile');
-        const linkLkpd = document.getElementById('linkLkpd');
+        const linkLkpdHp = document.getElementById('linkLkpdHp');
+        const bukaLinkHp = document.getElementById('bukaLinkHp');
         const jumlahSiswa = document.getElementById('jumlahSiswa');
         const catatanKegiatan = document.getElementById('catatanKegiatan');
         const laporanContent = document.getElementById('laporanContent');
         const refleksiContainer = document.getElementById('refleksiContainer');
         const refleksiResult = document.getElementById('refleksiResult');
         const refleksiStatus = document.getElementById('refleksiStatus');
-        const kuisLink = document.getElementById('kuisLink');
-        const bukaKuisLink = document.getElementById('bukaKuisLink');
-        const previewJudul = document.getElementById('previewJudul');
-        const soalContainer = document.getElementById('soalContainer');
 
         const saveLkpdBtn = document.getElementById('saveLkpdBtn');
         const simpanRefleksiBtn = document.getElementById('simpanRefleksiBtn');
         const cetakRefleksiBtn = document.getElementById('cetakRefleksiBtn');
         const cetakLkpdBtn = document.getElementById('cetakLkpdBtn');
-        const cetakPdfBtn = document.getElementById('cetakPdfBtn');
-        const downloadWordBtn = document.getElementById('downloadWordBtn');
+        const downloadLkpdWordBtn = document.getElementById('downloadLkpdWordBtn');
+        const downloadRefleksiWordBtn = document.getElementById('downloadRefleksiWordBtn');
+        const downloadLaporanWordBtn = document.getElementById('downloadLaporanWordBtn');
         const downloadMateriPdf = document.getElementById('downloadMateriPdf');
         const downloadMateriWord = document.getElementById('downloadMateriWord');
         const downloadRplPdf = document.getElementById('downloadRplPdf');
         const downloadRplWord = document.getElementById('downloadRplWord');
         const resetBtn = document.getElementById('resetBtn');
-        const copyLinkBtn = document.getElementById('copyLinkBtn');
-        const generateLinkBtn = document.getElementById('generateLinkBtn');
         const generateLaporanBtn = document.getElementById('generateLaporanBtn');
         const cetakLaporanBtn = document.getElementById('cetakLaporanBtn');
 
@@ -2382,13 +2034,9 @@
         const tabContents = {
             lkpd: document.getElementById('tab-lkpd'),
             refleksi: document.getElementById('tab-refleksi'),
-            bagikan: document.getElementById('tab-bagikan'),
-            kuis: document.getElementById('tab-kuis'),
-            laporan: document.getElementById('tab-laporan'),
-            cetak: document.getElementById('tab-cetak')
+            laporan: document.getElementById('tab-laporan')
         };
 
-        // Hitung total materi
         let totalMateri = 0;
         for (const jenjang in materiDatabase) {
             for (const kelas in materiDatabase[jenjang]) {
@@ -2452,7 +2100,6 @@
                 return;
             }
 
-            // Tampilkan materi
             const studiKasusMatch = m.aktivitas ? m.aktivitas.match(/STUDI KASUS\n([\s\S]*?)(?=\n\n|$)/) : null;
             const studiKasusText = studiKasusMatch ? studiKasusMatch[1].trim() : '';
 
@@ -2468,28 +2115,26 @@
                 <h4>🏷️ Topik</h4><p><em>${m.topik || 'Belum tersedia'}</em></p>
             `;
 
-            // RPL dengan format tabel
             let rpl = m.rpl || 'RPL belum tersedia.';
-            // Ganti placeholder
             rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
             rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
             rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas || ''}`);
             rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
             rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul || ''}`);
             rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang || ''}`);
-            // Hapus garis berlebih
-            rpl = rpl.replace(/───+/g, '');
-            rpl = rpl.replace(/─+/g, '');
-            rpl = rpl.replace(/━+/g, '');
-            rpl = rpl.replace(/⎯+/g, '');
             rplContent.textContent = rpl;
 
-            // LKPD
             if (m.lkpd) {
                 lkpdText.value = m.lkpd;
             } else {
                 lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
             }
+
+            // Update link HP
+            const baseUrl = 'https://forms.google.com/';
+            const linkId = m.id || Math.random().toString(36).substring(2, 8);
+            linkLkpdHp.value = baseUrl + linkId;
+            bukaLinkHp.href = baseUrl + linkId;
 
             // REFLEKSI
             if (m.refleksi) {
@@ -2547,38 +2192,12 @@
                     `<p style="color:var(--text-light);text-align:center;padding:10px;">Refleksi belum tersedia.</p>`;
             }
 
-            // Update KUIS
-            previewJudul.textContent = m.judul || 'Materi';
-            if (m.kuis && m.kuis.soal) {
-                let html = '';
-                m.kuis.soal.forEach((s, i) => {
-                    html += `<div style="margin:6px 0;padding:6px 10px;background:white;border-radius:6px;border-left:3px solid #4A6CF7;">
-                        <div style="font-weight:600;font-size:12px;">${i+1}. ${s.q}</div>
-                        <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:11px;padding-left:10px;color:#5a4a6a;">
-                            ${s.options.map(o => `<span style="background:#f0ecf5;padding:1px 10px;border-radius:10px;">${o}</span>`).join('')}
-                        </div>
-                    </div>`;
-                });
-                soalContainer.innerHTML = html;
-            } else {
-                soalContainer.innerHTML = '<p style="color:#9a8aaa;font-size:12px;">Belum ada kuis untuk materi ini</p>';
-            }
-
-            // Update link kuis
-            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
-            const kuisId = m.id || Math.random().toString(36).substring(2, 8);
-            kuisLink.value = baseUrl + kuisId;
-            bukaKuisLink.href = baseUrl + kuisId;
-
-            const materiId = m.id || Math.random().toString(36).substring(2, 8);
-            linkLkpd.value = `https://nafas-bk.com/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
             updateGabungan();
         }
 
         function updateGabungan() {
             const lkpd = lkpdText.value.trim() || 'LKPD belum diisi.';
             const m = getMateri(parseInt(materiSelect.value));
-            const hasil = hasilSiswa.value.trim() || 'Hasil siswa belum diisi.';
             const laporan = laporanContent.textContent || 'Laporan belum dibuat.';
             const refleksi = document.getElementById('refleksiText') ? document.getElementById('refleksiText').value.trim() ||
                 'Refleksi belum diisi.' : 'Refleksi belum tersedia.';
@@ -2601,7 +2220,6 @@
             gabunganText.value = header +
                 `\n📄 LKPD\n${'='.repeat(60)}\n${lkpd}\n\n` +
                 `📝 REFLEKSI DIRI (Mode Non-HP)\n${'='.repeat(60)}\n${refleksi}\n\n` +
-                `📊 HASIL SISWA\n${'='.repeat(60)}\n${hasil}\n\n` +
                 `📋 RPL\n${'='.repeat(60)}\n${rplContent.textContent}\n\n` +
                 `📊 LAPORAN\n${'='.repeat(60)}\n${laporan}`;
         }
@@ -2612,7 +2230,6 @@
             const targetBtn = Array.from(tabBtns).find(b => b.dataset.tab === tabId);
             if (targetBtn) targetBtn.classList.add('active');
             if (tabContents[tabId]) tabContents[tabId].classList.add('active');
-            if (tabId === 'cetak') updateGabungan();
             if (tabId === 'laporan') generateLaporan();
         }
 
@@ -2624,6 +2241,32 @@
 
         function hideModal() { modalOverlay.classList.remove('active'); }
 
+        // ================================================================
+        // FUNGSI LINK HP
+        // ================================================================
+        function copyLinkHp() {
+            const link = linkLkpdHp.value;
+            navigator.clipboard.writeText(link).then(() => {
+                showModal('📋 Berhasil', 'Link Google Form berhasil disalin! Bagikan ke siswa.');
+            }).catch(() => {
+                linkLkpdHp.select();
+                document.execCommand('copy');
+                showModal('📋 Berhasil', 'Link Google Form berhasil disalin!');
+            });
+        }
+
+        function generateLinkHp() {
+            const random = Math.floor(Math.random() * 10000);
+            const baseUrl = 'https://forms.google.com/';
+            const newLink = baseUrl + random;
+            linkLkpdHp.value = newLink;
+            bukaLinkHp.href = newLink;
+            showModal('🔄 Link Baru', 'Link Google Form baru telah dibuat!');
+        }
+
+        // ================================================================
+        // FUNGSI GENERATE LAPORAN
+        // ================================================================
         function generateLaporan() {
             const m = getMateri(parseInt(materiSelect.value));
             const namaGuru = namaGuruEl.value || '_______________';
@@ -2691,29 +2334,6 @@
             laporanContent.textContent = laporan;
             updateGabungan();
             return laporan;
-        }
-
-        // ================================================================
-        // FUNGSI KUIS
-        // ================================================================
-        function copyKuisLink() {
-            const link = kuisLink.value;
-            navigator.clipboard.writeText(link).then(() => {
-                showModal('📋 Berhasil', 'Link kuis berhasil disalin! Bagikan ke siswa.');
-            }).catch(() => {
-                kuisLink.select();
-                document.execCommand('copy');
-                showModal('📋 Berhasil', 'Link kuis berhasil disalin!');
-            });
-        }
-
-        function generateKuisLink() {
-            const random = Math.floor(Math.random() * 10000);
-            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
-            const newLink = baseUrl + random;
-            kuisLink.value = newLink;
-            bukaKuisLink.href = newLink;
-            showModal('🔄 Link Baru', 'Link kuis baru telah dibuat!');
         }
 
         // ================================================================
@@ -2892,6 +2512,280 @@
         }
 
         // ================================================================
+        // DOWNLOAD WORD FUNGSI
+        // ================================================================
+
+        function downloadLkpdWord() {
+            const content = lkpdText.value.trim() || 'LKPD belum diisi.';
+            if (!content || content === 'LKPD belum diisi.') { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
+            const m = getMateri(parseInt(materiSelect.value));
+            const title = m ? m.judul : 'LKPD';
+            const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head><meta charset="utf-8"><title>LKPD - ${title}</title>
+        <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:800px;margin:auto;}
+        h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+        pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12pt;}
+        .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+        .identitas{display:flex;gap:20px;margin:10px 0;flex-wrap:wrap;}
+        .identitas div{display:flex;align-items:center;gap:5px;}
+        .garis{display:inline-block;width:120px;border-bottom:1px solid #999;}
+        </style>
+        </head>
+        <body>
+            <h1>📘 NaFaS BK - LKPD</h1>
+            <p><strong>${title}</strong></p>
+            <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+            <p>Nama Guru: ${namaGuruEl.value || '_______________'}</p>
+            <div class="identitas">
+                <div><strong>Nama :</strong> <span class="garis"></span></div>
+                <div><strong>Kelas :</strong> <span class="garis"></span></div>
+                <div><strong>Tanggal :</strong> <span class="garis"></span></div>
+            </div>
+            <pre>${content}</pre>
+            <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+        </body>
+        </html>`;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NaFaS_BK_LKPD_${title.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadRefleksiWord() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi dulu.'); return; }
+            if (!m.refleksi) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
+            const content = m.refleksi;
+            const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head><meta charset="utf-8"><title>Refleksi - ${m.judul}</title>
+        <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:800px;margin:auto;}
+        h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+        pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12pt;}
+        .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+        .identitas{display:flex;gap:20px;margin:10px 0;flex-wrap:wrap;}
+        .identitas div{display:flex;align-items:center;gap:5px;}
+        .garis{display:inline-block;width:120px;border-bottom:1px solid #999;}
+        </style>
+        </head>
+        <body>
+            <h1>📘 NaFaS BK - Refleksi Diri</h1>
+            <p><strong>${m.judul}</strong></p>
+            <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+            <div class="identitas">
+                <div><strong>Nama :</strong> <span class="garis"></span></div>
+                <div><strong>Kelas :</strong> <span class="garis"></span></div>
+                <div><strong>Tanggal :</strong> <span class="garis"></span></div>
+            </div>
+            <pre>${content}</pre>
+            <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+        </body>
+        </html>`;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NaFaS_BK_Refleksi_${m.judul.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadLaporanWord() {
+            const content = laporanContent.textContent;
+            if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
+                    'Generate laporan dulu.'); return; }
+            const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head><meta charset="utf-8"><title>Laporan Bimbingan Klasikal</title>
+        <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
+        h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+        pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12pt;}
+        .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+        </style>
+        </head>
+        <body>
+            <h1>📘 NaFaS BK - Laporan Bimbingan Klasikal</h1>
+            <pre>${content}</pre>
+            <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+        </body>
+        </html>`;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download =
+            `NaFaS_BK_Laporan_${new Date().toISOString().slice(0,10)}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // ================================================================
+        // DOWNLOAD MATERI & RPL
+        // ================================================================
+
+        function downloadMateriPdf() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const printWin = window.open('', '_blank', 'width=800,height=600');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            const content =
+                `
+        ================================================================
+        MATERI BIMBINGAN KLASIKAL
+        ================================================================
+        Judul       : ${m.judul}
+        Jenjang     : ${jenjangEl.value}
+        Kelas       : ${kelasEl.value}
+        Semester    : ${semesterEl.value}
+        Bidang      : ${m.bidang}
+        Durasi      : ${durasiEl.value} menit
+        TOPIK       : ${m.topik}
+        ================================================================
+
+        ICE BREAKING:
+        ${m.ice}
+
+        APERSEPSI:
+        ${m.apersepsi}
+
+        DISKUSI:
+        ${m.diskusi}
+
+        KONTEN MATERI:
+        ${m.konten}
+
+        LKPD:
+        ${m.aktivitas}
+        ================================================================
+        NaFaS BK © NaFaS BK
+        `;
+            printWin.document.write(`
+                <html><head><title>Materi - ${m.judul}</title>
+                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;max-width:800px;margin:auto;line-height:1.6;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:12px;color:#718096;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                <script>window.onload=function(){window.print();}<\/script>
+                </body></html>
+            `);
+            printWin.document.close();
+        }
+
+        function downloadMateriWord() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const content =
+                `
+        ================================================================
+        MATERI BIMBINGAN KLASIKAL
+        ================================================================
+        Judul       : ${m.judul}
+        Jenjang     : ${jenjangEl.value}
+        Kelas       : ${kelasEl.value}
+        Semester    : ${semesterEl.value}
+        Bidang      : ${m.bidang}
+        Durasi      : ${durasiEl.value} menit
+        TOPIK       : ${m.topik}
+        ================================================================
+
+        ICE BREAKING:
+        ${m.ice}
+
+        APERSEPSI:
+        ${m.apersepsi}
+
+        DISKUSI:
+        ${m.diskusi}
+
+        KONTEN MATERI:
+        ${m.konten}
+
+        LKPD:
+        ${m.aktivitas}
+        ================================================================
+        NaFaS BK © NaFaS BK
+        `;
+            const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head><meta charset="utf-8"><title>Materi - ${m.judul}</title>
+        <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
+        h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+        pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12pt;}
+        .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+        </style></head>
+        <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
+        <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+        </body></html>`;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadRplPdf() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const printWin = window.open('', '_blank', 'width=900,height=700');
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            printWin.document.write(`
+                <html><head><title>RPL - ${m.judul}</title>
+                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;max-width:900px;margin:auto;line-height:1.5;font-size:11px;}
+                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
+                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:11px;color:#718096;}
+                </style></head>
+                <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
+                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                <script>window.onload=function(){window.print();}<\/script>
+                </body></html>
+            `);
+            printWin.document.close();
+        }
+
+        function downloadRplWord() {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            const htmlContent = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word'>
+        <head><meta charset="utf-8"><title>RPL - ${m.judul}</title>
+        <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.5;max-width:900px;margin:auto;font-size:12pt;}
+        h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
+        pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:12pt;}
+        .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
+        </style></head>
+        <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
+        <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+        </body></html>`;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // ================================================================
         // EVENT LISTENERS
         // ================================================================
 
@@ -2915,228 +2809,27 @@
             if (!refleksiText.value.trim()) { showModal('⚠️ Peringatan', 'Refleksi kosong.'); return; }
             refleksiResult.style.display = 'block';
             refleksiStatus.textContent = 'Refleksi berhasil disimpan pada ' + new Date().toLocaleDateString('id-ID');
-            hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Refleksi selesai.`;
             updateGabungan();
             showModal('✅ Berhasil', 'Refleksi disimpan!');
         });
 
         cetakRefleksiBtn.addEventListener('click', cetakRefleksi);
         cetakLkpdBtn.addEventListener('click', cetakLKPD);
-
-        copyLinkBtn.addEventListener('click', function() {
-            navigator.clipboard.writeText(linkLkpd.value).then(() => { showModal('📋 Berhasil', 'Link disalin!'); }).catch(
-                () => { linkLkpd.select();
-                    document.execCommand('copy');
-                    showModal('📋 Berhasil', 'Link disalin!'); });
-        });
-
-        generateLinkBtn.addEventListener('click', function() {
-            const newId = Math.random().toString(36).substring(2, 10);
-            linkLkpd.value = `https://nafas-bk.com/lkpd/${newId}`;
-            showModal('🔄 Link Baru', 'Link baru dibuat!');
-        });
+        downloadLkpdWordBtn.addEventListener('click', downloadLkpdWord);
+        downloadRefleksiWordBtn.addEventListener('click', downloadRefleksiWord);
+        downloadLaporanWordBtn.addEventListener('click', downloadLaporanWord);
+        downloadMateriPdf.addEventListener('click', downloadMateriPdf);
+        downloadMateriWord.addEventListener('click', downloadMateriWord);
+        downloadRplPdf.addEventListener('click', downloadRplPdf);
+        downloadRplWord.addEventListener('click', downloadRplWord);
 
         generateLaporanBtn.addEventListener('click', function() { generateLaporan();
             showModal('✅ Berhasil', 'Laporan digenerate!'); });
         cetakLaporanBtn.addEventListener('click', cetakLaporan);
 
-        cetakPdfBtn.addEventListener('click', function() {
-            updateGabungan();
-            const content = gabunganText.value;
-            const printWin = window.open('', '_blank', 'width=900,height=700');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
-            printWin.document.write(`
-                <html><head><title>NaFaS BK - Dokumen</title>
-                <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; max-width: 900px; margin: auto; line-height:1.6; }
-                    h1 { color: #1A2A6A; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; }
-                    pre { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
-                    .footer { margin-top:30px; border-top:2px solid #1A2A6A; padding-top:10px; text-align:center; font-size:12px; color:#718096; }
-                    @media print { body { padding: 15px; } pre { border: 1px solid #ccc; } }
-                </style>
-                </head>
-                <body>
-                    <h1>📘 NaFaS BK - Dokumen Bimbingan Klasikal</h1>
-                    <pre>${content}</pre>
-                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                    <script>window.onload=function(){window.print();}<\/script>
-                </body>
-                </html>
-            `);
-            printWin.document.close();
-        });
-
-        downloadWordBtn.addEventListener('click', function() {
-            updateGabungan();
-            const content = gabunganText.value;
-            const htmlContent = `
-                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                <head><meta charset="utf-8"><title>NaFaS BK - Dokumen</title>
-                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
-                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
-                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;}
-                .header{text-align:center;margin-bottom:20px;}
-                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
-                </style>
-                </head>
-                <body>
-                    <div class="header"><h1>📘 NaFaS BK</h1><p style="color:#718096;">Dokumen Bimbingan Klasikal</p></div>
-                    <pre>${content}</pre>
-                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                </body>
-                </html>
-            `;
-            const blob = new Blob([htmlContent], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `NaFaS_BK_Dokumen_${new Date().toISOString().slice(0,10)}.doc`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-
-        downloadMateriPdf.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
-            const content =
-                `
-        ================================================================
-        MATERI BIMBINGAN KLASIKAL
-        ================================================================
-        Judul       : ${m.judul}
-        Jenjang     : ${jenjangEl.value}
-        Kelas       : ${kelasEl.value}
-        Semester    : ${semesterEl.value}
-        Bidang      : ${m.bidang}
-        Durasi      : ${durasiEl.value} menit
-
-        TOPIK: ${m.topik}
-
-        ICE BREAKING: ${m.ice}
-        APERSEPSI: ${m.apersepsi}
-        DISKUSI: ${m.diskusi}
-        KONTEN: ${m.konten}
-        LKPD: ${m.aktivitas}
-        ================================================================
-        NaFaS BK © NaFaS BK
-        `;
-            const printWin = window.open('', '_blank', 'width=800,height=600');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
-            printWin.document.write(`
-                <html><head><title>Materi - ${m.judul}</title>
-                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;max-width:800px;margin:auto;line-height:1.6;}
-                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
-                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:13px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
-                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:12px;color:#718096;}
-                </style></head>
-                <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
-                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                <script>window.onload=function(){window.print();}<\/script>
-                </body></html>
-            `);
-            printWin.document.close();
-        });
-
-        downloadMateriWord.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
-            const content =
-                `
-        ================================================================
-        MATERI BIMBINGAN KLASIKAL
-        ================================================================
-        Judul       : ${m.judul}
-        Jenjang     : ${jenjangEl.value}
-        Kelas       : ${kelasEl.value}
-        Semester    : ${semesterEl.value}
-        Bidang      : ${m.bidang}
-        Durasi      : ${durasiEl.value} menit
-
-        TOPIK: ${m.topik}
-
-        ICE BREAKING: ${m.ice}
-        APERSEPSI: ${m.apersepsi}
-        DISKUSI: ${m.diskusi}
-        KONTEN: ${m.konten}
-        LKPD: ${m.aktivitas}
-        ================================================================
-        NaFaS BK © NaFaS BK
-        `;
-            const htmlContent = `
-                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                <head><meta charset="utf-8"><title>Materi - ${m.judul}</title>
-                <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:20px;line-height:1.6;max-width:900px;margin:auto;}
-                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;}
-                pre{white-space:pre-wrap;font-family:'Segoe UI',Arial,sans-serif;font-size:11pt;}
-                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;}
-                </style></head>
-                <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
-                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                </body></html>
-            `;
-            const blob = new Blob([htmlContent], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-
-        downloadRplPdf.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
-            const printWin = window.open('', '_blank', 'width=900,height=700');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
-            printWin.document.write(`
-                <html><head><title>RPL - ${m.judul}</title>
-                <style>body{font-family:'Courier New',monospace;padding:30px;max-width:900px;margin:auto;line-height:1.5;font-size:11px;}
-                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;font-family:'Segoe UI',Arial,sans-serif;}
-                pre{white-space:pre-wrap;font-family:'Courier New',monospace;font-size:11px;background:#f8f9fa;padding:15px;border-radius:8px;border:1px solid #e2e8f0;}
-                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:11px;color:#718096;font-family:'Segoe UI',Arial,sans-serif;}
-                </style></head>
-                <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
-                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                <script>window.onload=function(){window.print();}<\/script>
-                </body></html>
-            `);
-            printWin.document.close();
-        });
-
-        downloadRplWord.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
-            const htmlContent = `
-                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-                <head><meta charset="utf-8"><title>RPL - ${m.judul}</title>
-                <style>body{font-family:'Courier New',monospace;padding:20px;line-height:1.5;max-width:900px;margin:auto;font-size:10pt;}
-                h1{color:#1A2A6A;border-bottom:3px solid #1A2A6A;padding-bottom:10px;font-family:'Segoe UI',Arial,sans-serif;}
-                pre{white-space:pre-wrap;font-family:'Courier New',monospace;font-size:10pt;}
-                .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:10pt;color:#718096;font-family:'Segoe UI',Arial,sans-serif;}
-                </style></head>
-                <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
-                <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                </body></html>
-            `;
-            const blob = new Blob([htmlContent], { type: 'application/msword' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        });
-
         resetBtn.addEventListener('click', function() {
             if (confirm('Reset semua data?')) {
                 lkpdText.value = '';
-                hasilSiswa.value = '';
                 gabunganText.value = '';
                 materiSelect.value = '0';
                 durasiEl.value = 60;
@@ -3174,15 +2867,13 @@
         updateKelasOptions();
         populateMateri();
         switchTab('lkpd');
-        const defaultId = Math.random().toString(36).substring(2, 10);
-        linkLkpd.value = `https://nafas-bk.com/lkpd/${defaultId}`;
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`Total materi: ${totalMateri} materi dari semua jenjang dan kelas`);
-        console.log('📝 RPL menggunakan format tabel (kolom) seperti file Anda');
-        console.log('📝 Materi "Aku Bangga Menjadi Siswa SMP" sudah dimasukkan dengan RPL lengkap!');
-        console.log('📝 LKPD & Refleksi dicetak 1 lembar PADAT');
-        console.log('🔗 Link kuis bisa dibuka siswa!');
+        console.log('📱 LKPD Mode HP menggunakan Google Form - hasil masuk spreadsheet');
+        console.log('📄 LKPD Mode Non-HP - cetak 1 lembar');
+        console.log('📝 RPL polosan tanpa garis berlebih');
+        console.log('👋 Selamat Datang, Guru BK!');
     </script>
 </body>
 </html>
