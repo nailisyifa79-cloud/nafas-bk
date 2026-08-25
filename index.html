@@ -589,31 +589,36 @@
             margin-left: auto;
             margin-right: auto;
         }
-        .footer-credit a {
-            color: var(--primary);
-            text-decoration: none;
+        /* Modal Kuis - lebih besar */
+        .kuis-modal-box {
+            max-width: 650px !important;
+            width: 95% !important;
         }
-        .footer-credit a:hover {
-            text-decoration: underline;
+        .kuis-modal-box .question {
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-lighter);
         }
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-light);
+        .kuis-modal-box .question .q-text {
+            font-weight: 600;
+            margin-bottom: 6px;
         }
-        .loading .spinner {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e2e8f0;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+        .kuis-modal-box .question .options label {
+            display: block;
+            padding: 4px 0;
+            font-size: 14px;
+            cursor: pointer;
         }
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+        .kuis-modal-box .question .options label:hover {
+            background: #e8edff;
+            border-radius: 4px;
+            padding-left: 8px;
+        }
+        .kuis-modal-box .question .options input[type="radio"] {
+            margin-right: 8px;
+            width: auto;
         }
     </style>
 </head>
@@ -777,14 +782,19 @@
         </p>
     </div>
 
-    <!-- MODAL -->
+    <!-- MODAL UTAMA -->
     <div class="modal-overlay" id="modalOverlay">
-        <div class="modal-box"><button class="modal-close" id="modalClose">&times;</button><h3 id="modalTitle">Informasi</h3><div id="modalBody"><p>Konten modal di sini.</p></div><button class="btn btn-primary btn-block mt-10" id="modalOk">OK</button></div>
+        <div class="modal-box">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h3 id="modalTitle">Informasi</h3>
+            <div id="modalBody"><p>Konten modal di sini.</p></div>
+            <button class="btn btn-primary btn-block mt-10" id="modalOk">OK</button>
+        </div>
     </div>
 
-    <!-- KUIS MODAL -->
+    <!-- MODAL KUIS -->
     <div class="modal-overlay" id="kuisModalOverlay">
-        <div class="modal-box" style="max-width:600px;">
+        <div class="modal-box kuis-modal-box">
             <button class="modal-close" id="kuisModalClose">&times;</button>
             <h3 id="kuisModalTitle">📱 Kuis Online</h3>
             <div id="kuisModalBody">
@@ -795,6 +805,7 @@
                     <p><strong>✅ Hasil Kuis</strong></p>
                     <p id="kuisModalScore" style="font-size:24px;font-weight:700;color:var(--primary);">0%</p>
                     <p id="kuisModalFeedback"></p>
+                    <button class="btn btn-primary btn-block mt-10" id="kuisModalTutup">Tutup</button>
                 </div>
             </div>
         </div>
@@ -805,7 +816,6 @@
         // DATA MATERI - VERSI RINGKAS TAPI LENGKAP
         // ================================================================
 
-        // Daftar judul materi per jenjang dan kelas
         const materiJudul = {
             'SMP': {
                 '7': {
@@ -1085,7 +1095,6 @@
             }
         };
 
-        // Bidang untuk setiap materi
         function getBidang(index) {
             const bidangList = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
                 "Karier", "Karier", "Karier"
@@ -1093,12 +1102,10 @@
             return bidangList[index % bidangList.length];
         }
 
-        // Studi kasus untuk setiap materi
         function getStudiKasus(judul) {
             return `Studi kasus tentang "${judul}" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini dan harus mencari solusi dengan bijak.`;
         }
 
-        // Generate konten materi
         function generateKonten(judul, bidang, kelas) {
             return `MATERI ${judul.toUpperCase()}
 
@@ -1135,7 +1142,6 @@
         4. Jangan takut gagal dan terus belajar`;
         }
 
-        // Generate RPL
         function generateRPL(judul, bidang, kelas) {
             return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
@@ -1198,7 +1204,6 @@
         7. Tidur Cukup   : Memberikan istirahat yang cukup`;
         }
 
-        // Generate LKPD
         function generateLKPD(judul, studiKasus) {
             return `LKPD BERBASIS AKTIVITAS
         "${judul}"
@@ -1225,7 +1230,6 @@
         3. Komitmen saya untuk masa depan:`;
         }
 
-        // Generate Refleksi
         function generateRefleksi(judul) {
             return `PERTANYAAN REFLEKSI DAN EVALUASI DIRI (Mode Non-HP)
         "${judul}"
@@ -1257,7 +1261,6 @@
         Tanda tangan siswa: _______________`;
         }
 
-        // Generate Kuis
         function generateKuis(judul) {
             return [
                 { q: `Apa yang paling penting dari "${judul}"?`, options: ["Menghafal", "Memahami dan menerapkan",
@@ -1297,7 +1300,7 @@
                         const kelasDisplay = `${kelas} / Fase ${kelas >= 10 ? 'E' : 'D'}`;
                         const studiKasus = getStudiKasus(judul);
                         const kuisLink =
-                            `https://${window.location.hostname}/kuis/${jenjang}-${kelas}-${semester}-${idCounter}`;
+                            `${window.location.protocol}//${window.location.host}/kuis/${jenjang}-${kelas}-${semester}-${idCounter}`;
 
                         materiDatabase[jenjang][kelas][semester].push({
                             id: idCounter,
@@ -1373,6 +1376,13 @@
         const bukaKuisBtn = document.getElementById('bukaKuisBtn');
         const simpanHasilKuisBtn = document.getElementById('simpanHasilKuisBtn');
 
+        // Modal elements
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalClose = document.getElementById('modalClose');
+        const modalOk = document.getElementById('modalOk');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+
         const kuisModalOverlay = document.getElementById('kuisModalOverlay');
         const kuisModalClose = document.getElementById('kuisModalClose');
         const kuisModalTitle = document.getElementById('kuisModalTitle');
@@ -1381,12 +1391,7 @@
         const kuisModalResult = document.getElementById('kuisModalResult');
         const kuisModalScore = document.getElementById('kuisModalScore');
         const kuisModalFeedback = document.getElementById('kuisModalFeedback');
-
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalClose = document.getElementById('modalClose');
-        const modalOk = document.getElementById('modalOk');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
+        const kuisModalTutup = document.getElementById('kuisModalTutup');
 
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = {
@@ -1406,6 +1411,33 @@
                     totalMateri += materiDatabase[jenjang][kelas][semester].length;
                 }
             }
+        }
+
+        // ================================================================
+        // FUNGSI MODAL
+        // ================================================================
+
+        function showModal(title, message) {
+            modalTitle.textContent = title;
+            modalBody.innerHTML = `<p>${message}</p>`;
+            modalOverlay.classList.add('active');
+        }
+
+        function hideModal() {
+            modalOverlay.classList.remove('active');
+        }
+
+        function showKuisModal() {
+            kuisModalOverlay.classList.add('active');
+        }
+
+        function hideKuisModal() {
+            kuisModalOverlay.classList.remove('active');
+            // Reset kuis modal
+            kuisModalResult.style.display = 'none';
+            kuisSubmitBtn.textContent = '📤 Kirim Jawaban';
+            kuisSubmitBtn.disabled = false;
+            kuisSubmitBtn.style.opacity = '1';
         }
 
         // ================================================================
@@ -1556,7 +1588,7 @@
             kuisResultBox.style.display = 'none';
 
             const materiId = m.id || Math.random().toString(36).substring(2, 8);
-            linkLkpd.value = `https://${window.location.hostname}/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
+            linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
             updateGabungan();
         }
 
@@ -1604,14 +1636,6 @@
                 if (val > 0) displayMateri(val);
             }
         }
-
-        function showModal(title, message) {
-            modalTitle.textContent = title;
-            modalBody.innerHTML = `<p>${message}</p>`;
-            modalOverlay.classList.add('active');
-        }
-
-        function hideModal() { modalOverlay.classList.remove('active'); }
 
         function generateLaporan() {
             const m = getMateri(parseInt(materiSelect.value));
@@ -1697,7 +1721,10 @@
 
         function openKuisModal() {
             const m = currentMateri;
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.'); return; }
+            if (!m) {
+                showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
+                return;
+            }
 
             kuisModalTitle.textContent = `📱 Kuis - ${m.judul}`;
             kuisModalResult.style.display = 'none';
@@ -1705,11 +1732,11 @@
             let html = '';
             m.kuisSoal.forEach((q, i) => {
                 html += `
-                    <div class="question" style="margin-bottom:12px;">
+                    <div class="question">
                         <div class="q-text">${i+1}. ${q.q}</div>
                         <div class="options">
                             ${q.options.map((opt, oi) => `
-                                <label style="display:block;padding:4px 0;">
+                                <label>
                                     <input type="radio" name="kuis_q${i}" value="${oi}" />
                                     ${String.fromCharCode(65 + oi)}. ${opt}
                                 </label>
@@ -1724,12 +1751,15 @@
             kuisSubmitBtn.disabled = false;
             kuisSubmitBtn.style.opacity = '1';
 
-            kuisModalOverlay.classList.add('active');
+            showKuisModal();
         }
 
         function submitKuis() {
             const m = currentMateri;
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.'); return; }
+            if (!m) {
+                showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
+                return;
+            }
 
             let correct = 0,
                 total = m.kuisSoal.length,
@@ -1737,17 +1767,26 @@
 
             m.kuisSoal.forEach((q, i) => {
                 const selected = document.querySelector(`input[name="kuis_q${i}"]:checked`);
-                if (selected) { if (parseInt(selected.value) === q.answer) correct++; } else allAnswered = false;
+                if (selected) {
+                    if (parseInt(selected.value) === q.answer) correct++;
+                } else {
+                    allAnswered = false;
+                }
             });
 
-            if (!allAnswered) { showModal('⚠️ Peringatan', 'Jawab semua pertanyaan.'); return; }
+            if (!allAnswered) {
+                showModal('⚠️ Peringatan', 'Jawab semua pertanyaan.');
+                return;
+            }
 
             const score = Math.round((correct / total) * 100);
 
             kuisModalResult.style.display = 'block';
             kuisModalScore.textContent = `${score}% (${correct}/${total} benar)`;
 
-            let feedback = score >= 80 ? '🏆 Hebat!' : score >= 60 ? '📚 Bagus!' : score >= 40 ? '📖 Ayo belajar lagi!' :
+            let feedback = score >= 80 ? '🏆 Hebat!' :
+                score >= 60 ? '📚 Bagus!' :
+                score >= 40 ? '📖 Ayo belajar lagi!' :
                 '💪 Jangan menyerah!';
             kuisModalFeedback.textContent = feedback;
 
@@ -1784,8 +1823,6 @@
 
             hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Kuis: ${score}% (${correct}/${total}) - ${feedback}`;
             updateGabungan();
-
-            showModal('✅ Kuis Selesai', `Skor: ${score}%\n${feedback}`);
         }
 
         function copyKuisLink() {
@@ -1809,16 +1846,22 @@
 
         function generateKuisLink() {
             const m = currentMateri;
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) {
+                showModal('⚠️ Peringatan', 'Pilih materi.');
+                return;
+            }
             const newId = Math.random().toString(36).substring(2, 10);
-            m.kuisLink = `https://${window.location.hostname}/kuis/${kelasEl.value}-${semesterEl.value}-${newId}`;
+            m.kuisLink = `${window.location.protocol}//${window.location.host}/kuis/${kelasEl.value}-${semesterEl.value}-${newId}`;
             kuisLinkDisplay.textContent = m.kuisLink;
             showModal('🔄 Link Baru', 'Link kuis baru dibuat!');
         }
 
         function simpanHasilKuis() {
             const m = currentMateri;
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) {
+                showModal('⚠️ Peringatan', 'Pilih materi.');
+                return;
+            }
             if (!m.jawabanSiswa || m.jawabanSiswa.length === 0) {
                 showModal('⚠️ Peringatan', 'Belum ada siswa yang mengerjakan kuis.');
                 return;
@@ -1833,9 +1876,11 @@
 
         function cetakLKPD() {
             const content = lkpdText.value.trim() || 'LKPD belum diisi.';
-            if (!content) { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
+            if (!content) { showModal('⚠️ Peringatan', 'LKPD kosong.');
+                return; }
             const printWin = window.open('', '_blank', 'width=800,height=600');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? m.judul : 'LKPD';
             printWin.document.write(`
@@ -1869,10 +1914,12 @@
 
         function cetakRefleksi() {
             const refleksiText = document.getElementById('refleksiText');
-            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
+            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.');
+                return; }
             const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
             const printWin = window.open('', '_blank', 'width=800,height=600');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? m.judul : 'Refleksi';
             printWin.document.write(`
@@ -1911,7 +1958,8 @@
                 return;
             }
             const printWin = window.open('', '_blank', 'width=900,height=700');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             printWin.document.write(`
                 <html><head><title>Laporan Bimbingan Klasikal</title>
                 <style>
@@ -1937,24 +1985,68 @@
         // EVENT LISTENERS
         // ================================================================
 
-        jenjangEl.addEventListener('change', function() { updateKelasOptions();
-            populateMateri(); });
-        [kelasEl, semesterEl].forEach(el => { el.addEventListener('change', function() { populateMateri(); }); });
-        materiSelect.addEventListener('change', function() { displayMateri(parseInt(this.value)); });
-        [durasiEl, namaGuruEl].forEach(el => { el.addEventListener('change', function() { const val = parseInt(materiSelect
-                    .value); if (val > 0) displayMateri(val); }); });
-        tabBtns.forEach(btn => { btn.addEventListener('click', function() { switchTab(this.dataset.tab); }); });
+        // Modal utama
+        modalClose.addEventListener('click', hideModal);
+        modalOk.addEventListener('click', hideModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === this) hideModal();
+        });
 
+        // Modal kuis
+        kuisModalClose.addEventListener('click', hideKuisModal);
+        kuisModalTutup.addEventListener('click', hideKuisModal);
+        kuisModalOverlay.addEventListener('click', function(e) {
+            if (e.target === this) hideKuisModal();
+        });
+
+        // Tab
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchTab(this.dataset.tab);
+            });
+        });
+
+        // Jenjang, kelas, semester
+        jenjangEl.addEventListener('change', function() {
+            updateKelasOptions();
+            populateMateri();
+        });
+        [kelasEl, semesterEl].forEach(el => {
+            el.addEventListener('change', function() {
+                populateMateri();
+            });
+        });
+
+        // Pilih materi
+        materiSelect.addEventListener('change', function() {
+            displayMateri(parseInt(this.value));
+        });
+
+        // Durasi & nama guru
+        [durasiEl, namaGuruEl].forEach(el => {
+            el.addEventListener('change', function() {
+                const val = parseInt(materiSelect.value);
+                if (val > 0) displayMateri(val);
+            });
+        });
+
+        // LKPD
         saveLkpdBtn.addEventListener('click', function() {
-            if (!lkpdText.value.trim()) { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
+            if (!lkpdText.value.trim()) { showModal('⚠️ Peringatan', 'LKPD kosong.');
+                return; }
             showModal('✅ Berhasil', 'LKPD disimpan!');
             updateGabungan();
         });
 
+        cetakLkpdBtn.addEventListener('click', cetakLKPD);
+
+        // Refleksi
         simpanRefleksiBtn.addEventListener('click', function() {
             const refleksiText = document.getElementById('refleksiText');
-            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
-            if (!refleksiText.value.trim()) { showModal('⚠️ Peringatan', 'Refleksi kosong.'); return; }
+            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.');
+                return; }
+            if (!refleksiText.value.trim()) { showModal('⚠️ Peringatan', 'Refleksi kosong.');
+                return; }
             refleksiResult.style.display = 'block';
             refleksiStatus.textContent = 'Refleksi berhasil disimpan pada ' + new Date().toLocaleDateString('id-ID');
             hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Refleksi selesai.`;
@@ -1963,40 +2055,44 @@
         });
 
         cetakRefleksiBtn.addEventListener('click', cetakRefleksi);
-        cetakLkpdBtn.addEventListener('click', cetakLKPD);
 
+        // Kuis
         copyKuisLinkBtn.addEventListener('click', copyKuisLink);
         generateKuisLinkBtn.addEventListener('click', generateKuisLink);
         bukaKuisBtn.addEventListener('click', openKuisModal);
         simpanHasilKuisBtn.addEventListener('click', simpanHasilKuis);
         kuisSubmitBtn.addEventListener('click', submitKuis);
 
-        kuisModalClose.addEventListener('click', function() { kuisModalOverlay.classList.remove('active'); });
-        kuisModalOverlay.addEventListener('click', function(e) { if (e.target === this) kuisModalOverlay.classList.remove(
-                'active'); });
-
+        // LKPD link
         copyLinkBtn.addEventListener('click', function() {
-            navigator.clipboard.writeText(linkLkpd.value).then(() => { showModal('📋 Berhasil', 'Link disalin!'); }).catch(
-                () => { linkLkpd.select();
-                    document.execCommand('copy');
-                    showModal('📋 Berhasil', 'Link disalin!'); });
+            navigator.clipboard.writeText(linkLkpd.value).then(() => { showModal('📋 Berhasil', 'Link disalin!'); })
+            .catch(() => {
+                linkLkpd.select();
+                document.execCommand('copy');
+                showModal('📋 Berhasil', 'Link disalin!');
+            });
         });
 
         generateLinkBtn.addEventListener('click', function() {
             const newId = Math.random().toString(36).substring(2, 10);
-            linkLkpd.value = `https://${window.location.hostname}/lkpd/${newId}`;
+            linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${newId}`;
             showModal('🔄 Link Baru', 'Link baru dibuat!');
         });
 
-        generateLaporanBtn.addEventListener('click', function() { generateLaporan();
-            showModal('✅ Berhasil', 'Laporan digenerate!'); });
+        // Laporan
+        generateLaporanBtn.addEventListener('click', function() {
+            generateLaporan();
+            showModal('✅ Berhasil', 'Laporan digenerate!');
+        });
         cetakLaporanBtn.addEventListener('click', cetakLaporan);
 
+        // Cetak dokumen
         cetakPdfBtn.addEventListener('click', function() {
             updateGabungan();
             const content = gabunganText.value;
             const printWin = window.open('', '_blank', 'width=900,height=700');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             printWin.document.write(`
                 <html><head><title>NaFaS BK - Dokumen</title>
                 <style>
@@ -2049,9 +2145,11 @@
             URL.revokeObjectURL(url);
         });
 
+        // Download materi & RPL
         downloadMateriPdf.addEventListener('click', function() {
             const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.');
+                return; }
             const content =
                 `
         ================================================================
@@ -2073,7 +2171,8 @@
         NaFaS BK
         `;
             const printWin = window.open('', '_blank', 'width=800,height=600');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             printWin.document.write(`
                 <html><head><title>Materi - ${m.judul}</title>
                 <style>body{font-family:'Segoe UI',Arial,sans-serif;padding:30px;max-width:800px;margin:auto;line-height:1.6;}
@@ -2091,7 +2190,8 @@
 
         downloadMateriWord.addEventListener('click', function() {
             const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.');
+                return; }
             const content =
                 `
         ================================================================
@@ -2137,9 +2237,11 @@
 
         downloadRplPdf.addEventListener('click', function() {
             const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.');
+                return; }
             const printWin = window.open('', '_blank', 'width=900,height=700');
-            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
+            if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.');
+                return; }
             printWin.document.write(`
                 <html><head><title>RPL - ${m.judul}</title>
                 <style>body{font-family:'Courier New',monospace;padding:30px;max-width:900px;margin:auto;line-height:1.5;font-size:11px;}
@@ -2157,7 +2259,8 @@
 
         downloadRplWord.addEventListener('click', function() {
             const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.'); return; }
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi.');
+                return; }
             const htmlContent = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head><meta charset="utf-8"><title>RPL - ${m.judul}</title>
@@ -2181,6 +2284,7 @@
             URL.revokeObjectURL(url);
         });
 
+        // Reset
         resetBtn.addEventListener('click', function() {
             if (confirm('Reset semua data?')) {
                 lkpdText.value = '';
@@ -2209,6 +2313,7 @@
             }
         });
 
+        // Upload file LKPD
         lkpdFile.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -2217,10 +2322,6 @@
             }
         });
 
-        modalClose.addEventListener('click', hideModal);
-        modalOk.addEventListener('click', hideModal);
-        modalOverlay.addEventListener('click', function(e) { if (e.target === this) hideModal(); });
-
         // ================================================================
         // INIT
         // ================================================================
@@ -2228,13 +2329,12 @@
         populateMateri();
         switchTab('lkpd');
         const defaultId = Math.random().toString(36).substring(2, 10);
-        linkLkpd.value = `https://${window.location.hostname}/lkpd/${defaultId}`;
+        linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${defaultId}`;
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`📚 Total materi: ${totalMateri} materi`);
         console.log('📱 Fitur Kuis Online: Setiap materi punya link unik');
         console.log('💡 Bagikan link kuis ke siswa, skor langsung muncul!');
-        console.log('🌐 Hosting di GitHub Pages siap digunakan');
     </script>
 </body>
 </html>
