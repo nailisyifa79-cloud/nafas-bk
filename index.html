@@ -386,6 +386,90 @@
             width: auto;
             margin-right: 6px;
         }
+
+        /* ===== REFLEKSI CETAK 1 LEMBAR ===== */
+        .refleksi-print-wrapper {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        .refleksi-print-wrapper .refleksi-header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+        .refleksi-print-wrapper .refleksi-header h3 {
+            color: var(--primary);
+            font-size: 18px;
+            margin: 0;
+        }
+        .refleksi-print-wrapper .refleksi-header p {
+            color: var(--text-light);
+            font-size: 13px;
+            margin: 2px 0;
+        }
+        .refleksi-print-wrapper .refleksi-body {
+            font-size: 12px;
+            line-height: 1.6;
+        }
+        .refleksi-print-wrapper .refleksi-body .identitas {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 20px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+        .refleksi-print-wrapper .refleksi-body .identitas div {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .refleksi-print-wrapper .refleksi-body .identitas .garis {
+            flex: 1;
+            border-bottom: 1px solid #999;
+            min-width: 60px;
+        }
+        .refleksi-print-wrapper .refleksi-body .soal-refleksi {
+            margin: 6px 0;
+            padding: 4px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .refleksi-print-wrapper .refleksi-body .soal-refleksi .nomor {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
+            display: block;
+            border-bottom: 1px solid #ccc;
+            height: 28px;
+            margin-top: 2px;
+        }
+        .refleksi-print-wrapper .refleksi-footer {
+            margin-top: 12px;
+            border-top: 2px solid var(--primary);
+            padding-top: 8px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        @media print {
+            .refleksi-print-wrapper {
+                padding: 10px 15px;
+            }
+            .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
+                height: 32px;
+                border-bottom: 1px solid #aaa;
+            }
+            .refleksi-print-wrapper .refleksi-body .identitas .garis {
+                border-bottom: 1px solid #aaa;
+            }
+            .refleksi-print-wrapper .refleksi-footer {
+                border-top: 2px solid #1A2A6A;
+            }
+        }
+
         @media print {
             body {
                 background: #fff;
@@ -434,6 +518,14 @@
             }
             .quiz-box .question {
                 border-left: 4px solid #1A2A6A;
+            }
+            /* Pastikan refleksi cetak 1 lembar */
+            .refleksi-print-wrapper {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
+                height: 30px;
             }
         }
         ::-webkit-scrollbar {
@@ -627,18 +719,18 @@
                 </div>
             </div>
 
-            <!-- Tab Refleksi - Mode Non-HP -->
+            <!-- Tab Refleksi - Mode Non-HP (1 Lembar) -->
             <div id="tab-refleksi" class="tab-content">
                 <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Jawablah pertanyaan refleksi berikut dengan jujur. Bisa dicetak dan dibagikan ke siswa tanpa HP.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar</strong> untuk menghemat kertas. Siswa bisa mengisi langsung di kertas.</p>
                 </div>
                 <div class="refleksi-area" id="refleksiContainer">
-                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat pertanyaan refleksi</p>
+                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat refleksi</p>
                 </div>
                 <div class="btn-group no-print" style="margin-top:10px;">
                     <button class="btn btn-primary" id="simpanRefleksiBtn">💾 Simpan Refleksi</button>
-                    <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi</button>
+                    <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi (1 Lembar)</button>
                 </div>
                 <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
                     <p><strong>✅ Refleksi Tersimpan:</strong></p>
@@ -847,32 +939,37 @@
         2. Apa yang akan saya lakukan setelah ini?
         3. Komitmen saya untuk masa depan:`;
 
-                const refleksi = `PERTANYAAN REFLEKSI DAN EVALUASI DIRI (Mode Non-HP)
+                // === REFLEKSI 1 LEMBAR (DIPERCEPAT) ===
+                const refleksi = `RELEKSI DIRI (1 LEMBAR)
         "${judul}"
 
         Nama : _________________________
         Kelas : ________________________
         Tanggal : ______________________
 
-        Jawablah pertanyaan berikut dengan jujur!
-
         1. Apa yang paling berkesan dari materi "${judul}"?
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         2. Bagaimana perasaanmu setelah mempelajari materi ini?
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         3. Apa yang akan kamu lakukan setelah mempelajari materi ini?
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         4. Apa tantangan terbesar dalam menerapkan "${judul}"?
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         5. Siapa yang bisa membantumu menerapkan materi ini?
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         6. Komitmen saya untuk menerapkan "${judul}":
-           ___________________________________________________________
+        ___________________________________________________________
+        ___________________________________________________________
 
         Tanda tangan siswa: _______________`;
 
@@ -1697,10 +1794,45 @@
 
             lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
 
+            // === REFLEKSI 1 LEMBAR ===
             if (m.refleksi) {
                 const refleksiHTML = `
-                    <div style="font-weight:600;margin-bottom:8px;color:var(--primary);">📝 ${m.judul}</div>
-                    <textarea id="refleksiText" rows="10" style="background:#fff;width:100%;padding:10px;border-radius:8px;border:1px solid #e2e8f0;font-family:inherit;font-size:13px;">${m.refleksi}</textarea>
+                    <div class="refleksi-print-wrapper">
+                        <div class="refleksi-header">
+                            <h3>📘 REFLEKSI DIRI (1 LEMBAR)</h3>
+                            <p>${m.judul}</p>
+                            <p style="font-size:11px;color:var(--text-light);">${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                        </div>
+                        <div class="refleksi-body">
+                            <div class="identitas">
+                                <div><strong>Nama :</strong> <span class="garis"></span></div>
+                                <div><strong>Kelas :</strong> <span class="garis"></span></div>
+                                <div><strong>Tanggal :</strong> <span class="garis"></span></div>
+                            </div>
+                            ${m.refleksi.split('\n').filter(line => line.trim()).map(line => {
+                                if (line.includes(':')) {
+                                    const parts = line.split(':');
+                                    if (parts.length === 2) {
+                                        const label = parts[0].trim();
+                                        if (label === 'Nama' || label === 'Kelas' || label === 'Tanggal') return '';
+                                        return `<div class="soal-refleksi"><span class="nomor">${label}</span><span class="jawaban-garis"></span></div>`;
+                                    }
+                                }
+                                if (line.match(/^\d+\./)) {
+                                    return `<div class="soal-refleksi"><span class="nomor">${line}</span><span class="jawaban-garis"></span></div>`;
+                                }
+                                return '';
+                            }).join('')}
+                            <div style="margin-top:8px;display:flex;justify-content:space-between;">
+                                <div><strong>Tanda tangan siswa:</strong> _________________</div>
+                                <div style="font-size:11px;color:#999;">NaFaS BK</div>
+                            </div>
+                        </div>
+                        <div class="refleksi-footer">
+                            <span>© NaFaS BK</span>
+                            <span>Dicetak dari aplikasi</span>
+                        </div>
+                    </div>
                 `;
                 refleksiContainer.innerHTML = refleksiHTML;
             } else {
@@ -1878,37 +2010,85 @@
             printWin.document.close();
         }
 
+        // === CETAK REFLEKSI 1 LEMBAR ===
         function cetakRefleksi() {
-            const refleksiText = document.getElementById('refleksiText');
-            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
-            const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi dulu.'); return; }
+            if (!m.refleksi) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
+
             const printWin = window.open('', '_blank', 'width=800,height=600');
             if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
-            const m = getMateri(parseInt(materiSelect.value));
-            const title = m ? m.judul : 'Refleksi';
+
+            // Buat konten refleksi 1 lembar
+            const refleksiContent = m.refleksi;
+            const lines = refleksiContent.split('\n').filter(line => line.trim());
+
+            let soalHTML = '';
+            let identitasHTML = `
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;margin-bottom:10px;font-size:12px;">
+                    <div><strong>Nama :</strong> <span style="display:inline-block;width:120px;border-bottom:1px solid #999;"></span></div>
+                    <div><strong>Kelas :</strong> <span style="display:inline-block;width:100px;border-bottom:1px solid #999;"></span></div>
+                    <div><strong>Tanggal :</strong> <span style="display:inline-block;width:100px;border-bottom:1px solid #999;"></span></div>
+                </div>
+            `;
+
+            let soalItems = [];
+            let currentSoal = '';
+
+            for (let line of lines) {
+                line = line.trim();
+                if (line.match(/^\d+\./)) {
+                    if (currentSoal) soalItems.push(currentSoal);
+                    currentSoal = line;
+                } else if (line && !line.includes('Nama') && !line.includes('Kelas') && !line.includes('Tanggal') && !line
+                    .includes('Tanda tangan')) {
+                    if (currentSoal) {
+                        currentSoal += ' ' + line;
+                    }
+                }
+            }
+            if (currentSoal) soalItems.push(currentSoal);
+
+            // Batasi hanya 6 soal utama
+            const mainSoals = soalItems.slice(0, 6);
+
+            soalHTML = mainSoals.map((s, i) => `
+                <div style="margin:4px 0;padding:3px 0;border-bottom:1px dashed #e0e0e0;font-size:12px;">
+                    <div style="font-weight:600;color:#1A2A6A;">${s}</div>
+                    <div style="border-bottom:1px solid #ccc;height:26px;margin-top:2px;"></div>
+                </div>
+            `).join('');
+
+            const ttdHTML = `
+                <div style="margin-top:8px;display:flex;justify-content:space-between;font-size:12px;">
+                    <div><strong>Tanda tangan siswa:</strong> _________________</div>
+                    <div style="font-size:11px;color:#999;">NaFaS BK</div>
+                </div>
+            `;
+
             printWin.document.write(`
-                <html><head><title>Refleksi - ${title}</title>
+                <html><head><title>Refleksi - ${m.judul}</title>
                 <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; max-width: 800px; margin: auto; line-height: 1.8; }
-                    .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
-                    .header-print h1 { color: #1A2A6A; font-size: 24px; margin: 0; }
-                    .header-print p { color: #718096; margin: 5px 0; }
-                    .content { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.8; padding: 10px; }
-                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
-                    @media print { body { padding: 20px; } }
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; max-width: 700px; margin: auto; line-height: 1.6; }
+                    .header-print { text-align: center; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; margin-bottom: 12px; }
+                    .header-print h2 { color: #1A2A6A; font-size: 20px; margin: 0; }
+                    .header-print p { color: #718096; margin: 2px 0; font-size: 13px; }
+                    .footer { margin-top: 15px; border-top: 2px solid #1A2A6A; padding-top: 8px; text-align: center; font-size: 11px; color: #718096; }
+                    @media print { body { padding: 15px; } .header-print { border-bottom-color: #1A2A6A; } }
                 </style>
                 </head>
                 <body>
                     <div class="header-print">
-                        <h1>📘 NaFaS BK</h1>
-                        <p><strong>Refleksi dan Evaluasi Diri (Mode Non-HP)</strong></p>
+                        <h2>📘 REFLEKSI DIRI (1 LEMBAR)</h2>
+                        <p><strong>${m.judul}</strong></p>
                         <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
-                        <p>Materi: ${title}</p>
-                        <p>Nama Guru: ${namaGuruEl.value || '_______________'}</p>
+                        <p>Guru BK: ${namaGuruEl.value || '_______________'}</p>
                     </div>
-                    <div class="content">${content}</div>
+                    ${identitasHTML}
+                    ${soalHTML}
+                    ${ttdHTML}
                     <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
-                    <script>window.onload=function(){window.print();}<\/script>
+                    <script>window.onload=function(){ window.print(); }<\/script>
                 </body>
                 </html>
             `);
@@ -2233,6 +2413,7 @@
         console.log('📚 SMP: Kelas 7 (24), Kelas 8 (24), Kelas 9 (24)');
         console.log('📚 SMA: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
         console.log('📚 SMK: Kelas 10 (24), Kelas 11 (24), Kelas 12 (24)');
+        console.log('📝 Refleksi dirancang 1 lembar untuk hemat kertas!');
     </script>
 </body>
 </html>
