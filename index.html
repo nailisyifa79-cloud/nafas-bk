@@ -589,32 +589,6 @@
             margin-left: auto;
             margin-right: auto;
         }
-        /* Print styles untuk PDF */
-        .print-content {
-            display: none;
-        }
-        @media print {
-            .print-content {
-                display: block !important;
-                padding: 20px;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                line-height: 1.6;
-            }
-            .print-content h1 {
-                color: #1A2A6A;
-                border-bottom: 3px solid #1A2A6A;
-                padding-bottom: 10px;
-            }
-            .print-content pre {
-                white-space: pre-wrap;
-                font-family: 'Segoe UI', Arial, sans-serif;
-                font-size: 12px;
-                background: #f8f9fa;
-                padding: 15px;
-                border-radius: 8px;
-                border: 1px solid #e2e8f0;
-            }
-        }
     </style>
 </head>
 <body>
@@ -647,8 +621,8 @@
             </div>
             <div class="materi-view" id="materiDisplay"><p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p></div>
             <div class="btn-group no-print">
-                <button class="btn btn-primary btn-sm" id="downloadMateriPdf">📄 Unduh Materi PDF</button>
-                <button class="btn btn-success btn-sm" id="downloadMateriWord">📝 Unduh Materi Word</button>
+                <button class="btn btn-primary btn-sm" onclick="downloadMateri('pdf')">📄 Unduh Materi PDF</button>
+                <button class="btn btn-success btn-sm" onclick="downloadMateri('word')">📝 Unduh Materi Word</button>
             </div>
             <div style="margin-top:14px;">
                 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;">
@@ -656,8 +630,8 @@
                 </div>
                 <div class="rpl-preview" id="rplContent">RPL akan muncul setelah memilih materi.</div>
                 <div class="btn-group no-print">
-                    <button class="btn btn-primary btn-sm" id="downloadRplPdf">📄 Unduh RPL PDF</button>
-                    <button class="btn btn-success btn-sm" id="downloadRplWord">📝 Unduh RPL Word</button>
+                    <button class="btn btn-primary btn-sm" onclick="downloadRpl('pdf')">📄 Unduh RPL PDF</button>
+                    <button class="btn btn-success btn-sm" onclick="downloadRpl('word')">📝 Unduh RPL Word</button>
                 </div>
             </div>
         </div>
@@ -678,8 +652,8 @@
                 <div class="lkpd-box">
                     <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
                     <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
-                    <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
-                    <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD</button>
+                    <button class="btn btn-success btn-block mt-10" onclick="saveLkpd()">💾 Simpan LKPD</button>
+                    <button class="btn btn-primary btn-block mt-10" onclick="cetakLKPD()">🖨️ Cetak LKPD</button>
                 </div>
             </div>
 
@@ -694,9 +668,9 @@
                     <label style="font-weight:600;font-size:13px;color:var(--text-light);">🔗 Link Kuis (bagikan ke siswa)</label>
                     <div class="link-display" id="kuisLinkDisplay">Pilih materi terlebih dahulu</div>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-sm" id="copyKuisLinkBtn">📋 Salin Link</button>
-                        <button class="btn btn-success btn-sm" id="generateKuisLinkBtn">🔄 Generate Link Baru</button>
-                        <button class="btn btn-warning btn-sm" id="bukaKuisBtn">📱 Buka Kuis</button>
+                        <button class="btn btn-primary btn-sm" onclick="copyKuisLink()">📋 Salin Link</button>
+                        <button class="btn btn-success btn-sm" onclick="generateKuisLink()">🔄 Generate Link Baru</button>
+                        <button class="btn btn-warning btn-sm" onclick="openKuisModal()">📱 Buka Kuis</button>
                     </div>
                 </div>
 
@@ -709,7 +683,7 @@
                     <div class="score-display" id="scoreDisplay">0%</div>
                     <div class="feedback-display" id="feedbackDisplay">Belum ada hasil</div>
                     <div style="margin-top:10px;">
-                        <button class="btn btn-primary btn-sm btn-block" id="simpanHasilKuisBtn">💾 Simpan Hasil ke Laporan</button>
+                        <button class="btn btn-primary btn-sm btn-block" onclick="simpanHasilKuis()">💾 Simpan Hasil ke Laporan</button>
                     </div>
                 </div>
 
@@ -731,8 +705,8 @@
                     <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
                 </div>
                 <div class="btn-group no-print" style="margin-top:10px;">
-                    <button class="btn btn-primary" id="simpanRefleksiBtn">💾 Simpan Refleksi</button>
-                    <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi</button>
+                    <button class="btn btn-primary" onclick="simpanRefleksi()">💾 Simpan Refleksi</button>
+                    <button class="btn btn-success" onclick="cetakRefleksi()">🖨️ Cetak Refleksi</button>
                 </div>
                 <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
                     <p><strong>✅ Refleksi Tersimpan:</strong></p>
@@ -747,9 +721,9 @@
                 </div>
                 <div class="form-group"><label>Jumlah Siswa Hadir</label><input type="number" id="jumlahSiswa" value="32" min="1" max="40" /></div>
                 <div class="form-group"><label>Catatan Kegiatan</label><textarea id="catatanKegiatan" rows="3" placeholder="Catatan..."></textarea></div>
-                <button class="btn btn-primary btn-block" id="generateLaporanBtn">📊 Generate Laporan</button>
+                <button class="btn btn-primary btn-block" onclick="generateLaporan()">📊 Generate Laporan</button>
                 <div class="laporan-area" id="laporanArea" style="margin-top:10px;"><pre id="laporanContent">Generate laporan terlebih dahulu.</pre></div>
-                <button class="btn btn-success btn-block mt-10" id="cetakLaporanBtn">🖨️ Cetak Laporan</button>
+                <button class="btn btn-success btn-block mt-10" onclick="cetakLaporan()">🖨️ Cetak Laporan</button>
             </div>
 
             <!-- Tab Cetak -->
@@ -760,47 +734,45 @@
                 </div>
                 <div class="form-group"><label>Dokumen Lengkap</label><textarea id="gabunganText" rows="12" readonly style="background:#F7FAFC;font-size:12px;font-family:'Courier New',monospace;"></textarea></div>
                 <div class="btn-group">
-                    <button class="btn btn-success" id="cetakPdfBtn">🖨️ Cetak / PDF</button>
-                    <button class="btn btn-warning" id="downloadWordBtn">📄 Download Word</button>
+                    <button class="btn btn-success" onclick="cetakDokumen()">🖨️ Cetak / PDF</button>
+                    <button class="btn btn-warning" onclick="downloadDokumenWord()">📄 Download Word</button>
                 </div>
             </div>
 
-            <button class="btn btn-danger btn-block mt-10 no-print" id="resetBtn">🔄 Reset Semua Data</button>
+            <button class="btn btn-danger btn-block mt-10 no-print" onclick="resetSemua()">🔄 Reset Semua Data</button>
         </div>
 
     </div>
 
     <div class="footer-credit">
         <p>📘 NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</p>
-        <p style="font-size:11px;margin-top:4px;">
-            <span>© NaFaS BK</span>
-        </p>
+        <p style="font-size:11px;margin-top:4px;"><span>© NaFaS BK</span></p>
     </div>
 
     <!-- MODAL -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
-            <button class="modal-close" id="modalClose">&times;</button>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
             <h3 id="modalTitle">Informasi</h3>
             <div id="modalBody"><p>Konten modal di sini.</p></div>
-            <button class="btn btn-primary btn-block mt-10" id="modalOk">OK</button>
+            <button class="btn btn-primary btn-block mt-10" onclick="closeModal()">OK</button>
         </div>
     </div>
 
     <!-- MODAL KUIS -->
     <div class="modal-overlay" id="kuisModalOverlay">
         <div class="modal-box" style="max-width:650px;width:95%;">
-            <button class="modal-close" id="kuisModalClose">&times;</button>
+            <button class="modal-close" onclick="closeKuisModal()">&times;</button>
             <h3 id="kuisModalTitle">📱 Kuis Online</h3>
             <div id="kuisModalBody">
                 <p style="color:var(--text-light);margin-bottom:12px;">Jawab pertanyaan berikut dengan memilih jawaban yang tepat. Skor akan muncul otomatis!</p>
                 <div id="kuisModalQuestions"></div>
-                <button class="btn btn-success btn-block mt-10" id="kuisSubmitBtn">📤 Kirim Jawaban</button>
+                <button class="btn btn-success btn-block mt-10" onclick="submitKuis()">📤 Kirim Jawaban</button>
                 <div id="kuisModalResult" style="margin-top:12px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
                     <p><strong>✅ Hasil Kuis</strong></p>
                     <p id="kuisModalScore" style="font-size:24px;font-weight:700;color:var(--primary);">0%</p>
                     <p id="kuisModalFeedback"></p>
-                    <button class="btn btn-primary btn-block mt-10" id="kuisModalTutup">Tutup</button>
+                    <button class="btn btn-primary btn-block mt-10" onclick="closeKuisModal()">Tutup</button>
                 </div>
             </div>
         </div>
@@ -808,7 +780,7 @@
 
     <script>
         // ================================================================
-        // DATA MATERI - VERSI RINGKAS TAPI LENGKAP
+        // DATA MATERI
         // ================================================================
 
         const materiJudul = {
@@ -1102,158 +1074,19 @@
         }
 
         function generateKonten(judul, bidang, kelas) {
-            return `MATERI ${judul.toUpperCase()}
-
-        A. PENGERTIAN ${judul.toUpperCase()}
-        ${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas} untuk mengembangkan diri dan mempersiapkan masa depan dengan lebih baik.
-
-        B. ASPEK-ASPEK PENTING
-        1. Aspek Pengetahuan: pemahaman tentang konsep ${judul.toLowerCase()}
-        2. Aspek Sikap: nilai-nilai dan karakter yang terkait
-        3. Aspek Keterampilan: kemampuan menerapkan dalam kehidupan
-
-        C. MANFAAT ${judul.toUpperCase()}
-        1. Meningkatkan kualitas hidup dan kesejahteraan diri
-        2. Mengembangkan potensi diri secara optimal
-        3. Membangun hubungan yang baik dengan orang lain
-        4. Mempersiapkan masa depan yang lebih cerah
-
-        D. CARA MENERAPKAN ${judul.toUpperCase()}
-        1. Mulai dari hal-hal kecil dalam kehidupan sehari-hari
-        2. Konsisten dalam melaksanakan
-        3. Evaluasi dan perbaiki secara berkala
-        4. Cari dukungan dari orang-orang terdekat
-
-        E. TANTANGAN DALAM ${judul.toUpperCase()}
-        1. Kurangnya kesadaran dan pemahaman
-        2. Pengaruh lingkungan yang kurang mendukung
-        3. Kebiasaan lama yang sulit diubah
-        4. Kurangnya motivasi dan konsistensi
-
-        F. TIPS SUKSES ${judul.toUpperCase()}
-        1. Pelajari dan pahami konsep dengan baik
-        2. Praktikkan secara konsisten
-        3. Evaluasi kemajuan secara berkala
-        4. Jangan takut gagal dan terus belajar`;
+            return `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan: pemahaman tentang konsep\n2. Aspek Sikap: nilai-nilai dan karakter\n3. Aspek Keterampilan: kemampuan menerapkan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n4. Mempersiapkan masa depan\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n4. Cari dukungan\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n4. Kurang motivasi\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan\n4. Jangan takut gagal`;
         }
 
         function generateRPL(judul, bidang, kelas) {
-            return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
-        LAYANAN BIMBINGAN KLASIKAL
-
-        A. SPESIFIKASI
-        ──────────────────────────────────────────────────────────────
-        Satuan Pendidikan   : 
-        Nama Guru           : 
-        Kelas               : ${kelas}
-        Waktu               : 60 menit
-        Materi Layanan      : ${judul}
-        Bidang Bimbingan    : ${bidang}
-
-        B. IDENTIFIKASI
-        ──────────────────────────────────────────────────────────────
-        1. Kesiapan Murid:
-           Murid ${kelas} perlu memahami ${judul.toLowerCase()} untuk menghadapi tantangan kehidupan.
-
-        2. Karakteristik Materi:
-           a. Pengetahuan Esensial: pemahaman tentang ${judul.toLowerCase()}
-           b. Pengetahuan Aplikatif: penerapan dalam kehidupan sehari-hari
-           c. Nilai Karakter: dikembangkan sesuai dengan materi
-
-        3. Dimensi Profil Lulusan: [✓] Kemandirian, [✓] Penalaran Kritis
-
-        C. DESAIN LAYANAN
-        ──────────────────────────────────────────────────────────────
-        1. Capaian Layanan:
-           Murid mampu memahami dan menerapkan ${judul.toLowerCase()} dalam kehidupan sehari-hari.
-
-        2. Topik Kontekstual:
-           "${judul} untuk Masa Depan Lebih Baik"
-
-        3. Tujuan Layanan:
-           a. Pengenalan: Memahami konsep ${judul.toLowerCase()}
-           b. Akomodasi: Menyadari pentingnya ${judul.toLowerCase()}
-           c. Tindakan: Menerapkan ${judul.toLowerCase()} dalam kehidupan
-
-        D. PENGALAMAN BELAJAR
-        ──────────────────────────────────────────────────────────────
-        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
-        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
-        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
-
-        E. ASESMEN
-        ──────────────────────────────────────────────────────────────
-        1. Asesmen Awal: Tanya jawab
-        2. Asesmen Proses: Observasi
-        3. Asesmen Akhir: LKPD dan Kuis Online
-
-        ──────────────────────────────────────────────────────────────
-        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        ──────────────────────────────────────────────────────────────
-        1. Bangun Pagi   : Memulai hari dengan semangat
-        2. Beribadah     : Memohon petunjuk dan kekuatan
-        3. Berolahraga   : Menjaga kesehatan fisik
-        4. Makan Sehat   : Mengonsumsi makanan bergizi
-        5. Gemar Belajar : Terus belajar dan mengembangkan diri
-        6. Bermasyarakat : Berinteraksi dengan baik dengan orang lain
-        7. Tidur Cukup   : Memberikan istirahat yang cukup`;
+            return `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan   : \nNama Guru           : \nKelas               : ${kelas}\nWaktu               : 60 menit\nMateri Layanan      : ${judul}\nBidang Bimbingan    : ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Kuis\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi   : Semangat\n2. Beribadah     : Petunjuk\n3. Berolahraga   : Kesehatan\n4. Makan Sehat   : Gizi\n5. Gemar Belajar : Belajar\n6. Bermasyarakat : Interaksi\n7. Tidur Cukup   : Istirahat`;
         }
 
         function generateLKPD(judul, studiKasus) {
-            return `LKPD BERBASIS AKTIVITAS
-        "${judul}"
-
-        A. STUDI KASUS
-        ${studiKasus}
-
-        Pertanyaan Diskusi:
-        1. Apa masalah utama dalam kasus ini?
-        2. Bagaimana perasaan tokoh dalam kasus ini?
-        3. Apa yang sebaiknya dilakukan oleh tokoh dalam kasus ini?
-        4. Bagaimana penerapan materi "${judul}" dalam kasus ini?
-        5. Apa yang bisa kita pelajari dari kasus ini?
-        6. Jika kamu berada di posisi tokoh, apa yang akan kamu lakukan?
-
-        B. AKTIVITAS KELOMPOK
-        1. Diskusikan pertanyaan di atas dengan kelompokmu!
-        2. Tuliskan hasil diskusi dengan rapi!
-        3. Siapkan presentasi untuk disampaikan di depan kelas!
-
-        C. REFLEKSI DIRI
-        1. Apa yang saya pelajari dari materi ini?
-        2. Apa yang akan saya lakukan setelah ini?
-        3. Komitmen saya untuk masa depan:`;
+            return `LKPD BERBASIS AKTIVITAS\n"${judul}"\n\nA. STUDI KASUS\n${studiKasus}\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n6. Jika kamu di posisi tokoh?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`;
         }
 
         function generateRefleksi(judul) {
-            return `PERTANYAAN REFLEKSI DAN EVALUASI DIRI (Mode Non-HP)
-        "${judul}"
-
-        Nama : _________________________
-        Kelas : ________________________
-        Tanggal : ______________________
-
-        Jawablah pertanyaan berikut dengan jujur!
-
-        1. Apa yang paling berkesan dari materi "${judul}"?
-           ___________________________________________________________
-
-        2. Bagaimana perasaanmu setelah mempelajari materi ini?
-           ___________________________________________________________
-
-        3. Apa yang akan kamu lakukan setelah mempelajari materi ini?
-           ___________________________________________________________
-
-        4. Apa tantangan terbesar dalam menerapkan "${judul}"?
-           ___________________________________________________________
-
-        5. Siapa yang bisa membantumu menerapkan materi ini?
-           ___________________________________________________________
-
-        6. Komitmen saya untuk menerapkan "${judul}":
-           ___________________________________________________________
-
-        Tanda tangan siswa: _______________`;
+            return `PERTANYAAN REFLEKSI DAN EVALUASI DIRI\n"${judul}"\n\nNama : _________________________\nKelas : ________________________\nTanggal : ______________________\n\n1. Apa yang paling berkesan?\n2. Bagaimana perasaanmu?\n3. Apa yang akan kamu lakukan?\n4. Apa tantangan terbesar?\n5. Siapa yang bisa membantumu?\n6. Komitmen saya:\n\nTanda tangan siswa: _______________`;
         }
 
         function generateKuis(judul) {
@@ -1277,7 +1110,7 @@
         }
 
         // ================================================================
-        // BANGUN DATABASE MATERI
+        // BANGUN DATABASE
         // ================================================================
 
         const materiDatabase = {};
@@ -1304,8 +1137,8 @@
                             kelas: kelasDisplay,
                             topik: `"${judul} untuk Masa Depan Lebih Baik"`,
                             ice: `Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`,
-                            apersepsi: `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`,
-                            diskusi: `Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`,
+                            apersepsi: `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"?' Waktu 5 menit.`,
+                            diskusi: `Diskusi kelompok tentang "${judul}". Waktu 20 menit.`,
                             konten: generateKonten(judul, bidang, kelasDisplay),
                             rpl: generateRPL(judul, bidang, kelasDisplay),
                             aktivitas: generateLKPD(judul, studiKasus),
@@ -1321,7 +1154,7 @@
         }
 
         // ================================================================
-        // DOM ELEMENTS
+        // VARIABLES & ELEMENTS
         // ================================================================
 
         const jenjangEl = document.getElementById('jenjang');
@@ -1350,44 +1183,6 @@
         const feedbackDisplay = document.getElementById('feedbackDisplay');
         const jawabanSiswaList = document.getElementById('jawabanSiswaList');
 
-        const saveLkpdBtn = document.getElementById('saveLkpdBtn');
-        const simpanRefleksiBtn = document.getElementById('simpanRefleksiBtn');
-        const cetakRefleksiBtn = document.getElementById('cetakRefleksiBtn');
-        const cetakLkpdBtn = document.getElementById('cetakLkpdBtn');
-        const cetakPdfBtn = document.getElementById('cetakPdfBtn');
-        const downloadWordBtn = document.getElementById('downloadWordBtn');
-        const downloadMateriPdf = document.getElementById('downloadMateriPdf');
-        const downloadMateriWord = document.getElementById('downloadMateriWord');
-        const downloadRplPdf = document.getElementById('downloadRplPdf');
-        const downloadRplWord = document.getElementById('downloadRplWord');
-        const resetBtn = document.getElementById('resetBtn');
-        const copyLinkBtn = document.getElementById('copyLinkBtn');
-        const generateLinkBtn = document.getElementById('generateLinkBtn');
-        const generateLaporanBtn = document.getElementById('generateLaporanBtn');
-        const cetakLaporanBtn = document.getElementById('cetakLaporanBtn');
-
-        const copyKuisLinkBtn = document.getElementById('copyKuisLinkBtn');
-        const generateKuisLinkBtn = document.getElementById('generateKuisLinkBtn');
-        const bukaKuisBtn = document.getElementById('bukaKuisBtn');
-        const simpanHasilKuisBtn = document.getElementById('simpanHasilKuisBtn');
-
-        // Modal
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalClose = document.getElementById('modalClose');
-        const modalOk = document.getElementById('modalOk');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalBody = document.getElementById('modalBody');
-
-        const kuisModalOverlay = document.getElementById('kuisModalOverlay');
-        const kuisModalClose = document.getElementById('kuisModalClose');
-        const kuisModalTitle = document.getElementById('kuisModalTitle');
-        const kuisModalQuestions = document.getElementById('kuisModalQuestions');
-        const kuisSubmitBtn = document.getElementById('kuisSubmitBtn');
-        const kuisModalResult = document.getElementById('kuisModalResult');
-        const kuisModalScore = document.getElementById('kuisModalScore');
-        const kuisModalFeedback = document.getElementById('kuisModalFeedback');
-        const kuisModalTutup = document.getElementById('kuisModalTutup');
-
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = {
             lkpd: document.getElementById('tab-lkpd'),
@@ -1413,25 +1208,25 @@
         // ================================================================
 
         function showModal(title, message) {
-            modalTitle.textContent = title;
-            modalBody.innerHTML = `<p>${message}</p>`;
-            modalOverlay.classList.add('active');
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalBody').innerHTML = `<p>${message}</p>`;
+            document.getElementById('modalOverlay').classList.add('active');
         }
 
-        function hideModal() {
-            modalOverlay.classList.remove('active');
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
         }
 
         function showKuisModal() {
-            kuisModalOverlay.classList.add('active');
+            document.getElementById('kuisModalOverlay').classList.add('active');
         }
 
-        function hideKuisModal() {
-            kuisModalOverlay.classList.remove('active');
-            kuisModalResult.style.display = 'none';
-            kuisSubmitBtn.textContent = '📤 Kirim Jawaban';
-            kuisSubmitBtn.disabled = false;
-            kuisSubmitBtn.style.opacity = '1';
+        function closeKuisModal() {
+            document.getElementById('kuisModalOverlay').classList.remove('active');
+            document.getElementById('kuisModalResult').style.display = 'none';
+            document.getElementById('kuisSubmitBtn').textContent = '📤 Kirim Jawaban';
+            document.getElementById('kuisSubmitBtn').disabled = false;
+            document.getElementById('kuisSubmitBtn').style.opacity = '1';
         }
 
         // ================================================================
@@ -1594,27 +1389,15 @@
             const refleksi = document.getElementById('refleksiText') ? document.getElementById('refleksiText').value.trim() ||
                 'Refleksi belum diisi.' : 'Refleksi belum tersedia.';
 
-            const header = `
-        ================================================================
-        NaFaS BK - DOKUMEN BIMBINGAN KLASIKAL
-        ================================================================
-        Jenjang       : ${jenjangEl.value}
-        Kelas         : ${kelasEl.value}
-        Semester      : ${semesterEl.value}
-        Materi        : ${m ? m.judul : 'Belum dipilih'}
-        Guru BK       : ${namaGuruEl.value || '_______________'}
-        Durasi        : ${durasiEl.value} menit
-        Tanggal       : ${new Date().toLocaleDateString('id-ID')}
-        ================================================================
-
-        `;
+            const header =
+                `================================================\nNaFaS BK - DOKUMEN BIMBINGAN KLASIKAL\n================================================\nJenjang       : ${jenjangEl.value}\nKelas         : ${kelasEl.value}\nSemester      : ${semesterEl.value}\nMateri        : ${m ? m.judul : 'Belum dipilih'}\nGuru BK       : ${namaGuruEl.value || '_______________'}\nDurasi        : ${durasiEl.value} menit\nTanggal       : ${new Date().toLocaleDateString('id-ID')}\n================================================\n\n`;
 
             gabunganText.value = header +
-                `\n📄 LKPD\n${'='.repeat(60)}\n${lkpd}\n\n` +
-                `📝 REFLEKSI DIRI (Mode Non-HP)\n${'='.repeat(60)}\n${refleksi}\n\n` +
-                `📊 HASIL SISWA\n${'='.repeat(60)}\n${hasil}\n\n` +
-                `📋 RPL\n${'='.repeat(60)}\n${rplContent.textContent}\n\n` +
-                `📊 LAPORAN\n${'='.repeat(60)}\n${laporan}`;
+                `📄 LKPD\n${'='.repeat(50)}\n${lkpd}\n\n` +
+                `📝 REFLEKSI DIRI\n${'='.repeat(50)}\n${refleksi}\n\n` +
+                `📊 HASIL SISWA\n${'='.repeat(50)}\n${hasil}\n\n` +
+                `📋 RPL\n${'='.repeat(50)}\n${rplContent.textContent}\n\n` +
+                `📊 LAPORAN\n${'='.repeat(50)}\n${laporan}`;
         }
 
         function switchTab(tabId) {
@@ -1646,7 +1429,8 @@
             }
             const rataSkor = jumlahSiswaKuis > 0 ? Math.round(totalSkor / jumlahSiswaKuis) : 0;
 
-            const laporan = `
+            const laporan =
+                `
         ================================================================
         LAPORAN KEGIATAN BIMBINGAN KLASIKAL
         NaFaS BK
@@ -1720,18 +1504,18 @@
                 return;
             }
 
-            kuisModalTitle.textContent = `📱 Kuis - ${m.judul}`;
-            kuisModalResult.style.display = 'none';
+            document.getElementById('kuisModalTitle').textContent = `📱 Kuis - ${m.judul}`;
+            document.getElementById('kuisModalResult').style.display = 'none';
 
             let html = '';
             m.kuisSoal.forEach((q, i) => {
                 html += `
-                    <div class="question">
-                        <div class="q-text">${i+1}. ${q.q}</div>
+                    <div class="question" style="margin-bottom:12px;background:#f8fafc;padding:12px 16px;border-radius:8px;border-left:4px solid #4A6CF7;">
+                        <div class="q-text" style="font-weight:600;margin-bottom:6px;">${i+1}. ${q.q}</div>
                         <div class="options">
                             ${q.options.map((opt, oi) => `
-                                <label>
-                                    <input type="radio" name="kuis_q${i}" value="${oi}" />
+                                <label style="display:block;padding:4px 0;cursor:pointer;">
+                                    <input type="radio" name="kuis_q${i}" value="${oi}" style="margin-right:8px;width:auto;" />
                                     ${String.fromCharCode(65 + oi)}. ${opt}
                                 </label>
                             `).join('')}
@@ -1739,11 +1523,11 @@
                     </div>
                 `;
             });
-            kuisModalQuestions.innerHTML = html;
+            document.getElementById('kuisModalQuestions').innerHTML = html;
 
-            kuisSubmitBtn.textContent = '📤 Kirim Jawaban';
-            kuisSubmitBtn.disabled = false;
-            kuisSubmitBtn.style.opacity = '1';
+            document.getElementById('kuisSubmitBtn').textContent = '📤 Kirim Jawaban';
+            document.getElementById('kuisSubmitBtn').disabled = false;
+            document.getElementById('kuisSubmitBtn').style.opacity = '1';
 
             showKuisModal();
         }
@@ -1775,18 +1559,18 @@
 
             const score = Math.round((correct / total) * 100);
 
-            kuisModalResult.style.display = 'block';
-            kuisModalScore.textContent = `${score}% (${correct}/${total} benar)`;
+            document.getElementById('kuisModalResult').style.display = 'block';
+            document.getElementById('kuisModalScore').textContent = `${score}% (${correct}/${total} benar)`;
 
             let feedback = score >= 80 ? '🏆 Hebat!' :
                 score >= 60 ? '📚 Bagus!' :
                 score >= 40 ? '📖 Ayo belajar lagi!' :
                 '💪 Jangan menyerah!';
-            kuisModalFeedback.textContent = feedback;
+            document.getElementById('kuisModalFeedback').textContent = feedback;
 
-            kuisSubmitBtn.textContent = '✅ Selesai';
-            kuisSubmitBtn.disabled = true;
-            kuisSubmitBtn.style.opacity = '0.7';
+            document.getElementById('kuisSubmitBtn').textContent = '✅ Selesai';
+            document.getElementById('kuisSubmitBtn').disabled = true;
+            document.getElementById('kuisSubmitBtn').style.opacity = '0.7';
 
             const jawaban = {
                 tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
@@ -1809,11 +1593,11 @@
                     </div>
                 `;
             });
-            jawabanSiswaList.innerHTML = html;
+            document.getElementById('jawabanSiswaList').innerHTML = html;
 
-            kuisResultBox.style.display = 'block';
-            scoreDisplay.textContent = `${score}%`;
-            feedbackDisplay.textContent = feedback;
+            document.getElementById('kuisResultBox').style.display = 'block';
+            document.getElementById('scoreDisplay').textContent = `${score}%`;
+            document.getElementById('feedbackDisplay').textContent = feedback;
 
             hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Kuis: ${score}% (${correct}/${total}) - ${feedback}`;
             updateGabungan();
@@ -1865,427 +1649,17 @@
         }
 
         // ================================================================
-        // FUNGSI CETAK PDF & WORD - DIPERBAIKI
+        // FUNGSI SIMPAN & CETAK
         // ================================================================
 
-        function printContent(content, title, type) {
-            // Buat window baru untuk print
-            const printWindow = window.open('', '_blank', 'width=900,height=700');
-            if (!printWindow) {
-                showModal('⚠️ Peringatan',
-                    'Browser memblokir pop-up. Silakan izinkan pop-up untuk mencetak.\n\nCara: Klik ikon pop-up di address bar atau setting browser.'
-                    );
-                return;
-            }
-
-            const styles = `
-                body {
-                    font-family: 'Segoe UI', Arial, sans-serif;
-                    padding: 40px;
-                    max-width: 900px;
-                    margin: auto;
-                    line-height: 1.6;
-                }
-                h1 {
-                    color: #1A2A6A;
-                    border-bottom: 3px solid #1A2A6A;
-                    padding-bottom: 10px;
-                    text-align: center;
-                }
-                .header-print {
-                    text-align: center;
-                    margin-bottom: 25px;
-                    border-bottom: 3px solid #1A2A6A;
-                    padding-bottom: 15px;
-                }
-                .header-print h1 {
-                    border-bottom: none;
-                    padding-bottom: 0;
-                }
-                .header-print p {
-                    color: #718096;
-                    margin: 5px 0;
-                }
-                pre {
-                    white-space: pre-wrap;
-                    font-family: 'Segoe UI', Arial, sans-serif;
-                    font-size: 13px;
-                    background: #f8f9fa;
-                    padding: 15px;
-                    border-radius: 8px;
-                    border: 1px solid #e2e8f0;
-                    line-height: 1.6;
-                }
-                .footer {
-                    margin-top: 30px;
-                    border-top: 2px solid #1A2A6A;
-                    padding-top: 10px;
-                    text-align: center;
-                    font-size: 12px;
-                    color: #718096;
-                }
-                .rpl-content {
-                    font-family: 'Courier New', monospace;
-                    font-size: 12px;
-                    white-space: pre-wrap;
-                    background: #f8f9fa;
-                    padding: 15px;
-                    border-radius: 8px;
-                    border: 1px solid #e2e8f0;
-                    line-height: 1.5;
-                }
-                @media print {
-                    body { padding: 20px; }
-                    .no-print { display: none; }
-                    pre { border: 1px solid #ccc; }
-                }
-            `;
-
-            const htmlContent = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <title>${title}</title>
-                    <style>${styles}</style>
-                </head>
-                <body>
-                    <div class="header-print">
-                        <h1>📘 NaFaS BK</h1>
-                        <p><strong>${title}</strong></p>
-                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
-                        <p>Dicetak: ${new Date().toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'})}</p>
-                    </div>
-                    ${type === 'rpl' ? `<div class="rpl-content">${content}</div>` : `<pre>${content}</pre>`}
-                    <div class="footer">Dicetak dari NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</div>
-                    <script>
-                        // Auto print setelah halaman dimuat
-                        window.onload = function() {
-                            setTimeout(function() {
-                                window.print();
-                            }, 500);
-                        };
-                    <\/script>
-                </body>
-                </html>
-            `;
-
-            printWindow.document.write(htmlContent);
-            printWindow.document.close();
-        }
-
-        function downloadWord(content, title, filename) {
-            const htmlContent = `
-                <html xmlns:o='urn:schemas-microsoft-com:office:office'
-                      xmlns:w='urn:schemas-microsoft-com:office:word'
-                      xmlns='http://www.w3.org/TR/REC-html40'>
-                <head>
-                    <meta charset="utf-8">
-                    <title>${title}</title>
-                    <!--[if gte mso 9]>
-                    <xml>
-                        <w:WordDocument>
-                            <w:View>Print</w:View>
-                        </w:WordDocument>
-                    </xml>
-                    <![endif]-->
-                    <style>
-                        body {
-                            font-family: 'Segoe UI', Arial, sans-serif;
-                            padding: 30px;
-                            line-height: 1.6;
-                            max-width: 900px;
-                            margin: auto;
-                        }
-                        h1 {
-                            color: #1A2A6A;
-                            border-bottom: 3px solid #1A2A6A;
-                            padding-bottom: 10px;
-                            text-align: center;
-                        }
-                        .header-print {
-                            text-align: center;
-                            margin-bottom: 25px;
-                            border-bottom: 3px solid #1A2A6A;
-                            padding-bottom: 15px;
-                        }
-                        .header-print h1 {
-                            border-bottom: none;
-                            padding-bottom: 0;
-                        }
-                        .header-print p {
-                            color: #718096;
-                            margin: 5px 0;
-                        }
-                        pre {
-                            white-space: pre-wrap;
-                            font-family: 'Segoe UI', Arial, sans-serif;
-                            font-size: 12pt;
-                            background: #f8f9fa;
-                            padding: 15px;
-                            border-radius: 8px;
-                            border: 1px solid #e2e8f0;
-                            line-height: 1.6;
-                        }
-                        .footer {
-                            margin-top: 30px;
-                            border-top: 2px solid #1A2A6A;
-                            padding-top: 10px;
-                            text-align: center;
-                            font-size: 10pt;
-                            color: #718096;
-                        }
-                        .rpl-content {
-                            font-family: 'Courier New', monospace;
-                            font-size: 11pt;
-                            white-space: pre-wrap;
-                            background: #f8f9fa;
-                            padding: 15px;
-                            border-radius: 8px;
-                            border: 1px solid #e2e8f0;
-                            line-height: 1.5;
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="header-print">
-                        <h1>📘 NaFaS BK</h1>
-                        <p><strong>${title}</strong></p>
-                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
-                    </div>
-                    ${content.includes('RENCANA PELAKSANAAN LAYANAN') ? `<div class="rpl-content">${content}</div>` : `<pre>${content}</pre>`}
-                    <div class="footer">Dicetak dari NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</div>
-                </body>
-                </html>
-            `;
-
-            const blob = new Blob(['\uFEFF' + htmlContent], {
-                type: 'application/msword;charset=utf-8'
-            });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename || `${title.replace(/\s/g, '_')}.doc`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            setTimeout(() => URL.revokeObjectURL(url), 1000);
-        }
-
-        // ================================================================
-        // EVENT LISTENERS - CETAK PDF & WORD
-        // ================================================================
-
-        // Unduh Materi PDF
-        downloadMateriPdf.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return; }
-
-            const content =
-                `MATERI BIMBINGAN KLASIKAL
-        ================================================================
-        Judul       : ${m.judul}
-        Jenjang     : ${jenjangEl.value}
-        Kelas       : ${kelasEl.value}
-        Semester    : ${semesterEl.value}
-        Bidang      : ${m.bidang}
-        Durasi      : ${durasiEl.value} menit
-        ================================================================
-
-        TOPIK: ${m.topik}
-
-        ICE BREAKING:
-        ${m.ice}
-
-        APERSEPSI:
-        ${m.apersepsi}
-
-        DISKUSI:
-        ${m.diskusi}
-
-        KONTEN MATERI:
-        ${m.konten}
-
-        LKPD:
-        ${m.aktivitas}
-        ================================================================`;
-
-            printContent(content, `Materi - ${m.judul}`, 'materi');
-        });
-
-        // Unduh Materi Word
-        downloadMateriWord.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return; }
-
-            const content =
-                `MATERI BIMBINGAN KLASIKAL
-        ================================================================
-        Judul       : ${m.judul}
-        Jenjang     : ${jenjangEl.value}
-        Kelas       : ${kelasEl.value}
-        Semester    : ${semesterEl.value}
-        Bidang      : ${m.bidang}
-        Durasi      : ${durasiEl.value} menit
-        ================================================================
-
-        TOPIK: ${m.topik}
-
-        ICE BREAKING: ${m.ice}
-
-        APERSEPSI: ${m.apersepsi}
-
-        DISKUSI: ${m.diskusi}
-
-        KONTEN MATERI: ${m.konten}
-
-        LKPD: ${m.aktivitas}
-        ================================================================`;
-
-            downloadWord(content, `Materi - ${m.judul}`, `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`);
-        });
-
-        // Unduh RPL PDF
-        downloadRplPdf.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return; }
-
-            let rpl = m.rpl;
-            rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
-            rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
-            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas}`);
-            rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
-            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
-            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
-
-            printContent(rpl, `RPL - ${m.judul}`, 'rpl');
-        });
-
-        // Unduh RPL Word
-        downloadRplWord.addEventListener('click', function() {
-            const m = getMateri(parseInt(materiSelect.value));
-            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return; }
-
-            let rpl = m.rpl;
-            rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
-            rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
-            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas}`);
-            rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
-            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
-            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
-
-            downloadWord(rpl, `RPL - ${m.judul}`, `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`);
-        });
-
-        // Cetak LKPD
-        cetakLkpdBtn.addEventListener('click', function() {
-            const content = lkpdText.value.trim() || 'LKPD belum diisi.';
-            if (!content) { showModal('⚠️ Peringatan', 'LKPD kosong.');
-                return; }
-            const m = getMateri(parseInt(materiSelect.value));
-            const title = m ? `LKPD - ${m.judul}` : 'LKPD';
-            printContent(content, title, 'lkpd');
-        });
-
-        // Cetak Refleksi
-        cetakRefleksiBtn.addEventListener('click', function() {
-            const refleksiText = document.getElementById('refleksiText');
-            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.');
-                return; }
-            const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
-            const m = getMateri(parseInt(materiSelect.value));
-            const title = m ? `Refleksi - ${m.judul}` : 'Refleksi';
-            printContent(content, title, 'refleksi');
-        });
-
-        // Cetak Laporan
-        cetakLaporanBtn.addEventListener('click', function() {
-            const content = laporanContent.textContent;
-            if (!content || content === 'Generate laporan terlebih dahulu.') {
-                showModal('⚠️ Peringatan', 'Generate laporan dulu.');
-                return;
-            }
-            printContent(content, 'Laporan Bimbingan Klasikal', 'laporan');
-        });
-
-        // Cetak Dokumen Lengkap PDF
-        cetakPdfBtn.addEventListener('click', function() {
-            updateGabungan();
-            const content = gabunganText.value;
-            printContent(content, 'Dokumen Lengkap Bimbingan Klasikal', 'dokumen');
-        });
-
-        // Download Word
-        downloadWordBtn.addEventListener('click', function() {
-            updateGabungan();
-            const content = gabunganText.value;
-            downloadWord(content, 'Dokumen Lengkap Bimbingan Klasikal',
-                `NaFaS_BK_Dokumen_Lengkap_${new Date().toISOString().slice(0,10)}.doc`);
-        });
-
-        // ================================================================
-        // EVENT LISTENERS LAINNYA
-        // ================================================================
-
-        // Modal utama
-        modalClose.addEventListener('click', hideModal);
-        modalOk.addEventListener('click', hideModal);
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === this) hideModal();
-        });
-
-        // Modal kuis
-        kuisModalClose.addEventListener('click', hideKuisModal);
-        kuisModalTutup.addEventListener('click', hideKuisModal);
-        kuisModalOverlay.addEventListener('click', function(e) {
-            if (e.target === this) hideKuisModal();
-        });
-
-        // Tab
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                switchTab(this.dataset.tab);
-            });
-        });
-
-        // Jenjang, kelas, semester
-        jenjangEl.addEventListener('change', function() {
-            updateKelasOptions();
-            populateMateri();
-        });
-        [kelasEl, semesterEl].forEach(el => {
-            el.addEventListener('change', function() {
-                populateMateri();
-            });
-        });
-
-        // Pilih materi
-        materiSelect.addEventListener('change', function() {
-            displayMateri(parseInt(this.value));
-        });
-
-        // Durasi & nama guru
-        [durasiEl, namaGuruEl].forEach(el => {
-            el.addEventListener('change', function() {
-                const val = parseInt(materiSelect.value);
-                if (val > 0) displayMateri(val);
-            });
-        });
-
-        // LKPD
-        saveLkpdBtn.addEventListener('click', function() {
+        function saveLkpd() {
             if (!lkpdText.value.trim()) { showModal('⚠️ Peringatan', 'LKPD kosong.');
                 return; }
             showModal('✅ Berhasil', 'LKPD disimpan!');
             updateGabungan();
-        });
+        }
 
-        // Refleksi
-        simpanRefleksiBtn.addEventListener('click', function() {
+        function simpanRefleksi() {
             const refleksiText = document.getElementById('refleksiText');
             if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.');
                 return; }
@@ -2296,39 +1670,9 @@
             hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Refleksi selesai.`;
             updateGabungan();
             showModal('✅ Berhasil', 'Refleksi disimpan!');
-        });
+        }
 
-        // Kuis
-        copyKuisLinkBtn.addEventListener('click', copyKuisLink);
-        generateKuisLinkBtn.addEventListener('click', generateKuisLink);
-        bukaKuisBtn.addEventListener('click', openKuisModal);
-        simpanHasilKuisBtn.addEventListener('click', simpanHasilKuis);
-        kuisSubmitBtn.addEventListener('click', submitKuis);
-
-        // LKPD link
-        copyLinkBtn.addEventListener('click', function() {
-            navigator.clipboard.writeText(linkLkpd.value).then(() => { showModal('📋 Berhasil', 'Link disalin!'); })
-            .catch(() => {
-                linkLkpd.select();
-                document.execCommand('copy');
-                showModal('📋 Berhasil', 'Link disalin!');
-            });
-        });
-
-        generateLinkBtn.addEventListener('click', function() {
-            const newId = Math.random().toString(36).substring(2, 10);
-            linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${newId}`;
-            showModal('🔄 Link Baru', 'Link baru dibuat!');
-        });
-
-        // Laporan
-        generateLaporanBtn.addEventListener('click', function() {
-            generateLaporan();
-            showModal('✅ Berhasil', 'Laporan digenerate!');
-        });
-
-        // Reset
-        resetBtn.addEventListener('click', function() {
+        function resetSemua() {
             if (confirm('Reset semua data?')) {
                 lkpdText.value = '';
                 hasilSiswa.value = '';
@@ -2354,9 +1698,213 @@
                 switchTab('lkpd');
                 showModal('✅ Berhasil', 'Data direset.');
             }
+        }
+
+        // ================================================================
+        // FUNGSI CETAK PDF & WORD - DIPERBAIKI
+        // ================================================================
+
+        function cetakKonten(content, title, type) {
+            const win = window.open('', '_blank', 'width=900,height=700');
+            if (!win) {
+                showModal('⚠️ Pop-up diblokir',
+                    'Browser memblokir pop-up. Silakan izinkan pop-up untuk mencetak.\n\nCara: Klik ikon pop-up di address bar → pilih "Always allow pop-ups"'
+                    );
+                return;
+            }
+
+            const styles = `
+                body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; max-width: 900px; margin: auto; line-height: 1.6; }
+                h1 { color: #1A2A6A; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; text-align: center; }
+                .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
+                .header-print h1 { border-bottom: none; padding-bottom: 0; }
+                .header-print p { color: #718096; margin: 5px 0; }
+                pre { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; line-height: 1.6; }
+                .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
+                @media print { body { padding: 20px; } pre { border: 1px solid #ccc; } }
+            `;
+
+            const html = `
+                <!DOCTYPE html>
+                <html>
+                <head><meta charset="UTF-8"><title>${title}</title><style>${styles}</style></head>
+                <body>
+                    <div class="header-print">
+                        <h1>📘 NaFaS BK</h1>
+                        <p><strong>${title}</strong></p>
+                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                        <p>Dicetak: ${new Date().toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'})}</p>
+                    </div>
+                    <pre>${content}</pre>
+                    <div class="footer">Dicetak dari NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</div>
+                    <script>
+                        setTimeout(function() { window.print(); }, 300);
+                    <\/script>
+                </body>
+                </html>
+            `;
+
+            win.document.write(html);
+            win.document.close();
+        }
+
+        function downloadWordKonten(content, title, filename) {
+            const html = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office'
+                      xmlns:w='urn:schemas-microsoft-com:office:word'
+                      xmlns='http://www.w3.org/TR/REC-html40'>
+                <head><meta charset="utf-8"><title>${title}</title>
+                <style>
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 30px; line-height: 1.6; max-width: 900px; margin: auto; }
+                    h1 { color: #1A2A6A; border-bottom: 3px solid #1A2A6A; padding-bottom: 10px; text-align: center; }
+                    .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
+                    .header-print h1 { border-bottom: none; padding-bottom: 0; }
+                    .header-print p { color: #718096; margin: 5px 0; }
+                    pre { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 12pt; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; line-height: 1.6; }
+                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 10pt; color: #718096; }
+                </style>
+                </head>
+                <body>
+                    <div class="header-print">
+                        <h1>📘 NaFaS BK</h1>
+                        <p><strong>${title}</strong></p>
+                        <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
+                    </div>
+                    <pre>${content}</pre>
+                    <div class="footer">Dicetak dari NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</div>
+                </body>
+                </html>
+            `;
+
+            const blob = new Blob(['\uFEFF' + html], { type: 'application/msword;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || `${title.replace(/\s/g, '_')}.doc`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        // ================================================================
+        // FUNGSI UNDUH MATERI & RPL
+        // ================================================================
+
+        function downloadMateri(type) {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
+                return; }
+
+            const content =
+                `MATERI BIMBINGAN KLASIKAL\n================================================\nJudul       : ${m.judul}\nJenjang     : ${jenjangEl.value}\nKelas       : ${kelasEl.value}\nSemester    : ${semesterEl.value}\nBidang      : ${m.bidang}\nDurasi      : ${durasiEl.value} menit\n================================================\n\nTOPIK: ${m.topik}\n\nICE BREAKING:\n${m.ice}\n\nAPERSEPSI:\n${m.apersepsi}\n\nDISKUSI:\n${m.diskusi}\n\nKONTEN MATERI:\n${m.konten}\n\nLKPD:\n${m.aktivitas}\n================================================`;
+
+            const title = `Materi - ${m.judul}`;
+            if (type === 'pdf') {
+                cetakKonten(content, title, 'materi');
+            } else {
+                downloadWordKonten(content, title, `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`);
+            }
+        }
+
+        function downloadRpl(type) {
+            const m = getMateri(parseInt(materiSelect.value));
+            if (!m) { showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
+                return; }
+
+            let rpl = m.rpl;
+            rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
+            rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
+            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas}`);
+            rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
+            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
+            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
+
+            const title = `RPL - ${m.judul}`;
+            if (type === 'pdf') {
+                cetakKonten(rpl, title, 'rpl');
+            } else {
+                downloadWordKonten(rpl, title, `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`);
+            }
+        }
+
+        // ================================================================
+        // FUNGSI CETAK LAINNYA
+        // ================================================================
+
+        function cetakLKPD() {
+            const content = lkpdText.value.trim() || 'LKPD belum diisi.';
+            if (!content) { showModal('⚠️ Peringatan', 'LKPD kosong.');
+                return; }
+            const m = getMateri(parseInt(materiSelect.value));
+            const title = m ? `LKPD - ${m.judul}` : 'LKPD';
+            cetakKonten(content, title, 'lkpd');
+        }
+
+        function cetakRefleksi() {
+            const refleksiText = document.getElementById('refleksiText');
+            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.');
+                return; }
+            const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
+            const m = getMateri(parseInt(materiSelect.value));
+            const title = m ? `Refleksi - ${m.judul}` : 'Refleksi';
+            cetakKonten(content, title, 'refleksi');
+        }
+
+        function cetakLaporan() {
+            const content = laporanContent.textContent;
+            if (!content || content === 'Generate laporan terlebih dahulu.') {
+                showModal('⚠️ Peringatan', 'Generate laporan dulu.');
+                return;
+            }
+            cetakKonten(content, 'Laporan Bimbingan Klasikal', 'laporan');
+        }
+
+        function cetakDokumen() {
+            updateGabungan();
+            const content = gabunganText.value;
+            cetakKonten(content, 'Dokumen Lengkap Bimbingan Klasikal', 'dokumen');
+        }
+
+        function downloadDokumenWord() {
+            updateGabungan();
+            const content = gabunganText.value;
+            downloadWordKonten(content, 'Dokumen Lengkap Bimbingan Klasikal',
+                `NaFaS_BK_Dokumen_Lengkap_${new Date().toISOString().slice(0,10)}.doc`);
+        }
+
+        // ================================================================
+        // EVENT LISTENERS
+        // ================================================================
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                switchTab(this.dataset.tab);
+            });
         });
 
-        // Upload file LKPD
+        jenjangEl.addEventListener('change', function() {
+            updateKelasOptions();
+            populateMateri();
+        });
+
+        [kelasEl, semesterEl].forEach(el => {
+            el.addEventListener('change', function() {
+                populateMateri();
+            });
+        });
+
+        materiSelect.addEventListener('change', function() {
+            displayMateri(parseInt(this.value));
+        });
+
+        [durasiEl, namaGuruEl].forEach(el => {
+            el.addEventListener('change', function() {
+                const val = parseInt(materiSelect.value);
+                if (val > 0) displayMateri(val);
+            });
+        });
+
         lkpdFile.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
@@ -2368,6 +1916,7 @@
         // ================================================================
         // INIT
         // ================================================================
+
         updateKelasOptions();
         populateMateri();
         switchTab('lkpd');
