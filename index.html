@@ -95,8 +95,6 @@
         .lkpd-hp-box .link-box .btn-copy:hover { background: var(--primary-light); transform: scale(1.03); }
         .lkpd-hp-box .link-box .btn-open { padding: 6px 16px; border: none; border-radius: 8px; background: var(--success); color: white; font-weight: 600; cursor: pointer; font-size: 12px; text-decoration: none; display: inline-flex; align-items: center; gap: 5px; transition: 0.3s; }
         .lkpd-hp-box .link-box .btn-open:hover { background: #1E8449; transform: scale(1.03); }
-        .lkpd-hp-box .link-box .btn-generate { padding: 6px 16px; border: none; border-radius: 8px; background: var(--accent); color: var(--primary); font-weight: 600; cursor: pointer; font-size: 12px; transition: 0.3s; }
-        .lkpd-hp-box .link-box .btn-generate:hover { background: #D4AC0D; transform: scale(1.03); }
 
         .refleksi-print-wrapper { max-width: 100%; margin: 0 auto; font-size: 11px; line-height: 1.4; }
         .refleksi-print-wrapper .refleksi-header { text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 5px; margin-bottom: 6px; }
@@ -109,18 +107,6 @@
         .refleksi-print-wrapper .refleksi-body .soal-refleksi .nomor { font-weight: 600; color: var(--primary); font-size: 10px; }
         .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis { display: block; border-bottom: 1px solid #ccc; height: 20px; margin-top: 1px; }
         .refleksi-print-wrapper .refleksi-footer { margin-top: 6px; border-top: 2px solid var(--primary); padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; color: var(--text-light); }
-
-        .lkpd-print-wrapper { max-width: 100%; margin: 0 auto; font-size: 11px; line-height: 1.4; }
-        .lkpd-print-wrapper .lkpd-header { text-align: center; border-bottom: 2px solid var(--primary); padding-bottom: 5px; margin-bottom: 6px; }
-        .lkpd-print-wrapper .lkpd-header h3 { color: var(--primary); font-size: 16px; margin: 0; }
-        .lkpd-print-wrapper .lkpd-header p { color: var(--text-light); font-size: 11px; margin: 1px 0; }
-        .lkpd-print-wrapper .lkpd-body .identitas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 10px; margin-bottom: 6px; font-size: 11px; }
-        .lkpd-print-wrapper .lkpd-body .identitas div { display: flex; align-items: center; gap: 4px; }
-        .lkpd-print-wrapper .lkpd-body .identitas .garis { flex: 1; border-bottom: 1px solid #999; min-width: 40px; }
-        .lkpd-print-wrapper .lkpd-body .soal-lkpd { margin: 3px 0; padding: 2px 0; border-bottom: 1px dashed #e0e0e0; }
-        .lkpd-print-wrapper .lkpd-body .soal-lkpd .nomor { font-weight: 600; color: var(--primary); font-size: 10px; }
-        .lkpd-print-wrapper .lkpd-body .soal-lkpd .jawaban-garis { display: block; border-bottom: 1px solid #ccc; height: 22px; margin-top: 1px; }
-        .lkpd-print-wrapper .lkpd-footer { margin-top: 6px; border-top: 2px solid var(--primary); padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; color: var(--text-light); }
 
         .welcome-banner { max-width: 1300px; margin: 0 auto 20px; background: linear-gradient(135deg, rgba(243,229,245,0.9), rgba(225,190,231,0.7), rgba(255,248,225,0.9)); border-radius: 20px; padding: 16px 28px; display: flex; justify-content: center; align-items: center; gap: 18px; flex-wrap: wrap; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 4px 20px rgba(74,20,140,0.08); }
         .welcome-banner .welcome-icon { font-size: 2.2rem; animation: floatIcon 3s ease-in-out infinite; }
@@ -222,26 +208,26 @@
             <div id="tab-lkpd" class="tab-content active">
                 <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
                     <h4 style="color:var(--primary);margin-bottom:6px;">📱 LKPD Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Siswa mengerjakan LKPD melalui Google Form. Hasil otomatis masuk ke spreadsheet guru.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Gunakan <strong>1 Google Form Universal</strong> untuk semua materi. Siswa memilih materi di form.</p>
                 </div>
                 <div class="lkpd-hp-box">
                     <div class="form-group">
-                        <label>🔗 Link Google Form (bagikan ke siswa)</label>
+                        <label>🔗 Link Google Form Universal (bagikan ke siswa)</label>
                         <div class="link-box">
                             <input type="text" id="linkLkpdHp" value="https://docs.google.com/forms/d/e/.../viewform" readonly />
                             <button class="btn-copy" onclick="copyLinkHp()"><i class="fas fa-copy"></i> Salin</button>
                             <a href="#" id="bukaLinkHp" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                            <button class="btn-generate" onclick="generateLinkHp()"><i class="fas fa-sync"></i> Ganti Link</button>
                         </div>
                     </div>
                     <div style="margin-top:10px;padding:10px;background:#fef3c7;border-radius:8px;font-size:12px;color:#92400E;">
-                        <strong>💡 Cara membuat Google Form:</strong>
+                        <strong>💡 Cara membuat 1 Google Form Universal:</strong>
                         <ol style="margin-left:18px;margin-top:4px;">
-                            <li>Buka <strong>forms.google.com</strong> buat form dengan pertanyaan sesuai LKPD</li>
+                            <li>Buka <strong>forms.google.com</strong></li>
+                            <li>Buat form dengan: Nama, Kelas, Materi (dropdown), dan 6 pertanyaan LKPD standar</li>
                             <li>Klik <strong>"Respons"</strong> → ikon <strong>Google Sheets (📊)</strong></li>
-                            <li>Salin link form dari tombol <strong>"Kirim"</strong> → <strong>"Link"</strong></li>
+                            <li>Salin link dari tombol <strong>"Kirim"</strong> → <strong>"Link"</strong></li>
                             <li>Tempel link di atas dan bagikan ke siswa</li>
-                            <li>Hasil otomatis masuk ke spreadsheet!</li>
+                            <li>Hasil semua materi masuk ke 1 spreadsheet!</li>
                         </ol>
                     </div>
                 </div>
@@ -249,14 +235,14 @@
                 <div style="margin-top:16px;border-top:2px dashed #e0d6e8;padding-top:16px;">
                     <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                         <h4 style="color:var(--primary);margin-bottom:6px;">📄 LKPD Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                        <p style="font-size:13px;color:var(--text-light);">Cetak LKPD dan bagikan ke siswa yang tidak punya HP.</p>
+                        <p style="font-size:13px;color:var(--text-light);">Cetak LKPD dan bagikan ke siswa yang tidak punya HP. <strong>1 lembar per materi.</strong></p>
                     </div>
                     <div class="lkpd-box">
                         <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="8" placeholder="LKPD akan muncul otomatis..."></textarea></div>
-                        <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
-                        <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
-                        <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
-                        <button class="btn btn-warning btn-block mt-10" id="downloadLkpdWordBtn">📝 Download LKPD Word</button>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
+                            <button class="btn btn-success" id="downloadLkpdWordBtn">📝 Download LKPD Word</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -271,13 +257,8 @@
                     <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat refleksi</p>
                 </div>
                 <div class="btn-group no-print" style="margin-top:10px;">
-                    <button class="btn btn-primary" id="simpanRefleksiBtn">💾 Simpan Refleksi</button>
                     <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi (1 Lembar)</button>
                     <button class="btn btn-warning" id="downloadRefleksiWordBtn">📝 Download Refleksi Word</button>
-                </div>
-                <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
-                    <p><strong>✅ Refleksi Tersimpan:</strong></p>
-                    <p id="refleksiStatus">Refleksi telah disimpan.</p>
                 </div>
             </div>
 
@@ -304,15 +285,40 @@
 
     <script>
         // ================================================================
-        // DATA MATERI LENGKAP - 12 MATERI PER SEMESTER
+        // DATA MATERI - 216 MATERI (12 per semester)
         // ================================================================
 
-        // Fungsi untuk membuat satu materi lengkap
         function createMateri(id, judul, bidang, kelas, semester, ice, apersepsi, diskusi, konten, rpl, refleksi, lkpd) {
             return { id, judul, bidang, kelas, semester, ice, apersepsi, diskusi, konten, rpl, refleksi, lkpd };
         }
 
-        // ========== DAFTAR JUDUL MATERI (12 per semester) ==========
+        function generateMateriList(judulList, bidangList, kelas, semester, prefix) {
+            const result = [];
+            for (let i = 0; i < judulList.length; i++) {
+                const id = prefix + i;
+                const judul = judulList[i];
+                const bidang = bidangList[i] || "Pribadi";
+                const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
+                const apersepsiText =
+                    `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu?' Waktu 5 menit.`;
+                const diskusiText =
+                    `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
+                const kontenText =
+                    `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`;
+                const rplText =
+                    `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan: \nNama Guru: \nKelas: ${kelas}\nWaktu: 60 menit\nMateri Layanan: ${judul}\nBidang Bimbingan: ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Refleksi\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`;
+                const refleksiText =
+                    `REFLEKSI DIRI (1 LEMBAR PADAT)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\n1. Apa yang paling berkesan dari "${judul}"?\n___________________________________________________\n\n2. Bagaimana perasaanmu setelah mempelajari ini?\n___________________________________________________\n\n3. Apa yang akan kamu lakukan setelah ini?\n___________________________________________________\n\n4. Apa tantangan terbesar dalam menerapkan ini?\n___________________________________________________\n\n5. Siapa yang bisa membantumu?\n___________________________________________________\n\n6. Komitmen saya:\n___________________________________________________\n\nTanda tangan siswa: _______________`;
+                const lkpdText =
+                    `LKPD (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\nA. STUDI KASUS\nStudi kasus tentang "${judul}" - seorang siswa menghadapi tantangan terkait materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`;
+
+                result.push(createMateri(id, judul, bidang, kelas, semester, iceText, apersepsiText, diskusiText,
+                    kontenText, rplText, refleksiText, lkpdText));
+            }
+            return result;
+        }
+
+        // ========== JUDUL MATERI ==========
         const judulSMP7S1 = [
             "Kenali Dirimu, Temukan Potensimu",
             "Aku Bangga Menjadi Siswa SMP",
@@ -349,39 +355,6 @@
             "Pribadi", "Pribadi", "Belajar"
         ];
 
-        // ========== FUNGSI GENERATE MATERI OTOMATIS ==========
-        function generateMateriList(judulList, bidangList, kelas, semester, prefix) {
-            const result = [];
-            for (let i = 0; i < judulList.length; i++) {
-                const id = prefix + i;
-                const judul = judulList[i];
-                const bidang = bidangList[i] || "Pribadi";
-                const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
-                const apersepsiText =
-                    `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`;
-                const diskusiText =
-                    `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
-                const kontenText =
-                    `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`;
-                const rplText =
-                    `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan: \nNama Guru: \nKelas: ${kelas}\nWaktu: 60 menit\nMateri Layanan: ${judul}\nBidang Bimbingan: ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Refleksi\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`;
-                const refleksiText =
-                    `REFLEKSI DIRI (1 LEMBAR PADAT)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\n1. Apa yang paling berkesan dari "${judul}"?\n___________________________________________________\n\n2. Bagaimana perasaanmu setelah mempelajari ini?\n___________________________________________________\n\n3. Apa yang akan kamu lakukan setelah ini?\n___________________________________________________\n\n4. Apa tantangan terbesar dalam menerapkan ini?\n___________________________________________________\n\n5. Siapa yang bisa membantumu?\n___________________________________________________\n\n6. Komitmen saya:\n___________________________________________________\n\nTanda tangan siswa: _______________`;
-                const lkpdText =
-                    `LKPD (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\nA. STUDI KASUS\nStudi kasus tentang "${judul}" - seorang siswa menghadapi tantangan terkait materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`;
-
-                result.push(createMateri(id, judul, bidang, kelas, semester, iceText, apersepsiText, diskusiText,
-                    kontenText, rplText, refleksiText, lkpdText));
-            }
-            return result;
-        }
-
-        // ========== GENERATE SEMUA DATA ==========
-        // SMP Kelas 7
-        const dataSMP7S1 = generateMateriList(judulSMP7S1, bidangSMP7S1, "VII / Fase D", 1, 701);
-        const dataSMP7S2 = generateMateriList(judulSMP7S2, bidangSMP7S2, "VII / Fase D", 2, 713);
-
-        // Judul untuk kelas 8, 9, 10, 11, 12 (otomatis dengan template yang sama)
         function generateJudulOtomatis(jenjang, kelas, semester) {
             const prefix = {
                 'SMP': ['Mengenal Diri', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu', 'Kepercayaan Diri',
@@ -397,7 +370,7 @@
                 ]
             };
             const base = prefix[jenjang] || prefix['SMP'];
-            return base.map((j, i) => `${j} ${kelas} - ${semester === 1 ? 'Ganjil' : 'Genap'}`);
+            return base.map((j, i) => `${j}`);
         }
 
         function generateDataOtomatis(jenjang, kelas, semester, prefix) {
@@ -417,12 +390,15 @@
             prefix);
         }
 
-        // ========== DATABASE LENGKAP ==========
+        // ========== DATABASE ==========
         const allData = {};
 
         // SMP
         allData['SMP'] = {};
-        allData['SMP']['7'] = { '1': dataSMP7S1, '2': dataSMP7S2 };
+        allData['SMP']['7'] = {
+            '1': generateMateriList(judulSMP7S1, bidangSMP7S1, "VII / Fase D", 1, 701),
+            '2': generateMateriList(judulSMP7S2, bidangSMP7S2, "VII / Fase D", 2, 713)
+        };
         allData['SMP']['8'] = { '1': generateDataOtomatis('SMP', 8, 1, 801), '2': generateDataOtomatis('SMP', 8, 2, 813) };
         allData['SMP']['9'] = { '1': generateDataOtomatis('SMP', 9, 1, 901), '2': generateDataOtomatis('SMP', 9, 2, 913) };
 
@@ -444,8 +420,6 @@
         allData['SMK']['12'] = { '1': generateDataOtomatis('SMK', 12, 1, 2201), '2': generateDataOtomatis('SMK', 12, 2,
                 2213) };
 
-        console.log('✅ Data materi selesai digenerate!');
-
         // ================================================================
         // DOM ELEMENTS
         // ================================================================
@@ -459,16 +433,12 @@
         const materiDisplay = document.getElementById('materiDisplay');
         const rplContent = document.getElementById('rplContent');
         const lkpdText = document.getElementById('lkpdText');
-        const gabunganText = document.getElementById('gabunganText');
-        const lkpdFile = document.getElementById('lkpdFile');
+        const laporanContent = document.getElementById('laporanContent');
+        const refleksiContainer = document.getElementById('refleksiContainer');
         const linkLkpdHp = document.getElementById('linkLkpdHp');
         const bukaLinkHp = document.getElementById('bukaLinkHp');
         const jumlahSiswa = document.getElementById('jumlahSiswa');
         const catatanKegiatan = document.getElementById('catatanKegiatan');
-        const laporanContent = document.getElementById('laporanContent');
-        const refleksiContainer = document.getElementById('refleksiContainer');
-        const refleksiResult = document.getElementById('refleksiResult');
-        const refleksiStatus = document.getElementById('refleksiStatus');
 
         // ================================================================
         // FUNGSI UTAMA
@@ -533,7 +503,6 @@
                 return;
             }
 
-            // Tampilkan materi
             materiDisplay.innerHTML = `
                 <h4>🧊 Ice Breaking</h4><p style="white-space:pre-wrap;">${m.ice || 'Belum tersedia'}</p>
                 <h4>🧠 Apersepsi</h4><p style="white-space:pre-wrap;">${m.apersepsi || 'Belum tersedia'}</p>
@@ -542,7 +511,6 @@
                 <h4>⏱️ Durasi</h4><p>${durasiEl.value} menit</p>
             `;
 
-            // RPL
             let rpl = m.rpl || 'RPL belum tersedia.';
             rpl = rpl.replace(/Satuan Pendidikan/g, 'Satuan Pendidikan   : ' + jenjangEl.value);
             rpl = rpl.replace(/Nama Guru/g, 'Nama Guru           : ' + (namaGuruEl.value || '_______________'));
@@ -550,10 +518,8 @@
             rpl = rpl.replace(/Waktu/g, 'Waktu               : ' + durasiEl.value + ' menit');
             rplContent.textContent = rpl;
 
-            // LKPD
             lkpdText.value = m.lkpd || 'LKPD belum tersedia.';
 
-            // Refleksi
             if (m.refleksi) {
                 const lines = m.refleksi.split('\n').filter(line => line.trim());
                 let soalHTML = '';
@@ -598,47 +564,6 @@
             } else {
                 refleksiContainer.innerHTML = '<p style="color:var(--text-light);text-align:center;padding:10px;">Refleksi belum tersedia.</p>';
             }
-
-            updateGabungan();
-        }
-
-        function updateGabungan() {
-            const lkpd = lkpdText.value.trim() || 'LKPD belum diisi.';
-            const m = getMateri(parseInt(materiSelect.value));
-            const laporan = laporanContent.textContent || 'Laporan belum dibuat.';
-            const refleksi = document.getElementById('refleksiText') ? document.getElementById('refleksiText').value.trim() ||
-                'Refleksi belum diisi.' : 'Refleksi belum tersedia.';
-
-            const header = `
-        ================================================================
-        NaFaS BK - DOKUMEN BIMBINGAN KLASIKAL
-        ================================================================
-        Jenjang       : ${jenjangEl.value}
-        Kelas         : ${kelasEl.value}
-        Semester      : ${semesterEl.value}
-        Materi        : ${m ? m.judul : 'Belum dipilih'}
-        Guru BK       : ${namaGuruEl.value || '_______________'}
-        Durasi        : ${durasiEl.value} menit
-        Tanggal       : ${new Date().toLocaleDateString('id-ID')}
-        ================================================================
-
-        `;
-
-            gabunganText.value = header +
-                `\n📄 LKPD\n${'='.repeat(60)}\n${lkpd}\n\n` +
-                `📝 REFLEKSI DIRI\n${'='.repeat(60)}\n${refleksi}\n\n` +
-                `📋 RPL\n${'='.repeat(60)}\n${rplContent.textContent}\n\n` +
-                `📊 LAPORAN\n${'='.repeat(60)}\n${laporan}`;
-        }
-
-        function switchTab(tabId) {
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            const targetBtn = Array.from(tabBtns).find(b => b.dataset.tab === tabId);
-            if (targetBtn) targetBtn.classList.add('active');
-            const targetContent = document.getElementById('tab-' + tabId);
-            if (targetContent) targetContent.classList.add('active');
-            if (tabId === 'laporan') generateLaporan();
         }
 
         function showModal(title, message) {
@@ -661,14 +586,6 @@
                 document.execCommand('copy');
                 showModal('📋 Berhasil', 'Link Google Form berhasil disalin!');
             });
-        }
-
-        function generateLinkHp() {
-            const random = Math.random().toString(36).substring(2, 10);
-            const newLink = 'https://docs.google.com/forms/d/e/' + random + '/viewform';
-            linkLkpdHp.value = newLink;
-            bukaLinkHp.href = newLink;
-            showModal('🔄 Link Baru', 'Link Google Form baru telah dibuat!');
         }
 
         // ================================================================
@@ -720,8 +637,7 @@
 
         ${namaGuru}
         `;
-            laporanContent.textContent = laporan;
-            updateGabungan();
+            document.getElementById('laporanContent').textContent = laporan;
             return laporan;
         }
 
@@ -809,7 +725,7 @@
         }
 
         function cetakLaporan() {
-            const content = laporanContent.textContent;
+            const content = document.getElementById('laporanContent').textContent;
             if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
                     'Generate laporan dulu.'); return; }
             const printWin = window.open('', '_blank', 'width=900,height=700');
@@ -880,7 +796,7 @@
         }
 
         function downloadLaporanWord() {
-            const content = laporanContent.textContent;
+            const content = document.getElementById('laporanContent').textContent;
             if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
                     'Generate laporan dulu.'); return; }
             downloadWord(content, 'NaFaS_BK_Laporan_' + new Date().toISOString().slice(0, 10));
@@ -946,25 +862,10 @@
         // EVENT LISTENERS
         // ================================================================
 
-        // Tombol-tombol
-        document.getElementById('saveLkpdBtn').addEventListener('click', function() {
-            if (!lkpdText.value.trim()) { showModal('⚠️ Peringatan', 'LKPD kosong.'); return; }
-            showModal('✅ Berhasil', 'LKPD disimpan!');
-            updateGabungan();
-        });
-
-        document.getElementById('simpanRefleksiBtn').addEventListener('click', function() {
-            const refleksiText = document.getElementById('refleksiText');
-            if (!refleksiText) { showModal('⚠️ Peringatan', 'Refleksi belum tersedia.'); return; }
-            if (!refleksiText.value.trim()) { showModal('⚠️ Peringatan', 'Refleksi kosong.'); return; }
-            refleksiResult.style.display = 'block';
-            refleksiStatus.textContent = 'Refleksi berhasil disimpan pada ' + new Date().toLocaleDateString('id-ID');
-            updateGabungan();
-            showModal('✅ Berhasil', 'Refleksi disimpan!');
-        });
-
-        document.getElementById('cetakRefleksiBtn').addEventListener('click', cetakRefleksi);
         document.getElementById('cetakLkpdBtn').addEventListener('click', cetakLKPD);
+        document.getElementById('cetakRefleksiBtn').addEventListener('click', cetakRefleksi);
+        document.getElementById('cetakLaporanBtn').addEventListener('click', cetakLaporan);
+
         document.getElementById('downloadLkpdWordBtn').addEventListener('click', downloadLkpdWord);
         document.getElementById('downloadRefleksiWordBtn').addEventListener('click', downloadRefleksiWord);
         document.getElementById('downloadLaporanWordBtn').addEventListener('click', downloadLaporanWord);
@@ -977,35 +878,18 @@
             generateLaporan();
             showModal('✅ Berhasil', 'Laporan digenerate!');
         });
-        document.getElementById('cetakLaporanBtn').addEventListener('click', cetakLaporan);
 
         document.getElementById('resetBtn').addEventListener('click', function() {
             if (confirm('Reset semua data?')) {
                 lkpdText.value = '';
-                gabunganText.value = '';
                 materiSelect.value = '0';
                 durasiEl.value = 60;
                 namaGuruEl.value = '';
-                lkpdFile.value = '';
                 jumlahSiswa.value = 32;
                 catatanKegiatan.value = '';
-                laporanContent.textContent = 'Silakan generate laporan terlebih dahulu.';
-                refleksiResult.style.display = 'none';
-                materiDisplay.innerHTML =
-                    '<p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p>';
-                rplContent.textContent = 'RPL akan muncul setelah memilih materi.';
-                refleksiContainer.innerHTML =
-                    '<p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>';
-                switchTab('lkpd');
+                document.getElementById('laporanContent').textContent = 'Silakan generate laporan terlebih dahulu.';
                 showModal('✅ Berhasil', 'Data direset.');
-            }
-        });
-
-        document.getElementById('lkpdFile').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                lkpdText.value += `\n\n[File: ${file.name} (${(file.size/1024).toFixed(1)} KB)]`;
-                showModal('📎 Upload', `File "${file.name}" siap.`);
+                populateMateri();
             }
         });
 
@@ -1018,7 +902,6 @@
             updateKelasOptions();
             populateMateri();
         });
-
         kelasEl.addEventListener('change', populateMateri);
         semesterEl.addEventListener('change', populateMateri);
         materiSelect.addEventListener('change', function() { displayMateri(parseInt(this.value)); });
@@ -1032,7 +915,15 @@
 
         // Tab buttons
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() { switchTab(this.dataset.tab); });
+            btn.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const target = document.getElementById('tab-' + tabId);
+                if (target) target.classList.add('active');
+                if (tabId === 'laporan') generateLaporan();
+            });
         });
 
         // ================================================================
@@ -1040,12 +931,11 @@
         // ================================================================
         updateKelasOptions();
         populateMateri();
-        switchTab('lkpd');
 
         console.log('✅ NaFaS BK siap digunakan!');
-        console.log('📚 Total materi: SMP Kelas 7 (24), Kelas 8 (24), Kelas 9 (24)');
-        console.log('📚 SMA Kelas 10,11,12 (masing-masing 24)');
-        console.log('📚 SMK Kelas 10,11,12 (masing-masing 24)');
+        console.log('📚 Total 216 materi siap pakai');
+        console.log('📱 Gunakan 1 Google Form Universal untuk semua materi');
+        console.log('📄 LKPD dan Refleksi bisa dicetak 1 lembar');
         console.log('👋 Selamat Datang, Guru BK!');
     </script>
 </body>
