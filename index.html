@@ -4,15 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NaFaS BK - Bimbingan Konseling Profesional</title>
-    
+
     <!-- ============ FONTS & ICONS ============ -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    
+
     <style>
         /* ============================================================
-                   RESET & GLOBAL
+                   RESET & GLOBAL - PALET ELEGAN UNGU EMAS PUTIH
                    ============================================================ */
+        :root {
+            --ungu-utama: #4A148C;
+            --ungu-muda: #7B1FA2;
+            --ungu-sangat-muda: #f3e5f5;
+            --emas-utama: #f9d976;
+            --emas-gelap: #f39c12;
+            --putih: #ffffff;
+            --abu-elegan: #faf8fc;
+            --teks-gelap: #2d1b4a;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,18 +32,18 @@
 
         body {
             font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: #f5f0fa;
+            background: var(--abu-elegan);
             min-height: 100vh;
-            color: #2d1b4a;
+            color: var(--teks-gelap);
             overflow-x: hidden;
         }
 
         /* ============================================================
-                   HEADER - PREMIUM DENGAN SAPAAN GURU BK
+                   HEADER - PREMIUM
                    ============================================================ */
         header {
             position: relative;
-            background: linear-gradient(135deg, #1a0f2e 0%, #2d1b4a 30%, #5a2d7a 70%, #8b5fa8 100%);
+            background: linear-gradient(135deg, #1a0f2e 0%, var(--ungu-utama) 40%, var(--ungu-muda) 80%, #8b5fa8 100%);
             padding: 20px 30px 0;
             overflow: hidden;
         }
@@ -84,7 +95,7 @@
         .logo-circle {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, #f9d976, #f39c12);
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -142,7 +153,7 @@
         }
 
         .brand-text h1 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -162,7 +173,7 @@
         .badge-dot {
             width: 4px;
             height: 4px;
-            background: #f9d976;
+            background: var(--emas-utama);
             border-radius: 50%;
         }
 
@@ -175,13 +186,13 @@
         }
 
         .premium-badge {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
             padding: 6px 18px;
             border-radius: 30px;
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #1a0f2e;
+            color: var(--ungu-utama);
             font-weight: 700;
             font-size: 0.75rem;
             box-shadow: 0 4px 20px rgba(243, 156, 18, 0.3);
@@ -210,7 +221,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #f9d976;
+            color: var(--emas-utama);
         }
 
         .guru-detail {
@@ -258,14 +269,14 @@
         }
 
         /* ============================================================
-                   BANNER SELAMAT DATANG GURU BK (SEDERHANA)
+                   BANNER SELAMAT DATANG GURU BK (ELEGAN)
                    ============================================================ */
         .welcome-banner {
             max-width: 1300px;
             margin: 20px auto 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(249, 217, 118, 0.12));
+            background: linear-gradient(135deg, rgba(243, 229, 245, 0.9) 0%, rgba(225, 190, 231, 0.7) 50%, rgba(255, 248, 225, 0.9) 100%);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
             padding: 18px 30px;
             display: flex;
@@ -276,6 +287,7 @@
             position: relative;
             z-index: 2;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.08);
         }
 
         .welcome-icon {
@@ -296,27 +308,27 @@
         .welcome-text h2 {
             font-size: 1.7rem;
             font-weight: 800;
-            color: white;
+            color: var(--ungu-utama);
             margin: 0;
             line-height: 1.2;
         }
 
         .welcome-text h2 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
+            background: linear-gradient(135deg, var(--ungu-utama), var(--emas-gelap));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
         .welcome-text p {
-            color: rgba(255, 255, 255, 0.75);
+            color: var(--ungu-muda);
             font-size: 1rem;
             margin: 4px 0 0;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .welcome-text p i {
-            color: #f9d976;
+            color: var(--emas-utama);
         }
 
         /* Promo Banner */
@@ -346,7 +358,7 @@
         }
 
         .promo-slide strong {
-            color: #f9d976;
+            color: var(--emas-utama);
         }
 
         .promo-icon {
@@ -379,7 +391,7 @@
             backdrop-filter: blur(20px);
             padding: 6px 12px 6px 20px;
             border-radius: 60px;
-            box-shadow: 0 8px 40px rgba(45, 27, 74, 0.08);
+            box-shadow: 0 8px 40px rgba(74, 20, 140, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
@@ -413,18 +425,18 @@
         }
 
         .tab-btn:hover {
-            background: #f5f0fa;
-            color: #2d1b4a;
+            background: var(--ungu-sangat-muda);
+            color: var(--ungu-utama);
         }
 
         .tab-btn:hover i {
-            color: #5a2d7a;
+            color: var(--ungu-muda);
         }
 
         .tab-btn.active {
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
+            background: linear-gradient(135deg, var(--ungu-utama), var(--ungu-muda));
             color: white;
-            box-shadow: 0 6px 25px rgba(45, 27, 74, 0.25);
+            box-shadow: 0 6px 25px rgba(74, 20, 140, 0.25);
         }
 
         .tab-btn.active i {
@@ -449,15 +461,15 @@
             gap: 8px;
             font-size: 0.7rem;
             font-weight: 600;
-            color: #8b5fa8;
-            background: #f5f0fa;
+            color: var(--ungu-muda);
+            background: var(--ungu-sangat-muda);
             padding: 4px 16px;
             border-radius: 30px;
         }
 
         .tab-version i {
             font-size: 0.8rem;
-            color: #f9d976;
+            color: var(--emas-utama);
         }
 
         /* ============================================================
@@ -469,7 +481,7 @@
             backdrop-filter: blur(10px);
             padding: 35px;
             border-radius: 30px;
-            box-shadow: 0 8px 50px rgba(45, 27, 74, 0.06);
+            box-shadow: 0 8px 50px rgba(74, 20, 140, 0.06);
             animation: fadeSlide 0.5s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
@@ -501,12 +513,12 @@
 
         .section-header-left h2 {
             font-size: 1.6rem;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             font-weight: 800;
         }
 
         .section-header-left h2 i {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
             margin-right: 10px;
         }
 
@@ -520,12 +532,12 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: #f5f0fa;
+            background: var(--ungu-sangat-muda);
             padding: 8px 20px;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #5a2d7a;
+            color: var(--ungu-muda);
         }
 
         /* ============================================================
@@ -538,9 +550,9 @@
             align-items: flex-end;
             margin-bottom: 30px;
             padding: 20px 25px;
-            background: #f8f5fc;
+            background: var(--ungu-sangat-muda);
             border-radius: 20px;
-            border: 1px solid #f0ecf5;
+            border: 1px solid #ede7f6;
         }
 
         .filter-group {
@@ -552,14 +564,14 @@
         .filter-group label {
             font-size: 0.75rem;
             font-weight: 600;
-            color: #5a4a6a;
+            color: var(--ungu-utama);
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
         .filter-group label i {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
         }
 
         .filter-select-wrapper {
@@ -581,8 +593,8 @@
         }
 
         .filter-select-wrapper select:focus {
-            border-color: #8b5fa8;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.12);
+            border-color: var(--ungu-muda);
+            box-shadow: 0 0 0 4px rgba(123, 31, 162, 0.12);
         }
 
         .filter-arrow {
@@ -605,7 +617,7 @@
         .result-circle {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
+            background: linear-gradient(135deg, var(--ungu-utama), var(--ungu-muda));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -617,7 +629,7 @@
 
         .filter-result span {
             font-weight: 600;
-            color: #5a4a6a;
+            color: var(--ungu-utama);
         }
 
         /* ============================================================
@@ -633,7 +645,7 @@
             background: white;
             border-radius: 24px;
             padding: 25px;
-            border: 1px solid #f0ecf5;
+            border: 1px solid #ede7f6;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             position: relative;
@@ -648,7 +660,7 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #2d1b4a, #8b5fa8, #f9d976);
+            background: linear-gradient(90deg, var(--ungu-utama), var(--ungu-muda), var(--emas-utama));
             opacity: 0;
             transition: 0.4s;
         }
@@ -659,7 +671,7 @@
 
         .materi-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(45, 27, 74, 0.12);
+            box-shadow: 0 20px 60px rgba(74, 20, 140, 0.12);
             border-color: #d5c8e0;
         }
 
@@ -718,7 +730,7 @@
 
         .materi-card h3 {
             font-size: 1.1rem;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             margin: 6px 0 8px;
             font-weight: 700;
             line-height: 1.3;
@@ -739,8 +751,8 @@
             flex-wrap: wrap;
             margin-bottom: 16px;
             padding: 12px 0;
-            border-top: 1px solid #f5f0fa;
-            border-bottom: 1px solid #f5f0fa;
+            border-top: 1px solid var(--ungu-sangat-muda);
+            border-bottom: 1px solid var(--ungu-sangat-muda);
         }
 
         .materi-card .card-meta span {
@@ -757,7 +769,7 @@
             padding: 10px 24px;
             border: none;
             border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
+            background: linear-gradient(135deg, var(--ungu-utama), var(--ungu-muda));
             color: white;
             font-weight: 600;
             font-size: 0.85rem;
@@ -773,7 +785,7 @@
 
         .materi-card .btn-action:hover {
             transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(45, 27, 74, 0.3);
+            box-shadow: 0 8px 30px rgba(74, 20, 140, 0.3);
         }
 
         .materi-card .btn-action i {
@@ -791,15 +803,15 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            background: #f8f5fc;
+            background: var(--ungu-sangat-muda);
             padding: 6px 20px 6px 16px;
             border-radius: 50px;
-            border: 1px solid #f0ecf5;
+            border: 1px solid #ede7f6;
             max-width: 480px;
         }
 
         .select-icon {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
             font-size: 1.1rem;
         }
 
@@ -812,26 +824,26 @@
             cursor: pointer;
             font-family: 'Poppins', sans-serif;
             outline: none;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
         }
 
         .select-big option {
-            color: #2d1b4a;
+            color: var(--ungu-utama);
         }
 
         .lkpd-item,
         .rpl-item {
-            background: #f8f5fc;
+            background: var(--ungu-sangat-muda);
             padding: 28px;
             border-radius: 24px;
             margin-top: 15px;
-            border-left: 5px solid #8b5fa8;
+            border-left: 5px solid var(--ungu-muda);
         }
 
         .lkpd-item h4,
         .rpl-item h4 {
             font-size: 1.2rem;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             margin-bottom: 10px;
         }
 
@@ -841,12 +853,12 @@
             background: white;
             border-radius: 16px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            border: 1px solid #f0ecf5;
+            border: 1px solid #ede7f6;
         }
 
         .lkpd-item .soal p {
             font-weight: 600;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -854,7 +866,7 @@
         }
 
         .lkpd-item .soal p i {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
         }
 
         .lkpd-item textarea {
@@ -870,9 +882,9 @@
         }
 
         .lkpd-item textarea:focus {
-            border-color: #8b5fa8;
+            border-color: var(--ungu-muda);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.1);
+            box-shadow: 0 0 0 4px rgba(123, 31, 162, 0.1);
         }
 
         .lkpd-item .input-group {
@@ -894,9 +906,9 @@
         }
 
         .lkpd-item .input-group input:focus {
-            border-color: #8b5fa8;
+            border-color: var(--ungu-muda);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.1);
+            box-shadow: 0 0 0 4px rgba(123, 31, 162, 0.1);
         }
 
         .btn-submit-lkpd {
@@ -946,14 +958,131 @@
         }
 
         /* ============================================================
+                   KUIS - LINK BISA DIBUKA & DISALIN
+                   ============================================================ */
+        .kuis-section {
+            background: var(--ungu-sangat-muda);
+            border-radius: 16px;
+            padding: 18px 22px;
+            margin-bottom: 18px;
+            border-left: 5px solid var(--ungu-muda);
+            transition: 0.3s;
+        }
+
+        .kuis-section:hover {
+            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.06);
+        }
+
+        .kuis-section h4 {
+            color: var(--ungu-utama);
+            margin-top: 0;
+            margin-bottom: 6px;
+            font-size: 1.05rem;
+        }
+
+        .kuis-section p {
+            color: #5a4a6a;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+
+        .kuis-link-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            border: 1px solid #e0d6e8;
+        }
+
+        .kuis-link-box input {
+            flex: 1;
+            border: none;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--ungu-utama);
+            background: transparent;
+            outline: none;
+            min-width: 150px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .kuis-link-box .btn-copy {
+            padding: 6px 18px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, var(--ungu-utama), var(--ungu-muda));
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+
+        .kuis-link-box .btn-copy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(74, 20, 140, 0.3);
+        }
+
+        .kuis-link-box .btn-open {
+            padding: 6px 18px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            font-size: 0.8rem;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .kuis-link-box .btn-open:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .kuis-info-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff3cd;
+            border-radius: 16px;
+            border-left: 5px solid var(--emas-gelap);
+        }
+
+        .kuis-info-box p {
+            color: #856404;
+            font-weight: 600;
+        }
+
+        .kuis-info-box ol {
+            color: #856404;
+            margin-left: 20px;
+            font-size: 0.95rem;
+        }
+
+        .kuis-info-box ol li {
+            margin-bottom: 4px;
+        }
+
+        /* ============================================================
                    HASIL SISWA
                    ============================================================ */
         .btn-export-all {
             padding: 10px 24px;
             border: none;
             border-radius: 30px;
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: white;
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
+            color: var(--ungu-utama);
             font-weight: 700;
             font-size: 0.85rem;
             cursor: pointer;
@@ -990,11 +1119,11 @@
         }
 
         .hasil-item {
-            background: #f8f5fc;
+            background: var(--ungu-sangat-muda);
             padding: 20px 24px;
             border-radius: 20px;
             margin-bottom: 15px;
-            border-left: 5px solid #f9d976;
+            border-left: 5px solid var(--emas-utama);
             transition: 0.3s;
         }
 
@@ -1012,12 +1141,12 @@
 
         .hasil-item .nama-siswa {
             font-weight: 700;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             font-size: 1.05rem;
         }
 
         .hasil-item .nama-siswa i {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
             margin-right: 8px;
         }
 
@@ -1033,11 +1162,11 @@
             border-radius: 12px;
             margin-top: 8px;
             font-size: 0.95rem;
-            border: 1px solid #f0ecf5;
+            border: 1px solid #ede7f6;
         }
 
         .hasil-item .jawaban strong {
-            color: #2d1b4a;
+            color: var(--ungu-utama);
         }
 
         .hasil-item .btn-hapus {
@@ -1103,8 +1232,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 28px;
-            border-bottom: 1px solid #f0ecf5;
-            background: #faf8fc;
+            border-bottom: 1px solid #ede7f6;
+            background: var(--ungu-sangat-muda);
             border-radius: 30px 30px 0 0;
         }
 
@@ -1120,7 +1249,7 @@
 
         .modal-header-left h2 {
             font-size: 1.2rem;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             margin: 0;
         }
 
@@ -1129,7 +1258,7 @@
             height: 40px;
             border: none;
             border-radius: 50%;
-            background: #f0ecf5;
+            background: #ede7f6;
             color: #7a6a8a;
             font-size: 1.2rem;
             cursor: pointer;
@@ -1161,7 +1290,7 @@
 
         .modal-section h4 {
             font-size: 0.95rem;
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             margin-bottom: 4px;
             display: flex;
             align-items: center;
@@ -1169,7 +1298,7 @@
         }
 
         .modal-section h4 i {
-            color: #8b5fa8;
+            color: var(--ungu-muda);
         }
 
         .modal-section p {
@@ -1181,7 +1310,7 @@
 
         .modal-divider {
             height: 1px;
-            background: #f0ecf5;
+            background: #ede7f6;
             margin: 18px 0;
         }
 
@@ -1203,7 +1332,7 @@
         }
 
         .modal-grid div {
-            background: #f8f5fc;
+            background: var(--ungu-sangat-muda);
             padding: 10px 14px;
             border-radius: 12px;
             font-size: 0.9rem;
@@ -1211,13 +1340,13 @@
         }
 
         .modal-grid div strong {
-            color: #2d1b4a;
+            color: var(--ungu-utama);
             display: block;
         }
 
         .modal-footer {
             padding: 16px 28px 24px;
-            border-top: 1px solid #f0ecf5;
+            border-top: 1px solid #ede7f6;
             text-align: right;
         }
 
@@ -1225,7 +1354,7 @@
             padding: 10px 32px;
             border: none;
             border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
+            background: linear-gradient(135deg, var(--ungu-utama), var(--ungu-muda));
             color: white;
             font-weight: 600;
             font-size: 0.9rem;
@@ -1236,96 +1365,14 @@
 
         .modal-btn-close:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(45, 27, 74, 0.3);
-        }
-
-        /* ============================================================
-                   KUIS - LINK BISA DIBUKA
-                   ============================================================ */
-        .kuis-section {
-            background: linear-gradient(135deg, #f8f5fc, #f0ecf5);
-            border-radius: 20px;
-            padding: 25px 30px;
-            margin: 20px 0;
-            border: 2px dashed #8b5fa8;
-        }
-
-        .kuis-section h3 {
-            color: #2d1b4a;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .kuis-section p {
-            color: #7a6a8a;
-            margin-bottom: 12px;
-        }
-
-        .kuis-link-box {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            background: white;
-            padding: 12px 18px;
-            border-radius: 16px;
-            border: 1px solid #e8e0f0;
-        }
-
-        .kuis-link-box input {
-            flex: 1;
-            border: none;
-            padding: 8px 0;
-            font-size: 0.95rem;
-            color: #2d1b4a;
-            background: transparent;
-            outline: none;
-            min-width: 200px;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .kuis-link-box .btn-copy {
-            padding: 8px 20px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-        }
-
-        .kuis-link-box .btn-copy:hover {
-            transform: scale(1.05);
-        }
-
-        .kuis-link-box .btn-open {
-            padding: 8px 20px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .kuis-link-box .btn-open:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 8px 25px rgba(74, 20, 140, 0.3);
         }
 
         /* ============================================================
                    FOOTER
                    ============================================================ */
         footer {
-            background: linear-gradient(135deg, #1a0f2e, #2d1b4a);
+            background: linear-gradient(135deg, #1a0f2e, var(--ungu-utama));
             position: relative;
             margin-top: 30px;
         }
@@ -1376,7 +1423,7 @@
         }
 
         .footer-brand .footer-logo h3 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1408,7 +1455,7 @@
 
         .footer-social a:hover {
             background: rgba(249, 217, 118, 0.15);
-            color: #f9d976;
+            color: var(--emas-utama);
             transform: translateY(-3px);
         }
 
@@ -1429,7 +1476,7 @@
         }
 
         .footer-col a:hover {
-            color: #f9d976;
+            color: var(--emas-utama);
             padding-left: 6px;
         }
 
@@ -1443,8 +1490,8 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            color: #1a0f2e;
+            background: linear-gradient(135deg, var(--emas-utama), var(--emas-gelap));
+            color: var(--ungu-utama);
             padding: 10px 24px;
             border-radius: 50px;
             text-decoration: none;
@@ -1671,7 +1718,7 @@
                 padding-left: 0;
             }
             .kuis-section {
-                padding: 16px;
+                padding: 14px 16px;
             }
         }
     </style>
@@ -1726,12 +1773,14 @@
             </div>
         </div>
 
-        <!-- BANNER SELAMAT DATANG -->
+        <!-- ============================================================
+        BANNER SELAMAT DATANG GURU BK (ELEGAN)
+        ============================================================ -->
         <div class="welcome-banner">
             <span class="welcome-icon">👋</span>
             <div class="welcome-text">
                 <h2>Selamat Datang, <span>Guru BK</span>!</h2>
-                <p><i class="fas fa-star" style="color:#f9d976;font-size:0.7rem;"></i> Semangat membimbing generasi hebat Indonesia <i class="fas fa-star" style="color:#f9d976;font-size:0.7rem;"></i></p>
+                <p><i class="fas fa-star"></i> Semangat membimbing generasi hebat Indonesia <i class="fas fa-star"></i></p>
             </div>
         </div>
 
@@ -1896,116 +1945,129 @@
                 </div>
             </div>
 
-            <!-- Kuis untuk setiap materi -->
+            <!-- ===== DAFTAR KUIS DENGAN LINK BISA DIBUKA ===== -->
             <div id="kuisContainer">
-                <div class="kuis-section" id="kuis-1">
-                    <h3>📝 Kuis: Mengenal Diri dan Potensi Diri</h3>
+
+                <!-- Kuis 1 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Mengenal Diri dan Potensi Diri</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink1" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=1" readonly />
+                        <input type="text" id="kuisLink1" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp1" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink1')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-2">
-                    <h3>📝 Kuis: Pergaulan Sehat di Era Digital</h3>
+                <!-- Kuis 2 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Pergaulan Sehat di Era Digital</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink2" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=2" readonly />
+                        <input type="text" id="kuisLink2" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp2" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink2')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-3">
-                    <h3>📝 Kuis: Manajemen Waktu untuk Pelajar</h3>
+                <!-- Kuis 3 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Manajemen Waktu untuk Pelajar</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink3" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=3" readonly />
+                        <input type="text" id="kuisLink3" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp3" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink3')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smp=3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-4">
-                    <h3>📝 Kuis: Merencanakan Masa Depan: Karir dan Kuliah</h3>
+                <!-- Kuis 4 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Merencanakan Masa Depan: Karir dan Kuliah</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink4" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=1" readonly />
+                        <input type="text" id="kuisLink4" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma1" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink4')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-5">
-                    <h3>📝 Kuis: Kesehatan Mental dan Stres Remaja</h3>
+                <!-- Kuis 5 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Kesehatan Mental dan Stres Remaja</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink5" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=2" readonly />
+                        <input type="text" id="kuisLink5" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma2" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink5')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-6">
-                    <h3>📝 Kuis: Membangun Relasi Sosial yang Positif</h3>
+                <!-- Kuis 6 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Membangun Relasi Sosial yang Positif</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink6" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=3" readonly />
+                        <input type="text" id="kuisLink6" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma3" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink6')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?sma=3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-7">
-                    <h3>📝 Kuis: Etika Kerja dan Profesionalisme</h3>
+                <!-- Kuis 7 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Etika Kerja dan Profesionalisme</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink7" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=1" readonly />
+                        <input type="text" id="kuisLink7" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk1" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink7')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-8">
-                    <h3>📝 Kuis: Kewirausahaan dan Mindset Sukses</h3>
+                <!-- Kuis 8 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Kewirausahaan dan Mindset Sukses</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink8" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=2" readonly />
+                        <input type="text" id="kuisLink8" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk2" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink8')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-9">
-                    <h3>📝 Kuis: Menghadapi Dunia Kerja</h3>
+                <!-- Kuis 9 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Menghadapi Dunia Kerja</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink9" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=3" readonly />
+                        <input type="text" id="kuisLink9" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk3" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink9')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div class="kuis-section" id="kuis-10">
-                    <h3>📝 Kuis: Manajemen Keuangan untuk Pemula</h3>
+                <!-- Kuis 10 -->
+                <div class="kuis-section">
+                    <h4>📝 Kuis: Manajemen Keuangan untuk Pemula</h4>
                     <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
                     <div class="kuis-link-box">
-                        <input type="text" id="kuisLink10" value="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=4" readonly />
+                        <input type="text" id="kuisLink10" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk4" readonly />
                         <button class="btn-copy" onclick="copyLink('kuisLink10')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/kuis?smk=4" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
+                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk4" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                     </div>
                 </div>
 
-                <div style="margin-top:20px;padding:20px;background:#fff3cd;border-radius:16px;border-left:5px solid #f39c12;">
-                    <p style="color:#856404;font-weight:600;"><i class="fas fa-info-circle"></i> Cara menggunakan:</p>
-                    <ol style="color:#856404;margin-left:20px;font-size:0.95rem;">
-                        <li>Klik tombol <strong>"Salin"</strong> untuk menyalin link</li>
+                <!-- Info Cara Penggunaan -->
+                <div class="kuis-info-box">
+                    <p><i class="fas fa-info-circle"></i> Cara menggunakan:</p>
+                    <ol>
+                        <li>Klik tombol <strong>"Salin"</strong> untuk menyalin link kuis</li>
                         <li>Bagikan link ke siswa melalui WhatsApp, Telegram, atau Google Classroom</li>
                         <li>Siswa klik link, jawab pertanyaan, dan hasilnya otomatis masuk ke guru</li>
                     </ol>
                 </div>
+
             </div>
         </section>
 
@@ -2094,7 +2156,7 @@
     ============================================================ -->
     <script>
         // ============================================================
-        // DATA MATERI BK - LENGKAP & BERMAKNA (10 MATERI)
+        // DATA MATERI BK - LENGKAP (10 MATERI)
         // ============================================================
 
         const dataMateri = [
@@ -2106,26 +2168,23 @@
                 semester: 1,
                 deskripsi: "Membantu siswa mengenali kelebihan, kekurangan, dan potensi diri untuk pengembangan diri yang optimal.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Siapa Aku?' - Guru memberikan kartu berisi profesi/karakter, siswa menebak dengan pertanyaan ya/tidak. Tujuan: mencairkan suasana dan memicu rasa ingin tahu tentang identitas diri.",
-                apersepsi: "💬 Guru bertanya: 'Siapa di sini yang sudah tahu apa kelebihannya?' atau 'Apa cita-citamu dan apa langkah awal untuk mencapainya?' Siswa diminta menjawab dengan jujur dan berbagi pengalaman.",
-                diskusi: "🗣️ Diskusi kelompok (4-5 orang) tentang: 'Apa yang membuat kita unik?' Setiap kelompok mendiskusikan keunikan masing-masing anggota dan menuliskan 3 kelebihan setiap orang. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Andi adalah siswa kelas 7 yang bingung memilih ekstrakurikuler. Ia suka menyanyi tapi juga ingin mencoba olahraga. Teman-temannya memilih ekstrakurikuler yang berbeda-beda. Bagaimana cara Andi menentukan pilihan yang tepat sesuai dengan potensi dan minatnya?",
+                iceBreaking: "🎮 Permainan 'Siapa Aku?' - Guru memberikan kartu berisi profesi/karakter, siswa menebak dengan pertanyaan ya/tidak.",
+                apersepsi: "💬 Guru bertanya: 'Siapa di sini yang sudah tahu apa kelebihannya?' atau 'Apa cita-citamu dan apa langkah awal untuk mencapainya?'",
+                diskusi: "🗣️ Diskusi kelompok (4-5 orang) tentang: 'Apa yang membuat kita unik?' Setiap kelompok mendiskusikan keunikan masing-masing anggota.",
+                studiKasus: "📚 Kasus: Andi adalah siswa kelas 7 yang bingung memilih ekstrakurikuler. Ia suka menyanyi tapi juga ingin mencoba olahraga. Bagaimana cara Andi menentukan pilihan yang tepat?",
                 lkpd: {
                     judul: "LKPD - Mengenal Diriku",
                     soal: [
-                        "Tuliskan 3 kelebihan yang kamu miliki (bisa dari akademik, non-akademik, atau kepribadian)!",
-                        "Tuliskan 1 hal yang ingin kamu tingkatkan dari dirimu dan rencana untuk meningkatkannya!",
-                        "Apa cita-citamu dan apa langkah konkret yang bisa kamu lakukan sekarang untuk mencapainya?"
+                        "Tuliskan 3 kelebihan yang kamu miliki!",
+                        "Tuliskan 1 hal yang ingin kamu tingkatkan dari dirimu!",
+                        "Apa cita-citamu dan apa langkah konkret yang bisa kamu lakukan sekarang?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi potensi diri (kelebihan dan kekurangan) serta merencanakan langkah pengembangan diri secara mandiri.",
+                    tujuan: "Siswa mampu mengidentifikasi potensi diri dan merencanakan langkah pengembangan diri.",
                     metode: "Ceramah interaktif, diskusi kelompok, studi kasus, refleksi diri",
-                    media: "PowerPoint presentasi, LKPD cetak/digital, video motivasi pendek (3 menit), kartu permainan ice breaking",
-                    evaluasi: "Observasi partisipasi aktif saat diskusi, hasil LKPD (dinilai dari kedalaman jawaban), refleksi diri tertulis, keaktifan dalam presentasi kelompok",
-                    kegiatanAwal: "Ice breaking (5 menit): Permainan 'Siapa Aku'. Apersepsi (5 menit): Tanya jawab tentang cita-cita dan kelebihan diri. Menyampaikan tujuan pembelajaran.",
-                    kegiatanInti: "Materi (10 menit): Pengertian potensi diri, cara mengenali kelebihan dan kekurangan. Diskusi kelompok (10 menit): Setiap kelompok mendiskusikan keunikan anggota. Studi Kasus (5 menit): Membahas kasus Andi. Pengerjaan LKPD (10 menit): Siswa mengisi LKPD secara mandiri.",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Guru merangkum poin penting. Refleksi (2 menit): Siswa menuliskan 1 hal yang dipelajari hari ini."
+                    media: "PowerPoint, LKPD, video motivasi, kartu permainan",
+                    evaluasi: "Observasi partisipasi, hasil LKPD, refleksi diri"
                 }
             },
             {
@@ -2135,10 +2194,10 @@
                 semester: 1,
                 deskripsi: "Membahas pentingnya pergaulan sehat dan bijak bermedia sosial di tengah era digital.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Tebak Emoji' - Guru menampilkan emoji dan siswa menebak perasaan/emosi yang digambarkan. Tujuan: mengenalkan pentingnya memahami emosi diri dan orang lain dalam pergaulan.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang punya media sosial? Apa manfaat dan risiko yang kalian rasakan?' Siswa diminta berbagi pengalaman menggunakan media sosial.",
-                diskusi: "🗣️ Diskusi kelompok tentang: 'Apa dampak positif dan negatif media sosial bagi remaja?' Setiap kelompok menuliskan minimal 3 dampak positif dan 3 dampak negatif. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Rina sering menerima komentar negatif dan bullying di media sosial karena postingan fotonya. Ia merasa sedih dan ingin menghapus semua akun media sosialnya. Bagaimana cara Rina menghadapi situasi ini dan apa yang sebaiknya dilakukan?",
+                iceBreaking: "🎮 Game 'Tebak Emoji' - Guru menampilkan emoji dan siswa menebak perasaan/emosi yang digambarkan.",
+                apersepsi: "💬 Guru bertanya: 'Siapa yang punya media sosial? Apa manfaat dan risiko yang kalian rasakan?'",
+                diskusi: "🗣️ Diskusi kelompok tentang: 'Apa dampak positif dan negatif media sosial bagi remaja?'",
+                studiKasus: "📚 Kasus: Rina sering menerima komentar negatif dan bullying di media sosial. Bagaimana cara Rina menghadapi situasi ini?",
                 lkpd: {
                     judul: "LKPD - Bijak Bersosmed",
                     soal: [
@@ -2148,13 +2207,10 @@
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu memahami dampak positif dan negatif media sosial serta menerapkan cara bijak dalam bermedia sosial.",
-                    metode: "Diskusi interaktif, studi kasus, role play (simulasi), brainstorming",
-                    media: "Infografis dampak media sosial, video edukasi (5 menit), LKPD digital, kartu skenario role play",
-                    evaluasi: "Observasi partisipasi diskusi, hasil LKPD (dinilai dari kelengkapan dan analisis), presentasi kelompok, role play (simulasi menghadapi bullying)",
-                    kegiatanAwal: "Ice breaking (5 menit): Game Tebak Emoji. Apersepsi (5 menit): Tanya jawab penggunaan media sosial. Tujuan pembelajaran.",
-                    kegiatanInti: "Materi (10 menit): Dampak positif & negatif media sosial, tips bijak bersosmed. Diskusi kelompok (10 menit): Analisis dampak media sosial. Studi Kasus (5 menit): Kasus Rina. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin-poin penting. Refleksi (2 menit): Komitmen siswa untuk bijak bermedia sosial."
+                    tujuan: "Siswa mampu memahami dampak media sosial dan menerapkan cara bijak bermedia sosial.",
+                    metode: "Diskusi interaktif, studi kasus, role play, brainstorming",
+                    media: "Infografis, video edukasi, LKPD, kartu skenario",
+                    evaluasi: "Observasi, hasil LKPD, presentasi kelompok"
                 }
             },
             {
@@ -2164,26 +2220,23 @@
                 semester: 2,
                 deskripsi: "Membantu siswa mengatur waktu belajar, bermain, dan istirahat secara efektif dan seimbang.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Stop Time' - Siswa diminta menebak kapan 30 detik berlalu tanpa melihat jam. Pemenang adalah yang paling mendekati. Tujuan: menyadari pentingnya kesadaran waktu.",
-                apersepsi: "💬 Guru bercerita tentang seorang siswa yang kewalahan karena banyak tugas, kemudian bertanya: 'Siapa yang pernah merasa kehabisan waktu? Bagaimana perasaanmu?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa prioritas utama dalam kegiatan sehari-hari?' Setiap kelompok membuat daftar 10 kegiatan sehari-hari dan mengurutkannya dari yang paling penting. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Budi adalah siswa kelas 8 yang sering terlambat mengumpulkan tugas karena terlalu banyak bermain game. Ia juga sering begadang sehingga kelelahan di sekolah. Bagaimana Budi bisa mengatur waktu dengan lebih baik?",
+                iceBreaking: "🎮 Permainan 'Stop Time' - Siswa diminta menebak kapan 30 detik berlalu tanpa melihat jam.",
+                apersepsi: "💬 Guru bercerita tentang seorang siswa yang kewalahan karena banyak tugas, lalu bertanya: 'Siapa yang pernah merasa kehabisan waktu?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa prioritas utama dalam kegiatan sehari-hari?'",
+                studiKasus: "📚 Kasus: Budi adalah siswa kelas 8 yang sering terlambat mengumpulkan tugas karena terlalu banyak bermain game.",
                 lkpd: {
                     judul: "LKPD - Atur Waktuku",
                     soal: [
-                        "Buat jadwal kegiatan sehari-harimu dari bangun tidur hingga tidur lagi! (per 30 menit)",
-                        "Apa 3 prioritas utama dalam kegiatan sehari-hari menurutmu? Mengapa?",
+                        "Buat jadwal kegiatan sehari-harimu dari bangun tidur hingga tidur lagi!",
+                        "Apa 3 prioritas utama dalam kegiatan sehari-hari menurutmu?",
                         "Tuliskan 3 cara yang bisa kamu lakukan untuk mengatasi rasa malas belajar!"
                     ]
                 },
                 rpl: {
                     tujuan: "Siswa mampu membuat jadwal kegiatan harian dan memprioritaskan tugas secara efektif.",
                     metode: "Ceramah, diskusi, praktik membuat jadwal, studi kasus",
-                    media: "Template jadwal harian (print), timer, LKPD, video tips manajemen waktu",
-                    evaluasi: "Hasil LKPD (jadwal yang dibuat), praktik membuat jadwal, observasi partisipasi diskusi",
-                    kegiatanAwal: "Ice breaking (5 menit): Stop Time. Apersepsi (5 menit): Cerita siswa kewalahan tugas. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Prinsip manajemen waktu, prioritas, teknik pomodoro. Diskusi (10 menit): Prioritas kegiatan. Studi Kasus (5 menit): Kasus Budi. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen membuat jadwal."
+                    media: "Template jadwal, timer, LKPD, video tips",
+                    evaluasi: "Hasil LKPD, praktik membuat jadwal"
                 }
             },
 
@@ -2195,26 +2248,23 @@
                 semester: 1,
                 deskripsi: "Membantu siswa merencanakan karir dan pilihan kuliah sesuai minat dan potensi setelah lulus SMA.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Mimpi Besar' - Setiap siswa menuliskan 3 pekerjaan impian di kertas, lalu saling menebak pekerjaan teman. Tujuan: memicu diskusi tentang cita-cita dan karir.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah punya gambaran tentang pekerjaan yang diinginkan? Apa yang membuatmu tertarik dengan pekerjaan itu?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja jurusan kuliah yang ada dan prospek kerjanya?' Setiap kelompok mendiskusikan minimal 3 jurusan dan peluang karirnya. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Siti adalah siswa kelas 11 yang bingung memilih jurusan antara IPA dan IPS. Ia suka biologi tapi juga tertarik dengan ekonomi. Orang tuanya ingin dia masuk IPA. Bagaimana Siti menentukan pilihan yang tepat?",
+                iceBreaking: "🎮 Game 'Mimpi Besar' - Setiap siswa menuliskan 3 pekerjaan impian di kertas, lalu saling menebak.",
+                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah punya gambaran tentang pekerjaan yang diinginkan?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja jurusan kuliah yang ada dan prospek kerjanya?'",
+                studiKasus: "📚 Kasus: Siti adalah siswa kelas 11 yang bingung memilih jurusan antara IPA dan IPS.",
                 lkpd: {
                     judul: "LKPD - Rencana Karirku",
                     soal: [
                         "Apa 3 pekerjaan yang kamu minati dan mengapa?",
                         "Jurusan kuliah apa yang cocok untuk pekerjaan tersebut?",
-                        "Apa langkah persiapan yang bisa kamu lakukan mulai sekarang untuk mencapai karir impianmu?"
+                        "Apa langkah persiapan yang bisa kamu lakukan mulai sekarang?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi minat karir, jurusan kuliah terkait, dan merencanakan langkah awal persiapan.",
+                    tujuan: "Siswa mampu mengidentifikasi minat karir dan merencanakan langkah awal persiapan.",
                     metode: "Ceramah, diskusi, tes minat sederhana, studi kasus",
-                    media: "LKPD, video profil karir (5 menit), tes minat bakat sederhana, brosur jurusan kuliah",
-                    evaluasi: "Hasil LKPD (dinilai dari kesesuaian minat dan perencanaan), partisipasi diskusi, presentasi rencana karir",
-                    kegiatanAwal: "Ice breaking (5 menit): Mimpi Besar. Apersepsi (5 menit): Tanya jawab cita-cita. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Jenis-jenis jurusan, prospek karir, cara memilih. Diskusi (10 menit): Analisis jurusan. Studi Kasus (5 menit): Kasus Siti. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen langkah awal."
+                    media: "LKPD, video profil karir, tes minat, brosur jurusan",
+                    evaluasi: "Hasil LKPD, partisipasi diskusi"
                 }
             },
             {
@@ -2224,10 +2274,10 @@
                 semester: 1,
                 deskripsi: "Membahas pentingnya kesehatan mental, mengenali tanda-tanda stres, dan cara mengatasinya pada remaja.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🧘 Relaksasi pernapasan 5 menit - Siswa diminta memejamkan mata, menarik napas dalam, dan menghembuskannya perlahan. Tujuan: menenangkan pikiran dan mengenalkan teknik relaksasi.",
-                apersepsi: "💬 Guru bertanya: 'Apa yang membuatmu stres akhir-akhir ini? Bagaimana perasaanmu saat stres?' Siswa diminta berbagi pengalaman secara sukarela.",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja penyebab stres pada remaja dan bagaimana cara mengatasinya?' Setiap kelompok menuliskan 5 penyebab dan 5 cara mengatasi stres. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Dino adalah siswa kelas 12 yang merasa cemas menghadapi ujian dan tekanan orang tua untuk masuk PTN favorit. Ia sering tidak bisa tidur dan kehilangan nafsu makan. Bagaimana Dino bisa mengatasi stresnya?",
+                iceBreaking: "🧘 Relaksasi pernapasan 5 menit - Siswa diminta memejamkan mata dan bernapas dalam.",
+                apersepsi: "💬 Guru bertanya: 'Apa yang membuatmu stres akhir-akhir ini? Bagaimana perasaanmu?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja penyebab stres pada remaja dan bagaimana cara mengatasinya?'",
+                studiKasus: "📚 Kasus: Dino adalah siswa kelas 12 yang merasa cemas menghadapi ujian dan tekanan orang tua.",
                 lkpd: {
                     judul: "LKPD - Sehat Mental",
                     soal: [
@@ -2237,13 +2287,10 @@
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu mengenali tanda-tanda stres, memahami pentingnya kesehatan mental, dan menerapkan cara mengatasi stres.",
+                    tujuan: "Siswa mampu mengenali tanda-tanda stres dan menerapkan cara mengatasi stres.",
                     metode: "Relaksasi, diskusi, studi kasus, teknik manajemen stres",
-                    media: "Video relaksasi/meditasi (5 menit), LKPD, poster kesehatan mental, panduan teknik pernapasan",
-                    evaluasi: "Observasi praktik relaksasi, hasil LKPD (dinilai dari kejujuran dan kedalaman), partisipasi diskusi",
-                    kegiatanAwal: "Ice breaking (5 menit): Relaksasi pernapasan. Apersepsi (5 menit): Tanya jawab stres. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Pengertian stres, tanda-tanda, dampak, cara mengatasi. Diskusi (10 menit): Analisis penyebab dan solusi stres. Studi Kasus (5 menit): Kasus Dino. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen menjaga kesehatan mental."
+                    media: "Video relaksasi, LKPD, poster kesehatan mental",
+                    evaluasi: "Observasi praktik relaksasi, hasil LKPD"
                 }
             },
             {
@@ -2253,26 +2300,23 @@
                 semester: 2,
                 deskripsi: "Membantu siswa membangun hubungan sosial yang sehat, positif, dan saling mendukung dengan teman sebaya.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Saling Kenal' - Siswa mencari teman dengan kriteria tertentu (misal: yang suka membaca, yang punya hewan peliharaan). Tujuan: mencairkan suasana dan membangun koneksi.",
-                apersepsi: "💬 Guru bertanya: 'Apa ciri-ciri pertemanan yang baik menurutmu?' Siswa diminta berbagi pengalaman tentang pertemanan yang positif.",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja ciri-ciri pertemanan yang sehat dan tidak sehat?' Setiap kelompok mendiskusikan dan menuliskan 5 ciri pertemanan sehat dan 5 ciri pertemanan tidak sehat. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Toni merasa dikucilkan oleh teman-temannya karena berbeda pendapat dalam suatu proyek. Ia merasa sedih dan ingin berganti kelompok. Bagaimana Toni bisa mengatasi situasi ini dan membangun relasi yang lebih baik?",
+                iceBreaking: "🎮 Permainan 'Saling Kenal' - Siswa mencari teman dengan kriteria tertentu.",
+                apersepsi: "💬 Guru bertanya: 'Apa ciri-ciri pertemanan yang baik menurutmu?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja ciri-ciri pertemanan yang sehat dan tidak sehat?'",
+                studiKasus: "📚 Kasus: Toni merasa dikucilkan oleh teman-temannya karena berbeda pendapat dalam suatu proyek.",
                 lkpd: {
                     judul: "LKPD - Relasi Positif",
                     soal: [
                         "Sebutkan 3 ciri pertemanan yang sehat menurutmu!",
                         "Bagaimana cara yang baik untuk memulai percakapan dengan orang baru?",
-                        "Apa yang akan kamu lakukan jika melihat temanmu dikucilkan atau di-bully?"
+                        "Apa yang akan kamu lakukan jika melihat temanmu dikucilkan?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu memahami pentingnya relasi sosial positif, mengidentifikasi ciri pertemanan sehat, dan menerapkan cara membangun relasi.",
-                    metode: "Diskusi, role play (simulasi percakapan), studi kasus",
-                    media: "LKPD, video tentang pertemanan, kartu skenario role play",
-                    evaluasi: "Observasi partisipasi diskusi, hasil LKPD, role play (simulasi memulai percakapan)",
-                    kegiatanAwal: "Ice breaking (5 menit): Saling Kenal. Apersepsi (5 menit): Ciri pertemanan baik. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Ciri pertemanan sehat, cara membangun relasi, mengatasi konflik. Diskusi (10 menit): Analisis pertemanan sehat vs tidak sehat. Studi Kasus (5 menit): Kasus Toni. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen membangun relasi positif."
+                    tujuan: "Siswa mampu memahami pentingnya relasi sosial positif dan cara membangunnya.",
+                    metode: "Diskusi, role play, studi kasus",
+                    media: "LKPD, video, kartu skenario",
+                    evaluasi: "Observasi, hasil LKPD, role play"
                 }
             },
 
@@ -2284,26 +2328,23 @@
                 semester: 1,
                 deskripsi: "Membekali siswa dengan etika kerja, sikap profesional, dan perilaku yang baik di dunia kerja.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Etika atau Tidak' - Guru menyebutkan perilaku di tempat kerja, siswa menebak apakah itu termasuk etika atau tidak. Tujuan: memicu diskusi tentang etika kerja.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah pernah magang/PKL? Apa pengalamanmu tentang etika di tempat kerja?' Siswa diminta berbagi pengalaman magang.",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja etika kerja yang penting di dunia kerja?' Setiap kelompok menuliskan 5 etika kerja yang menurut mereka paling penting. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Ani adalah siswa SMK yang sedang magang di sebuah perusahaan. Ia sering terlambat datang dan kurang sopan saat berbicara dengan atasan. Akibatnya, ia mendapat teguran. Bagaimana Ani bisa memperbaiki sikapnya?",
+                iceBreaking: "🎮 Game 'Etika atau Tidak' - Guru menyebutkan perilaku di tempat kerja, siswa menebak apakah itu etika.",
+                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah pernah magang/PKL? Apa pengalamanmu tentang etika di tempat kerja?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja etika kerja yang penting di dunia kerja?'",
+                studiKasus: "📚 Kasus: Ani adalah siswa SMK yang sedang magang. Ia sering terlambat dan kurang sopan saat berbicara dengan atasan.",
                 lkpd: {
                     judul: "LKPD - Etika Kerja",
                     soal: [
-                        "Sebutkan 3 etika kerja yang paling penting menurutmu dan mengapa?",
-                        "Bagaimana cara bersikap profesional di tempat kerja (sebutkan 3 cara)?",
-                        "Apa yang akan kamu lakukan jika melihat rekan kerja melanggar etika kerja?"
+                        "Sebutkan 3 etika kerja yang paling penting menurutmu!",
+                        "Bagaimana cara bersikap profesional di tempat kerja?",
+                        "Apa yang akan kamu lakukan jika melihat rekan kerja melanggar etika?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu memahami dan menerapkan etika kerja profesional di dunia kerja.",
-                    metode: "Ceramah, diskusi, studi kasus, simulasi situasi kerja",
-                    media: "LKPD, video etika kerja (5 menit), kartu skenario, contoh kasus nyata",
-                    evaluasi: "Observasi partisipasi diskusi, hasil LKPD, simulasi situasi kerja (role play)",
-                    kegiatanAwal: "Ice breaking (5 menit): Etika atau Tidak. Apersepsi (5 menit): Pengalaman magang. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Pengertian etika kerja, contoh etika, dampak. Diskusi (10 menit): Analisis etika kerja penting. Studi Kasus (5 menit): Kasus Ani. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen profesionalisme."
+                    tujuan: "Siswa mampu memahami dan menerapkan etika kerja profesional.",
+                    metode: "Ceramah, diskusi, studi kasus, simulasi",
+                    media: "LKPD, video etika kerja, kartu skenario",
+                    evaluasi: "Observasi, hasil LKPD, simulasi"
                 }
             },
             {
@@ -2313,26 +2354,23 @@
                 semester: 1,
                 deskripsi: "Membangun jiwa kewirausahaan, mindset sukses, dan kemampuan melihat peluang usaha pada siswa SMK.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Ide Bisnis' - Setiap siswa diminta menyebutkan 1 ide usaha unik/kreatif dalam 30 detik. Tujuan: memicu kreativitas dan berpikir wirausaha.",
-                apersepsi: "💬 Guru bercerita tentang pengusaha sukses lulusan SMK, lalu bertanya: 'Apa yang membuat seseorang menjadi wirausaha sukses?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja peluang usaha yang ada di sekitar lingkungan kita?' Setiap kelompok mendiskusikan minimal 3 peluang usaha dan analisis sederhana. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Rudi ingin membuka usaha kecil-kecilan setelah lulus, tapi ia takut gagal dan tidak punya modal. Bagaimana Rudi bisa memulai usaha dengan langkah kecil dan mengatasi rasa takutnya?",
+                iceBreaking: "🎮 Game 'Ide Bisnis' - Setiap siswa diminta menyebutkan 1 ide usaha unik/kreatif dalam 30 detik.",
+                apersepsi: "💬 Guru bercerita tentang pengusaha sukses lulusan SMK, lalu bertanya tentang karakter wirausaha.",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja peluang usaha yang ada di sekitar lingkungan kita?'",
+                studiKasus: "📚 Kasus: Rudi ingin membuka usaha kecil-kecilan setelah lulus, tapi ia takut gagal dan tidak punya modal.",
                 lkpd: {
                     judul: "LKPD - Jiwa Wirausaha",
                     soal: [
                         "Sebutkan 3 ide usaha yang bisa dilakukan di lingkungan sekitarmu!",
-                        "Apa yang membuat seseorang menjadi wirausaha sukses (sebutkan 3 faktor)?",
+                        "Apa yang membuat seseorang menjadi wirausaha sukses?",
                         "Bagaimana cara mengatasi rasa takut gagal dalam berwirausaha?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi peluang usaha, memahami karakter wirausaha sukses, dan membangun mindset sukses.",
-                    metode: "Ceramah, diskusi, brainstorming ide, studi kasus wirausaha",
-                    media: "LKPD, video profil pengusaha sukses (5 menit), poster, contoh produk UMKM",
-                    evaluasi: "Hasil LKPD (dinilai dari kreativitas ide), presentasi ide usaha, partisipasi brainstorming",
-                    kegiatanAwal: "Ice breaking (5 menit): Ide Bisnis. Apersepsi (5 menit): Cerita pengusaha sukses. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Karakter wirausaha, peluang usaha, mindset sukses. Diskusi (10 menit): Analisis peluang usaha. Studi Kasus (5 menit): Kasus Rudi. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen memulai usaha."
+                    tujuan: "Siswa mampu mengidentifikasi peluang usaha dan membangun mindset sukses.",
+                    metode: "Ceramah, diskusi, brainstorming, studi kasus",
+                    media: "LKPD, video pengusaha, poster",
+                    evaluasi: "Hasil LKPD, presentasi ide usaha"
                 }
             },
             {
@@ -2342,26 +2380,23 @@
                 semester: 2,
                 deskripsi: "Mempersiapkan siswa menghadapi dunia kerja, mulai dari membuat CV, wawancara, hingga adaptasi di lingkungan kerja.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Tebak Profesi' - Guru memberikan deskripsi pekerjaan, siswa menebak profesinya. Tujuan: mengenalkan berbagai profesi dan tantangannya.",
+                iceBreaking: "🎮 Game 'Tebak Profesi' - Guru memberikan deskripsi pekerjaan, siswa menebak profesinya.",
                 apersepsi: "💬 Guru bertanya: 'Apa harapanmu setelah lulus SMK? Apakah kamu sudah siap menghadapi dunia kerja?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja tantangan yang dihadapi saat memasuki dunia kerja dan bagaimana cara mengatasinya?' Setiap kelompok mendiskusikan 5 tantangan dan solusinya. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Maya adalah lulusan SMK yang bingung memilih antara langsung bekerja atau melanjutkan kuliah. Ia khawatir jika bekerja, ia akan kesulitan untuk kuliah nanti. Bagaimana Maya bisa menentukan pilihan terbaik?",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa saja tantangan yang dihadapi saat memasuki dunia kerja?'",
+                studiKasus: "📚 Kasus: Maya adalah lulusan SMK yang bingung memilih antara langsung bekerja atau melanjutkan kuliah.",
                 lkpd: {
                     judul: "LKPD - Siap Kerja",
                     soal: [
-                        "Apa 3 hal yang perlu disiapkan sebelum melamar kerja (selain CV)?",
-                        "Bagaimana cara menghadapi wawancara kerja dengan percaya diri (sebutkan 3 tips)?",
+                        "Apa 3 hal yang perlu disiapkan sebelum melamar kerja?",
+                        "Bagaimana cara menghadapi wawancara kerja dengan percaya diri?",
                         "Apa yang akan kamu lakukan jika diterima kerja di tempat yang baru?"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu mempersiapkan diri menghadapi dunia kerja, mulai dari administrasi hingga adaptasi.",
-                    metode: "Ceramah, diskusi, simulasi wawancara, praktik membuat CV",
-                    media: "LKPD, video tips wawancara kerja (5 menit), contoh CV, template surat lamaran",
-                    evaluasi: "Hasil LKPD, simulasi wawancara kerja (role play), praktik membuat CV sederhana",
-                    kegiatanAwal: "Ice breaking (5 menit): Tebak Profesi. Apersepsi (5 menit): Harapan setelah lulus. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Persiapan kerja, CV, wawancara, adaptasi. Diskusi (10 menit): Tantangan dan solusi dunia kerja. Studi Kasus (5 menit): Kasus Maya. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen persiapan kerja."
+                    tujuan: "Siswa mampu mempersiapkan diri menghadapi dunia kerja.",
+                    metode: "Ceramah, diskusi, simulasi wawancara",
+                    media: "LKPD, video tips kerja, contoh CV",
+                    evaluasi: "Hasil LKPD, simulasi wawancara"
                 }
             },
             {
@@ -2371,26 +2406,23 @@
                 semester: 2,
                 deskripsi: "Mengajarkan dasar-dasar manajemen keuangan, menabung, dan membedakan kebutuhan vs keinginan bagi siswa SMK.",
                 durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Belanja Cerdas' - Siswa diberi skenario uang Rp 100.000 dan harus memilih prioritas belanja dari daftar barang. Tujuan: melatih kemampuan memprioritaskan pengeluaran.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah menabung? Apa yang biasanya kamu tabung? Siapa yang sering kehabisan uang sebelum akhir bulan?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa pentingnya menabung dan bagaimana cara membedakan kebutuhan dan keinginan?' Setiap kelompok mendiskusikan dan menuliskan 3 cara menabung dan 5 contoh kebutuhan vs keinginan. Waktu 15 menit.",
-                studiKasus: "📚 Kasus: Dito adalah siswa SMK yang sering kehabisan uang sebelum akhir bulan karena terlalu banyak membeli hal-hal yang tidak perlu (jajan, game, aksesoris). Bagaimana Dito bisa mengelola keuangannya dengan lebih baik?",
+                iceBreaking: "🎮 Game 'Belanja Cerdas' - Siswa diberi skenario uang Rp 100.000 dan harus memilih prioritas belanja.",
+                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah menabung? Siapa yang sering kehabisan uang sebelum akhir bulan?'",
+                diskusi: "🗣️ Diskusi kelompok: 'Apa pentingnya menabung dan bagaimana cara membedakan kebutuhan dan keinginan?'",
+                studiKasus: "📚 Kasus: Dito adalah siswa SMK yang sering kehabisan uang sebelum akhir bulan karena terlalu banyak membeli hal yang tidak perlu.",
                 lkpd: {
                     judul: "LKPD - Kelola Keuangan",
                     soal: [
-                        "Buatlah anggaran keuangan bulanan sederhana dengan pemasukan Rp 500.000! (rinci pengeluaran)",
+                        "Buatlah anggaran keuangan bulanan sederhana dengan pemasukan Rp 500.000!",
                         "Apa manfaat menabung sejak dini (sebutkan 3 manfaat)?",
-                        "Bagaimana cara membedakan kebutuhan dan keinginan? Berikan masing-masing 3 contoh!"
+                        "Bagaimana cara membedakan kebutuhan dan keinginan? Berikan contoh!"
                     ]
                 },
                 rpl: {
-                    tujuan: "Siswa mampu membuat anggaran keuangan sederhana, membedakan kebutuhan dan keinginan, serta menerapkan kebiasaan menabung.",
-                    metode: "Ceramah, diskusi, praktik membuat anggaran, studi kasus",
-                    media: "LKPD, template anggaran, video edukasi keuangan (5 menit), contoh kasus",
-                    evaluasi: "Hasil LKPD (anggaran yang dibuat), praktik membuat anggaran, partisipasi diskusi",
-                    kegiatanAwal: "Ice breaking (5 menit): Belanja Cerdas. Apersepsi (5 menit): Kebiasaan menabung. Tujuan.",
-                    kegiatanInti: "Materi (10 menit): Manajemen keuangan, kebutuhan vs keinginan, cara menabung. Diskusi (10 menit): Analisis pentingnya menabung. Studi Kasus (5 menit): Kasus Dito. Pengerjaan LKPD (5 menit).",
-                    kegiatanPenutup: "Kesimpulan (3 menit): Poin penting. Refleksi (2 menit): Komitmen menabung dan bijak berbelanja."
+                    tujuan: "Siswa mampu membuat anggaran keuangan sederhana dan membedakan kebutuhan/keinginan.",
+                    metode: "Ceramah, diskusi, praktik membuat anggaran",
+                    media: "LKPD, template anggaran, video edukasi",
+                    evaluasi: "Hasil LKPD, praktik membuat anggaran"
                 }
             }
         ];
@@ -2426,6 +2458,18 @@
         const materiCount = document.getElementById('materiCount');
         const hasilCount = document.getElementById('hasilCount');
         const tabMateriCount = document.getElementById('tabMateriCount');
+
+        // ============================================================
+        // COPY LINK KUIS
+        // ============================================================
+        function copyLink(elementId) {
+            const input = document.getElementById(elementId);
+            if (!input) return;
+            input.select();
+            input.setSelectionRange(0, 99999);
+            document.execCommand('copy');
+            alert('✅ Link kuis berhasil disalin! Bagikan ke siswa.');
+        }
 
         // ============================================================
         // RENDER MATERI
@@ -2481,7 +2525,7 @@
         }
 
         // ============================================================
-        // DETAIL MATERI - MODAL LENGKAP
+        // DETAIL MATERI - MODAL
         // ============================================================
         function detailMateri(id) {
             const m = getMateriById(id);
@@ -2538,21 +2582,12 @@
                                 <div class="modal-divider"></div>
 
                                 <div class="modal-section">
-                                    <h4><i class="fas fa-file-alt"></i> RPL Lengkap</h4>
+                                    <h4><i class="fas fa-file-alt"></i> RPL</h4>
                                     <div class="modal-grid">
                                         <div><strong>🎯 Tujuan</strong><br>${m.rpl.tujuan}</div>
                                         <div><strong>📚 Metode</strong><br>${m.rpl.metode}</div>
                                         <div><strong>🖥️ Media</strong><br>${m.rpl.media}</div>
                                         <div><strong>📊 Evaluasi</strong><br>${m.rpl.evaluasi}</div>
-                                        <div style="grid-column:1/-1;background:#f0ecf5;">
-                                            <strong>📋 Kegiatan Awal</strong><br>${m.rpl.kegiatanAwal}
-                                        </div>
-                                        <div style="grid-column:1/-1;background:#f0ecf5;">
-                                            <strong>📋 Kegiatan Inti</strong><br>${m.rpl.kegiatanInti}
-                                        </div>
-                                        <div style="grid-column:1/-1;background:#f0ecf5;">
-                                            <strong>📋 Kegiatan Penutup</strong><br>${m.rpl.kegiatanPenutup}
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2568,17 +2603,6 @@
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) modal.remove();
             });
-        }
-
-        // ============================================================
-        // COPY LINK KUIS
-        // ============================================================
-        function copyLink(elementId) {
-            const input = document.getElementById(elementId);
-            input.select();
-            input.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            alert('✅ Link kuis berhasil disalin! Bagikan ke siswa.');
         }
 
         // ============================================================
@@ -2669,7 +2693,7 @@
         }
 
         // ============================================================
-        // RPL LENGKAP
+        // RPL
         // ============================================================
         rplSelect.addEventListener('change', function() {
             const id = parseInt(this.value);
@@ -2702,15 +2726,6 @@
                                 <div style="background:white;padding:14px;border-radius:12px;"><strong>📚 Metode</strong><br>${m.rpl.metode}</div>
                                 <div style="background:white;padding:14px;border-radius:12px;"><strong>🖥️ Media</strong><br>${m.rpl.media}</div>
                                 <div style="background:white;padding:14px;border-radius:12px;"><strong>📊 Evaluasi</strong><br>${m.rpl.evaluasi}</div>
-                                <div style="grid-column:1/-1;background:white;padding:14px;border-radius:12px;">
-                                    <strong>📋 Kegiatan Awal (10 menit)</strong><br>${m.rpl.kegiatanAwal}
-                                </div>
-                                <div style="grid-column:1/-1;background:white;padding:14px;border-radius:12px;">
-                                    <strong>📋 Kegiatan Inti (25 menit)</strong><br>${m.rpl.kegiatanInti}
-                                </div>
-                                <div style="grid-column:1/-1;background:white;padding:14px;border-radius:12px;">
-                                    <strong>📋 Kegiatan Penutup (5 menit)</strong><br>${m.rpl.kegiatanPenutup}
-                                </div>
                             </div>
 
                             <div style="margin:16px 0;padding:16px;background:white;border-radius:12px;">
@@ -2731,7 +2746,7 @@
         });
 
         // ============================================================
-        // EXPORT RPL LENGKAP
+        // EXPORT RPL
         // ============================================================
         function exportRPL(id) {
             const m = getMateriById(id);
@@ -2761,19 +2776,6 @@
 
         📊 EVALUASI:
         ${m.rpl.evaluasi}
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        📋 KEGIATAN PEMBELAJARAN:
-
-        A. KEGIATAN AWAL (10 MENIT)
-        ${m.rpl.kegiatanAwal}
-
-        B. KEGIATAN INTI (25 MENIT)
-        ${m.rpl.kegiatanInti}
-
-        C. KEGIATAN PENUTUP (5 MENIT)
-        ${m.rpl.kegiatanPenutup}
 
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
