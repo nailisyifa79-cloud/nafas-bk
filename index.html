@@ -589,192 +589,300 @@
             margin-left: auto;
             margin-right: auto;
         }
+        /* Kuis Mode - full screen saat siswa buka link */
+        .kuis-mode {
+            display: none;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .kuis-mode.active {
+            display: block;
+        }
+        .kuis-mode .header-kuis {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 15px;
+        }
+        .kuis-mode .header-kuis h1 {
+            color: var(--primary);
+            font-size: 28px;
+        }
+        .kuis-mode .header-kuis p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+        .kuis-mode .question-block {
+            background: #fff;
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid var(--primary-lighter);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+        .kuis-mode .question-block .q-text {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        .kuis-mode .question-block .options label {
+            display: block;
+            padding: 6px 0 6px 10px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: .2s;
+            font-size: 15px;
+        }
+        .kuis-mode .question-block .options label:hover {
+            background: #e8edff;
+        }
+        .kuis-mode .question-block .options input[type="radio"] {
+            margin-right: 10px;
+            width: auto;
+            transform: scale(1.1);
+        }
+        .kuis-mode .btn-submit {
+            margin-top: 20px;
+        }
+        .kuis-mode .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f0fdf4;
+            border-radius: 12px;
+            border-left: 4px solid var(--success);
+            display: none;
+        }
+        .kuis-mode .result-box .score-big {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+        }
+        .kuis-mode .result-box .feedback-big {
+            text-align: center;
+            font-size: 18px;
+            margin-top: 8px;
+        }
+        .kuis-mode .result-box .jawaban-detail {
+            margin-top: 12px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+        /* Sembunyikan main app saat kuis mode */
+        .app-mode {
+            display: block;
+        }
+        .app-mode.hidden {
+            display: none;
+        }
+        .back-to-app {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-to-app .btn {
+            font-size: 16px;
+            padding: 12px 30px;
+        }
+        /* QR Code placeholder */
+        .qr-placeholder {
+            background: #eee;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+            font-size: 48px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
 
-    <header class="header">
-        <div>
-            <h1>📘 NaFaS BK <small>Aplikasi Bimbingan Klasikal</small></h1>
-        </div>
-        <div class="badge">© NaFaS BK</div>
-    </header>
+    <!-- ===== APP MODE ===== -->
+    <div class="app-mode" id="appMode">
 
-    <div class="container">
+        <header class="header">
+            <div>
+                <h1>📘 NaFaS BK <small>Aplikasi Bimbingan Klasikal</small></h1>
+            </div>
+            <div class="badge">© NaFaS BK</div>
+        </header>
 
-        <!-- KOLOM KIRI -->
-        <div class="card">
-            <div class="card-title">📚 Materi & RPL</div>
-            <div class="row-3">
-                <div class="form-group"><label>Jenjang <span class="required">*</span></label>
-                    <select id="jenjang"><option value="SMP">SMP</option><option value="SMA">SMA</option><option value="SMK">SMK</option></select></div>
-                <div class="form-group"><label>Kelas <span class="required">*</span></label>
-                    <select id="kelas"><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></div>
-                <div class="form-group"><label>Semester <span class="required">*</span></label>
-                    <select id="semester"><option value="1">Semester 1</option><option value="2">Semester 2</option></select></div>
-            </div>
-            <div class="form-group"><label>Pilih Materi <span class="required">*</span></label>
-                <select id="materiSelect"><option value="0">-- Pilih Materi --</option></select></div>
-            <div class="row-2">
-                <div class="form-group"><label>Durasi (menit)</label><input type="number" id="durasi" value="60" min="30" max="120" /></div>
-                <div class="form-group"><label>Nama Guru BK</label><input type="text" id="namaGuru" placeholder="Nama Guru BK" /></div>
-            </div>
-            <div class="materi-view" id="materiDisplay"><p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p></div>
-            <div class="btn-group no-print">
-                <button class="btn btn-primary btn-sm" onclick="downloadMateri('pdf')">📄 Unduh Materi PDF</button>
-                <button class="btn btn-success btn-sm" onclick="downloadMateri('word')">📝 Unduh Materi Word</button>
-            </div>
-            <div style="margin-top:14px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;">
-                    <strong>📋 RPL Pembelajaran Mendalam</strong><span class="badge-info">Otomatis</span>
+        <div class="container">
+
+            <!-- KOLOM KIRI -->
+            <div class="card">
+                <div class="card-title">📚 Materi & RPL</div>
+                <div class="row-3">
+                    <div class="form-group"><label>Jenjang <span class="required">*</span></label>
+                        <select id="jenjang"><option value="SMP">SMP</option><option value="SMA">SMA</option><option value="SMK">SMK</option></select></div>
+                    <div class="form-group"><label>Kelas <span class="required">*</span></label>
+                        <select id="kelas"><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></div>
+                    <div class="form-group"><label>Semester <span class="required">*</span></label>
+                        <select id="semester"><option value="1">Semester 1</option><option value="2">Semester 2</option></select></div>
                 </div>
-                <div class="rpl-preview" id="rplContent">RPL akan muncul setelah memilih materi.</div>
+                <div class="form-group"><label>Pilih Materi <span class="required">*</span></label>
+                    <select id="materiSelect"><option value="0">-- Pilih Materi --</option></select></div>
+                <div class="row-2">
+                    <div class="form-group"><label>Durasi (menit)</label><input type="number" id="durasi" value="60" min="30" max="120" /></div>
+                    <div class="form-group"><label>Nama Guru BK</label><input type="text" id="namaGuru" placeholder="Nama Guru BK" /></div>
+                </div>
+                <div class="materi-view" id="materiDisplay"><p style="color:var(--text-light);text-align:center;padding:20px 0;">Pilih materi untuk melihat konten</p></div>
                 <div class="btn-group no-print">
-                    <button class="btn btn-primary btn-sm" onclick="downloadRpl('pdf')">📄 Unduh RPL PDF</button>
-                    <button class="btn btn-success btn-sm" onclick="downloadRpl('word')">📝 Unduh RPL Word</button>
+                    <button class="btn btn-primary btn-sm" onclick="downloadMateri('pdf')">📄 Unduh Materi PDF</button>
+                    <button class="btn btn-success btn-sm" onclick="downloadMateri('word')">📝 Unduh Materi Word</button>
                 </div>
-            </div>
-        </div>
-
-        <!-- KOLOM KANAN -->
-        <div class="card">
-            <div class="card-title">📝 LKPD, Kuis & Laporan</div>
-            <div class="tab-wrapper no-print">
-                <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
-                <button class="tab-btn" data-tab="kuis">📱 Kuis Online</button>
-                <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
-                <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
-                <button class="tab-btn" data-tab="cetak">📑 Cetak</button>
-            </div>
-
-            <!-- Tab LKPD -->
-            <div id="tab-lkpd" class="tab-content active">
-                <div class="lkpd-box">
-                    <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
-                    <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
-                    <button class="btn btn-success btn-block mt-10" onclick="saveLkpd()">💾 Simpan LKPD</button>
-                    <button class="btn btn-primary btn-block mt-10" onclick="cetakLKPD()">🖨️ Cetak LKPD</button>
+                <div style="margin-top:14px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:5px;">
+                        <strong>📋 RPL Pembelajaran Mendalam</strong><span class="badge-info">Otomatis</span>
+                    </div>
+                    <div class="rpl-preview" id="rplContent">RPL akan muncul setelah memilih materi.</div>
+                    <div class="btn-group no-print">
+                        <button class="btn btn-primary btn-sm" onclick="downloadRpl('pdf')">📄 Unduh RPL PDF</button>
+                        <button class="btn btn-success btn-sm" onclick="downloadRpl('word')">📝 Unduh RPL Word</button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Tab Kuis Online -->
-            <div id="tab-kuis" class="tab-content">
-                <div style="background:#E8F5E9;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📱 Kuis Online untuk Siswa</h4>
-                    <p style="font-size:13px;color:var(--text-light);">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
+            <!-- KOLOM KANAN -->
+            <div class="card">
+                <div class="card-title">📝 LKPD, Kuis & Laporan</div>
+                <div class="tab-wrapper no-print">
+                    <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
+                    <button class="tab-btn" data-tab="kuis">📱 Kuis Online</button>
+                    <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
+                    <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
+                    <button class="tab-btn" data-tab="cetak">📑 Cetak</button>
                 </div>
 
-                <div class="kuis-link-box">
-                    <label style="font-weight:600;font-size:13px;color:var(--text-light);">🔗 Link Kuis (bagikan ke siswa)</label>
-                    <div class="link-display" id="kuisLinkDisplay">Pilih materi terlebih dahulu</div>
+                <!-- Tab LKPD -->
+                <div id="tab-lkpd" class="tab-content active">
+                    <div class="lkpd-box">
+                        <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
+                        <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
+                        <button class="btn btn-success btn-block mt-10" onclick="saveLkpd()">💾 Simpan LKPD</button>
+                        <button class="btn btn-primary btn-block mt-10" onclick="cetakLKPD()">🖨️ Cetak LKPD</button>
+                    </div>
+                </div>
+
+                <!-- Tab Kuis Online -->
+                <div id="tab-kuis" class="tab-content">
+                    <div style="background:#E8F5E9;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
+                        <h4 style="color:var(--primary);margin-bottom:8px;">📱 Kuis Online untuk Siswa</h4>
+                        <p style="font-size:13px;color:var(--text-light);">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
+                    </div>
+
+                    <div class="kuis-link-box">
+                        <label style="font-weight:600;font-size:13px;color:var(--text-light);">🔗 Link Kuis (bagikan ke siswa)</label>
+                        <div class="link-display" id="kuisLinkDisplay">Pilih materi terlebih dahulu</div>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-sm" onclick="copyKuisLink()">📋 Salin Link</button>
+                            <button class="btn btn-success btn-sm" onclick="generateKuisLink()">🔄 Generate Link Baru</button>
+                            <button class="btn btn-warning btn-sm" onclick="openKuisModal()">📱 Buka Kuis</button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-box" id="quizContainer">
+                        <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
+                    </div>
+
+                    <div class="kuis-result-box" id="kuisResultBox">
+                        <p><strong>✅ Hasil Kuis Siswa</strong></p>
+                        <div class="score-display" id="scoreDisplay">0%</div>
+                        <div class="feedback-display" id="feedbackDisplay">Belum ada hasil</div>
+                        <div style="margin-top:10px;">
+                            <button class="btn btn-primary btn-sm btn-block" onclick="simpanHasilKuis()">💾 Simpan Hasil ke Laporan</button>
+                        </div>
+                    </div>
+
+                    <div class="jawaban-siswa-box">
+                        <p><strong>📊 Jawaban Siswa</strong></p>
+                        <div id="jawabanSiswaList">
+                            <p style="color:var(--text-light);font-size:13px;">Belum ada jawaban siswa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Refleksi -->
+                <div id="tab-refleksi" class="tab-content">
+                    <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
+                        <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
+                        <p style="font-size:13px;color:var(--text-light);">Jawablah pertanyaan refleksi berikut dengan jujur. Bisa dicetak.</p>
+                    </div>
+                    <div class="refleksi-area" id="refleksiContainer">
+                        <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
+                    </div>
+                    <div class="btn-group no-print" style="margin-top:10px;">
+                        <button class="btn btn-primary" onclick="simpanRefleksi()">💾 Simpan Refleksi</button>
+                        <button class="btn btn-success" onclick="cetakRefleksi()">🖨️ Cetak Refleksi</button>
+                    </div>
+                    <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
+                        <p><strong>✅ Refleksi Tersimpan:</strong></p>
+                        <p id="refleksiStatus">Refleksi telah disimpan.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Laporan -->
+                <div id="tab-laporan" class="tab-content">
+                    <div style="background:#FEF3C7;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--accent);">
+                        <p style="font-size:13px;color:#92400E;">📊 <strong>Laporan Kegiatan Bimbingan Klasikal</strong></p>
+                    </div>
+                    <div class="form-group"><label>Jumlah Siswa Hadir</label><input type="number" id="jumlahSiswa" value="32" min="1" max="40" /></div>
+                    <div class="form-group"><label>Catatan Kegiatan</label><textarea id="catatanKegiatan" rows="3" placeholder="Catatan..."></textarea></div>
+                    <button class="btn btn-primary btn-block" onclick="generateLaporan()">📊 Generate Laporan</button>
+                    <div class="laporan-area" id="laporanArea" style="margin-top:10px;"><pre id="laporanContent">Generate laporan terlebih dahulu.</pre></div>
+                    <button class="btn btn-success btn-block mt-10" onclick="cetakLaporan()">🖨️ Cetak Laporan</button>
+                </div>
+
+                <!-- Tab Cetak -->
+                <div id="tab-cetak" class="tab-content">
+                    <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
+                        <h4 style="color:var(--primary);margin-bottom:8px;">📑 Dokumen Lengkap</h4>
+                        <p style="font-size:13px;color:var(--text-light);">Gabungan LKPD + Refleksi + Laporan</p>
+                    </div>
+                    <div class="form-group"><label>Dokumen Lengkap</label><textarea id="gabunganText" rows="12" readonly style="background:#F7FAFC;font-size:12px;font-family:'Courier New',monospace;"></textarea></div>
                     <div class="btn-group">
-                        <button class="btn btn-primary btn-sm" onclick="copyKuisLink()">📋 Salin Link</button>
-                        <button class="btn btn-success btn-sm" onclick="generateKuisLink()">🔄 Generate Link Baru</button>
-                        <button class="btn btn-warning btn-sm" onclick="openKuisModal()">📱 Buka Kuis</button>
+                        <button class="btn btn-success" onclick="cetakDokumen()">🖨️ Cetak / PDF</button>
+                        <button class="btn btn-warning" onclick="downloadDokumenWord()">📄 Download Word</button>
                     </div>
                 </div>
 
-                <div class="quiz-box" id="quizContainer">
-                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
-                </div>
-
-                <div class="kuis-result-box" id="kuisResultBox">
-                    <p><strong>✅ Hasil Kuis Siswa</strong></p>
-                    <div class="score-display" id="scoreDisplay">0%</div>
-                    <div class="feedback-display" id="feedbackDisplay">Belum ada hasil</div>
-                    <div style="margin-top:10px;">
-                        <button class="btn btn-primary btn-sm btn-block" onclick="simpanHasilKuis()">💾 Simpan Hasil ke Laporan</button>
-                    </div>
-                </div>
-
-                <div class="jawaban-siswa-box">
-                    <p><strong>📊 Jawaban Siswa</strong></p>
-                    <div id="jawabanSiswaList">
-                        <p style="color:var(--text-light);font-size:13px;">Belum ada jawaban siswa</p>
-                    </div>
-                </div>
+                <button class="btn btn-danger btn-block mt-10 no-print" onclick="resetSemua()">🔄 Reset Semua Data</button>
             </div>
 
-            <!-- Tab Refleksi -->
-            <div id="tab-refleksi" class="tab-content">
-                <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Jawablah pertanyaan refleksi berikut dengan jujur. Bisa dicetak.</p>
-                </div>
-                <div class="refleksi-area" id="refleksiContainer">
-                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
-                </div>
-                <div class="btn-group no-print" style="margin-top:10px;">
-                    <button class="btn btn-primary" onclick="simpanRefleksi()">💾 Simpan Refleksi</button>
-                    <button class="btn btn-success" onclick="cetakRefleksi()">🖨️ Cetak Refleksi</button>
-                </div>
-                <div id="refleksiResult" style="margin-top:10px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
-                    <p><strong>✅ Refleksi Tersimpan:</strong></p>
-                    <p id="refleksiStatus">Refleksi telah disimpan.</p>
-                </div>
-            </div>
+        </div>
 
-            <!-- Tab Laporan -->
-            <div id="tab-laporan" class="tab-content">
-                <div style="background:#FEF3C7;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--accent);">
-                    <p style="font-size:13px;color:#92400E;">📊 <strong>Laporan Kegiatan Bimbingan Klasikal</strong></p>
-                </div>
-                <div class="form-group"><label>Jumlah Siswa Hadir</label><input type="number" id="jumlahSiswa" value="32" min="1" max="40" /></div>
-                <div class="form-group"><label>Catatan Kegiatan</label><textarea id="catatanKegiatan" rows="3" placeholder="Catatan..."></textarea></div>
-                <button class="btn btn-primary btn-block" onclick="generateLaporan()">📊 Generate Laporan</button>
-                <div class="laporan-area" id="laporanArea" style="margin-top:10px;"><pre id="laporanContent">Generate laporan terlebih dahulu.</pre></div>
-                <button class="btn btn-success btn-block mt-10" onclick="cetakLaporan()">🖨️ Cetak Laporan</button>
-            </div>
-
-            <!-- Tab Cetak -->
-            <div id="tab-cetak" class="tab-content">
-                <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;">
-                    <h4 style="color:var(--primary);margin-bottom:8px;">📑 Dokumen Lengkap</h4>
-                    <p style="font-size:13px;color:var(--text-light);">Gabungan LKPD + Refleksi + Laporan</p>
-                </div>
-                <div class="form-group"><label>Dokumen Lengkap</label><textarea id="gabunganText" rows="12" readonly style="background:#F7FAFC;font-size:12px;font-family:'Courier New',monospace;"></textarea></div>
-                <div class="btn-group">
-                    <button class="btn btn-success" onclick="cetakDokumen()">🖨️ Cetak / PDF</button>
-                    <button class="btn btn-warning" onclick="downloadDokumenWord()">📄 Download Word</button>
-                </div>
-            </div>
-
-            <button class="btn btn-danger btn-block mt-10 no-print" onclick="resetSemua()">🔄 Reset Semua Data</button>
+        <div class="footer-credit">
+            <p>📘 NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</p>
+            <p style="font-size:11px;margin-top:4px;"><span>© NaFaS BK</span></p>
         </div>
 
     </div>
 
-    <div class="footer-credit">
-        <p>📘 NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</p>
-        <p style="font-size:11px;margin-top:4px;"><span>© NaFaS BK</span></p>
+    <!-- ===== KUIS MODE (untuk siswa) ===== -->
+    <div class="kuis-mode" id="kuisMode">
+        <div class="header-kuis">
+            <h1>📘 NaFaS BK</h1>
+            <p id="kuisModeTitle">Kuis Online</p>
+        </div>
+        <div id="kuisModeQuestions"></div>
+        <button class="btn btn-success btn-block btn-submit" onclick="submitKuisMode()">📤 Kirim Jawaban</button>
+        <div class="result-box" id="kuisModeResult">
+            <div class="score-big" id="kuisModeScore">0%</div>
+            <div class="feedback-big" id="kuisModeFeedback"></div>
+            <div class="jawaban-detail" id="kuisModeDetail"></div>
+        </div>
+        <div class="back-to-app">
+            <button class="btn btn-primary" onclick="backToApp()">🔙 Kembali ke Aplikasi</button>
+        </div>
     </div>
 
-    <!-- MODAL -->
+    <!-- ===== MODAL ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-box">
             <button class="modal-close" onclick="closeModal()">&times;</button>
             <h3 id="modalTitle">Informasi</h3>
             <div id="modalBody"><p>Konten modal di sini.</p></div>
             <button class="btn btn-primary btn-block mt-10" onclick="closeModal()">OK</button>
-        </div>
-    </div>
-
-    <!-- MODAL KUIS -->
-    <div class="modal-overlay" id="kuisModalOverlay">
-        <div class="modal-box" style="max-width:650px;width:95%;">
-            <button class="modal-close" onclick="closeKuisModal()">&times;</button>
-            <h3 id="kuisModalTitle">📱 Kuis Online</h3>
-            <div id="kuisModalBody">
-                <p style="color:var(--text-light);margin-bottom:12px;">Jawab pertanyaan berikut dengan memilih jawaban yang tepat. Skor akan muncul otomatis!</p>
-                <div id="kuisModalQuestions"></div>
-                <button class="btn btn-success btn-block mt-10" onclick="submitKuis()">📤 Kirim Jawaban</button>
-                <div id="kuisModalResult" style="margin-top:12px;padding:12px;background:#F0FDF4;border-radius:10px;border-left:4px solid var(--success);display:none;">
-                    <p><strong>✅ Hasil Kuis</strong></p>
-                    <p id="kuisModalScore" style="font-size:24px;font-weight:700;color:var(--primary);">0%</p>
-                    <p id="kuisModalFeedback"></p>
-                    <button class="btn btn-primary btn-block mt-10" onclick="closeKuisModal()">Tutup</button>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1070,15 +1178,15 @@
         }
 
         function getStudiKasus(judul) {
-            return `Studi kasus tentang "${judul}" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini dan harus mencari solusi dengan bijak.`;
+            return `Studi kasus tentang "${judul}" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini.`;
         }
 
         function generateKonten(judul, bidang, kelas) {
-            return `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan: pemahaman tentang konsep\n2. Aspek Sikap: nilai-nilai dan karakter\n3. Aspek Keterampilan: kemampuan menerapkan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n4. Mempersiapkan masa depan\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n4. Cari dukungan\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n4. Kurang motivasi\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan\n4. Jangan takut gagal`;
+            return `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`;
         }
 
         function generateRPL(judul, bidang, kelas) {
-            return `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan   : \nNama Guru           : \nKelas               : ${kelas}\nWaktu               : 60 menit\nMateri Layanan      : ${judul}\nBidang Bimbingan    : ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Kuis\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi   : Semangat\n2. Beribadah     : Petunjuk\n3. Berolahraga   : Kesehatan\n4. Makan Sehat   : Gizi\n5. Gemar Belajar : Belajar\n6. Bermasyarakat : Interaksi\n7. Tidur Cukup   : Istirahat`;
+            return `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan   : \nNama Guru           : \nKelas               : ${kelas}\nWaktu               : 60 menit\nMateri Layanan      : ${judul}\nBidang Bimbingan    : ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Kuis\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`;
         }
 
         function generateLKPD(judul, studiKasus) {
@@ -1128,7 +1236,7 @@
                         const kelasDisplay = `${kelas} / Fase ${kelas >= 10 ? 'E' : 'D'}`;
                         const studiKasus = getStudiKasus(judul);
                         const kuisLink =
-                            `${window.location.protocol}//${window.location.host}/kuis/${jenjang}-${kelas}-${semester}-${idCounter}`;
+                            `${window.location.protocol}//${window.location.host}?kuis=${jenjang}-${kelas}-${semester}-${idCounter}`;
 
                         materiDatabase[jenjang][kelas][semester].push({
                             id: idCounter,
@@ -1145,7 +1253,10 @@
                             refleksi: generateRefleksi(judul),
                             kuisLink: kuisLink,
                             kuisSoal: generateKuis(judul),
-                            jawabanSiswa: []
+                            jawabanSiswa: [],
+                            jenjang: jenjang,
+                            kelasNum: kelas,
+                            semesterNum: semester
                         });
                         idCounter++;
                     });
@@ -1154,7 +1265,164 @@
         }
 
         // ================================================================
-        // VARIABLES & ELEMENTS
+        // CEK PARAMETER URL UNTUK KUIS
+        // ================================================================
+
+        function checkKuisParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const kuisParam = urlParams.get('kuis');
+            if (kuisParam) {
+                const parts = kuisParam.split('-');
+                if (parts.length === 4) {
+                    const jenjang = parts[0];
+                    const kelas = parts[1];
+                    const semester = parts[2];
+                    const id = parseInt(parts[3]);
+
+                    // Cari materi dengan ID yang cocok
+                    let foundMateri = null;
+                    if (materiDatabase[jenjang] && materiDatabase[jenjang][kelas] && materiDatabase[jenjang][kelas][
+                            semester
+                        ]) {
+                        foundMateri = materiDatabase[jenjang][kelas][semester].find(m => m.id === id);
+                    }
+
+                    if (foundMateri) {
+                        // Tampilkan mode kuis
+                        document.getElementById('appMode').classList.add('hidden');
+                        document.getElementById('kuisMode').classList.add('active');
+                        loadKuisMode(foundMateri);
+                    }
+                }
+            }
+        }
+
+        // ================================================================
+        // FUNGSI KUIS MODE (untuk siswa)
+        // ================================================================
+
+        let kuisModeMateri = null;
+
+        function loadKuisMode(materi) {
+            kuisModeMateri = materi;
+            document.getElementById('kuisModeTitle').textContent = `Kuis - ${materi.judul}`;
+
+            let html = '';
+            materi.kuisSoal.forEach((q, i) => {
+                html += `
+                    <div class="question-block">
+                        <div class="q-text">${i+1}. ${q.q}</div>
+                        <div class="options">
+                            ${q.options.map((opt, oi) => `
+                                <label>
+                                    <input type="radio" name="kuis_q${i}" value="${oi}" />
+                                    ${String.fromCharCode(65 + oi)}. ${opt}
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('kuisModeQuestions').innerHTML = html;
+            document.getElementById('kuisModeResult').style.display = 'none';
+            document.querySelector('.btn-submit').style.display = 'block';
+        }
+
+        function submitKuisMode() {
+            const m = kuisModeMateri;
+            if (!m) {
+                alert('Terjadi kesalahan. Silakan muat ulang halaman.');
+                return;
+            }
+
+            let correct = 0,
+                total = m.kuisSoal.length,
+                allAnswered = true;
+
+            m.kuisSoal.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="kuis_q${i}"]:checked`);
+                if (selected) {
+                    if (parseInt(selected.value) === q.answer) correct++;
+                } else {
+                    allAnswered = false;
+                }
+            });
+
+            if (!allAnswered) {
+                alert('⚠️ Jawab semua pertanyaan terlebih dahulu!');
+                return;
+            }
+
+            const score = Math.round((correct / total) * 100);
+
+            // Tampilkan hasil
+            const resultBox = document.getElementById('kuisModeResult');
+            resultBox.style.display = 'block';
+            document.getElementById('kuisModeScore').textContent = `${score}% (${correct}/${total} benar)`;
+
+            let feedback = score >= 80 ? '🏆 Hebat! Pemahamanmu sangat baik!' :
+                score >= 60 ? '📚 Bagus! Terus tingkatkan pemahamanmu!' :
+                score >= 40 ? '📖 Ayo lebih banyak belajar lagi!' :
+                '💪 Jangan menyerah! Coba pelajari kembali materi ini!';
+            document.getElementById('kuisModeFeedback').textContent = feedback;
+
+            // Tampilkan detail jawaban
+            let detailHtml = '<br><strong>📊 Detail Jawaban:</strong><br>';
+            m.kuisSoal.forEach((q, i) => {
+                const selected = document.querySelector(`input[name="kuis_q${i}"]:checked`);
+                const userAnswer = selected ? parseInt(selected.value) : -1;
+                const isCorrect = userAnswer === q.answer;
+                detailHtml += `
+                    <div style="margin:4px 0;padding:4px 8px;border-radius:4px;background:${isCorrect ? '#dcfce7' : '#fee2e2'};">
+                        ${i+1}. ${isCorrect ? '✅' : '❌'} ${q.options[userAnswer] || 'Tidak dijawab'} 
+                        ${!isCorrect ? `→ Jawaban benar: ${q.options[q.answer]}` : ''}
+                    </div>
+                `;
+            });
+            document.getElementById('kuisModeDetail').innerHTML = detailHtml;
+
+            // Sembunyikan tombol submit
+            document.querySelector('.btn-submit').style.display = 'none';
+
+            // Simpan hasil ke database (di memori)
+            const jawaban = {
+                tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
+                score: score,
+                benar: correct,
+                total: total,
+                feedback: feedback
+            };
+
+            if (!m.jawabanSiswa) m.jawabanSiswa = [];
+            m.jawabanSiswa.push(jawaban);
+
+            // Simpan ke localStorage agar bisa diakses di aplikasi utama
+            try {
+                localStorage.setItem('nafas_bk_hasil_kuis', JSON.stringify({
+                    materiId: m.id,
+                    jawaban: jawaban
+                }));
+            } catch (e) {}
+
+            // Beri tahu user
+            setTimeout(() => {
+                alert(`✅ Kuis selesai! Skor: ${score}%\n${feedback}\n\nHasil sudah tersimpan.`);
+            }, 500);
+        }
+
+        function backToApp() {
+            document.getElementById('kuisMode').classList.remove('active');
+            document.getElementById('appMode').classList.remove('hidden');
+            // Hapus parameter URL
+            window.history.pushState({}, document.title, window.location.pathname);
+            // Refresh data di aplikasi utama
+            populateMateri();
+            const val = parseInt(document.getElementById('materiSelect').value);
+            if (val > 0) displayMateri(val);
+        }
+
+        // ================================================================
+        // VARIABLES & ELEMENTS - APP MODE
         // ================================================================
 
         const jenjangEl = document.getElementById('jenjang');
@@ -1215,18 +1483,6 @@
 
         function closeModal() {
             document.getElementById('modalOverlay').classList.remove('active');
-        }
-
-        function showKuisModal() {
-            document.getElementById('kuisModalOverlay').classList.add('active');
-        }
-
-        function closeKuisModal() {
-            document.getElementById('kuisModalOverlay').classList.remove('active');
-            document.getElementById('kuisModalResult').style.display = 'none';
-            document.getElementById('kuisSubmitBtn').textContent = '📤 Kirim Jawaban';
-            document.getElementById('kuisSubmitBtn').disabled = false;
-            document.getElementById('kuisSubmitBtn').style.opacity = '1';
         }
 
         // ================================================================
@@ -1336,8 +1592,12 @@
                     `<p style="color:var(--text-light);text-align:center;padding:10px;">Refleksi belum tersedia.</p>`;
             }
 
-            kuisLinkDisplay.textContent = m.kuisLink;
+            // Update link kuis
+            const fullLink = `${window.location.protocol}//${window.location.host}${window.location.pathname}?kuis=${m.jenjang}-${m.kelasNum}-${m.semesterNum}-${m.id}`;
+            m.kuisLink = fullLink;
+            kuisLinkDisplay.textContent = fullLink;
 
+            // Tampilkan preview kuis
             if (m.kuisSoal && m.kuisSoal.length > 0) {
                 let quizHTML = `<h4 style="margin-bottom:8px;">📱 Preview Kuis - ${m.judul}</h4>`;
                 quizHTML += `<p style="font-size:13px;color:var(--text-light);margin-bottom:10px;">Bagikan link ke siswa</p>`;
@@ -1358,6 +1618,7 @@
                 quizContainer.innerHTML = `<p style="color:var(--text-light);text-align:center;padding:10px;">Kuis belum tersedia.</p>`;
             }
 
+            // Tampilkan hasil kuis siswa
             if (m.jawabanSiswa && m.jawabanSiswa.length > 0) {
                 let html = '';
                 m.jawabanSiswa.forEach((j, idx) => {
@@ -1377,8 +1638,40 @@
             kuisResultBox.style.display = 'none';
 
             const materiId = m.id || Math.random().toString(36).substring(2, 8);
-            linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
+            linkLkpd.value = `${window.location.protocol}//${window.location.host}${window.location.pathname}?lkpd=${jenjangEl.value}-${kelasEl.value}-${semesterEl.value}-${materiId}`;
             updateGabungan();
+
+            // Cek hasil kuis dari localStorage
+            try {
+                const savedResult = localStorage.getItem('nafas_bk_hasil_kuis');
+                if (savedResult) {
+                    const data = JSON.parse(savedResult);
+                    if (data.materiId === m.id) {
+                        kuisResultBox.style.display = 'block';
+                        scoreDisplay.textContent = `${data.jawaban.score}%`;
+                        feedbackDisplay.textContent = data.jawaban.feedback;
+                        // Tambahkan ke jawabanSiswa jika belum ada
+                        const exists = m.jawabanSiswa.some(j => j.tanggal === data.jawaban.tanggal);
+                        if (!exists) {
+                            m.jawabanSiswa.push(data.jawaban);
+                            // Update tampilan
+                            let html = '';
+                            m.jawabanSiswa.forEach((j, idx) => {
+                                html += `
+                                    <div class="item">
+                                        <strong>Siswa ${idx+1}</strong> - Skor: ${j.score}% 
+                                        <span style="font-size:12px;color:var(--text-light);">(${j.benar}/${j.total})</span>
+                                        <br><span style="font-size:12px;color:var(--text-light);">${j.tanggal}</span>
+                                    </div>
+                                `;
+                            });
+                            jawabanSiswaList.innerHTML = html;
+                            hasilSiswa.value += `\n[${data.jawaban.tanggal}] Kuis: ${data.jawaban.score}% (${data.jawaban.benar}/${data.jawaban.total}) - ${data.jawaban.feedback}`;
+                            updateGabungan();
+                        }
+                    }
+                }
+            } catch (e) {}
         }
 
         function updateGabungan() {
@@ -1494,114 +1787,8 @@
         }
 
         // ================================================================
-        // FUNGSI KUIS
+        // FUNGSI KUIS - APP MODE
         // ================================================================
-
-        function openKuisModal() {
-            const m = currentMateri;
-            if (!m) {
-                showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return;
-            }
-
-            document.getElementById('kuisModalTitle').textContent = `📱 Kuis - ${m.judul}`;
-            document.getElementById('kuisModalResult').style.display = 'none';
-
-            let html = '';
-            m.kuisSoal.forEach((q, i) => {
-                html += `
-                    <div class="question" style="margin-bottom:12px;background:#f8fafc;padding:12px 16px;border-radius:8px;border-left:4px solid #4A6CF7;">
-                        <div class="q-text" style="font-weight:600;margin-bottom:6px;">${i+1}. ${q.q}</div>
-                        <div class="options">
-                            ${q.options.map((opt, oi) => `
-                                <label style="display:block;padding:4px 0;cursor:pointer;">
-                                    <input type="radio" name="kuis_q${i}" value="${oi}" style="margin-right:8px;width:auto;" />
-                                    ${String.fromCharCode(65 + oi)}. ${opt}
-                                </label>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('kuisModalQuestions').innerHTML = html;
-
-            document.getElementById('kuisSubmitBtn').textContent = '📤 Kirim Jawaban';
-            document.getElementById('kuisSubmitBtn').disabled = false;
-            document.getElementById('kuisSubmitBtn').style.opacity = '1';
-
-            showKuisModal();
-        }
-
-        function submitKuis() {
-            const m = currentMateri;
-            if (!m) {
-                showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
-                return;
-            }
-
-            let correct = 0,
-                total = m.kuisSoal.length,
-                allAnswered = true;
-
-            m.kuisSoal.forEach((q, i) => {
-                const selected = document.querySelector(`input[name="kuis_q${i}"]:checked`);
-                if (selected) {
-                    if (parseInt(selected.value) === q.answer) correct++;
-                } else {
-                    allAnswered = false;
-                }
-            });
-
-            if (!allAnswered) {
-                showModal('⚠️ Peringatan', 'Jawab semua pertanyaan.');
-                return;
-            }
-
-            const score = Math.round((correct / total) * 100);
-
-            document.getElementById('kuisModalResult').style.display = 'block';
-            document.getElementById('kuisModalScore').textContent = `${score}% (${correct}/${total} benar)`;
-
-            let feedback = score >= 80 ? '🏆 Hebat!' :
-                score >= 60 ? '📚 Bagus!' :
-                score >= 40 ? '📖 Ayo belajar lagi!' :
-                '💪 Jangan menyerah!';
-            document.getElementById('kuisModalFeedback').textContent = feedback;
-
-            document.getElementById('kuisSubmitBtn').textContent = '✅ Selesai';
-            document.getElementById('kuisSubmitBtn').disabled = true;
-            document.getElementById('kuisSubmitBtn').style.opacity = '0.7';
-
-            const jawaban = {
-                tanggal: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }),
-                score: score,
-                benar: correct,
-                total: total,
-                feedback: feedback
-            };
-
-            if (!m.jawabanSiswa) m.jawabanSiswa = [];
-            m.jawabanSiswa.push(jawaban);
-
-            let html = '';
-            m.jawabanSiswa.forEach((j, idx) => {
-                html += `
-                    <div class="item">
-                        <strong>Siswa ${idx+1}</strong> - Skor: ${j.score}% 
-                        <span style="font-size:12px;color:var(--text-light);">(${j.benar}/${j.total})</span>
-                        <br><span style="font-size:12px;color:var(--text-light);">${j.tanggal}</span>
-                    </div>
-                `;
-            });
-            document.getElementById('jawabanSiswaList').innerHTML = html;
-
-            document.getElementById('kuisResultBox').style.display = 'block';
-            document.getElementById('scoreDisplay').textContent = `${score}%`;
-            document.getElementById('feedbackDisplay').textContent = feedback;
-
-            hasilSiswa.value += `\n[${new Date().toLocaleDateString('id-ID')}] Kuis: ${score}% (${correct}/${total}) - ${feedback}`;
-            updateGabungan();
-        }
 
         function copyKuisLink() {
             const link = kuisLinkDisplay.textContent;
@@ -1629,9 +1816,22 @@
                 return;
             }
             const newId = Math.random().toString(36).substring(2, 10);
-            m.kuisLink = `${window.location.protocol}//${window.location.host}/kuis/${kelasEl.value}-${semesterEl.value}-${newId}`;
-            kuisLinkDisplay.textContent = m.kuisLink;
+            const newLink =
+                `${window.location.protocol}//${window.location.host}${window.location.pathname}?kuis=${m.jenjang}-${m.kelasNum}-${m.semesterNum}-${newId}`;
+            m.kuisLink = newLink;
+            m.id = parseInt(newId);
+            kuisLinkDisplay.textContent = newLink;
             showModal('🔄 Link Baru', 'Link kuis baru dibuat!');
+        }
+
+        function openKuisModal() {
+            const m = currentMateri;
+            if (!m) {
+                showModal('⚠️ Peringatan', 'Pilih materi terlebih dahulu.');
+                return;
+            }
+            // Buka link kuis di tab baru
+            window.open(m.kuisLink, '_blank');
         }
 
         function simpanHasilKuis() {
@@ -1695,16 +1895,17 @@
                     `<p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi</p>`;
                 kuisLinkDisplay.textContent = 'Pilih materi terlebih dahulu';
                 jawabanSiswaList.innerHTML = `<p style="color:var(--text-light);font-size:13px;">Belum ada jawaban</p>`;
+                try { localStorage.removeItem('nafas_bk_hasil_kuis'); } catch (e) {}
                 switchTab('lkpd');
                 showModal('✅ Berhasil', 'Data direset.');
             }
         }
 
         // ================================================================
-        // FUNGSI CETAK PDF & WORD - DIPERBAIKI
+        // FUNGSI CETAK PDF & WORD
         // ================================================================
 
-        function cetakKonten(content, title, type) {
+        function cetakKonten(content, title) {
             const win = window.open('', '_blank', 'width=900,height=700');
             if (!win) {
                 showModal('⚠️ Pop-up diblokir',
@@ -1801,7 +2002,7 @@
 
             const title = `Materi - ${m.judul}`;
             if (type === 'pdf') {
-                cetakKonten(content, title, 'materi');
+                cetakKonten(content, title);
             } else {
                 downloadWordKonten(content, title, `NaFaS_BK_Materi_${m.judul.replace(/\s/g,'_')}.doc`);
             }
@@ -1822,7 +2023,7 @@
 
             const title = `RPL - ${m.judul}`;
             if (type === 'pdf') {
-                cetakKonten(rpl, title, 'rpl');
+                cetakKonten(rpl, title);
             } else {
                 downloadWordKonten(rpl, title, `NaFaS_BK_RPL_${m.judul.replace(/\s/g,'_')}.doc`);
             }
@@ -1838,7 +2039,7 @@
                 return; }
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? `LKPD - ${m.judul}` : 'LKPD';
-            cetakKonten(content, title, 'lkpd');
+            cetakKonten(content, title);
         }
 
         function cetakRefleksi() {
@@ -1848,7 +2049,7 @@
             const content = refleksiText.value.trim() || 'Refleksi belum diisi.';
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? `Refleksi - ${m.judul}` : 'Refleksi';
-            cetakKonten(content, title, 'refleksi');
+            cetakKonten(content, title);
         }
 
         function cetakLaporan() {
@@ -1857,13 +2058,13 @@
                 showModal('⚠️ Peringatan', 'Generate laporan dulu.');
                 return;
             }
-            cetakKonten(content, 'Laporan Bimbingan Klasikal', 'laporan');
+            cetakKonten(content, 'Laporan Bimbingan Klasikal');
         }
 
         function cetakDokumen() {
             updateGabungan();
             const content = gabunganText.value;
-            cetakKonten(content, 'Dokumen Lengkap Bimbingan Klasikal', 'dokumen');
+            cetakKonten(content, 'Dokumen Lengkap Bimbingan Klasikal');
         }
 
         function downloadDokumenWord() {
@@ -1917,17 +2118,23 @@
         // INIT
         // ================================================================
 
-        updateKelasOptions();
-        populateMateri();
-        switchTab('lkpd');
-        const defaultId = Math.random().toString(36).substring(2, 10);
-        linkLkpd.value = `${window.location.protocol}//${window.location.host}/lkpd/${defaultId}`;
+        // Cek parameter kuis terlebih dahulu
+        checkKuisParam();
+
+        // Jika tidak dalam mode kuis, jalankan app normal
+        if (!document.getElementById('kuisMode').classList.contains('active')) {
+            updateKelasOptions();
+            populateMateri();
+            switchTab('lkpd');
+            const defaultId = Math.random().toString(36).substring(2, 10);
+            linkLkpd.value = `${window.location.protocol}//${window.location.host}${window.location.pathname}?lkpd=${defaultId}`;
+        }
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`📚 Total materi: ${totalMateri} materi`);
-        console.log('📱 Fitur Kuis Online: Setiap materi punya link unik');
-        console.log('🖨️ Fitur Cetak PDF & Word sudah diperbaiki!');
-        console.log('💡 Jika cetak tidak muncul, izinkan pop-up di browser.');
+        console.log('📱 Link kuis: ?kuis=jenjang-kelas-semester-id');
+        console.log('💡 Contoh: index.html?kuis=SMP-7-1-701');
+        console.log('🖨️ Fitur Cetak PDF & Word sudah berfungsi!');
     </script>
 </body>
 </html>
