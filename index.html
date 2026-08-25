@@ -3,993 +3,252 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NaFaS BK - Bimbingan Konseling Profesional</title>
-
-    <!-- ============ FONTS & ICONS ============ -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <title>NaFaS BK - Aplikasi Bimbingan Klasikal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
     <style>
-        /* ============================================================
-                   RESET & GLOBAL
-                   ============================================================ */
+        /* ===== RESET & GLOBAL ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
-            font-family: 'Poppins', 'Segoe UI', sans-serif;
-            background: #f5f0fa;
-            min-height: 100vh;
-            color: #2d1b4a;
-            overflow-x: hidden;
-        }
-
-        /* ============================================================
-                   HEADER
-                   ============================================================ */
-        header {
-            position: relative;
-            background: linear-gradient(135deg, #1a0f2e 0%, #2d1b4a 30%, #5a2d7a 70%, #8b5fa8 100%);
-            padding: 20px 30px 0;
-            overflow: hidden;
-        }
-
-        .header-bg {
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(249, 217, 118, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: floatBg 20s ease-in-out infinite;
-        }
-
-        @keyframes floatBg {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            50% {
-                transform: translate(-50px, 30px) scale(1.1);
-            }
-        }
-
-        .header-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Brand */
-        .brand-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .brand-logo {
-            position: relative;
-        }
-
-        .logo-circle {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 40px rgba(243, 156, 18, 0.4);
-            animation: logoPulse 3s ease-in-out infinite;
-            position: relative;
-        }
-
-        @keyframes logoPulse {
-            0%,
-            100% {
-                box-shadow: 0 8px 40px rgba(243, 156, 18, 0.3);
-            }
-            50% {
-                box-shadow: 0 8px 60px rgba(243, 156, 18, 0.6);
-            }
-        }
-
-        .logo-icon {
-            font-size: 2.2rem;
-        }
-
-        .logo-shine {
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            animation: shineRotate 8s linear infinite;
-        }
-
-        @keyframes shineRotate {
-            0% {
-                transform: rotate(0deg);
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-            50% {
-                border-color: rgba(249, 217, 118, 0.3);
-            }
-            100% {
-                transform: rotate(360deg);
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-        }
-
-        .brand-text h1 {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -1px;
-            line-height: 1;
-        }
-
-        .brand-text h1 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .brand-badge {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-
-        .badge-dot {
-            width: 4px;
-            height: 4px;
-            background: #f9d976;
-            border-radius: 50%;
-        }
-
-        /* Header Right */
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .premium-badge {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            padding: 6px 18px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #1a0f2e;
-            font-weight: 700;
-            font-size: 0.75rem;
-            box-shadow: 0 4px 20px rgba(243, 156, 18, 0.3);
-        }
-
-        .premium-badge i {
-            font-size: 0.9rem;
-        }
-
-        .guru-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 6px 16px 6px 10px;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .guru-avatar {
-            width: 36px;
-            height: 36px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #f9d976;
-        }
-
-        .guru-detail {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .guru-label {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .guru-name {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .btn-katalog {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(255, 255, 255, 0.12);
-            color: white;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-katalog:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-katalog i {
-            font-size: 1rem;
-        }
-
-        /* ============================================================
-                   BANNER SELAMAT DATANG GURU BK
-                   ============================================================ */
-        .welcome-banner {
-            max-width: 1300px;
-            margin: 20px auto 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(249, 217, 118, 0.12));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 18px 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .welcome-icon {
-            font-size: 2.5rem;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        @keyframes floatIcon {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .welcome-text h2 {
-            font-size: 1.7rem;
-            font-weight: 800;
-            color: white;
-            margin: 0;
-            line-height: 1.2;
-        }
-
-        .welcome-text h2 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-text p {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 1rem;
-            margin: 4px 0 0;
-            font-weight: 400;
-        }
-
-        .welcome-text p i {
-            color: #f9d976;
-        }
-
-        /* Promo Banner */
-        .promo-banner {
-            margin-top: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px 20px 0 0;
-            padding: 12px 25px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            border-bottom: none;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(5px);
-        }
-
-        .promo-slide {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-        }
-
-        .promo-slide strong {
-            color: #f9d976;
-        }
-
-        .promo-icon {
-            font-size: 1.2rem;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-
-        /* ============================================================
-                   MAIN CONTENT
-                   ============================================================ */
-        main {
-            max-width: 1300px;
-            margin: -5px auto 30px;
-            padding: 0 25px 30px;
-            position: relative;
-            z-index: 3;
-        }
-
-        /* ============================================================
-                   TABS
-                   ============================================================ */
-        .tabs-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(20px);
-            padding: 6px 12px 6px 20px;
-            border-radius: 60px;
-            box-shadow: 0 8px 40px rgba(45, 27, 74, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .tabs {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-        }
-
-        .tab-btn {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            background: transparent;
-            color: #7a6a8a;
-            cursor: pointer;
-            transition: all 0.3s ease;
             font-family: 'Poppins', sans-serif;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-        }
-
-        .tab-btn i {
-            font-size: 1rem;
-            color: #b0a0c0;
-            transition: 0.3s;
-        }
-
-        .tab-btn:hover {
-            background: #f5f0fa;
+            background: #f0ecf5;
             color: #2d1b4a;
+            padding: 20px;
         }
 
-        .tab-btn:hover i {
-            color: #5a2d7a;
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
         }
 
-        .tab-btn.active {
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
-            box-shadow: 0 6px 25px rgba(45, 27, 74, 0.25);
-        }
-
-        .tab-btn.active i {
-            color: white;
-        }
-
-        .tab-badge-count {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1px 10px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 700;
-        }
-
-        .tab-btn.active .tab-badge-count {
-            background: rgba(255, 255, 255, 0.25);
-        }
-
-        .tab-version {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #8b5fa8;
-            background: #f5f0fa;
-            padding: 4px 16px;
-            border-radius: 30px;
-        }
-
-        .tab-version i {
-            font-size: 0.8rem;
-            color: #f9d976;
-        }
-
-        /* ============================================================
-                   TAB CONTENT
-                   ============================================================ */
-        .tab-content {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 35px;
-            border-radius: 30px;
-            box-shadow: 0 8px 50px rgba(45, 27, 74, 0.06);
-            animation: fadeSlide 0.5s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        @keyframes fadeSlide {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.98);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        /* Section Header */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 15px;
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #f0ecf5;
             margin-bottom: 25px;
         }
-
-        .section-header-left h2 {
-            font-size: 1.6rem;
-            color: #2d1b4a;
+        .header .logo {
+            font-size: 2.5rem;
             font-weight: 800;
+            color: #2d1b4a;
         }
-
-        .section-header-left h2 i {
-            color: #8b5fa8;
-            margin-right: 10px;
+        .header .logo span {
+            background: linear-gradient(135deg, #f9d976, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-
-        .section-header-left p {
-            color: #8a7a9a;
+        .header .sub {
+            color: #7a6a8a;
             font-size: 0.95rem;
-            margin-top: 4px;
+            margin-top: 2px;
         }
-
-        .header-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #f5f0fa;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #5a2d7a;
-        }
-
-        /* ============================================================
-                   FILTER
-                   ============================================================ */
-        .filter-section {
+        .header .brand-line {
             display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            align-items: flex-end;
-            margin-bottom: 30px;
-            padding: 20px 25px;
-            background: #f8f5fc;
-            border-radius: 20px;
-            border: 1px solid #f0ecf5;
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .filter-group label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #5a4a6a;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .filter-group label i {
-            color: #8b5fa8;
-        }
-
-        .filter-select-wrapper {
-            position: relative;
-        }
-
-        .filter-select-wrapper select {
-            padding: 10px 40px 10px 18px;
-            border: 2px solid #e8e0f0;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            background: white;
-            cursor: pointer;
-            outline: none;
-            transition: 0.3s;
-            font-family: 'Poppins', sans-serif;
-            min-width: 170px;
-            appearance: none;
-        }
-
-        .filter-select-wrapper select:focus {
-            border-color: #8b5fa8;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.12);
-        }
-
-        .filter-arrow {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b0a0c0;
-            font-size: 0.8rem;
-            pointer-events: none;
-        }
-
-        .filter-result {
-            display: flex;
+            justify-content: center;
             align-items: center;
             gap: 12px;
-            margin-left: auto;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #9a8aaa;
+        }
+        .header .brand-line span {
+            background: #f9d976;
+            color: #2d1b4a;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-weight: 700;
         }
 
-        .result-circle {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            border-radius: 50%;
+        /* ===== BANNER SELAMAT DATANG ===== */
+        .welcome-banner {
+            background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+            border-radius: 16px;
+            padding: 16px 24px;
+            text-align: center;
+            margin-bottom: 25px;
+            border-left: 5px solid #f9d976;
+        }
+        .welcome-banner h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d1b4a;
+        }
+        .welcome-banner h2 span {
+            color: #7B1FA2;
+        }
+        .welcome-banner p {
+            font-size: 0.9rem;
+            color: #5a4a6a;
+            margin-top: 2px;
+        }
+
+        /* ===== FORM ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 25px;
+            background: #f8f5fc;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+        }
+        .form-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 800;
-            font-size: 1rem;
+            flex-direction: column;
+            gap: 4px;
         }
-
-        .filter-result span {
+        .form-group label {
+            font-size: 0.8rem;
             font-weight: 600;
             color: #5a4a6a;
         }
-
-        /* ============================================================
-                   MATERI GRID
-                   ============================================================ */
-        .materi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .materi-card {
+        .form-group input,
+        .form-group select {
+            padding: 10px 14px;
+            border: 2px solid #e8e0f0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
             background: white;
-            border-radius: 24px;
-            padding: 25px;
-            border: 1px solid #f0ecf5;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            outline: none;
+            transition: 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #8b5fa8;
+        }
+        .form-group .hint {
+            font-size: 0.7rem;
+            color: #9a8aaa;
+        }
+        .form-full {
+            grid-column: 1 / -1;
         }
 
-        .materi-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2d1b4a, #8b5fa8, #f9d976);
-            opacity: 0;
-            transition: 0.4s;
+        /* ===== SECTION CARD ===== */
+        .section-card {
+            background: #faf8fc;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 20px;
+            border-left: 4px solid #8b5fa8;
         }
-
-        .materi-card:hover::after {
-            opacity: 1;
-        }
-
-        .materi-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(45, 27, 74, 0.12);
-            border-color: #d5c8e0;
-        }
-
-        .materi-card .card-badges {
+        .section-card .title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #2d1b4a;
+            margin-bottom: 6px;
             display: flex;
+            align-items: center;
             gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
+        }
+        .section-card .title i {
+            color: #8b5fa8;
+        }
+        .section-card .content {
+            font-size: 0.9rem;
+            color: #5a4a6a;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+        .section-card .content ul {
+            padding-left: 20px;
+        }
+        .section-card .content ul li {
+            margin-bottom: 2px;
         }
 
-        .materi-card .badge {
+        /* ===== BUTTONS ===== */
+        .btn {
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
+            gap: 8px;
+            text-decoration: none;
         }
-
-        .badge-smp {
-            background: #d4edda;
-            color: #155724;
+        .btn-primary {
+            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
+            color: white;
         }
-        .badge-smp i {
-            color: #155724;
+        .btn-primary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 15px rgba(45, 27, 74, 0.25);
         }
-
-        .badge-sma {
+        .btn-success {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+        }
+        .btn-success:hover {
+            transform: scale(1.03);
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #f9d976, #f39c12);
+            color: #2d1b4a;
+        }
+        .btn-warning:hover {
+            transform: scale(1.03);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #e8e0f0;
+            color: #5a4a6a;
+        }
+        .btn-outline:hover {
+            background: #f0ecf5;
+        }
+        .btn-danger {
             background: #f8d7da;
             color: #721c24;
         }
-        .badge-sma i {
-            color: #721c24;
+        .btn-danger:hover {
+            background: #f5c6cb;
+        }
+        .btn-sm {
+            padding: 6px 16px;
+            font-size: 0.75rem;
         }
 
-        .badge-smk {
-            background: #cce5ff;
-            color: #004085;
-        }
-        .badge-smk i {
-            color: #004085;
-        }
-
-        .badge-semester {
-            background: #fff3cd;
-            color: #856404;
-        }
-
-        .materi-card .card-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .materi-card h3 {
-            font-size: 1.1rem;
-            color: #2d1b4a;
-            margin: 6px 0 8px;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        .materi-card .deskripsi {
-            font-size: 0.9rem;
-            color: #7a6a8a;
-            line-height: 1.6;
-            margin-bottom: 14px;
-        }
-
-        .materi-card .card-meta {
+        .btn-group {
             display: flex;
-            gap: 15px;
-            font-size: 0.78rem;
-            color: #9a8aaa;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-            padding: 12px 0;
-            border-top: 1px solid #f5f0fa;
-            border-bottom: 1px solid #f5f0fa;
-        }
-
-        .materi-card .card-meta span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .materi-card .card-meta i {
-            color: #b0a0c0;
-        }
-
-        .materi-card .btn-action {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .materi-card .btn-action:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 30px rgba(45, 27, 74, 0.3);
-        }
-
-        .materi-card .btn-action i {
-            font-size: 0.9rem;
-        }
-
-        /* ============================================================
-                   LKPD & RPL
-                   ============================================================ */
-        .select-wrapper {
-            margin-bottom: 20px;
-        }
-
-        .select-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: #f8f5fc;
-            padding: 6px 20px 6px 16px;
-            border-radius: 50px;
-            border: 1px solid #f0ecf5;
-            max-width: 480px;
-        }
-
-        .select-icon {
-            color: #8b5fa8;
-            font-size: 1.1rem;
-        }
-
-        .select-big {
-            padding: 12px 10px;
-            border: none;
-            font-size: 0.95rem;
-            width: 100%;
-            background: transparent;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            color: #2d1b4a;
-        }
-
-        .select-big option {
-            color: #2d1b4a;
-        }
-
-        .lkpd-item,
-        .rpl-item {
-            background: #f8f5fc;
-            padding: 28px;
-            border-radius: 24px;
-            margin-top: 15px;
-            border-left: 5px solid #8b5fa8;
-        }
-
-        .lkpd-item h4,
-        .rpl-item h4 {
-            font-size: 1.2rem;
-            color: #2d1b4a;
-            margin-bottom: 10px;
-        }
-
-        .lkpd-item .soal {
-            margin: 14px 0;
-            padding: 18px 22px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            border: 1px solid #f0ecf5;
-        }
-
-        .lkpd-item .soal p {
-            font-weight: 600;
-            color: #2d1b4a;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .lkpd-item .soal p i {
-            color: #8b5fa8;
-        }
-
-        .lkpd-item textarea {
-            width: 100%;
-            padding: 14px 18px;
-            border: 2px solid #e8e0f0;
-            border-radius: 16px;
-            min-height: 80px;
-            font-family: 'Poppins', sans-serif;
-            resize: vertical;
-            transition: 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .lkpd-item textarea:focus {
-            border-color: #8b5fa8;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.1);
-        }
-
-        .lkpd-item .input-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 18px;
-        }
-
-        .lkpd-item .input-group input {
-            flex: 1;
-            min-width: 180px;
-            padding: 12px 20px;
-            border: 2px solid #e8e0f0;
-            border-radius: 30px;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            transition: 0.3s;
-        }
-
-        .lkpd-item .input-group input:focus {
-            border-color: #8b5fa8;
-            outline: none;
-            box-shadow: 0 0 0 4px rgba(139, 95, 168, 0.1);
-        }
-
-        .btn-submit-lkpd {
-            padding: 12px 35px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            display: flex;
-            align-items: center;
             gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
         }
 
-        .btn-submit-lkpd:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(46, 204, 113, 0.4);
-        }
-
-        /* ============================================================
-                   EMPTY STATE
-                   ============================================================ */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .empty-illustration {
-            font-size: 4rem;
-            color: #d5c8e0;
-            margin-bottom: 16px;
-        }
-
-        .empty-state h3 {
-            font-size: 1.2rem;
-            color: #5a4a6a;
-            margin-bottom: 6px;
-        }
-
-        .empty-state p {
-            color: #9a8aaa;
-            font-size: 0.95rem;
-        }
-
-        /* ============================================================
-                   KUIS - LINK BISA DIBUKA & DISALIN
-                   ============================================================ */
-        .kuis-section {
-            background: #f8f5fc;
-            border-radius: 16px;
-            padding: 18px 22px;
-            margin-bottom: 18px;
-            border-left: 5px solid #8b5fa8;
-            transition: 0.3s;
-        }
-
-        .kuis-section:hover {
-            box-shadow: 0 4px 20px rgba(45, 27, 74, 0.06);
-        }
-
-        .kuis-section h4 {
-            color: #2d1b4a;
-            margin-top: 0;
-            margin-bottom: 6px;
-            font-size: 1.05rem;
-        }
-
-        .kuis-section p {
-            color: #5a4a6a;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-        }
-
+        /* ===== KUIS LINK ===== */
         .kuis-link-box {
             display: flex;
             align-items: center;
             gap: 10px;
             flex-wrap: wrap;
             background: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            border: 1px solid #e0d6e8;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 2px solid #e8e0f0;
+            margin-top: 8px;
         }
-
         .kuis-link-box input {
             flex: 1;
             border: none;
-            padding: 8px 0;
-            font-size: 0.9rem;
+            padding: 6px 0;
+            font-size: 0.85rem;
             color: #2d1b4a;
             background: transparent;
             outline: none;
@@ -997,592 +256,63 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        .kuis-link-box .btn-copy {
-            padding: 6px 18px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
+        /* ===== KUIS PREVIEW ===== */
+        .kuis-preview {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 2px dashed #d5c8e0;
+            margin-top: 12px;
+        }
+        .kuis-preview .soal {
             font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            transition: 0.3s;
+            color: #2d1b4a;
+            margin: 8px 0 4px;
         }
-
-        .kuis-link-box .btn-copy:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(45, 27, 74, 0.3);
-        }
-
-        .kuis-link-box .btn-open {
-            padding: 6px 18px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: 0.3s;
-        }
-
-        .kuis-link-box .btn-open:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
-        }
-
-        .kuis-info-box {
-            margin-top: 20px;
-            padding: 20px;
-            background: #fff3cd;
-            border-radius: 16px;
-            border-left: 5px solid #f39c12;
-        }
-
-        .kuis-info-box p {
-            color: #856404;
-            font-weight: 600;
-        }
-
-        .kuis-info-box ol {
-            color: #856404;
-            margin-left: 20px;
-            font-size: 0.95rem;
-        }
-
-        .kuis-info-box ol li {
-            margin-bottom: 4px;
-        }
-
-        /* ============================================================
-                   HASIL SISWA
-                   ============================================================ */
-        .btn-export-all {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #f39c12, #e67e22);
-            color: white;
-            font-weight: 700;
+        .kuis-preview .opsi {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
             font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            color: #5a4a6a;
+            padding-left: 10px;
+        }
+        .kuis-preview .opsi span {
+            background: #f8f5fc;
+            padding: 2px 12px;
+            border-radius: 12px;
         }
 
-        .btn-export-all:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 30px rgba(243, 156, 18, 0.4);
-        }
-
-        .btn-clear-all {
-            padding: 10px 24px;
-            border: none;
-            border-radius: 30px;
-            background: #f8d7da;
-            color: #721c24;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Poppins', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-clear-all:hover {
-            background: #f5c6cb;
-        }
-
+        /* ===== HASIL ===== */
         .hasil-item {
-            background: #f8f5fc;
-            padding: 20px 24px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            border-left: 5px solid #f9d976;
-            transition: 0.3s;
+            background: white;
+            border-radius: 12px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-left: 4px solid #f9d976;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
         }
-
-        .hasil-item:hover {
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
-        }
-
-        .hasil-item .hasil-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .hasil-item .nama-siswa {
+        .hasil-item .nama {
             font-weight: 700;
             color: #2d1b4a;
-            font-size: 1.05rem;
         }
-
-        .hasil-item .nama-siswa i {
-            color: #8b5fa8;
-            margin-right: 8px;
-        }
-
-        .hasil-item .meta-hasil {
-            font-size: 0.8rem;
-            color: #8a7a9a;
-            margin: 4px 0 10px;
-        }
-
         .hasil-item .jawaban {
-            background: white;
-            padding: 12px 18px;
-            border-radius: 12px;
-            margin-top: 8px;
-            font-size: 0.95rem;
-            border: 1px solid #f0ecf5;
-        }
-
-        .hasil-item .jawaban strong {
-            color: #2d1b4a;
-        }
-
-        .hasil-item .btn-hapus {
-            margin-top: 10px;
-            padding: 6px 18px;
-            border: none;
-            border-radius: 20px;
-            background: #f8d7da;
-            color: #721c24;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-            font-size: 0.8rem;
-        }
-
-        .hasil-item .btn-hapus:hover {
-            background: #f5c6cb;
-        }
-
-        /* ============================================================
-                   MODAL
-                   ============================================================ */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 20px;
-        }
-
-        .modal-container {
-            background: white;
-            border-radius: 30px;
-            max-width: 700px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-            animation: modalIn 0.4s ease;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 28px;
-            border-bottom: 1px solid #f0ecf5;
-            background: #faf8fc;
-            border-radius: 30px 30px 0 0;
-        }
-
-        .modal-header-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .modal-icon {
-            font-size: 2rem;
-        }
-
-        .modal-header-left h2 {
-            font-size: 1.2rem;
-            color: #2d1b4a;
-            margin: 0;
-        }
-
-        .modal-close {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 50%;
-            background: #f0ecf5;
-            color: #7a6a8a;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-close:hover {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .modal-body {
-            padding: 24px 28px;
-        }
-
-        .modal-badges {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 18px;
-        }
-
-        .modal-section {
-            margin-bottom: 16px;
-        }
-
-        .modal-section h4 {
-            font-size: 0.95rem;
-            color: #2d1b4a;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .modal-section h4 i {
-            color: #8b5fa8;
-        }
-
-        .modal-section p {
-            color: #5a4a6a;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            padding-left: 28px;
-        }
-
-        .modal-divider {
-            height: 1px;
-            background: #f0ecf5;
-            margin: 18px 0;
-        }
-
-        .modal-list {
-            padding-left: 28px;
-            color: #5a4a6a;
-            font-size: 0.95rem;
-        }
-
-        .modal-list li {
-            margin-bottom: 4px;
-        }
-
-        .modal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            padding-left: 28px;
-        }
-
-        .modal-grid div {
-            background: #f8f5fc;
-            padding: 10px 14px;
-            border-radius: 12px;
             font-size: 0.9rem;
             color: #5a4a6a;
-        }
-
-        .modal-grid div strong {
-            color: #2d1b4a;
-            display: block;
-        }
-
-        .modal-footer {
-            padding: 16px 28px 24px;
-            border-top: 1px solid #f0ecf5;
-            text-align: right;
-        }
-
-        .modal-btn-close {
-            padding: 10px 32px;
-            border: none;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #2d1b4a, #5a2d7a);
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-        }
-
-        .modal-btn-close:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(45, 27, 74, 0.3);
-        }
-
-        /* ============================================================
-                   FOOTER
-                   ============================================================ */
-        footer {
-            background: linear-gradient(135deg, #1a0f2e, #2d1b4a);
-            position: relative;
-            margin-top: 30px;
-        }
-
-        .footer-wave {
-            position: relative;
-            top: -2px;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-        }
-
-        .footer-wave svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 60px;
-        }
-
-        .footer-wave svg path {
-            fill: rgba(255, 255, 255, 0.95);
-        }
-
-        .footer-container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 30px 25px 20px;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1.2fr;
-            gap: 40px;
-        }
-
-        .footer-brand .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-brand .footer-logo span {
-            font-size: 1.8rem;
-        }
-
-        .footer-brand .footer-logo h3 {
-            font-size: 1.6rem;
-            color: white;
-            font-weight: 800;
-        }
-
-        .footer-brand .footer-logo h3 span {
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .footer-brand p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-            margin: 8px 0 16px;
-        }
-
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-
-        .footer-social a {
-            width: 38px;
-            height: 38px;
-            background: rgba(255, 255, 255, 0.06);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.5);
-            transition: 0.3s;
-            text-decoration: none;
-        }
-
-        .footer-social a:hover {
-            background: rgba(249, 217, 118, 0.15);
-            color: #f9d976;
-            transform: translateY(-3px);
-        }
-
-        .footer-col h4 {
-            color: white;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .footer-col a {
-            display: block;
-            color: rgba(255, 255, 255, 0.4);
-            text-decoration: none;
-            font-size: 0.85rem;
-            padding: 4px 0;
-            transition: 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: #f9d976;
-            padding-left: 6px;
-        }
-
-        .footer-cta h4 {
-            color: white;
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-        }
-
-        .btn-footer-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #f9d976, #f39c12);
-            color: #1a0f2e;
-            padding: 10px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .btn-footer-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(243, 156, 18, 0.3);
-        }
-
-        .footer-bottom {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 20px 25px 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .footer-bottom p {
-            color: rgba(255, 255, 255, 0.25);
-            font-size: 0.8rem;
-        }
-
-        .footer-powered {
-            font-size: 0.7rem !important;
             margin-top: 4px;
         }
-
-        .footer-powered strong {
-            color: rgba(255, 255, 255, 0.4);
+        .hasil-item .meta {
+            font-size: 0.75rem;
+            color: #9a8aaa;
         }
 
-        /* ============================================================
-                   RESPONSIVE
-                   ============================================================ */
-        @media (max-width: 992px) {
-            .header-container {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-            }
-            .brand-wrapper {
-                justify-content: center;
-            }
-            .header-right {
-                justify-content: center;
-            }
-            .welcome-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 16px 20px;
-            }
-            .welcome-text h2 {
-                font-size: 1.4rem;
-            }
-            .welcome-text p {
-                font-size: 0.9rem;
-            }
-            .promo-banner {
-                flex-direction: column;
-                text-align: center;
-                padding: 12px 20px;
-            }
-            .tabs-wrapper {
-                flex-direction: column;
-                align-items: stretch;
-                border-radius: 30px;
-                padding: 15px;
-            }
-            .tabs {
-                justify-content: center;
-            }
-            .tab-version {
-                align-self: center;
-            }
-            .tab-content {
-                padding: 20px;
-            }
-            .materi-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .filter-result {
-                margin-left: 0;
-                width: 100%;
-                justify-content: center;
-            }
-            .filter-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .filter-select-wrapper select {
-                min-width: unset;
-                width: 100%;
-            }
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 30px;
-            }
-            .modal-grid {
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            .form-grid {
                 grid-template-columns: 1fr;
+            }
+            .container {
+                padding: 16px;
             }
             .kuis-link-box {
                 flex-direction: column;
@@ -1592,870 +322,230 @@
                 text-align: center;
             }
         }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 15px 15px 0;
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
             }
-            .brand-text h1 {
+            .header .logo {
                 font-size: 1.8rem;
             }
-            .logo-circle {
-                width: 55px;
-                height: 55px;
+            .welcome-banner h2 {
+                font-size: 1.1rem;
             }
-            .logo-icon {
-                font-size: 1.8rem;
+            .section-card {
+                padding: 14px 16px;
             }
-            .btn-katalog {
-                font-size: 0.75rem;
-                padding: 8px 16px;
-            }
-            .btn-katalog span {
-                display: none;
-            }
-            .guru-card {
-                padding: 4px 12px 4px 8px;
-            }
-            .guru-name {
-                font-size: 0.8rem;
-            }
-            .premium-badge {
-                font-size: 0.65rem;
-                padding: 4px 12px;
-            }
-            .welcome-text h2 {
-                font-size: 1.2rem;
-            }
-            .welcome-text p {
-                font-size: 0.8rem;
-            }
-            .welcome-icon {
-                font-size: 2rem;
-            }
-            .tabs {
-                gap: 2px;
-            }
-            .tab-btn {
-                padding: 8px 14px;
-                font-size: 0.7rem;
-            }
-            .tab-btn i {
-                font-size: 0.8rem;
-            }
-            .tab-btn span:not(.tab-badge-count) {
-                display: none;
-            }
-            .tab-content {
-                padding: 15px;
-            }
-            .materi-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-header {
-                flex-direction: column;
-            }
-            .section-header-left h2 {
-                font-size: 1.2rem;
-            }
-            .section-header-right {
-                width: 100%;
-                display: flex;
-                gap: 8px;
-            }
-            .section-header-right button {
+            .btn-group .btn {
                 flex: 1;
                 justify-content: center;
                 font-size: 0.75rem;
                 padding: 8px 12px;
             }
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .footer-social {
-                justify-content: center;
-            }
-            .footer-logo {
-                justify-content: center;
-            }
-            .footer-cta {
-                text-align: center;
-            }
-            .promo-slide {
-                font-size: 0.8rem;
-                justify-content: center;
-            }
-            .modal-container {
-                max-height: 90vh;
-            }
-            .modal-header {
-                padding: 16px 20px;
-            }
-            .modal-body {
-                padding: 16px 20px;
-            }
-            .modal-footer {
-                padding: 12px 20px 18px;
-            }
-            .modal-grid {
-                padding-left: 0;
-            }
-            .modal-section p,
-            .modal-list {
-                padding-left: 0;
-            }
-            .kuis-section {
-                padding: 14px 16px;
-            }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- ============================================================
-    HEADER
-    ============================================================ -->
-    <header>
-        <div class="header-bg"></div>
-        <div class="header-container">
-            <!-- Brand NaFaS BK -->
-            <div class="brand-wrapper">
-                <div class="brand-logo">
-                    <div class="logo-circle">
-                        <span class="logo-icon">🌟</span>
-                    </div>
-                    <div class="logo-shine"></div>
-                </div>
-                <div class="brand-text">
-                    <h1>NaFaS <span>BK</span></h1>
-                    <div class="brand-badge">
-                        <span class="badge-dot"></span>
-                        <span>Bimbingan Konseling Profesional</span>
-                        <span class="badge-dot"></span>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
 
-            <!-- Right Side -->
-            <div class="header-right">
-                <div class="premium-badge">
-                    <i class="fas fa-crown"></i>
-                    <span>PREMIUM</span>
-                </div>
-                <div class="guru-card">
-                    <div class="guru-avatar">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <div class="guru-detail">
-                        <span class="guru-label">Guru BK</span>
-                        <span class="guru-name">Sy NaFaS</span>
-                    </div>
-                </div>
-                <a href="https://lynk.id/sybk" target="_blank" class="btn-katalog">
-                    <i class="fas fa-store"></i>
-                    <span>Katalog NaFaS</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
+        <!-- ===== HEADER ===== -->
+        <div class="header">
+            <div class="logo">🌟 NaFaS <span>BK</span></div>
+            <div class="sub">Aplikasi Bimbingan Klasikal</div>
+            <div class="brand-line">
+                <span>PREMIUM</span>
+                <span>© NaFaS BK</span>
             </div>
         </div>
 
-        <!-- BANNER SELAMAT DATANG GURU BK -->
+        <!-- ===== BANNER SELAMAT DATANG ===== -->
         <div class="welcome-banner">
-            <span class="welcome-icon">👋</span>
-            <div class="welcome-text">
-                <h2>Selamat Datang, <span>Guru BK</span>!</h2>
-                <p><i class="fas fa-star"></i> Semangat membimbing generasi hebat Indonesia <i class="fas fa-star"></i></p>
+            <h2>👋 Selamat Datang, <span>Guru BK</span>!</h2>
+            <p>Semangat membimbing generasi hebat Indonesia ✨</p>
+        </div>
+
+        <!-- ===== FORM FILTER ===== -->
+        <div class="form-grid">
+            <div class="form-group">
+                <label>📚 Jenjang</label>
+                <select id="filterJenjang">
+                    <option value="all">Semua Jenjang</option>
+                    <option value="smp">SMP</option>
+                    <option value="sma">SMA</option>
+                    <option value="smk">SMK</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>📅 Semester</label>
+                <select id="filterSemester">
+                    <option value="all">Semua Semester</option>
+                    <option value="1">Semester 1</option>
+                    <option value="2">Semester 2</option>
+                </select>
+            </div>
+            <div class="form-group form-full">
+                <label>📖 Pilih Materi</label>
+                <select id="materiSelect">
+                    <option value="">-- Pilih Materi --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>👤 Nama Guru BK</label>
+                <input type="text" id="namaGuru" placeholder="Nama Guru BK" value="Sy NaFaS" />
+            </div>
+            <div class="form-group">
+                <label>⏱️ Durasi (menit)</label>
+                <input type="number" id="durasiInput" value="60" />
             </div>
         </div>
 
-        <!-- Promo Banner -->
-        <div class="promo-banner">
-            <div class="promo-slide">
-                <span class="promo-icon">🧠</span>
-                <p>Produk Eksklusif dari <strong>NaFaS BK</strong> — Solusi Bimbingan Konseling Terpercaya</p>
-                <span class="promo-icon">✨</span>
-            </div>
-        </div>
-    </header>
+        <!-- ===== KONTEN MATERI ===== -->
+        <div id="materiContainer">
 
-    <!-- ============================================================
-    MAIN CONTENT
-    ============================================================ -->
-    <main>
-
-        <!-- TABS -->
-        <div class="tabs-wrapper">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="materi">
-                    <i class="fas fa-book-open"></i>
-                    <span>Materi BK</span>
-                    <span class="tab-badge-count" id="tabMateriCount">10</span>
-                </button>
-                <button class="tab-btn" data-tab="lkpd">
-                    <i class="fas fa-pencil-alt"></i>
-                    <span>LKPD</span>
-                </button>
-                <button class="tab-btn" data-tab="rpl">
-                    <i class="fas fa-file-alt"></i>
-                    <span>RPL</span>
-                </button>
-                <button class="tab-btn" data-tab="kuis">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Kuis</span>
-                </button>
-                <button class="tab-btn" data-tab="hasil">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Hasil Siswa</span>
-                    <span class="tab-badge-count" id="hasilCount">0</span>
-                </button>
+            <!-- ICE BREAKING -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-brain"></i> Ice Breaking</div>
+                <div class="content" id="iceBreaking">Pilih materi terlebih dahulu</div>
             </div>
-            <div class="tab-version">
-                <i class="fas fa-rocket"></i>
-                <span>NaFaS BK v2.0</span>
+
+            <!-- APERSEPSI -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-lightbulb"></i> Apersepsi</div>
+                <div class="content" id="apersepsi">Pilih materi terlebih dahulu</div>
+            </div>
+
+            <!-- DISKUSI -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-comments"></i> Diskusi</div>
+                <div class="content" id="diskusi">Pilih materi terlebih dahulu</div>
+            </div>
+
+            <!-- MATERI -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-book-open"></i> Materi</div>
+                <div class="content" id="materiContent">Pilih materi terlebih dahulu</div>
+            </div>
+
+            <!-- LKPD -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-pencil-alt"></i> LKPD</div>
+                <div class="content" id="lkpdContent">Pilih materi terlebih dahulu</div>
+            </div>
+
+            <!-- RPL -->
+            <div class="section-card">
+                <div class="title"><i class="fas fa-file-alt"></i> RPL Pembelajaran Mendalam</div>
+                <div class="content" id="rplContent">Pilih materi terlebih dahulu</div>
+                <div class="btn-group">
+                    <button class="btn btn-primary btn-sm" onclick="unduhRPL()"><i class="fas fa-download"></i> Unduh RPL</button>
+                </div>
             </div>
         </div>
 
-        <!-- ===== TAB 1: MATERI ===== -->
-        <section id="materi" class="tab-content active">
-            <div class="section-header">
-                <div class="section-header-left">
-                    <h2><i class="fas fa-graduation-cap"></i> Kumpulan Materi BK</h2>
-                    <p>Temukan materi bimbingan klasikal untuk SMP, SMA, dan SMK</p>
-                </div>
-                <div class="section-header-right">
-                    <span class="header-chip">
-                        <i class="fas fa-calendar-alt"></i> Semester 1 & 2
-                    </span>
-                </div>
+        <!-- ===== KUIS ONLINE ===== -->
+        <div style="margin-top:25px;border-top:2px solid #f0ecf5;padding-top:20px;">
+            <h3 style="font-size:1.2rem;margin-bottom:10px;"><i class="fas fa-qrcode"></i> Kuis Online untuk Siswa</h3>
+            <p style="color:#7a6a8a;font-size:0.9rem;margin-bottom:10px;">Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
+
+            <div class="kuis-link-box">
+                <input type="text" id="kuisLink" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=1" readonly />
+                <button class="btn btn-primary btn-sm" onclick="copyKuisLink()"><i class="fas fa-copy"></i> Salin Link</button>
+                <button class="btn btn-warning btn-sm" onclick="generateLink()"><i class="fas fa-sync"></i> Generate Link Baru</button>
+                <a href="#" id="bukaKuisLink" target="_blank" class="btn btn-success btn-sm"><i class="fas fa-external-link-alt"></i> Buka Kuis</a>
             </div>
 
-            <div class="filter-section">
-                <div class="filter-group">
-                    <label><i class="fas fa-school"></i> Jenjang</label>
-                    <div class="filter-select-wrapper">
-                        <select id="filterJenjang">
-                            <option value="all">📚 Semua Jenjang</option>
-                            <option value="smp">🏫 SMP</option>
-                            <option value="sma">🎓 SMA</option>
-                            <option value="smk">🛠️ SMK</option>
-                        </select>
-                        <i class="fas fa-chevron-down filter-arrow"></i>
-                    </div>
-                </div>
-                <div class="filter-group">
-                    <label><i class="fas fa-clock"></i> Semester</label>
-                    <div class="filter-select-wrapper">
-                        <select id="filterSemester">
-                            <option value="all">📅 Semua Semester</option>
-                            <option value="1">📖 Semester 1</option>
-                            <option value="2">📖 Semester 2</option>
-                        </select>
-                        <i class="fas fa-chevron-down filter-arrow"></i>
-                    </div>
-                </div>
-                <div class="filter-result">
-                    <div class="result-circle">
-                        <span id="materiCount">0</span>
-                    </div>
-                    <span>Materi Ditemukan</span>
+            <!-- PREVIEW KUIS -->
+            <div class="kuis-preview" id="kuisPreview">
+                <p style="font-weight:700;color:#2d1b4a;">📱 Preview Kuis - <span id="previewJudul">Kenali Dirimu, Temukan Potensimu</span></p>
+                <p style="font-size:0.8rem;color:#9a8aaa;margin-bottom:8px;">Bagikan link ke siswa</p>
+                <div id="soalContainer">
+                    <!-- Soal akan di-render JS -->
                 </div>
             </div>
+        </div>
 
-            <div id="materiGrid" class="materi-grid">
-                <!-- Di-render JS -->
-            </div>
-        </section>
-
-        <!-- ===== TAB 2: LKPD ===== -->
-        <section id="lkpd" class="tab-content">
-            <div class="section-header">
-                <div class="section-header-left">
-                    <h2><i class="fas fa-pencil-alt"></i> Lembar Kerja Peserta Didik</h2>
-                    <p>Pilih materi, kerjakan LKPD, dan kirim jawaban ke guru</p>
-                </div>
-            </div>
-            <div class="select-wrapper">
-                <div class="select-card">
-                    <i class="fas fa-list-ul select-icon"></i>
-                    <select id="lkpdSelect" class="select-big">
-                        <option value="">-- Pilih Materi --</option>
-                    </select>
-                </div>
-            </div>
-            <div id="lkpdContainer">
-                <div class="empty-state">
-                    <div class="empty-illustration">
-                        <i class="fas fa-file-pen"></i>
-                    </div>
-                    <h3>Belum Ada LKPD Dipilih</h3>
-                    <p>Silakan pilih materi dari dropdown di atas untuk mulai mengerjakan LKPD</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== TAB 3: RPL ===== -->
-        <section id="rpl" class="tab-content">
-            <div class="section-header">
-                <div class="section-header-left">
-                    <h2><i class="fas fa-file-alt"></i> Rencana Pelaksanaan Layanan</h2>
-                    <p>RPL lengkap untuk setiap materi BK dengan metode mendalam</p>
-                </div>
-            </div>
-            <div class="select-wrapper">
-                <div class="select-card">
-                    <i class="fas fa-list-ul select-icon"></i>
-                    <select id="rplSelect" class="select-big">
-                        <option value="">-- Pilih Materi --</option>
-                    </select>
-                </div>
-            </div>
-            <div id="rplContainer">
-                <div class="empty-state">
-                    <div class="empty-illustration">
-                        <i class="fas fa-file-lines"></i>
-                    </div>
-                    <h3>Belum Ada RPL Dipilih</h3>
-                    <p>Silakan pilih materi dari dropdown di atas untuk melihat RPL</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== TAB 4: KUIS ===== -->
-        <section id="kuis" class="tab-content">
-            <div class="section-header">
-                <div class="section-header-left">
-                    <h2><i class="fas fa-question-circle"></i> Kuis Online untuk Siswa</h2>
-                    <p>Bagikan link kuis ke siswa. Mereka bisa mengerjakan di HP dan skor langsung muncul!</p>
-                </div>
-            </div>
-
-            <!-- ===== DAFTAR KUIS DENGAN LINK BISA DIBUKA ===== -->
-            <div id="kuisContainer">
-
-                <!-- Kuis 1 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Mengenal Diri dan Potensi Diri</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink1" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp1" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink1')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 2 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Pergaulan Sehat di Era Digital</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink2" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp2" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink2')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 3 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Manajemen Waktu untuk Pelajar</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink3" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp3" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink3')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smp3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 4 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Merencanakan Masa Depan: Karir dan Kuliah</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink4" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma1" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink4')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 5 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Kesehatan Mental dan Stres Remaja</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink5" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma2" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink5')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 6 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Membangun Relasi Sosial yang Positif</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink6" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma3" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink6')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=sma3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 7 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Etika Kerja dan Profesionalisme</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink7" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk1" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink7')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk1" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 8 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Kewirausahaan dan Mindset Sukses</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink8" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk2" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink8')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk2" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 9 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Menghadapi Dunia Kerja</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink9" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk3" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink9')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk3" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Kuis 10 -->
-                <div class="kuis-section">
-                    <h4>📝 Kuis: Manajemen Keuangan untuk Pemula</h4>
-                    <p>Bagikan link ini ke siswa untuk mengerjakan kuis.</p>
-                    <div class="kuis-link-box">
-                        <input type="text" id="kuisLink10" value="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk4" readonly />
-                        <button class="btn-copy" onclick="copyLink('kuisLink10')"><i class="fas fa-copy"></i> Salin</button>
-                        <a href="https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=smk4" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
-                    </div>
-                </div>
-
-                <!-- Info Cara Penggunaan -->
-                <div class="kuis-info-box">
-                    <p><i class="fas fa-info-circle"></i> Cara menggunakan:</p>
-                    <ol>
-                        <li>Klik tombol <strong>"Salin"</strong> untuk menyalin link kuis</li>
-                        <li>Bagikan link ke siswa melalui WhatsApp, Telegram, atau Google Classroom</li>
-                        <li>Siswa klik link, jawab pertanyaan, dan hasilnya otomatis masuk ke guru</li>
-                    </ol>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ===== TAB 5: HASIL SISWA ===== -->
-        <section id="hasil" class="tab-content">
-            <div class="section-header">
-                <div class="section-header-left">
-                    <h2><i class="fas fa-chart-bar"></i> Hasil Pengerjaan Siswa</h2>
-                    <p>Semua jawaban siswa terkumpul otomatis di sini</p>
-                </div>
-                <div class="section-header-right">
-                    <button onclick="exportAllHasil()" class="btn-export-all">
-                        <i class="fas fa-download"></i> Export Semua
-                    </button>
-                    <button onclick="clearAllHasil()" class="btn-clear-all">
-                        <i class="fas fa-trash"></i> Hapus Semua
-                    </button>
-                </div>
-            </div>
+        <!-- ===== HASIL SISWA ===== -->
+        <div style="margin-top:25px;border-top:2px solid #f0ecf5;padding-top:20px;">
+            <h3 style="font-size:1.2rem;margin-bottom:10px;"><i class="fas fa-chart-bar"></i> Jawaban Siswa</h3>
             <div id="hasilContainer">
-                <div class="empty-state">
-                    <div class="empty-illustration">
-                        <i class="fas fa-inbox"></i>
-                    </div>
-                    <h3>Belum Ada Hasil</h3>
-                    <p>Belum ada siswa yang mengirimkan jawaban LKPD atau kuis</p>
-                </div>
+                <p style="color:#9a8aaa;">Belum ada jawaban siswa</p>
             </div>
-        </section>
-
-    </main>
-
-    <!-- ============================================================
-    FOOTER
-    ============================================================ -->
-    <footer>
-        <div class="footer-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" />
-            </svg>
-        </div>
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <span>🌟</span>
-                    <h3>NaFaS <span>BK</span></h3>
-                </div>
-                <p>Bimbingan Konseling Profesional untuk Generasi Hebat</p>
-                <div class="footer-social">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://lynk.id/sybk" target="_blank"><i class="fas fa-store"></i></a>
-                </div>
-            </div>
-            <div class="footer-links">
-                <div class="footer-col">
-                    <h4>Layanan</h4>
-                    <a href="#" onclick="switchTab('materi')">Materi BK</a>
-                    <a href="#" onclick="switchTab('lkpd')">LKPD</a>
-                    <a href="#" onclick="switchTab('rpl')">RPL</a>
-                    <a href="#" onclick="switchTab('kuis')">Kuis</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Tentang</h4>
-                    <a href="#">Tentang NaFaS</a>
-                    <a href="https://lynk.id/sybk" target="_blank">Katalog Produk</a>
-                    <a href="#">Hubungi Kami</a>
-                </div>
-            </div>
-            <div class="footer-cta">
-                <h4>📚 Dapatkan Produk NaFaS</h4>
-                <a href="https://lynk.id/sybk" target="_blank" class="btn-footer-cta">
-                    Kunjungi Katalog <i class="fas fa-arrow-right"></i>
-                </a>
+            <div class="btn-group">
+                <button class="btn btn-danger btn-sm" onclick="resetData()"><i class="fas fa-trash"></i> Reset Semua Data</button>
+                <button class="btn btn-primary btn-sm" onclick="exportHasil()"><i class="fas fa-download"></i> Export Hasil</button>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 NaFaS BK — Dibuat dengan <i class="fas fa-heart" style="color:#f9d976;"></i> untuk Guru BK Indonesia</p>
-            <p class="footer-powered">Powered by <strong>NaFaS</strong> | All Rights Reserved</p>
-        </div>
-    </footer>
 
-    <!-- ============================================================
-    JAVASCRIPT
-    ============================================================ -->
+        <!-- ===== FOOTER ===== -->
+        <div style="text-align:center;margin-top:30px;padding-top:20px;border-top:2px solid #f0ecf5;font-size:0.8rem;color:#9a8aaa;">
+            <p>📘 NaFaS BK - Aplikasi Bimbingan Klasikal untuk Guru BK</p>
+            <p>© NaFaS BK</p>
+        </div>
+
+    </div>
+
     <script>
         // ============================================================
-        // DATA MATERI BK - LENGKAP (10 MATERI)
+        // DATA MATERI (SESUAI DENGAN FILE NaFaS BK.txt)
         // ============================================================
-
-        const dataMateri = [
-            // ==================== SMP ====================
-            {
-                id: 1,
-                judul: "Mengenal Diri dan Potensi Diri",
-                jenjang: "smp",
-                semester: 1,
-                deskripsi: "Membantu siswa mengenali kelebihan, kekurangan, dan potensi diri untuk pengembangan diri yang optimal.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Siapa Aku?' - Guru memberikan kartu berisi profesi/karakter, siswa menebak dengan pertanyaan ya/tidak.",
-                apersepsi: "💬 Guru bertanya: 'Siapa di sini yang sudah tahu apa kelebihannya?' atau 'Apa cita-citamu dan apa langkah awal untuk mencapainya?'",
-                diskusi: "🗣️ Diskusi kelompok (4-5 orang) tentang: 'Apa yang membuat kita unik?' Setiap kelompok mendiskusikan keunikan masing-masing anggota.",
-                studiKasus: "📚 Kasus: Andi adalah siswa kelas 7 yang bingung memilih ekstrakurikuler. Ia suka menyanyi tapi juga ingin mencoba olahraga. Bagaimana cara Andi menentukan pilihan yang tepat?",
-                lkpd: {
-                    judul: "LKPD - Mengenal Diriku",
-                    soal: [
-                        "Tuliskan 3 kelebihan yang kamu miliki!",
-                        "Tuliskan 1 hal yang ingin kamu tingkatkan dari dirimu!",
-                        "Apa cita-citamu dan apa langkah konkret yang bisa kamu lakukan sekarang?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi potensi diri dan merencanakan langkah pengembangan diri.",
-                    metode: "Ceramah interaktif, diskusi kelompok, studi kasus, refleksi diri",
-                    media: "PowerPoint, LKPD, video motivasi, kartu permainan",
-                    evaluasi: "Observasi partisipasi, hasil LKPD, refleksi diri"
-                }
-            },
-            {
-                id: 2,
-                judul: "Pergaulan Sehat di Era Digital",
-                jenjang: "smp",
-                semester: 1,
-                deskripsi: "Membahas pentingnya pergaulan sehat dan bijak bermedia sosial di tengah era digital.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Tebak Emoji' - Guru menampilkan emoji dan siswa menebak perasaan/emosi yang digambarkan.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang punya media sosial? Apa manfaat dan risiko yang kalian rasakan?'",
-                diskusi: "🗣️ Diskusi kelompok tentang: 'Apa dampak positif dan negatif media sosial bagi remaja?'",
-                studiKasus: "📚 Kasus: Rina sering menerima komentar negatif dan bullying di media sosial. Bagaimana cara Rina menghadapi situasi ini?",
-                lkpd: {
-                    judul: "LKPD - Bijak Bersosmed",
-                    soal: [
-                        "Sebutkan 3 dampak positif media sosial bagi remaja!",
-                        "Sebutkan 3 dampak negatif media sosial bagi remaja!",
-                        "Tuliskan 3 tips aman dan bijak dalam bermedia sosial!"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu memahami dampak media sosial dan menerapkan cara bijak bermedia sosial.",
-                    metode: "Diskusi interaktif, studi kasus, role play, brainstorming",
-                    media: "Infografis, video edukasi, LKPD, kartu skenario",
-                    evaluasi: "Observasi, hasil LKPD, presentasi kelompok"
-                }
-            },
-            {
-                id: 3,
-                judul: "Manajemen Waktu untuk Pelajar",
-                jenjang: "smp",
-                semester: 2,
-                deskripsi: "Membantu siswa mengatur waktu belajar, bermain, dan istirahat secara efektif dan seimbang.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Stop Time' - Siswa diminta menebak kapan 30 detik berlalu tanpa melihat jam.",
-                apersepsi: "💬 Guru bercerita tentang seorang siswa yang kewalahan karena banyak tugas, lalu bertanya: 'Siapa yang pernah merasa kehabisan waktu?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa prioritas utama dalam kegiatan sehari-hari?'",
-                studiKasus: "📚 Kasus: Budi adalah siswa kelas 8 yang sering terlambat mengumpulkan tugas karena terlalu banyak bermain game.",
-                lkpd: {
-                    judul: "LKPD - Atur Waktuku",
-                    soal: [
-                        "Buat jadwal kegiatan sehari-harimu dari bangun tidur hingga tidur lagi!",
-                        "Apa 3 prioritas utama dalam kegiatan sehari-hari menurutmu?",
-                        "Tuliskan 3 cara yang bisa kamu lakukan untuk mengatasi rasa malas belajar!"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu membuat jadwal kegiatan harian dan memprioritaskan tugas secara efektif.",
-                    metode: "Ceramah, diskusi, praktik membuat jadwal, studi kasus",
-                    media: "Template jadwal, timer, LKPD, video tips",
-                    evaluasi: "Hasil LKPD, praktik membuat jadwal"
-                }
-            },
-
-            // ==================== SMA ====================
-            {
-                id: 4,
-                judul: "Merencanakan Masa Depan: Karir dan Kuliah",
-                jenjang: "sma",
-                semester: 1,
-                deskripsi: "Membantu siswa merencanakan karir dan pilihan kuliah sesuai minat dan potensi setelah lulus SMA.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Mimpi Besar' - Setiap siswa menuliskan 3 pekerjaan impian di kertas, lalu saling menebak.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah punya gambaran tentang pekerjaan yang diinginkan?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja jurusan kuliah yang ada dan prospek kerjanya?'",
-                studiKasus: "📚 Kasus: Siti adalah siswa kelas 11 yang bingung memilih jurusan antara IPA dan IPS.",
-                lkpd: {
-                    judul: "LKPD - Rencana Karirku",
-                    soal: [
-                        "Apa 3 pekerjaan yang kamu minati dan mengapa?",
-                        "Jurusan kuliah apa yang cocok untuk pekerjaan tersebut?",
-                        "Apa langkah persiapan yang bisa kamu lakukan mulai sekarang?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi minat karir dan merencanakan langkah awal persiapan.",
-                    metode: "Ceramah, diskusi, tes minat sederhana, studi kasus",
-                    media: "LKPD, video profil karir, tes minat, brosur jurusan",
-                    evaluasi: "Hasil LKPD, partisipasi diskusi"
-                }
-            },
-            {
-                id: 5,
-                judul: "Kesehatan Mental dan Stres Remaja",
-                jenjang: "sma",
-                semester: 1,
-                deskripsi: "Membahas pentingnya kesehatan mental, mengenali tanda-tanda stres, dan cara mengatasinya pada remaja.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🧘 Relaksasi pernapasan 5 menit - Siswa diminta memejamkan mata dan bernapas dalam.",
-                apersepsi: "💬 Guru bertanya: 'Apa yang membuatmu stres akhir-akhir ini? Bagaimana perasaanmu?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja penyebab stres pada remaja dan bagaimana cara mengatasinya?'",
-                studiKasus: "📚 Kasus: Dino adalah siswa kelas 12 yang merasa cemas menghadapi ujian dan tekanan orang tua.",
-                lkpd: {
-                    judul: "LKPD - Sehat Mental",
-                    soal: [
-                        "Apa yang membuatmu stres akhir-akhir ini (tuliskan 3 hal)?",
-                        "Bagaimana cara kamu biasanya mengatasi stres (tuliskan 3 cara)?",
-                        "Tuliskan 3 kegiatan positif yang membuatmu bahagia dan rileks!"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu mengenali tanda-tanda stres dan menerapkan cara mengatasi stres.",
-                    metode: "Relaksasi, diskusi, studi kasus, teknik manajemen stres",
-                    media: "Video relaksasi, LKPD, poster kesehatan mental",
-                    evaluasi: "Observasi praktik relaksasi, hasil LKPD"
-                }
-            },
-            {
-                id: 6,
-                judul: "Membangun Relasi Sosial yang Positif",
-                jenjang: "sma",
-                semester: 2,
-                deskripsi: "Membantu siswa membangun hubungan sosial yang sehat, positif, dan saling mendukung dengan teman sebaya.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Permainan 'Saling Kenal' - Siswa mencari teman dengan kriteria tertentu.",
-                apersepsi: "💬 Guru bertanya: 'Apa ciri-ciri pertemanan yang baik menurutmu?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja ciri-ciri pertemanan yang sehat dan tidak sehat?'",
-                studiKasus: "📚 Kasus: Toni merasa dikucilkan oleh teman-temannya karena berbeda pendapat dalam suatu proyek.",
-                lkpd: {
-                    judul: "LKPD - Relasi Positif",
-                    soal: [
-                        "Sebutkan 3 ciri pertemanan yang sehat menurutmu!",
-                        "Bagaimana cara yang baik untuk memulai percakapan dengan orang baru?",
-                        "Apa yang akan kamu lakukan jika melihat temanmu dikucilkan?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu memahami pentingnya relasi sosial positif dan cara membangunnya.",
-                    metode: "Diskusi, role play, studi kasus",
-                    media: "LKPD, video, kartu skenario",
-                    evaluasi: "Observasi, hasil LKPD, role play"
-                }
-            },
-
-            // ==================== SMK ====================
-            {
-                id: 7,
-                judul: "Etika Kerja dan Profesionalisme",
-                jenjang: "smk",
-                semester: 1,
-                deskripsi: "Membekali siswa dengan etika kerja, sikap profesional, dan perilaku yang baik di dunia kerja.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Etika atau Tidak' - Guru menyebutkan perilaku di tempat kerja, siswa menebak apakah itu etika.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah pernah magang/PKL? Apa pengalamanmu tentang etika di tempat kerja?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja etika kerja yang penting di dunia kerja?'",
-                studiKasus: "📚 Kasus: Ani adalah siswa SMK yang sedang magang. Ia sering terlambat dan kurang sopan saat berbicara dengan atasan.",
-                lkpd: {
-                    judul: "LKPD - Etika Kerja",
-                    soal: [
-                        "Sebutkan 3 etika kerja yang paling penting menurutmu!",
-                        "Bagaimana cara bersikap profesional di tempat kerja?",
-                        "Apa yang akan kamu lakukan jika melihat rekan kerja melanggar etika?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu memahami dan menerapkan etika kerja profesional.",
-                    metode: "Ceramah, diskusi, studi kasus, simulasi",
-                    media: "LKPD, video etika kerja, kartu skenario",
-                    evaluasi: "Observasi, hasil LKPD, simulasi"
-                }
-            },
-            {
-                id: 8,
-                judul: "Kewirausahaan dan Mindset Sukses",
-                jenjang: "smk",
-                semester: 1,
-                deskripsi: "Membangun jiwa kewirausahaan, mindset sukses, dan kemampuan melihat peluang usaha pada siswa SMK.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Ide Bisnis' - Setiap siswa diminta menyebutkan 1 ide usaha unik/kreatif dalam 30 detik.",
-                apersepsi: "💬 Guru bercerita tentang pengusaha sukses lulusan SMK, lalu bertanya tentang karakter wirausaha.",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja peluang usaha yang ada di sekitar lingkungan kita?'",
-                studiKasus: "📚 Kasus: Rudi ingin membuka usaha kecil-kecilan setelah lulus, tapi ia takut gagal dan tidak punya modal.",
-                lkpd: {
-                    judul: "LKPD - Jiwa Wirausaha",
-                    soal: [
-                        "Sebutkan 3 ide usaha yang bisa dilakukan di lingkungan sekitarmu!",
-                        "Apa yang membuat seseorang menjadi wirausaha sukses?",
-                        "Bagaimana cara mengatasi rasa takut gagal dalam berwirausaha?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu mengidentifikasi peluang usaha dan membangun mindset sukses.",
-                    metode: "Ceramah, diskusi, brainstorming, studi kasus",
-                    media: "LKPD, video pengusaha, poster",
-                    evaluasi: "Hasil LKPD, presentasi ide usaha"
-                }
-            },
-            {
-                id: 9,
-                judul: "Menghadapi Dunia Kerja: Persiapan dan Adaptasi",
-                jenjang: "smk",
-                semester: 2,
-                deskripsi: "Mempersiapkan siswa menghadapi dunia kerja, mulai dari membuat CV, wawancara, hingga adaptasi di lingkungan kerja.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Tebak Profesi' - Guru memberikan deskripsi pekerjaan, siswa menebak profesinya.",
-                apersepsi: "💬 Guru bertanya: 'Apa harapanmu setelah lulus SMK? Apakah kamu sudah siap menghadapi dunia kerja?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa saja tantangan yang dihadapi saat memasuki dunia kerja?'",
-                studiKasus: "📚 Kasus: Maya adalah lulusan SMK yang bingung memilih antara langsung bekerja atau melanjutkan kuliah.",
-                lkpd: {
-                    judul: "LKPD - Siap Kerja",
-                    soal: [
-                        "Apa 3 hal yang perlu disiapkan sebelum melamar kerja?",
-                        "Bagaimana cara menghadapi wawancara kerja dengan percaya diri?",
-                        "Apa yang akan kamu lakukan jika diterima kerja di tempat yang baru?"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu mempersiapkan diri menghadapi dunia kerja.",
-                    metode: "Ceramah, diskusi, simulasi wawancara",
-                    media: "LKPD, video tips kerja, contoh CV",
-                    evaluasi: "Hasil LKPD, simulasi wawancara"
-                }
-            },
-            {
-                id: 10,
-                judul: "Manajemen Keuangan untuk Pemula",
-                jenjang: "smk",
-                semester: 2,
-                deskripsi: "Mengajarkan dasar-dasar manajemen keuangan, menabung, dan membedakan kebutuhan vs keinginan bagi siswa SMK.",
-                durasi: "1 JP (40 menit)",
-                iceBreaking: "🎮 Game 'Belanja Cerdas' - Siswa diberi skenario uang Rp 100.000 dan harus memilih prioritas belanja.",
-                apersepsi: "💬 Guru bertanya: 'Siapa yang sudah menabung? Siapa yang sering kehabisan uang sebelum akhir bulan?'",
-                diskusi: "🗣️ Diskusi kelompok: 'Apa pentingnya menabung dan bagaimana cara membedakan kebutuhan dan keinginan?'",
-                studiKasus: "📚 Kasus: Dito adalah siswa SMK yang sering kehabisan uang sebelum akhir bulan karena terlalu banyak membeli hal yang tidak perlu.",
-                lkpd: {
-                    judul: "LKPD - Kelola Keuangan",
-                    soal: [
-                        "Buatlah anggaran keuangan bulanan sederhana dengan pemasukan Rp 500.000!",
-                        "Apa manfaat menabung sejak dini (sebutkan 3 manfaat)?",
-                        "Bagaimana cara membedakan kebutuhan dan keinginan? Berikan contoh!"
-                    ]
-                },
-                rpl: {
-                    tujuan: "Siswa mampu membuat anggaran keuangan sederhana dan membedakan kebutuhan/keinginan.",
-                    metode: "Ceramah, diskusi, praktik membuat anggaran",
-                    media: "LKPD, template anggaran, video edukasi",
-                    evaluasi: "Hasil LKPD, praktik membuat anggaran"
-                }
+        const dataMateri = [{
+            id: 1,
+            judul: "Kenali Dirimu, Temukan Potensimu",
+            jenjang: "smp",
+            semester: 1,
+            kelas: "7 / Fase D",
+            durasi: 60,
+            topik: "Kenali Dirimu, Temukan Potensimu untuk Masa Depan Lebih Baik",
+            iceBreaking: "Permainan interaktif tentang 'Kenali Dirimu, Temukan Potensimu' - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.",
+            apersepsi: "Guru bertanya: 'Apa yang kamu ketahui tentang \"Kenali Dirimu, Temukan Potensimu\"?' Waktu 5 menit.",
+            diskusi: "Diskusi kelompok tentang 'Kenali Dirimu, Temukan Potensimu'. Waktu 20 menit.",
+            materi: `MATERI KENALI DIRIMU, TEMUKAN POTENSIMU\n\nA. PENGERTIAN\nKenali Dirimu, Temukan Potensimu adalah topik penting yang perlu dipahami oleh siswa 7 / Fase D.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`,
+            lkpd: `📌 STUDI KASUS\nStudi kasus tentang "Kenali Dirimu, Temukan Potensimu" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini.\n\nLKPD BERBASIS AKTIVITAS\n"Kenali Dirimu, Temukan Potensimu"\n\nA. STUDI KASUS\nStudi kasus tentang "Kenali Dirimu, Temukan Potensimu" - Seorang siswa menghadapi tantangan yang berkaitan dengan materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n6. Jika kamu di posisi tokoh?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`,
+            rpl: `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan : SMP\nNama Guru         : _______________\nKelas             : 7 / Fase D\nWaktu             : 60 menit\nMateri Layanan    : Kenali Dirimu, Temukan Potensimu\nBidang Bimbingan  : Pribadi\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid 7 / Fase D perlu memahami kenali dirimu, temukan potensimu.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "Kenali Dirimu, Temukan Potensimu untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Kuis\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`,
+            kuis: {
+                soal: [
+                    "Apa yang paling penting dari 'Kenali Dirimu, Temukan Potensimu'?",
+                    "Bagaimana perasaanmu setelah mempelajari 'Kenali Dirimu, Temukan Potensimu'?",
+                    "Apa yang akan kamu lakukan setelah mempelajari 'Kenali Dirimu, Temukan Potensimu'?",
+                    "Apa tantangan terbesar dalam menerapkan 'Kenali Dirimu, Temukan Potensimu'?",
+                    "Siapa yang bisa membantumu menerapkan 'Kenali Dirimu, Temukan Potensimu'?"
+                ],
+                opsi: [
+                    ["A. Menghafal", "B. Memahami dan menerapkan", "C. Mengerjakan tugas", "D. Mendapat nilai"],
+                    ["A. Biasa saja", "B. Senang dan termotivasi", "C. Bingung", "D. Tidak peduli"],
+                    ["A. Melupakan", "B. Menerapkan dalam kehidupan", "C. Menunggu tugas", "D. Tidak melakukan apa-apa"],
+                    ["A. Tidak ada", "B. Konsistensi", "C. Tidak tahu caranya", "D. Malas"],
+                    ["A. Teman", "B. Guru dan orang tua", "C. Sendiri", "D. Tidak perlu"]
+                ]
             }
-        ];
+        }];
 
         // ============================================================
-        // FUNGSI UTAMA
+        // STATE
         // ============================================================
+        let hasilSiswa = JSON.parse(localStorage.getItem('hasilBK') || '[]');
+        let materiTerpilih = dataMateri[0];
 
-        function getMateri(jenjang = 'all', semester = 'all') {
-            return dataMateri.filter(m => {
-                const matchJenjang = jenjang === 'all' || m.jenjang === jenjang;
-                const matchSemester = semester === 'all' || m.semester === parseInt(semester);
-                return matchJenjang && matchSemester;
-            });
-        }
-
-        function getMateriById(id) {
-            return dataMateri.find(m => m.id === id);
-        }
-
-        // State
-        let hasilSiswa = [];
-
-        // DOM
-        const materiGrid = document.getElementById('materiGrid');
+        // ============================================================
+        // DOM REFS
+        // ============================================================
         const filterJenjang = document.getElementById('filterJenjang');
         const filterSemester = document.getElementById('filterSemester');
-        const lkpdSelect = document.getElementById('lkpdSelect');
-        const rplSelect = document.getElementById('rplSelect');
-        const lkpdContainer = document.getElementById('lkpdContainer');
-        const rplContainer = document.getElementById('rplContainer');
-        const hasilContainer = document.getElementById('hasilContainer');
-        const materiCount = document.getElementById('materiCount');
-        const hasilCount = document.getElementById('hasilCount');
-        const tabMateriCount = document.getElementById('tabMateriCount');
+        const materiSelect = document.getElementById('materiSelect');
+        const namaGuru = document.getElementById('namaGuru');
+        const durasiInput = document.getElementById('durasiInput');
 
-        // ============================================================
-        // COPY LINK KUIS
-        // ============================================================
-        function copyLink(elementId) {
-            const input = document.getElementById(elementId);
-            if (!input) return;
-            input.select();
-            input.setSelectionRange(0, 99999);
-            document.execCommand('copy');
-            alert('✅ Link kuis berhasil disalin! Bagikan ke siswa.');
-        }
+        const iceBreaking = document.getElementById('iceBreaking');
+        const apersepsi = document.getElementById('apersepsi');
+        const diskusi = document.getElementById('diskusi');
+        const materiContent = document.getElementById('materiContent');
+        const lkpdContent = document.getElementById('lkpdContent');
+        const rplContent = document.getElementById('rplContent');
+
+        const kuisLink = document.getElementById('kuisLink');
+        const previewJudul = document.getElementById('previewJudul');
+        const soalContainer = document.getElementById('soalContainer');
+        const hasilContainer = document.getElementById('hasilContainer');
 
         // ============================================================
         // RENDER MATERI
@@ -2463,317 +553,138 @@
         function renderMateri() {
             const jenjang = filterJenjang.value;
             const semester = filterSemester.value;
-            const materis = getMateri(jenjang, semester);
 
-            materiCount.textContent = materis.length;
-            tabMateriCount.textContent = dataMateri.length;
-
-            if (materis.length === 0) {
-                materiGrid.innerHTML = `
-                            <div class="empty-state" style="grid-column:1/-1;">
-                                <div class="empty-illustration"><i class="fas fa-search"></i></div>
-                                <h3>Tidak Ada Materi</h3>
-                                <p>Coba ubah filter jenjang atau semester</p>
-                            </div>
-                        `;
-                return;
-            }
-
-            const jenjangIcons = { smp: '🏫', sma: '🎓', smk: '🛠️' };
-            const jenjangIconClass = { smp: 'school', sma: 'graduation-cap', smk: 'tools' };
-
-            materiGrid.innerHTML = materis.map(m => `
-                        <div class="materi-card" data-id="${m.id}">
-                            <div class="card-badges">
-                                <span class="badge badge-${m.jenjang}">
-                                    <i class="fas fa-${jenjangIconClass[m.jenjang]}"></i>
-                                    ${m.jenjang.toUpperCase()}
-                                </span>
-                                <span class="badge badge-semester">
-                                    <i class="fas fa-calendar-alt"></i>
-                                    Semester ${m.semester}
-                                </span>
-                            </div>
-                            <div class="card-icon">${jenjangIcons[m.jenjang] || '📚'}</div>
-                            <h3>${m.judul}</h3>
-                            <p class="deskripsi">${m.deskripsi}</p>
-                            <div class="card-meta">
-                                <span><i class="far fa-clock"></i> ${m.durasi}</span>
-                                <span><i class="fas fa-users"></i> ${m.diskusi.substring(0, 25)}...</span>
-                            </div>
-                            <button class="btn-action" onclick="detailMateri(${m.id})">
-                                <i class="fas fa-eye"></i> Lihat Detail
-                            </button>
-                        </div>
-                    `).join('');
-
-            updateDropdowns(materis);
-        }
-
-        // ============================================================
-        // DETAIL MATERI - MODAL
-        // ============================================================
-        function detailMateri(id) {
-            const m = getMateriById(id);
-            if (!m) return;
-
-            const jenjangIconClass = { smp: 'school', sma: 'graduation-cap', smk: 'tools' };
-
-            const modal = document.createElement('div');
-            modal.className = 'modal-overlay';
-            modal.innerHTML = `
-                        <div class="modal-container">
-                            <div class="modal-header">
-                                <div class="modal-header-left">
-                                    <span class="modal-icon">📖</span>
-                                    <h2>${m.judul}</h2>
-                                </div>
-                                <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="modal-badges">
-                                    <span class="badge badge-${m.jenjang}"><i class="fas fa-${jenjangIconClass[m.jenjang]}"></i> ${m.jenjang.toUpperCase()}</span>
-                                    <span class="badge badge-semester"><i class="fas fa-calendar-alt"></i> Semester ${m.semester}</span>
-                                    <span class="badge" style="background:#e8e0f0;color:#5a2d7a;"><i class="far fa-clock"></i> ${m.durasi}</span>
-                                </div>
-
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-brain"></i> Ice Breaking</h4>
-                                    <p>${m.iceBreaking}</p>
-                                </div>
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-lightbulb"></i> Apersepsi</h4>
-                                    <p>${m.apersepsi}</p>
-                                </div>
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-comments"></i> Diskusi</h4>
-                                    <p>${m.diskusi}</p>
-                                </div>
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-briefcase"></i> Studi Kasus</h4>
-                                    <p>${m.studiKasus}</p>
-                                </div>
-
-                                <div class="modal-divider"></div>
-
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-pencil-alt"></i> LKPD: ${m.lkpd.judul}</h4>
-                                    <ul class="modal-list">
-                                        ${m.lkpd.soal.map(s => `<li>${s}</li>`).join('')}
-                                    </ul>
-                                </div>
-
-                                <div class="modal-divider"></div>
-
-                                <div class="modal-section">
-                                    <h4><i class="fas fa-file-alt"></i> RPL</h4>
-                                    <div class="modal-grid">
-                                        <div><strong>🎯 Tujuan</strong><br>${m.rpl.tujuan}</div>
-                                        <div><strong>📚 Metode</strong><br>${m.rpl.metode}</div>
-                                        <div><strong>🖥️ Media</strong><br>${m.rpl.media}</div>
-                                        <div><strong>📊 Evaluasi</strong><br>${m.rpl.evaluasi}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button onclick="this.closest('.modal-overlay').remove()" class="modal-btn-close">
-                                    <i class="fas fa-check"></i> Tutup
-                                </button>
-                            </div>
-                        </div>
-                    `;
-            document.body.appendChild(modal);
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) modal.remove();
+            let filtered = dataMateri.filter(m => {
+                const matchJenjang = jenjang === 'all' || m.jenjang === jenjang;
+                const matchSemester = semester === 'all' || m.semester === parseInt(semester);
+                return matchJenjang && matchSemester;
             });
-        }
 
-        // ============================================================
-        // UPDATE DROPDOWNS
-        // ============================================================
-        function updateDropdowns(materis) {
-            lkpdSelect.innerHTML = `<option value="">-- Pilih Materi --</option>` +
-                materis.map(m => `<option value="${m.id}">${m.judul}</option>`).join('');
+            if (filtered.length === 0) filtered = dataMateri;
 
-            rplSelect.innerHTML = `<option value="">-- Pilih Materi --</option>` +
-                materis.map(m => `<option value="${m.id}">${m.judul}</option>`).join('');
-        }
+            materiSelect.innerHTML = '<option value="">-- Pilih Materi --</option>' +
+                filtered.map(m => `<option value="${m.id}">${m.judul} (${m.jenjang.toUpperCase()} - Semester ${m.semester})</option>`).join('');
 
-        // ============================================================
-        // LKPD
-        // ============================================================
-        lkpdSelect.addEventListener('change', function() {
-            const id = parseInt(this.value);
-            if (!id) {
-                lkpdContainer.innerHTML = `
-                            <div class="empty-state">
-                                <div class="empty-illustration"><i class="fas fa-file-pen"></i></div>
-                                <h3>Belum Ada LKPD Dipilih</h3>
-                                <p>Silakan pilih materi dari dropdown di atas</p>
-                            </div>
-                        `;
-                return;
+            if (materiTerpilih && filtered.some(m => m.id === materiTerpilih.id)) {
+                materiSelect.value = materiTerpilih.id;
+            } else {
+                materiSelect.value = filtered.length > 0 ? filtered[0].id : '';
             }
-            const m = getMateriById(id);
+
+            if (materiSelect.value) {
+                const id = parseInt(materiSelect.value);
+                materiTerpilih = dataMateri.find(m => m.id === id) || dataMateri[0];
+                tampilkanMateri(materiTerpilih);
+            }
+        }
+
+        function tampilkanMateri(m) {
             if (!m) return;
 
-            lkpdContainer.innerHTML = `
-                        <div class="lkpd-item">
-                            <h4><i class="fas fa-pencil-alt" style="color:#8b5fa8;"></i> ${m.lkpd.judul}</h4>
-                            <p style="color:#7a6a8a; margin-bottom:16px;"><strong>Materi:</strong> ${m.judul}</p>
-                            ${m.lkpd.soal.map((s, idx) => `
-                                <div class="soal">
-                                    <p><i class="fas fa-${idx+1 === 1 ? 'one' : idx+1 === 2 ? 'two' : 'three'}"></i> ${s}</p>
-                                    <textarea placeholder="Tulis jawabanmu di sini..." data-soal="${idx}"></textarea>
-                                </div>
-                            `).join('')}
-                            <div class="input-group">
-                                <input type="text" placeholder="👤 Nama Siswa" id="namaSiswaLkpd">
-                                <button class="btn-submit-lkpd" onclick="submitLkpd(${m.id})">
-                                    <i class="fas fa-paper-plane"></i> Kirim Jawaban
-                                </button>
-                            </div>
-                        </div>
-                    `;
-        });
+            iceBreaking.textContent = m.iceBreaking;
+            apersepsi.textContent = m.apersepsi;
+            diskusi.textContent = m.diskusi;
+            materiContent.textContent = m.materi;
+            lkpdContent.textContent = m.lkpd;
 
-        // ============================================================
-        // SUBMIT LKPD
-        // ============================================================
-        function submitLkpd(materiId) {
-            const nama = document.getElementById('namaSiswaLkpd')?.value.trim() || 'Siswa Anonim';
-            const textareas = document.querySelectorAll('#lkpdContainer textarea');
-            const jawaban = Array.from(textareas).map(ta => ta.value.trim() || '(kosong)');
+            // RPL dengan nama guru dan durasi
+            let rplText = m.rpl;
+            rplText = rplText.replace(/Nama Guru\s*:\s*_+/g, `Nama Guru         : ${namaGuru.value || '_______________'}`);
+            rplText = rplText.replace(/Waktu\s*:\s*\d+/g, `Waktu             : ${durasiInput.value || 60} menit`);
+            rplText = rplText.replace(/7 \/ Fase D/g, m.kelas || '7 / Fase D');
+            rplContent.textContent = rplText;
 
-            if (jawaban.some(j => j === '(kosong)')) {
-                alert('⚠️ Mohon isi semua jawaban terlebih dahulu!');
-                return;
+            // Update kuis
+            previewJudul.textContent = m.judul;
+            if (m.kuis) {
+                let html = '';
+                for (let i = 0; i < m.kuis.soal.length; i++) {
+                    html += `<div class="soal">${i+1}. ${m.kuis.soal[i]}</div>`;
+                    html += `<div class="opsi">${m.kuis.opsi[i].map(o => `<span>${o}</span>`).join('')}</div>`;
+                }
+                soalContainer.innerHTML = html;
+            } else {
+                soalContainer.innerHTML = '<p style="color:#9a8aaa;">Belum ada kuis untuk materi ini</p>';
             }
 
-            const m = getMateriById(materiId);
-            const hasil = {
-                id: Date.now(),
-                nama: nama,
-                materi: m.judul,
-                jenjang: m.jenjang,
-                semester: m.semester,
-                jawaban: jawaban,
-                waktu: new Date().toLocaleString('id-ID')
-            };
+            // Update link kuis
+            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
+            kuisLink.value = baseUrl + m.id;
+            document.getElementById('bukaKuisLink').href = baseUrl + m.id;
 
-            hasilSiswa.push(hasil);
-            localStorage.setItem('hasilBK', JSON.stringify(hasilSiswa));
-
-            alert(`✅ Terima kasih ${nama}! Jawaban sudah terkirim ke Guru BK.`);
-            lkpdContainer.innerHTML = `
-                        <div style="background:#d4edda;padding:30px;border-radius:20px;text-align:center;">
-                            <div style="font-size:4rem;">✅</div>
-                            <h3 style="color:#155724;">Jawaban Berhasil Dikirim!</h3>
-                            <p style="color:#155724;">Lihat hasil di tab "Hasil Siswa"</p>
-                        </div>
-                    `;
             renderHasil();
         }
 
         // ============================================================
-        // RPL
+        // EVENT LISTENERS
         // ============================================================
-        rplSelect.addEventListener('change', function() {
-            const id = parseInt(this.value);
-            if (!id) {
-                rplContainer.innerHTML = `
-                            <div class="empty-state">
-                                <div class="empty-illustration"><i class="fas fa-file-lines"></i></div>
-                                <h3>Belum Ada RPL Dipilih</h3>
-                                <p>Silakan pilih materi dari dropdown di atas</p>
-                            </div>
-                        `;
-                return;
+        filterJenjang.addEventListener('change', renderMateri);
+        filterSemester.addEventListener('change', renderMateri);
+
+        materiSelect.addEventListener('change', function() {
+            if (this.value) {
+                const id = parseInt(this.value);
+                materiTerpilih = dataMateri.find(m => m.id === id) || dataMateri[0];
+                tampilkanMateri(materiTerpilih);
             }
-            const m = getMateriById(id);
-            if (!m) return;
+        });
 
-            const jenjangIconClass = { smp: 'school', sma: 'graduation-cap', smk: 'tools' };
+        namaGuru.addEventListener('input', function() {
+            if (materiTerpilih) tampilkanMateri(materiTerpilih);
+        });
 
-            rplContainer.innerHTML = `
-                        <div class="rpl-item">
-                            <h4><i class="fas fa-file-alt" style="color:#8b5fa8;"></i> RPL - ${m.judul}</h4>
-                            <div style="display:flex;gap:15px;flex-wrap:wrap;margin:8px 0 16px;">
-                                <span class="badge badge-${m.jenjang}"><i class="fas fa-${jenjangIconClass[m.jenjang]}"></i> ${m.jenjang.toUpperCase()}</span>
-                                <span class="badge badge-semester"><i class="fas fa-calendar-alt"></i> Semester ${m.semester}</span>
-                                <span class="badge" style="background:#e8e0f0;color:#5a2d7a;"><i class="far fa-clock"></i> ${m.durasi}</span>
-                            </div>
-
-                            <div class="modal-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;">
-                                <div style="background:white;padding:14px;border-radius:12px;"><strong>🎯 Tujuan</strong><br>${m.rpl.tujuan}</div>
-                                <div style="background:white;padding:14px;border-radius:12px;"><strong>📚 Metode</strong><br>${m.rpl.metode}</div>
-                                <div style="background:white;padding:14px;border-radius:12px;"><strong>🖥️ Media</strong><br>${m.rpl.media}</div>
-                                <div style="background:white;padding:14px;border-radius:12px;"><strong>📊 Evaluasi</strong><br>${m.rpl.evaluasi}</div>
-                            </div>
-
-                            <div style="margin:16px 0;padding:16px;background:white;border-radius:12px;">
-                                <h5 style="color:#2d1b4a;margin-bottom:8px;">📋 Ringkasan Kegiatan</h5>
-                                <ul style="list-style:none;padding:0;">
-                                    <li style="padding:6px 0;border-bottom:1px solid #f0ecf5;"><strong>🧊 Ice Breaking:</strong> ${m.iceBreaking}</li>
-                                    <li style="padding:6px 0;border-bottom:1px solid #f0ecf5;"><strong>💡 Apersepsi:</strong> ${m.apersepsi}</li>
-                                    <li style="padding:6px 0;border-bottom:1px solid #f0ecf5;"><strong>🗣️ Diskusi:</strong> ${m.diskusi}</li>
-                                    <li style="padding:6px 0;"><strong>📚 Studi Kasus:</strong> ${m.studiKasus}</li>
-                                </ul>
-                            </div>
-
-                            <button onclick="exportRPL(${m.id})" style="margin-top:10px;padding:10px 28px;border:none;border-radius:30px;background:linear-gradient(135deg,#2d1b4a,#5a2d7a);color:white;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;display:inline-flex;align-items:center;gap:8px;">
-                                <i class="fas fa-download"></i> Download RPL
-                            </button>
-                        </div>
-                    `;
+        durasiInput.addEventListener('input', function() {
+            if (materiTerpilih) tampilkanMateri(materiTerpilih);
         });
 
         // ============================================================
-        // EXPORT RPL
+        // KUIS FUNCTIONS
         // ============================================================
-        function exportRPL(id) {
-            const m = getMateriById(id);
-            if (!m) return;
+        function copyKuisLink() {
+            const link = kuisLink.value;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('✅ Link kuis berhasil disalin! Bagikan ke siswa.');
+            }).catch(() => {
+                // Fallback
+                kuisLink.select();
+                document.execCommand('copy');
+                alert('✅ Link kuis berhasil disalin!');
+            });
+        }
+
+        function generateLink() {
+            const random = Math.floor(Math.random() * 10000);
+            const baseUrl = 'https://nailisyifa79-cloud.github.io/nafas-bk/?kuis=';
+            const newLink = baseUrl + random;
+            kuisLink.value = newLink;
+            document.getElementById('bukaKuisLink').href = newLink;
+            alert('🔄 Link baru telah dibuat!');
+        }
+
+        // ============================================================
+        // RPL DOWNLOAD
+        // ============================================================
+        function unduhRPL() {
+            if (!materiTerpilih) return;
+            const m = materiTerpilih;
+            let rplText = m.rpl;
+            rplText = rplText.replace(/Nama Guru\s*:\s*_+/g, `Nama Guru         : ${namaGuru.value || '_______________'}`);
+            rplText = rplText.replace(/Waktu\s*:\s*\d+/g, `Waktu             : ${durasiInput.value || 60} menit`);
+            rplText = rplText.replace(/7 \/ Fase D/g, m.kelas || '7 / Fase D');
 
             const teks = `
         ========================================
-        📋 RENCANA PELAKSANAAN LAYANAN (RPL)
-                 NaFaS BK PREMIUM
+        RENCANA PELAKSANAAN LAYANAN (RPL)
+        LAYANAN BIMBINGAN KLASIKAL
         ========================================
 
-        📌 MATERI: ${m.judul}
-        🏫 JENJANG: ${m.jenjang.toUpperCase()}
-        📅 SEMESTER: ${m.semester}
-        ⏱️ DURASI: ${m.durasi}
+        ${rplText}
 
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        🎯 TUJUAN:
-        ${m.rpl.tujuan}
-
-        📚 METODE:
-        ${m.rpl.metode}
-
-        🖥️ MEDIA:
-        ${m.rpl.media}
-
-        📊 EVALUASI:
-        ${m.rpl.evaluasi}
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        📝 LKPD: ${m.lkpd.judul}
-        ${m.lkpd.soal.map((s, i) => `   ${i+1}. ${s}`).join('\n')}
-
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-        ✨ NaFaS BK — Bimbingan Konseling Profesional
-        📚 Katalog: lynk.id/sybk
         ========================================
-            `;
+        NaFaS BK - Aplikasi Bimbingan Klasikal
+        © NaFaS BK
+        ========================================
+        `;
 
             const blob = new Blob([teks], { type: 'text/plain' });
             const a = document.createElement('a');
@@ -2784,52 +695,27 @@
         }
 
         // ============================================================
-        // RENDER HASIL SISWA
+        // HASIL SISWA
         // ============================================================
         function renderHasil() {
             const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
             hasilSiswa = data;
-            hasilCount.textContent = data.length;
 
             if (data.length === 0) {
-                hasilContainer.innerHTML = `
-                            <div class="empty-state">
-                                <div class="empty-illustration"><i class="fas fa-inbox"></i></div>
-                                <h3>Belum Ada Hasil</h3>
-                                <p>Belum ada siswa yang mengirimkan jawaban LKPD atau kuis</p>
-                            </div>
-                        `;
+                hasilContainer.innerHTML = '<p style="color:#9a8aaa;">Belum ada jawaban siswa</p>';
                 return;
             }
 
             hasilContainer.innerHTML = data.map((h, idx) => `
-                        <div class="hasil-item">
-                            <div class="hasil-header">
-                                <div>
-                                    <div class="nama-siswa"><i class="fas fa-user-circle"></i> ${h.nama}</div>
-                                    <div class="meta-hasil">
-                                        <i class="fas fa-book"></i> ${h.materi} · 
-                                        <span class="badge badge-${h.jenjang}" style="padding:1px 10px;font-size:0.65rem;">${h.jenjang.toUpperCase()}</span> · 
-                                        Semester ${h.semester} · 
-                                        <i class="far fa-clock"></i> ${h.waktu}
-                                    </div>
-                                </div>
-                                <button class="btn-hapus" onclick="hapusHasil(${idx})">
-                                    <i class="fas fa-trash"></i> Hapus
-                                </button>
-                            </div>
-                            ${h.jawaban.map((j, i) => `
-                                <div class="jawaban">
-                                    <strong>Jawaban ${i+1}:</strong> ${j}
-                                </div>
-                            `).join('')}
-                        </div>
-                    `).join('');
+                <div class="hasil-item">
+                    <div class="nama">👤 ${h.nama || 'Siswa'}</div>
+                    <div class="meta">${h.materi || ''} · ${h.waktu || ''}</div>
+                    ${h.jawaban ? h.jawaban.map((j, i) => `<div class="jawaban"><strong>Jawaban ${i+1}:</strong> ${j}</div>`).join('') : ''}
+                    <button class="btn btn-danger btn-sm" style="margin-top:6px;padding:4px 14px;" onclick="hapusHasil(${idx})">Hapus</button>
+                </div>
+            `).join('');
         }
 
-        // ============================================================
-        // HAPUS HASIL
-        // ============================================================
         function hapusHasil(idx) {
             if (!confirm('Yakin ingin menghapus hasil ini?')) return;
             const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
@@ -2838,115 +724,58 @@
             renderHasil();
         }
 
-        // ============================================================
-        // CLEAR ALL HASIL
-        // ============================================================
-        function clearAllHasil() {
-            if (!confirm('⚠️ Hapus SEMUA hasil siswa? Tindakan ini tidak bisa dibatalkan!')) return;
+        function resetData() {
+            if (!confirm('⚠️ Hapus SEMUA data jawaban siswa? Tindakan ini tidak bisa dibatalkan!')) return;
             localStorage.removeItem('hasilBK');
             renderHasil();
         }
 
-        // ============================================================
-        // EXPORT ALL HASIL
-        // ============================================================
-        function exportAllHasil() {
+        function exportHasil() {
             const data = JSON.parse(localStorage.getItem('hasilBK') || '[]');
             if (data.length === 0) {
-                alert('Belum ada hasil siswa untuk diexport.');
+                alert('Belum ada data untuk diexport.');
                 return;
             }
 
-            let teks = `
-        ========================================
-        📊 EXPORT HASIL SISWA
-                 NaFaS BK PREMIUM
-        ========================================
-        Total: ${data.length} siswa
-        Tanggal: ${new Date().toLocaleString('id-ID')}
-
-        `;
+            let teks = '========================================\n';
+            teks += '📊 EXPORT HASIL SISWA\n';
+            teks += 'NaFaS BK - Aplikasi Bimbingan Klasikal\n';
+            teks += `Tanggal: ${new Date().toLocaleString('id-ID')}\n`;
+            teks += `Total: ${data.length} siswa\n`;
+            teks += '========================================\n\n';
 
             data.forEach((h, i) => {
-                teks += `
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        #${i+1} 👤 ${h.nama}
-        📚 Materi: ${h.materi}
-        🏫 Jenjang: ${h.jenjang.toUpperCase()}
-        📅 Semester: ${h.semester}
-        🕐 Waktu: ${h.waktu}
-
-        📝 Jawaban:
-        ${h.jawaban.map((j, idx) => `   ${idx+1}. ${j}`).join('\n')}
-        `;
+                teks += `--- Siswa #${i+1} ---\n`;
+                teks += `Nama: ${h.nama || 'Siswa'}\n`;
+                teks += `Materi: ${h.materi || '-'}\n`;
+                teks += `Waktu: ${h.waktu || '-'}\n`;
+                if (h.jawaban) {
+                    h.jawaban.forEach((j, idx) => {
+                        teks += `Jawaban ${idx+1}: ${j}\n`;
+                    });
+                }
+                teks += '\n';
             });
 
-            teks += `
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ✨ NaFaS BK — Bimbingan Konseling Profesional
-        📚 Katalog: lynk.id/sybk
-        ========================================
-            `;
+            teks += '========================================\n';
+            teks += '© NaFaS BK\n';
 
             const blob = new Blob([teks], { type: 'text/plain' });
             const a = document.createElement('a');
             a.href = URL.createObjectURL(blob);
-            a.download =
-                `Hasil_Siswa_NaFaS_BK_${new Date().toISOString().slice(0, 10)}.txt`;
+            a.download = `Hasil_Siswa_NaFaS_BK_${new Date().toISOString().slice(0,10)}.txt`;
             a.click();
             URL.revokeObjectURL(a.href);
         }
 
         // ============================================================
-        // SWITCH TAB (dari footer)
-        // ============================================================
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-            const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-            if (btn) btn.classList.add('active');
-
-            const content = document.getElementById(tabId);
-            if (content) content.classList.add('active');
-
-            if (tabId === 'hasil') renderHasil();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ============================================================
-        // TAB NAVIGASI
-        // ============================================================
-        document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-                this.classList.add('active');
-                const target = document.getElementById(this.dataset.tab);
-                if (target) target.classList.add('active');
-
-                if (this.dataset.tab === 'hasil') renderHasil();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-
-        // ============================================================
         // INISIALISASI
         // ============================================================
-        const saved = localStorage.getItem('hasilBK');
-        if (saved) hasilSiswa = JSON.parse(saved);
-
         renderMateri();
-        renderHasil();
 
-        filterJenjang.addEventListener('change', renderMateri);
-        filterSemester.addEventListener('change', renderMateri);
-
-        console.log('🌟 NaFaS BK PREMIUM siap digunakan!');
+        console.log('🌟 NaFaS BK - Aplikasi Bimbingan Klasikal siap digunakan!');
         console.log('📚 Total materi:', dataMateri.length);
         console.log('📊 Total hasil:', hasilSiswa.length);
-        console.log('👋 Selamat Datang, Guru BK!');
     </script>
 
 </body>
