@@ -69,12 +69,20 @@
         .tab-btn.active { background: #fff; color: var(--primary); box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        .materi-view { background: var(--bg); padding: 14px; border-radius: 12px; margin-top: 8px; max-height: 500px; overflow-y: auto; font-size: 13px; line-height: 1.8; }
+        .materi-view { background: var(--bg); padding: 14px; border-radius: 12px; margin-top: 8px; max-height: 600px; overflow-y: auto; font-size: 13px; line-height: 1.8; }
         .materi-view h4 { color: var(--primary); margin: 12px 0 6px 0; }
         .materi-view h4:first-child { margin-top: 0; }
         .materi-view ul, .materi-view ol { padding-left: 20px; margin: 6px 0; }
         .materi-view li { margin: 3px 0; }
+        .materi-view .expand-btn { background: var(--primary-lighter); color: white; border: none; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 12px; margin: 8px 0; transition: 0.3s; }
+        .materi-view .expand-btn:hover { background: var(--primary); transform: scale(1.03); }
+        .materi-view .collapsed { max-height: 150px; overflow: hidden; position: relative; }
+        .materi-view .collapsed::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(transparent, var(--bg)); }
+        .materi-view .expanded { max-height: none; overflow: visible; }
         .rpl-preview { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-top: 10px; max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.6; font-family: 'Segoe UI', system-ui, sans-serif; white-space: pre-wrap; }
+        .rpl-preview table { border-collapse: collapse; width: 100%; font-size: 11px; margin: 4px 0; }
+        .rpl-preview table td, .rpl-preview table th { border: 1px solid #ccc; padding: 4px 6px; vertical-align: top; }
+        .rpl-preview table th { background: #e8edff; font-weight: 700; }
         .lkpd-box { background: #F7FAFC; border-radius: 12px; padding: 14px; border: 2px dashed #CBD5E0; }
         .lkpd-box textarea { background: #fff; min-height: 100px; }
         .file-upload { border: 2px dashed var(--primary-lighter); border-radius: 10px; padding: 15px; text-align: center; color: var(--text-light); cursor: pointer; transition: .3s; position: relative; margin-top: 8px; }
@@ -126,21 +134,30 @@
         .refleksi-area { background: #f0fdf4; border-radius: 12px; padding: 14px; border: 1px solid #bbf7d0; margin-top: 10px; }
         .refleksi-area textarea { background: #fff; min-height: 80px; }
 
+        /* Dashboard stats */
+        .dashboard-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px; }
+        .dashboard-stats .stat { background: var(--bg); padding: 10px 12px; border-radius: 10px; text-align: center; }
+        .dashboard-stats .stat .number { font-size: 22px; font-weight: 800; color: var(--primary); }
+        .dashboard-stats .stat .label { font-size: 10px; color: var(--text-light); }
+
         @media print {
             body { background: #fff; padding: 5px; }
-            .header, .no-print, .btn, .tab-wrapper, .file-upload { display: none !important; }
+            .header, .no-print, .btn, .tab-wrapper, .file-upload, .dashboard-stats { display: none !important; }
             .card { box-shadow: none; border: 1px solid #ddd; page-break-inside: avoid; border-radius: 0; padding: 8px; }
             .container { display: block; }
             .card { margin-bottom: 8px; }
             .rpl-preview { border: 1px solid #ccc; max-height: none; overflow: visible; font-size: 11px; padding: 8px; }
+            .rpl-preview table td, .rpl-preview table th { border: 1px solid #999; padding: 3px 5px; }
             .materi-view { max-height: none; overflow: visible; padding: 8px; }
             .tab-content { display: block !important; }
             .tab-btn { display: none; }
+            .materi-view .collapsed { max-height: none !important; overflow: visible !important; }
+            .materi-view .collapsed::after { display: none; }
         }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: var(--bg); }
         ::-webkit-scrollbar-thumb { background: var(--primary-lighter); border-radius: 10px; }
-        @media(max-width:480px) { .header h1 { font-size: 18px; } .card { padding: 14px; } .btn { padding: 8px 14px; font-size: 12px; } }
+        @media(max-width:480px) { .header h1 { font-size: 18px; } .card { padding: 14px; } .btn { padding: 8px 14px; font-size: 12px; } .dashboard-stats { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
@@ -158,6 +175,14 @@
             <h2>Selamat Datang, <span>Guru BK</span>!</h2>
             <p><i class="fas fa-star"></i> Semangat membimbing generasi hebat Indonesia <i class="fas fa-star"></i></p>
         </div>
+    </div>
+
+    <!-- DASHBOARD STATS -->
+    <div class="dashboard-stats no-print" id="dashboardStats">
+        <div class="stat"><div class="number" id="totalMateri">0</div><div class="label">Total Materi</div></div>
+        <div class="stat"><div class="number" id="totalJenjang">3</div><div class="label">Jenjang</div></div>
+        <div class="stat"><div class="number" id="totalKelas">9</div><div class="label">Kelas</div></div>
+        <div class="stat"><div class="number" id="totalSemester">2</div><div class="label">Semester</div></div>
     </div>
 
     <div class="container">
@@ -202,6 +227,7 @@
                 <button class="tab-btn active" data-tab="lkpd">📄 LKPD</button>
                 <button class="tab-btn" data-tab="refleksi">📝 Mode Non-HP</button>
                 <button class="tab-btn" data-tab="laporan">📊 Laporan</button>
+                <button class="tab-btn" data-tab="bantuan">💡 Bantuan</button>
             </div>
 
             <!-- Tab LKPD -->
@@ -275,6 +301,22 @@
                 <button class="btn btn-warning btn-block mt-10" id="downloadLaporanWordBtn">📝 Download Laporan Word</button>
             </div>
 
+            <!-- Tab Bantuan -->
+            <div id="tab-bantuan" class="tab-content">
+                <div style="background:#E8EDFF;padding:16px;border-radius:12px;border-left:4px solid var(--primary);">
+                    <h4 style="color:var(--primary);margin-bottom:8px;">💡 Panduan Penggunaan NaFaS BK</h4>
+                    <div style="font-size:13px;line-height:1.8;color:var(--text);">
+                        <p><strong>1. Memilih Materi</strong><br>Pilih jenjang, kelas, semester, lalu pilih materi yang diinginkan.</p>
+                        <p><strong>2. Melihat Materi & RPL</strong><br>Materi dan RPL akan muncul otomatis di kolom kiri.</p>
+                        <p><strong>3. LKPD Mode HP</strong><br>Gunakan 1 Google Form Universal. Salin link dan bagikan ke siswa.</p>
+                        <p><strong>4. LKPD Mode Non-HP</strong><br>Cetak LKPD 1 lembar untuk siswa tanpa HP.</p>
+                        <p><strong>5. Refleksi</strong><br>Cetak refleksi 1 lembar untuk evaluasi diri siswa.</p>
+                        <p><strong>6. Laporan</strong><br>Generate laporan kegiatan, lalu cetak atau download Word.</p>
+                        <p><strong>7. Download</strong><br>Semua dokumen bisa diunduh dalam format PDF atau Word.</p>
+                    </div>
+                </div>
+            </div>
+
             <button class="btn btn-danger btn-block mt-10 no-print" id="resetBtn">🔄 Reset Semua Data</button>
         </div>
     </div>
@@ -285,40 +327,177 @@
 
     <script>
         // ================================================================
-        // DATA MATERI - 216 MATERI (12 per semester)
+        // DATA MATERI BERBOBOT - LENGKAP DENGAN KONTEN BERMAKNA
         // ================================================================
 
-        function createMateri(id, judul, bidang, kelas, semester, ice, apersepsi, diskusi, konten, rpl, refleksi, lkpd) {
-            return { id, judul, bidang, kelas, semester, ice, apersepsi, diskusi, konten, rpl, refleksi, lkpd };
+        // Fungsi untuk membuat konten materi yang berbobot
+        function buatKontenMateri(judul, kelas, bidang) {
+            const judulUpper = judul.toUpperCase();
+            return `MATERI ${judulUpper}
+
+        A. PENGERTIAN ${judulUpper}
+        ${judul} merupakan salah satu aspek penting dalam pengembangan diri siswa ${kelas}. Materi ini dirancang untuk membantu siswa memahami konsep dasar, mengembangkan kesadaran diri, dan menerapkannya dalam kehidupan sehari-hari. Pemahaman yang baik tentang ${judul} akan membekali siswa dengan keterampilan yang diperlukan untuk menghadapi berbagai tantangan di lingkungan sekolah, keluarga, dan masyarakat.
+
+        B. TUJUAN PEMBELAJARAN
+        Setelah mempelajari materi ini, siswa diharapkan mampu:
+        1. Menjelaskan pengertian dan konsep dasar ${judul} dengan tepat.
+        2. Mengidentifikasi aspek-aspek penting yang terkait dengan ${judul}.
+        3. Menerapkan nilai-nilai ${judul} dalam kehidupan sehari-hari.
+        4. Mengevaluasi dampak ${judul} terhadap diri sendiri dan orang lain.
+        5. Mengembangkan sikap positif terkait ${judul} secara konsisten.
+
+        C. ASPEK-ASPEK PENTING ${judulUpper}
+        1. Aspek Pengetahuan: Pemahaman mendalam tentang konsep, teori, dan fakta yang berkaitan dengan ${judul}.
+        2. Aspek Sikap: Pengembangan nilai-nilai seperti kejujuran, tanggung jawab, empati, dan kerja keras.
+        3. Aspek Keterampilan: Kemampuan menerapkan pengetahuan dalam situasi nyata, memecahkan masalah, dan berkomunikasi efektif.
+
+        D. MANFAAT ${judulUpper}
+        1. Meningkatkan kualitas hidup dan kesejahteraan diri secara holistik.
+        2. Mengembangkan potensi diri secara optimal dan berkelanjutan.
+        3. Membangun hubungan yang harmonis dengan orang lain dan lingkungan.
+        4. Mempersiapkan diri menghadapi tantangan masa depan dengan percaya diri.
+        5. Menumbuhkan kemandirian dan tanggung jawab dalam setiap tindakan.
+
+        E. CARA MENERAPKAN ${judulUpper}
+        1. Mulailah dari hal-hal kecil dalam kehidupan sehari-hari.
+        2. Konsisten dalam melaksanakan dan mengamalkan nilai-nilai yang terkandung.
+        3. Evaluasi dan perbaiki secara berkala untuk mencapai hasil yang lebih baik.
+        4. Cari dukungan dan bimbingan dari orang-orang terdekat.
+        5. Jadikan ${judul} sebagai bagian dari karakter dan kepribadian.
+
+        F. TANTANGAN DALAM MENERAPKAN ${judulUpper}
+        1. Kurangnya kesadaran dan pemahaman yang mendalam tentang ${judul}.
+        2. Pengaruh lingkungan dan pergaulan yang kurang mendukung.
+        3. Kebiasaan lama yang sulit diubah dan dihindari.
+        4. Kurangnya motivasi dan konsistensi dalam menerapkan nilai-nilai.
+        5. Adanya godaan dan hambatan dari berbagai sumber.
+
+        G. TIPS SUKSES MENERAPKAN ${judulUpper}
+        1. Pelajari dan pahami konsep dengan baik melalui berbagai sumber.
+        2. Praktikkan secara konsisten dalam situasi nyata.
+        3. Evaluasi kemajuan dan perbaiki kekurangan secara bertahap.
+        4. Jangan takut gagal dan terus belajar dari setiap pengalaman.
+        5. Bergabung dengan komunitas atau kelompok yang mendukung.
+
+        H. STUDI KASUS
+        Seorang siswa bernama ${['Andi', 'Rina', 'Budi', 'Siti', 'Doni', 'Maya', 'Rudi', 'Ani'][Math.floor(Math.random()*8)]} menghadapi situasi yang berkaitan dengan ${judul}. Dalam kesehariannya, ia sering merasa kesulitan untuk menerapkan nilai-nilai ${judul} karena berbagai faktor. Melalui pembelajaran ini, siswa diajak untuk menganalisis situasi, mengidentifikasi masalah, dan menemukan solusi yang tepat.
+
+        I. KESIMPULAN
+        ${judul} adalah materi yang sangat penting dan relevan bagi siswa ${kelas}. Dengan memahami dan menerapkan ${judul}, siswa akan mampu mengembangkan diri menjadi pribadi yang lebih baik, mandiri, dan bertanggung jawab. Proses pembelajaran ini diharapkan dapat menjadi bekal berharga bagi siswa dalam menghadapi berbagai tantangan kehidupan.`;
         }
 
-        function generateMateriList(judulList, bidangList, kelas, semester, prefix) {
-            const result = [];
-            for (let i = 0; i < judulList.length; i++) {
-                const id = prefix + i;
-                const judul = judulList[i];
-                const bidang = bidangList[i] || "Pribadi";
-                const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
-                const apersepsiText =
-                    `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu?' Waktu 5 menit.`;
-                const diskusiText =
-                    `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
-                const kontenText =
-                    `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah topik penting yang perlu dipahami oleh siswa ${kelas}.\n\nB. ASPEK-ASPEK PENTING\n1. Aspek Pengetahuan\n2. Aspek Sikap\n3. Aspek Keterampilan\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup\n2. Mengembangkan potensi diri\n3. Membangun hubungan yang baik\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil\n2. Konsisten\n3. Evaluasi dan perbaiki\n\nE. TANTANGAN\n1. Kurang kesadaran\n2. Pengaruh lingkungan\n3. Kebiasaan lama\n\nF. TIPS SUKSES\n1. Pelajari dengan baik\n2. Praktikkan konsisten\n3. Evaluasi kemajuan`;
-                const rplText =
-                    `RENCANA PELAKSANAAN LAYANAN (RPL)\nLAYANAN BIMBINGAN KLASIKAL\n\nA. SPESIFIKASI\nSatuan Pendidikan: \nNama Guru: \nKelas: ${kelas}\nWaktu: 60 menit\nMateri Layanan: ${judul}\nBidang Bimbingan: ${bidang}\n\nB. IDENTIFIKASI\n1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.\n2. Karakteristik Materi: Konsep dan penerapan.\n3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis\n\nC. DESAIN LAYANAN\n1. Capaian: Murid mampu memahami dan menerapkan.\n2. Topik: "${judul} untuk Masa Depan Lebih Baik"\n3. Tujuan: Memahami dan menerapkan.\n\nD. PENGALAMAN BELAJAR\n1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.\n2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.\n3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.\n\nE. ASESMEN\n1. Asesmen Awal: Tanya jawab\n2. Asesmen Proses: Observasi\n3. Asesmen Akhir: LKPD dan Refleksi\n\nINTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT\n1. Bangun Pagi\n2. Beribadah\n3. Berolahraga\n4. Makan Sehat\n5. Gemar Belajar\n6. Bermasyarakat\n7. Tidur Cukup`;
-                const refleksiText =
-                    `REFLEKSI DIRI (1 LEMBAR PADAT)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\n1. Apa yang paling berkesan dari "${judul}"?\n___________________________________________________\n\n2. Bagaimana perasaanmu setelah mempelajari ini?\n___________________________________________________\n\n3. Apa yang akan kamu lakukan setelah ini?\n___________________________________________________\n\n4. Apa tantangan terbesar dalam menerapkan ini?\n___________________________________________________\n\n5. Siapa yang bisa membantumu?\n___________________________________________________\n\n6. Komitmen saya:\n___________________________________________________\n\nTanda tangan siswa: _______________`;
-                const lkpdText =
-                    `LKPD (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\nA. STUDI KASUS\nStudi kasus tentang "${judul}" - seorang siswa menghadapi tantangan terkait materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`;
+        // Fungsi membuat RPL format tabel
+        function buatRPLTabel(judul, bidang, kelas, durasi) {
+            const fase = kelas.includes('X') ? 'E' : (kelas.includes('XI') ? 'F' : (kelas.includes('XII') ? 'F' : 'D'));
+            return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        LAYANAN BIMBINGAN KLASIKAL
 
-                result.push(createMateri(id, judul, bidang, kelas, semester, iceText, apersepsiText, diskusiText,
-                    kontenText, rplText, refleksiText, lkpdText));
-            }
-            return result;
+        +----------------------+--------------------------------------------------+
+        | A. SPESIFIKASI       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Satuan Pendidikan |                                                  |
+        | 2. Nama Guru         |                                                  |
+        | 3. Kelas             | ${kelas} / Fase ${fase}                           |
+        | 4. Waktu             | ${durasi} menit                                   |
+        | 5. Materi Layanan    | ${judul}                                          |
+        | 6. Bidang Bimbingan  | ${bidang}                                         |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | B. IDENTIFIKASI      |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kesiapan Murid    | Murid ${kelas} berada pada tahap perkembangan    |
+        |                      | yang membutuhkan pemahaman tentang                |
+        |                      | ${judul.toLowerCase()}. Sebagian murid sudah     |
+        |                      | memiliki pengalaman terkait, namun masih         |
+        |                      | perlu pendalaman dan penguatan konsep.           |
+        |                      | Kebutuhan: pemahaman konsep, contoh konkret,     |
+        |                      | dan kesempatan berlatih.                         |
+        +----------------------+--------------------------------------------------+
+        | 2. Karakteristik     | Jenis Pengetahuan: Esensial (pengertian dan      |
+        |    Materi Layanan    | pentingnya ${judul.toLowerCase()}), Aplikatif    |
+        |                      | (penerapan dalam kehidupan), Nilai dan           |
+        |                      | Karakter (sikap positif terkait ${judul}).       |
+        |                      | Relevansi: sangat relevan dengan kehidupan       |
+        |                      | sehari-hari siswa.                               |
+        +----------------------+--------------------------------------------------+
+        | 3. Dimensi Profil    | [V] Kemandirian   [V] Penalaran Kritis          |
+        |    Lulusan           | [V] Kolaborasi    [V] Komunikasi                 |
+        |                      | [V] Kreativitas                                   |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | C. DESAIN LAYANAN    |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Capaian Layanan   | Siswa memahami dan mampu menerapkan              |
+        |                      | ${judul.toLowerCase()} dalam kehidupan sehari-hari. |
+        +----------------------+--------------------------------------------------+
+        | 2. Topik Layanan     | "${judul} untuk Masa Depan Lebih Baik"           |
+        |    Kontekstual       |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan      |
+        |                      |    pengertian dan pentingnya ${judul}.           |
+        |                      | b. Akomodasi (A): Siswa menerima dan            |
+        |                      |    menghargai pentingnya ${judul}.               |
+        |                      | c. Tindakan (P): Siswa mampu menerapkan         |
+        |                      |    ${judul} dalam kehidupan sehari-hari.         |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | D. PENGALAMAN        |                                                  |
+        |    BELAJAR           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Kegiatan Awal     | Ice breaking, apersepsi, penyampaian tujuan,     |
+        |    (10 menit)        | dan motivasi awal untuk membangkitkan minat      |
+        |                      | siswa terhadap materi.                           |
+        +----------------------+--------------------------------------------------+
+        | 2. Kegiatan Inti     | a. Memahami: Penjelasan materi secara mendalam  |
+        |    (40 menit)        |    dengan contoh-contoh kontekstual.             |
+        |                      | b. Mengaplikasi: Diskusi kelompok, studi kasus,  |
+        |                      |    dan pengerjaan LKPD untuk mengasah            |
+        |                      |    pemahaman dan keterampilan.                   |
+        |                      | c. Merefleksi: Refleksi diri dan komitmen untuk  |
+        |                      |    menerapkan ${judul} dalam keseharian.         |
+        +----------------------+--------------------------------------------------+
+        | 3. Kegiatan Penutup  | Kesimpulan, penguatan, doa, dan salam.           |
+        |    (10 menit)        |                                                  |
+        +----------------------+--------------------------------------------------+
+
+        +----------------------+--------------------------------------------------+
+        | E. ASESMEN           |                                                  |
+        +----------------------+--------------------------------------------------+
+        | 1. Asesmen Awal      | Teknik: Tanya jawab dan ice breaking.            |
+        +----------------------+--------------------------------------------------+
+        | 2. Asesmen Proses    | Teknik: Observasi partisipasi dan kualitas       |
+        |                      | diskusi.                                         |
+        +----------------------+--------------------------------------------------+
+        | 3. Asesmen Akhir     | Teknik: LKPD dan refleksi individu.              |
+        +----------------------+--------------------------------------------------+
+
+        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        1. Bangun Pagi  : Memulai hari dengan semangat dan persiapan.
+        2. Beribadah    : Memohon petunjuk dan kekuatan dalam beraktivitas.
+        3. Berolahraga  : Menjaga kesehatan fisik agar tetap bugar.
+        4. Makan Sehat  : Mengonsumsi makanan bergizi untuk mendukung aktivitas.
+        5. Gemar Belajar: Terus belajar dan mengembangkan diri.
+        6. Bermasyarakat: Berinteraksi baik dengan orang lain.
+        7. Tidur Cukup  : Istirahat cukup untuk pemulihan energi.`;
         }
 
-        // ========== JUDUL MATERI ==========
+        // ========== FUNGSI GENERATE MATERI ==========
+        function createMateri(id, judul, bidang, kelas, semester, lkpd, refleksi) {
+            const konten = buatKontenMateri(judul, kelas, bidang);
+            const rpl = buatRPLTabel(judul, bidang, kelas, 60);
+            const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.\n\nTujuan: mencairkan suasana, membangun kepercayaan diri, dan memicu rasa ingin tahu siswa tentang materi yang akan dipelajari.`;
+            const apersepsiText =
+                `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.\n\nTujuan: menggali pengetahuan awal siswa dan mengaitkan materi dengan pengalaman nyata mereka.`;
+            const diskusiText =
+                `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.\n\nTujuan: mengembangkan kemampuan berpikir kritis, kerja sama, dan komunikasi siswa.`;
+            return { id, judul, bidang, kelas, semester, ice: iceText, apersepsi: apersepsiText, diskusi: diskusiText,
+                konten, rpl, refleksi, lkpd };
+        }
+
+        // ========== DATA JUDUL MATERI ==========
         const judulSMP7S1 = [
             "Kenali Dirimu, Temukan Potensimu",
             "Aku Bangga Menjadi Siswa SMP",
@@ -355,26 +534,26 @@
             "Pribadi", "Pribadi", "Belajar"
         ];
 
-        function generateJudulOtomatis(jenjang, kelas, semester) {
-            const prefix = {
-                'SMP': ['Mengenal Diri', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu', 'Kepercayaan Diri',
-                    'Pertemanan Positif', 'Kemandirian', 'Motivasi Belajar', 'Karir', 'Cita-cita', 'Masa Depan',
-                    'Profesi'
+        function generateJudulOtomatis(jenjang) {
+            const map = {
+                'SMP': ['Mengenal Diri dan Potensi', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu',
+                    'Kepercayaan Diri', 'Pertemanan Positif', 'Kemandirian', 'Motivasi Belajar', 'Perencanaan Karir',
+                    'Cita-cita', 'Masa Depan', 'Profesi'
                 ],
                 'SMA': ['Karir dan Kuliah', 'Kesehatan Mental', 'Relasi Sosial', 'Manajemen Stres', 'Motivasi Belajar',
-                    'Perencanaan Masa Depan', 'Kemandirian', 'Komunikasi', 'Kepemimpinan', 'Etika', 'Kreativitas',
-                    'Inovasi'
+                    'Perencanaan Masa Depan', 'Kemandirian', 'Komunikasi Efektif', 'Kepemimpinan', 'Etika dan Moral',
+                    'Kreativitas', 'Inovasi'
                 ],
                 'SMK': ['Etika Kerja', 'Kewirausahaan', 'Dunia Kerja', 'Manajemen Keuangan', 'Profesionalisme',
-                    'Kesiapan Kerja', 'Kompetensi', 'Sertifikasi', 'PKL', 'CV dan Wawancara', 'Adaptasi', 'Karir'
+                    'Kesiapan Kerja', 'Kompetensi', 'Sertifikasi', 'Praktik Kerja', 'CV dan Wawancara', 'Adaptasi',
+                    'Perencanaan Karir'
                 ]
             };
-            const base = prefix[jenjang] || prefix['SMP'];
-            return base.map((j, i) => `${j}`);
+            return map[jenjang] || map['SMP'];
         }
 
         function generateDataOtomatis(jenjang, kelas, semester, prefix) {
-            const judulList = generateJudulOtomatis(jenjang, kelas, semester);
+            const judulList = generateJudulOtomatis(jenjang);
             const bidangList = ["Pribadi", "Pribadi", "Sosial", "Sosial", "Belajar", "Belajar", "Karier", "Karier", "Pribadi",
                 "Sosial", "Belajar", "Karier"
             ];
@@ -386,8 +565,19 @@
                 '11': 'XI / Fase F',
                 '12': 'XII / Fase F'
             };
-            return generateMateriList(judulList, bidangList, kelasLabel[String(kelas)] || `${kelas} / Fase`, semester,
-            prefix);
+            const result = [];
+            for (let i = 0; i < judulList.length; i++) {
+                const id = prefix + i;
+                const judul = judulList[i] + ' ' + (jenjang === 'SMP' ? 'SMP' : jenjang);
+                const bidang = bidangList[i] || "Pribadi";
+                const kelasLabelStr = kelasLabel[String(kelas)] || `${kelas} / Fase`;
+                const lkpdText =
+                    `LKPD (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\nA. STUDI KASUS\nStudi kasus tentang "${judul}" - seorang siswa menghadapi tantangan terkait materi ini.\n\nPertanyaan Diskusi:\n1. Apa masalah utama?\n2. Bagaimana perasaan tokoh?\n3. Apa yang sebaiknya dilakukan?\n4. Bagaimana penerapan materi?\n5. Apa yang bisa dipelajari?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan pertanyaan!\n2. Tuliskan hasil diskusi!\n3. Presentasikan!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Apa yang akan saya lakukan?\n3. Komitmen saya:`;
+                const refleksiText =
+                    `REFLEKSI DIRI (1 LEMBAR PADAT)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\n1. Apa yang paling berkesan dari "${judul}"?\n___________________________________________________\n\n2. Bagaimana perasaanmu setelah mempelajari ini?\n___________________________________________________\n\n3. Apa yang akan kamu lakukan setelah ini?\n___________________________________________________\n\n4. Apa tantangan terbesar dalam menerapkan ini?\n___________________________________________________\n\n5. Siapa yang bisa membantumu?\n___________________________________________________\n\n6. Komitmen saya:\n___________________________________________________\n\nTanda tangan siswa: _______________`;
+                result.push(createMateri(id, judul, bidang, kelasLabelStr, semester, lkpdText, refleksiText));
+            }
+            return result;
         }
 
         // ========== DATABASE ==========
@@ -396,13 +586,13 @@
         // SMP
         allData['SMP'] = {};
         allData['SMP']['7'] = {
-            '1': generateMateriList(judulSMP7S1, bidangSMP7S1, "VII / Fase D", 1, 701),
-            '2': generateMateriList(judulSMP7S2, bidangSMP7S2, "VII / Fase D", 2, 713)
+            '1': generateDataOtomatis('SMP', 7, 1, 701),
+            '2': generateDataOtomatis('SMP', 7, 2, 713)
         };
         allData['SMP']['8'] = { '1': generateDataOtomatis('SMP', 8, 1, 801), '2': generateDataOtomatis('SMP', 8, 2, 813) };
         allData['SMP']['9'] = { '1': generateDataOtomatis('SMP', 9, 1, 901), '2': generateDataOtomatis('SMP', 9, 2, 913) };
 
-        // SMA - Kelas 10, 11, 12
+        // SMA
         allData['SMA'] = {};
         allData['SMA']['10'] = { '1': generateDataOtomatis('SMA', 10, 1, 1001), '2': generateDataOtomatis('SMA', 10, 2,
                 1013) };
@@ -411,7 +601,7 @@
         allData['SMA']['12'] = { '1': generateDataOtomatis('SMA', 12, 1, 1201), '2': generateDataOtomatis('SMA', 12, 2,
                 1213) };
 
-        // SMK - Kelas 10, 11, 12
+        // SMK
         allData['SMK'] = {};
         allData['SMK']['10'] = { '1': generateDataOtomatis('SMK', 10, 1, 2001), '2': generateDataOtomatis('SMK', 10, 2,
                 2013) };
@@ -466,6 +656,18 @@
             } catch (e) { return []; }
         }
 
+        function getTotalMateri() {
+            let total = 0;
+            for (const j in allData) {
+                for (const k in allData[j]) {
+                    for (const s in allData[j][k]) {
+                        total += allData[j][k][s].length;
+                    }
+                }
+            }
+            return total;
+        }
+
         function populateMateri() {
             const data = getMateriList();
             materiSelect.innerHTML = '<option value="0">-- Pilih Materi --</option>';
@@ -475,6 +677,8 @@
                 opt.textContent = m.judul || 'Materi ' + (i + 1);
                 materiSelect.appendChild(opt);
             });
+            // Update dashboard
+            document.getElementById('totalMateri').textContent = getTotalMateri();
             if (data.length > 0) {
                 materiSelect.value = '1';
                 displayMateri(1);
@@ -493,6 +697,20 @@
             return data[index - 1];
         }
 
+        function toggleExpand(elementId) {
+            const el = document.getElementById(elementId);
+            if (!el) return;
+            if (el.classList.contains('collapsed')) {
+                el.classList.remove('collapsed');
+                el.classList.add('expanded');
+                el.nextElementSibling.textContent = '📕 Sembunyikan';
+            } else {
+                el.classList.add('collapsed');
+                el.classList.remove('expanded');
+                el.nextElementSibling.textContent = '📖 Baca Selengkapnya';
+            }
+        }
+
         function displayMateri(index) {
             const m = getMateri(index);
             if (!m) {
@@ -503,14 +721,27 @@
                 return;
             }
 
+            // Tampilkan materi dengan fitur expand
+            const kontenId = 'konten-' + Date.now();
+            const isLong = m.konten && m.konten.length > 500;
+
             materiDisplay.innerHTML = `
-                <h4>🧊 Ice Breaking</h4><p style="white-space:pre-wrap;">${m.ice || 'Belum tersedia'}</p>
-                <h4>🧠 Apersepsi</h4><p style="white-space:pre-wrap;">${m.apersepsi || 'Belum tersedia'}</p>
-                <h4>💬 Diskusi</h4><p style="white-space:pre-wrap;">${m.diskusi || 'Belum tersedia'}</p>
-                <h4>📖 Materi</h4><p style="white-space:pre-wrap;line-height:1.8;">${m.konten || 'Belum tersedia'}</p>
+                <h4>🧊 Ice Breaking</h4>
+                <div id="${kontenId}-ice" class="${isLong ? 'collapsed' : ''}" style="white-space:pre-wrap;">${m.ice || 'Belum tersedia'}</div>
+                ${isLong ? `<button class="expand-btn" onclick="toggleExpand('${kontenId}-ice')">📖 Baca Selengkapnya</button>` : ''}
+                <h4>🧠 Apersepsi</h4>
+                <div id="${kontenId}-ap" class="${isLong ? 'collapsed' : ''}" style="white-space:pre-wrap;">${m.apersepsi || 'Belum tersedia'}</div>
+                ${isLong ? `<button class="expand-btn" onclick="toggleExpand('${kontenId}-ap')">📖 Baca Selengkapnya</button>` : ''}
+                <h4>💬 Diskusi</h4>
+                <div id="${kontenId}-disk" class="${isLong ? 'collapsed' : ''}" style="white-space:pre-wrap;">${m.diskusi || 'Belum tersedia'}</div>
+                ${isLong ? `<button class="expand-btn" onclick="toggleExpand('${kontenId}-disk')">📖 Baca Selengkapnya</button>` : ''}
+                <h4>📖 Materi</h4>
+                <div id="${kontenId}-konten" class="${isLong ? 'collapsed' : ''}" style="white-space:pre-wrap;line-height:1.8;">${m.konten || 'Belum tersedia'}</div>
+                ${isLong ? `<button class="expand-btn" onclick="toggleExpand('${kontenId}-konten')">📖 Baca Selengkapnya</button>` : ''}
                 <h4>⏱️ Durasi</h4><p>${durasiEl.value} menit</p>
             `;
 
+            // RPL
             let rpl = m.rpl || 'RPL belum tersedia.';
             rpl = rpl.replace(/Satuan Pendidikan/g, 'Satuan Pendidikan   : ' + jenjangEl.value);
             rpl = rpl.replace(/Nama Guru/g, 'Nama Guru           : ' + (namaGuruEl.value || '_______________'));
@@ -520,6 +751,7 @@
 
             lkpdText.value = m.lkpd || 'LKPD belum tersedia.';
 
+            // Refleksi
             if (m.refleksi) {
                 const lines = m.refleksi.split('\n').filter(line => line.trim());
                 let soalHTML = '';
@@ -615,29 +847,47 @@
 
         B. PELAKSANAAN KEGIATAN
         1. Kegiatan Awal:
-           - Ice Breaking: ${m ? (m.ice || '-') : '-'}
-           - Apersepsi: ${m ? (m.apersepsi || '-') : '-'}
+           - Ice Breaking: ${m ? (m.ice ? m.ice.substring(0, 100) + '...' : '-') : '-'}
+           - Apersepsi: ${m ? (m.apersepsi ? m.apersepsi.substring(0, 100) + '...' : '-') : '-'}
 
         2. Kegiatan Inti:
            - Penyampaian Materi: ${m ? m.judul : '-'}
-           - Diskusi Kelompok: ${m ? (m.diskusi || '-') : '-'}
+           - Diskusi Kelompok: ${m ? (m.diskusi ? m.diskusi.substring(0, 100) + '...' : '-') : '-'}
            - LKPD: Dilaksanakan
            - Refleksi Diri: Dilaksanakan
 
         3. Kegiatan Penutup:
            - Refleksi diri
            - Komitmen siswa
+           - Doa dan salam
 
         C. HASIL KEGIATAN
-        1. Partisipasi Siswa: ___ siswa
-        2. Capaian Pemahaman: ___ siswa
-        3. Catatan: ${catatan}
+        1. Partisipasi Siswa:
+           - Aktif dalam diskusi: ___ siswa
+           - Mengisi LKPD: ___ siswa
+           - Mengisi Refleksi: ___ siswa
+
+        2. Capaian Pemahaman:
+           - Siswa memahami dengan baik: ___ siswa
+           - Siswa perlu pendampingan: ___ siswa
+
+        3. Catatan Kegiatan:
+           ${catatan}
+
+        D. TINDAK LANJUT
+        1. Siswa yang sudah memahami: melanjutkan ke materi berikutnya
+        2. Siswa yang perlu pendampingan: konseling individual
+
+        E. REKOMENDASI
+        1. Perlunya pengulangan materi untuk siswa yang belum paham
+        2. Pendampingan khusus bagi siswa yang membutuhkan
 
         Guru BK,
 
         ${namaGuru}
+        NIP. _______________
         `;
-            document.getElementById('laporanContent').textContent = laporan;
+            laporanContent.textContent = laporan;
             return laporan;
         }
 
@@ -725,7 +975,7 @@
         }
 
         function cetakLaporan() {
-            const content = document.getElementById('laporanContent').textContent;
+            const content = laporanContent.textContent;
             if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
                     'Generate laporan dulu.'); return; }
             const printWin = window.open('', '_blank', 'width=900,height=700');
@@ -796,7 +1046,7 @@
         }
 
         function downloadLaporanWord() {
-            const content = document.getElementById('laporanContent').textContent;
+            const content = laporanContent.textContent;
             if (!content || content === 'Silakan generate laporan terlebih dahulu.') { showModal('⚠️ Peringatan',
                     'Generate laporan dulu.'); return; }
             downloadWord(content, 'NaFaS_BK_Laporan_' + new Date().toISOString().slice(0, 10));
@@ -887,7 +1137,7 @@
                 namaGuruEl.value = '';
                 jumlahSiswa.value = 32;
                 catatanKegiatan.value = '';
-                document.getElementById('laporanContent').textContent = 'Silakan generate laporan terlebih dahulu.';
+                laporanContent.textContent = 'Silakan generate laporan terlebih dahulu.';
                 showModal('✅ Berhasil', 'Data direset.');
                 populateMateri();
             }
@@ -933,9 +1183,11 @@
         populateMateri();
 
         console.log('✅ NaFaS BK siap digunakan!');
-        console.log('📚 Total 216 materi siap pakai');
+        console.log('📚 Total 216 materi dengan konten berbobot');
+        console.log('📋 RPL format tabel sesuai permintaan');
         console.log('📱 Gunakan 1 Google Form Universal untuk semua materi');
         console.log('📄 LKPD dan Refleksi bisa dicetak 1 lembar');
+        console.log('💡 Fitur expand untuk konten panjang');
         console.log('👋 Selamat Datang, Guru BK!');
     </script>
 </body>
