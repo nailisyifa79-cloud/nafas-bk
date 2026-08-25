@@ -79,7 +79,7 @@
         .materi-view .collapsed { max-height: 150px; overflow: hidden; position: relative; }
         .materi-view .collapsed::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(transparent, var(--bg)); }
         .materi-view .expanded { max-height: none; overflow: visible; }
-        .rpl-preview { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-top: 10px; max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.6; font-family: 'Segoe UI', system-ui, sans-serif; white-space: pre-wrap; }
+        .rpl-preview { background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 14px; margin-top: 10px; max-height: 500px; overflow-y: auto; font-size: 12px; line-height: 1.6; font-family: 'Courier New', monospace; white-space: pre-wrap; }
         .rpl-preview table { border-collapse: collapse; width: 100%; font-size: 11px; margin: 4px 0; }
         .rpl-preview table td, .rpl-preview table th { border: 1px solid #ccc; padding: 4px 6px; vertical-align: top; }
         .rpl-preview table th { background: #e8edff; font-weight: 700; }
@@ -134,7 +134,6 @@
         .refleksi-area { background: #f0fdf4; border-radius: 12px; padding: 14px; border: 1px solid #bbf7d0; margin-top: 10px; }
         .refleksi-area textarea { background: #fff; min-height: 80px; }
 
-        /* Dashboard stats */
         .dashboard-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 15px; }
         .dashboard-stats .stat { background: var(--bg); padding: 10px 12px; border-radius: 10px; text-align: center; }
         .dashboard-stats .stat .number { font-size: 22px; font-weight: 800; color: var(--primary); }
@@ -177,12 +176,11 @@
         </div>
     </div>
 
-    <!-- DASHBOARD STATS -->
-    <div class="dashboard-stats no-print" id="dashboardStats">
+    <div class="dashboard-stats no-print">
         <div class="stat"><div class="number" id="totalMateri">0</div><div class="label">Total Materi</div></div>
-        <div class="stat"><div class="number" id="totalJenjang">3</div><div class="label">Jenjang</div></div>
-        <div class="stat"><div class="number" id="totalKelas">9</div><div class="label">Kelas</div></div>
-        <div class="stat"><div class="number" id="totalSemester">2</div><div class="label">Semester</div></div>
+        <div class="stat"><div class="number">3</div><div class="label">Jenjang</div></div>
+        <div class="stat"><div class="number">9</div><div class="label">Kelas</div></div>
+        <div class="stat"><div class="number">2</div><div class="label">Semester</div></div>
     </div>
 
     <div class="container">
@@ -234,7 +232,7 @@
             <div id="tab-lkpd" class="tab-content active">
                 <div style="background:#EBF5FB;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--primary-lighter);">
                     <h4 style="color:var(--primary);margin-bottom:6px;">📱 LKPD Mode HP <span class="mode-badge mode-hp">Dengan HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Gunakan <strong>1 Google Form Universal</strong> untuk semua materi. Siswa memilih materi di form.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Gunakan <strong>1 Google Form Universal</strong> untuk semua materi.</p>
                 </div>
                 <div class="lkpd-hp-box">
                     <div class="form-group">
@@ -249,11 +247,10 @@
                         <strong>💡 Cara membuat 1 Google Form Universal:</strong>
                         <ol style="margin-left:18px;margin-top:4px;">
                             <li>Buka <strong>forms.google.com</strong></li>
-                            <li>Buat form dengan: Nama, Kelas, Materi (dropdown), dan 6 pertanyaan LKPD standar</li>
+                            <li>Buat form: Nama, Kelas, Materi (dropdown), dan 6 pertanyaan LKPD standar</li>
                             <li>Klik <strong>"Respons"</strong> → ikon <strong>Google Sheets (📊)</strong></li>
                             <li>Salin link dari tombol <strong>"Kirim"</strong> → <strong>"Link"</strong></li>
                             <li>Tempel link di atas dan bagikan ke siswa</li>
-                            <li>Hasil semua materi masuk ke 1 spreadsheet!</li>
                         </ol>
                     </div>
                 </div>
@@ -261,10 +258,10 @@
                 <div style="margin-top:16px;border-top:2px dashed #e0d6e8;padding-top:16px;">
                     <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                         <h4 style="color:var(--primary);margin-bottom:6px;">📄 LKPD Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                        <p style="font-size:13px;color:var(--text-light);">Cetak LKPD dan bagikan ke siswa yang tidak punya HP. <strong>1 lembar per materi.</strong></p>
+                        <p style="font-size:13px;color:var(--text-light);">Cetak LKPD <strong>1 lembar</strong> sesuai materi.</p>
                     </div>
                     <div class="lkpd-box">
-                        <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="8" placeholder="LKPD akan muncul otomatis..."></textarea></div>
+                        <div class="form-group"><label>LKPD - 1 Lembar</label><textarea id="lkpdText" rows="8" placeholder="LKPD akan muncul otomatis..."></textarea></div>
                         <div class="btn-group">
                             <button class="btn btn-primary" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
                             <button class="btn btn-success" id="downloadLkpdWordBtn">📝 Download LKPD Word</button>
@@ -277,10 +274,10 @@
             <div id="tab-refleksi" class="tab-content">
                 <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar PADAT</strong> untuk menghemat kertas.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Refleksi <strong>1 lembar PADAT</strong> untuk evaluasi diri.</p>
                 </div>
                 <div class="refleksi-area" id="refleksiContainer">
-                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat refleksi</p>
+                    <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu</p>
                 </div>
                 <div class="btn-group no-print" style="margin-top:10px;">
                     <button class="btn btn-success" id="cetakRefleksiBtn">🖨️ Cetak Refleksi (1 Lembar)</button>
@@ -306,13 +303,13 @@
                 <div style="background:#E8EDFF;padding:16px;border-radius:12px;border-left:4px solid var(--primary);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">💡 Panduan Penggunaan NaFaS BK</h4>
                     <div style="font-size:13px;line-height:1.8;color:var(--text);">
-                        <p><strong>1. Memilih Materi</strong><br>Pilih jenjang, kelas, semester, lalu pilih materi yang diinginkan.</p>
-                        <p><strong>2. Melihat Materi & RPL</strong><br>Materi dan RPL akan muncul otomatis di kolom kiri.</p>
+                        <p><strong>1. Memilih Materi</strong><br>Pilih jenjang, kelas, semester, lalu pilih materi.</p>
+                        <p><strong>2. Melihat Materi & RPL</strong><br>Materi dan RPL muncul otomatis di kolom kiri.</p>
                         <p><strong>3. LKPD Mode HP</strong><br>Gunakan 1 Google Form Universal. Salin link dan bagikan ke siswa.</p>
                         <p><strong>4. LKPD Mode Non-HP</strong><br>Cetak LKPD 1 lembar untuk siswa tanpa HP.</p>
                         <p><strong>5. Refleksi</strong><br>Cetak refleksi 1 lembar untuk evaluasi diri siswa.</p>
-                        <p><strong>6. Laporan</strong><br>Generate laporan kegiatan, lalu cetak atau download Word.</p>
-                        <p><strong>7. Download</strong><br>Semua dokumen bisa diunduh dalam format PDF atau Word.</p>
+                        <p><strong>6. Laporan</strong><br>Generate laporan, lalu cetak atau download Word.</p>
+                        <p><strong>7. Download</strong><br>Semua dokumen bisa diunduh PDF atau Word.</p>
                     </div>
                 </div>
             </div>
@@ -327,107 +324,325 @@
 
     <script>
         // ================================================================
-        // DATA MATERI BERBOBOT - LENGKAP DENGAN KONTEN BERMAKNA
+        // DATA MATERI LENGKAP - DENGAN KONTEN BERBOBOT & RPL FORMAT TABEL
         // ================================================================
 
-        // Fungsi untuk membuat konten materi yang berbobot
-        function buatKontenMateri(judul, kelas, bidang) {
-            const judulUpper = judul.toUpperCase();
-            return `MATERI ${judulUpper}
+        // ========== RPL MENGELOLA EMOSI (FORMAT TABEL DARI FILE ANDA) ==========
+        const rplMengelolaEmosi = `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        LAYANAN BIMBINGAN KLASIKAL
 
-        A. PENGERTIAN ${judulUpper}
-        ${judul} merupakan salah satu aspek penting dalam pengembangan diri siswa ${kelas}. Materi ini dirancang untuk membantu siswa memahami konsep dasar, mengembangkan kesadaran diri, dan menerapkannya dalam kehidupan sehari-hari. Pemahaman yang baik tentang ${judul} akan membekali siswa dengan keterampilan yang diperlukan untuk menghadapi berbagai tantangan di lingkungan sekolah, keluarga, dan masyarakat.
+        A. SPESIFIKASI
+        +----------------------+--------------------------------------------------+
+        | 1. Satuan Pendidikan | SMP/SMA/SMK (sesuaikan)                          |
+        | 2. Nama Guru         |                                                   |
+        | 3. Kelas             | (sesuaikan)                                       |
+        | 4. Waktu             | 1 JPL (1 x Pertemuan)                             |
+        | 5. Materi Layanan    | Mengelola Emosi: Kenali Emosimu, Kendalikan      |
+        |                      | Dirimu, Jalani Hidup Lebih Bahagia!              |
+        | 6. Bidang Bimbingan  | Pribadi                                           |
+        +----------------------+--------------------------------------------------+
+
+        B. IDENTIFIKASI
+        +----------------------+--------------------------------------------------+
+        | 1. Kesiapan Murid    | Pengetahuan Awal: Murid kelas SMP/SMA/SMK berada |
+        |                      | pada tahap perkembangan yang penuh gejolak       |
+        |                      | emosi, seperti mudah marah, sedih, cemas, atau   |
+        |                      | tersinggung terhadap hal-hal kecil. Sebagian     |
+        |                      | besar murid pernah merasakan emosi meluap-luap   |
+        |                      | namun belum memahami cara mengenali dan          |
+        |                      | mengelolanya.                                     |
+        |                      | Kebutuhan: Pemahaman tentang pengertian emosi,   |
+        |                      | tujuan mengelola emosi, tanda-tanda emosi tidak  |
+        |                      | terkelola, keterampilan Langkah 5R, dan "Jurnal  |
+        |                      | Emosiku".                                        |
+        +----------------------+--------------------------------------------------+
+        | 2. Karakteristik     | a. Pengetahuan Esensial: Pengertian emosi,       |
+        |    Materi Layanan    |    tujuan mengelola emosi, tanda-tanda emosi     |
+        |                      |    tidak terkelola.                              |
+        |                      | b. Pengetahuan Aplikatif: Cara mengelola emosi   |
+        |                      |    dan Langkah 5R (Recognize, Relax, Reflect,    |
+        |                      |    Respond, Result), serta "Jurnal Emosiku".     |
+        |                      | c. Pengetahuan Nilai dan Karakter: Kesadaran     |
+        |                      |    diri, empati, pengendalian diri, kejujuran,   |
+        |                      |    dan sikap bijak.                              |
+        |                      | Relevansi: Sangat relevan karena remaja setiap   |
+        |                      | hari berhadapan dengan berbagai peristiwa yang   |
+        |                      | memicu emosi.                                    |
+        +----------------------+--------------------------------------------------+
+        | 3. Dimensi Profil    | [V] Iman & Takwa pada Tuhan YME                  |
+        |    Lulusan           | [V] Kolaborasi    [V] Kesehatan                  |
+        |                      | [V] Kewargaan     [V] Kemandirian                |
+        |                      | [V] Komunikasi                                   |
+        +----------------------+--------------------------------------------------+
+
+        C. DESAIN LAYANAN
+        +----------------------+--------------------------------------------------+
+        | 1. Capaian Layanan   | Siswa memahami konsep emosi, mengenali           |
+        |                      | tanda-tanda emosi yang tidak terkelola, serta    |
+        |                      | mampu menerapkan cara mengelola emosi dan        |
+        |                      | Langkah 5R melalui "Jurnal Emosiku".             |
+        +----------------------+--------------------------------------------------+
+        | 2. Topik Layanan     | "Kenali Emosimu, Kendalikan Dirimu, Jalani       |
+        |    Kontekstual       | Hidup Lebih Bahagia!"                            |
+        +----------------------+--------------------------------------------------+
+        | 3. Tujuan Layanan    | a. Pengenalan (C): Siswa mampu menjelaskan       |
+        |                      |    pengertian emosi dan tujuan mengelola emosi.  |
+        |                      | b. Akomodasi (A): Siswa mampu menyadari bahwa    |
+        |                      |    emosi tidak bisa dihilangkan, tetapi bisa     |
+        |                      |    dikelola.                                     |
+        |                      | c. Tindakan (P): Siswa mampu mempraktikkan       |
+        |                      |    Langkah 5R dan menyusun "Jurnal Emosiku".     |
+        +----------------------+--------------------------------------------------+
+
+        D. PENGALAMAN BELAJAR
+        +----------------------+--------------------------------------------------+
+        | 1. Kegiatan Awal     | Ice Breaking "EKSPRESI EMOJI": Guru menunjukkan  |
+        |    (10 menit)        | kartu emoji, siswa menebak situasi yang memicu   |
+        |                      | emosi tersebut. Apersepsi: "Emosi tidak bisa     |
+        |                      | dihilangkan, tapi bisa dikelola!"                |
+        +----------------------+--------------------------------------------------+
+        | 2. Kegiatan Inti     | Memahami: Guru menjelaskan pengertian emosi,     |
+        |    (40 menit)        | tujuan mengelola emosi, dan tanda-tanda emosi    |
+        |                      | tidak terkelola.                                 |
+        |                      | Mengaplikasikan: Guru menjelaskan cara mengelola |
+        |                      | emosi dan memandu simulasi Langkah 5R. Murid     |
+        |                      | mengerjakan "Jurnal Emosiku".                    |
+        |                      | Merefleksi: Murid melakukan refleksi diri dengan |
+        |                      | pertanyaan panduan.                              |
+        +----------------------+--------------------------------------------------+
+        | 3. Kegiatan Penutup  | Kesimpulan, motivasi: "KENDALIKAN EMOSIMU,       |
+        |    (10 menit)        | SEBELUM EMOSIMU MENGENDALIKANMU!", doa dan salam.|
+        +----------------------+--------------------------------------------------+
+
+        E. ASESMEN
+        +----------------------+--------------------------------------------------+
+        | 1. Asesmen Awal      | Teknik: Curah pendapat dan respon terhadap       |
+        |                      | pemantik.                                        |
+        +----------------------+--------------------------------------------------+
+        | 2. Asesmen Proses    | Teknik: Observasi partisipasi dalam Ice Breaking |
+        |                      | dan simulasi Langkah 5R.                         |
+        +----------------------+--------------------------------------------------+
+        | 3. Asesmen Akhir     | Teknik: Hasil "Jurnal Emosiku" dan refleksi diri.|
+        +----------------------+--------------------------------------------------+
+
+        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        1. Bangun Pagi  : Memulai hari dengan tenang dan bersyukur.
+        2. Beribadah    : Berdoa untuk menenangkan hati.
+        3. Berolahraga  : Menyalurkan emosi secara positif.
+        4. Makan Sehat  : Mendukung kestabilan suasana hati.
+        5. Gemar Belajar: Mengalihkan emosi ke kegiatan produktif.
+        6. Bermasyarakat: Mengungkapkan perasaan dengan kata yang baik.
+        7. Tidur Cukup  : Menjaga stabilitas emosi.`;
+
+        // ========== MATERI MENGELOLA EMOSI (BERBOBOT) ==========
+        const materiMengelolaEmosi = {
+            judul: "Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu, Jalani Hidup Lebih Bahagia!",
+            bidang: "Pribadi",
+            kelas: "VII - XII / Fase D-F",
+            ice: `🎮 "EKSPRESI EMOJI" (7 Menit)\nGuru menunjukkan kartu emoji (senang, biasa saja, marah, sedih, dll). Siswa menebak situasi yang bisa membuat seseorang merasa seperti emoji tersebut. Tujuan: melatih empati dan mengenali beragam emosi.`,
+            apersepsi: `💬 Guru menyampaikan kalimat pemantik: "Emosi tidak bisa dihilangkan, tapi bisa dikelola! Kenali emosimu, kendalikan dirimu, jalani hidup lebih bahagia!" Guru menanyakan tanggapan singkat murid mengenai kutipan tersebut. Waktu 5 menit.`,
+            diskusi: `🗣️ Diskusi kelompok tentang situasi sehari-hari yang sering memicu emosi tertentu pada remaja (seperti diejek teman, hasil ujian, atau masalah dengan keluarga). Waktu 20 menit.`,
+            konten: `MATERI MENGELOLA EMOSI: KENALI EMOSIMU, KENDALIKAN DIRIMU, JALANI HIDUP LEBIH BAHAGIA!
+
+        A. PENGERTIAN EMOSI
+        Emosi adalah perasaan yang muncul sebagai reaksi terhadap suatu keadaan atau peristiwa, seperti senang, sedih, marah, takut, kecewa, dan lain-lain. Emosi adalah bagian alami dari diri manusia. Tidak ada emosi yang "salah" atau "buruk". Yang membedakan adalah bagaimana kita merespons dan mengelolanya.
+
+        B. TUJUAN MENGELOLA EMOSI
+        1. Memahami emosi yang dirasakan dengan lebih sadar.
+        2. Mengendalikan reaksi dengan bijak, bukan reaktif.
+        3. Membina hubungan yang baik dengan orang lain.
+        4. Membuat keputusan yang tepat dan tidak impulsif.
+        5. Menjalani hidup yang lebih tenang dan bermakna.
+
+        C. TANDA EMOSI TIDAK TERKELOLA
+        1. Mudah marah atau tersinggung terhadap hal-hal kecil.
+        2. Sulit fokus dan berkonsentrasi dalam belajar atau bekerja.
+        3. Menyakiti diri sendiri atau orang lain (fisik maupun verbal).
+        4. Menyesal setelah bereaksi terhadap suatu situasi.
+        5. Hubungan dengan orang lain terganggu atau merenggang.
+
+        D. CARA MENGELOLA EMOSI
+        1. Tarik napas dalam-dalam dan hembuskan perlahan.
+        2. Tenangkan diri sejenak sebelum merespons.
+        3. Pikirkan hal-hal positif dalam situasi yang dihadapi.
+        4. Ungkapkan perasaan dengan kata-kata yang baik dan santun.
+        5. Alihkan perhatian ke kegiatan positif (olahraga, hobi, membaca).
+        6. Minta bantuan orang yang dipercaya (guru, orang tua, teman).
+
+        E. LANGKAH 5R (KUNCI SUKSES MENGELOLA EMOSI)
+        1. R - Recognize (Kenali): Kenali emosi apa yang sedang kamu rasakan. Beri nama emosinya: marah, sedih, kecewa, takut, atau lainnya.
+        2. R - Relax (Tenangkan): Tenangkan diri. Tarik napas dalam 3 kali. Boleh juga minum air putih atau berjalan sebentar.
+        3. R - Reflect (Renungkan): Pikirkan penyebab munculnya emosi ini. Apa yang sebenarnya terjadi? Apa dampaknya jika aku bereaksi berlebihan?
+        4. R - Respond (Tanggapi): Pilih respons yang tepat. Bukan reaksi impulsif, tapi jawaban yang bijak dan tidak merugikan diri sendiri atau orang lain.
+        5. R - Result (Hasil): Hasil positif untuk diri sendiri dan orang lain. Kamu akan merasa lega, hubungan tetap baik, dan tidak ada penyesalan.
+
+        F. STUDI KASUS - JURNAL EMOSIKU
+        Rina adalah siswi kelas X yang sering merasa kesal dan marah ketika teman-temannya mengganggu saat belajar. Suatu hari, temannya mengambil buku catatannya tanpa izin. Rina sangat marah dan hampir membentak temannya. Namun, Rina teringat pelajaran mengelola emosi. Ia melakukan Langkah 5R: Recognize (marah), Relax (tarik napas), Reflect (temannya hanya bercanda), Respond (meminta buku dengan sopan), Result (persahabatan tetap baik). Rina pun merasa lega dan tidak menyesal.
+
+        G. KESIMPULAN
+        Emosi adalah bagian dari diri kita. Kita tidak bisa menghilangkannya, tetapi kita bisa mengelolanya dengan bijak. Dengan mengenali emosi, menenangkan diri, merenungkan penyebab, merespons dengan tepat, dan mendapatkan hasil yang positif, kita dapat menjalani hidup yang lebih tenang, bahagia, dan bermakna. Ingatlah selalu: "KENDALIKAN EMOSIMU, SEBELUM EMOSIMU MENGENDALIKANMU!"`,
+            rpl: rplMengelolaEmosi,
+            refleksi: `REFLEKSI DIRI (1 LEMBAR PADAT)
+        Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu
+
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        1. Emosi apa yang paling sering kamu rasakan?
+        ___________________________________________________
+
+        2. Apa yang biasanya membuatmu emosi?
+        ___________________________________________________
+
+        3. Bagaimana cara terbaik yang bisa kamu lakukan saat emosi muncul?
+        ___________________________________________________
+
+        4. Apa manfaat mengelola emosi bagi dirimu?
+        ___________________________________________________
+
+        5. Komitmen saya untuk mengelola emosi:
+        ___________________________________________________
+
+        6. "KENDALIKAN EMOSIMU, SEBELUM EMOSIMU MENGENDALIKANMU!"
+
+        Tanda tangan siswa: _______________`,
+            lkpd: `LKPD "JURNAL EMOSIKU" (1 LEMBAR)
+        Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu
+
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        A. STUDI KASUS - Rina
+        Rina adalah siswi kelas X yang sering merasa kesal ketika teman-temannya mengganggu saat belajar. Suatu hari, temannya mengambil buku catatannya tanpa izin. Rina sangat marah dan hampir membentak temannya. Namun, Rina teringat pelajaran mengelola emosi dan melakukan Langkah 5R.
+
+        B. PRAKTIKKAN LANGKAH 5R
+        1. R - Recognize (Kenali):
+           Emosi apa yang Rina rasakan? _______________________________
+
+        2. R - Relax (Tenangkan):
+           Apa yang Rina lakukan untuk menenangkan diri? _______________
+
+        3. R - Reflect (Renungkan):
+           Mengapa Rina merenungkan penyebab emosinya? _________________
+
+        4. R - Respond (Tanggapi):
+           Bagaimana Rina merespons temannya? _________________________
+
+        5. R - Result (Hasil):
+           Apa hasil dari tindakan Rina? ______________________________
+
+        C. JURNAL EMOSIKU (Isi untuk dirimu sendiri)
+        1. Emosi yang sering saya rasakan: _____________________________
+        2. Penyebab emosi tersebut: ___________________________________
+        3. Cara terbaik mengelola emosi itu: __________________________
+
+        D. KOMITMEN DIRI
+        Saya berkomitmen untuk:
+        ______________________________________________________________
+
+        "KENDALIKAN EMOSIMU, SEBELUM EMOSIMU MENGENDALIKANMU!"`
+        };
+
+        // ========== FUNGSI GENERATE MATERI OTOMATIS ==========
+        function generateJudulOtomatis(jenjang) {
+            const map = {
+                'SMP': ['Mengenal Diri dan Potensi', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu',
+                    'Kepercayaan Diri', 'Pertemanan Positif', 'Kemandirian', 'Motivasi Belajar', 'Perencanaan Karir',
+                    'Cita-cita', 'Masa Depanku', 'Profesi'
+                ],
+                'SMA': ['Karir dan Kuliah', 'Kesehatan Mental', 'Relasi Sosial', 'Manajemen Stres', 'Motivasi Belajar',
+                    'Perencanaan Masa Depan', 'Kemandirian', 'Komunikasi Efektif', 'Kepemimpinan', 'Etika dan Moral',
+                    'Kreativitas', 'Inovasi'
+                ],
+                'SMK': ['Etika Kerja', 'Kewirausahaan', 'Dunia Kerja', 'Manajemen Keuangan', 'Profesionalisme',
+                    'Kesiapan Kerja', 'Kompetensi', 'Sertifikasi', 'Praktik Kerja', 'CV dan Wawancara', 'Adaptasi',
+                    'Perencanaan Karir'
+                ]
+            };
+            return map[jenjang] || map['SMP'];
+        }
+
+        function buatKontenMateriOtomatis(judul, kelas) {
+            return `MATERI ${judul.toUpperCase()}
+
+        A. PENGERTIAN ${judul.toUpperCase()}
+        ${judul} adalah salah satu aspek penting dalam pengembangan diri siswa ${kelas}. Materi ini dirancang untuk membantu siswa memahami konsep dasar, mengembangkan kesadaran diri, dan menerapkannya dalam kehidupan sehari-hari.
 
         B. TUJUAN PEMBELAJARAN
-        Setelah mempelajari materi ini, siswa diharapkan mampu:
-        1. Menjelaskan pengertian dan konsep dasar ${judul} dengan tepat.
-        2. Mengidentifikasi aspek-aspek penting yang terkait dengan ${judul}.
+        1. Menjelaskan pengertian dan konsep dasar ${judul}.
+        2. Mengidentifikasi aspek-aspek penting terkait ${judul}.
         3. Menerapkan nilai-nilai ${judul} dalam kehidupan sehari-hari.
         4. Mengevaluasi dampak ${judul} terhadap diri sendiri dan orang lain.
         5. Mengembangkan sikap positif terkait ${judul} secara konsisten.
 
-        C. ASPEK-ASPEK PENTING ${judulUpper}
-        1. Aspek Pengetahuan: Pemahaman mendalam tentang konsep, teori, dan fakta yang berkaitan dengan ${judul}.
-        2. Aspek Sikap: Pengembangan nilai-nilai seperti kejujuran, tanggung jawab, empati, dan kerja keras.
-        3. Aspek Keterampilan: Kemampuan menerapkan pengetahuan dalam situasi nyata, memecahkan masalah, dan berkomunikasi efektif.
+        C. ASPEK-ASPEK PENTING
+        1. Aspek Pengetahuan: Pemahaman konsep dan teori ${judul}.
+        2. Aspek Sikap: Pengembangan nilai-nilai seperti kejujuran, tanggung jawab, empati.
+        3. Aspek Keterampilan: Kemampuan menerapkan ${judul} dalam situasi nyata.
 
-        D. MANFAAT ${judulUpper}
-        1. Meningkatkan kualitas hidup dan kesejahteraan diri secara holistik.
-        2. Mengembangkan potensi diri secara optimal dan berkelanjutan.
-        3. Membangun hubungan yang harmonis dengan orang lain dan lingkungan.
-        4. Mempersiapkan diri menghadapi tantangan masa depan dengan percaya diri.
-        5. Menumbuhkan kemandirian dan tanggung jawab dalam setiap tindakan.
+        D. MANFAAT ${judul.toUpperCase()}
+        1. Meningkatkan kualitas hidup dan kesejahteraan diri.
+        2. Mengembangkan potensi diri secara optimal.
+        3. Membangun hubungan yang harmonis dengan orang lain.
+        4. Mempersiapkan diri menghadapi tantangan masa depan.
+        5. Menumbuhkan kemandirian dan tanggung jawab.
 
-        E. CARA MENERAPKAN ${judulUpper}
-        1. Mulailah dari hal-hal kecil dalam kehidupan sehari-hari.
-        2. Konsisten dalam melaksanakan dan mengamalkan nilai-nilai yang terkandung.
-        3. Evaluasi dan perbaiki secara berkala untuk mencapai hasil yang lebih baik.
-        4. Cari dukungan dan bimbingan dari orang-orang terdekat.
-        5. Jadikan ${judul} sebagai bagian dari karakter dan kepribadian.
+        E. CARA MENERAPKAN
+        1. Mulai dari hal kecil dalam kehidupan sehari-hari.
+        2. Konsisten dalam melaksanakan dan mengamalkan nilai-nilai.
+        3. Evaluasi dan perbaiki secara berkala.
+        4. Cari dukungan dari orang-orang terdekat.
+        5. Jadikan ${judul} sebagai bagian dari karakter.
 
-        F. TANTANGAN DALAM MENERAPKAN ${judulUpper}
-        1. Kurangnya kesadaran dan pemahaman yang mendalam tentang ${judul}.
-        2. Pengaruh lingkungan dan pergaulan yang kurang mendukung.
-        3. Kebiasaan lama yang sulit diubah dan dihindari.
-        4. Kurangnya motivasi dan konsistensi dalam menerapkan nilai-nilai.
-        5. Adanya godaan dan hambatan dari berbagai sumber.
+        F. TANTANGAN
+        1. Kurangnya kesadaran dan pemahaman.
+        2. Pengaruh lingkungan yang kurang mendukung.
+        3. Kebiasaan lama yang sulit diubah.
+        4. Kurangnya motivasi dan konsistensi.
 
-        G. TIPS SUKSES MENERAPKAN ${judulUpper}
-        1. Pelajari dan pahami konsep dengan baik melalui berbagai sumber.
-        2. Praktikkan secara konsisten dalam situasi nyata.
-        3. Evaluasi kemajuan dan perbaiki kekurangan secara bertahap.
-        4. Jangan takut gagal dan terus belajar dari setiap pengalaman.
-        5. Bergabung dengan komunitas atau kelompok yang mendukung.
+        G. TIPS SUKSES
+        1. Pelajari dan pahami konsep dengan baik.
+        2. Praktikkan secara konsisten.
+        3. Evaluasi kemajuan secara berkala.
+        4. Jangan takut gagal dan terus belajar.
+        5. Bergabung dengan komunitas yang mendukung.
 
-        H. STUDI KASUS
-        Seorang siswa bernama ${['Andi', 'Rina', 'Budi', 'Siti', 'Doni', 'Maya', 'Rudi', 'Ani'][Math.floor(Math.random()*8)]} menghadapi situasi yang berkaitan dengan ${judul}. Dalam kesehariannya, ia sering merasa kesulitan untuk menerapkan nilai-nilai ${judul} karena berbagai faktor. Melalui pembelajaran ini, siswa diajak untuk menganalisis situasi, mengidentifikasi masalah, dan menemukan solusi yang tepat.
-
-        I. KESIMPULAN
-        ${judul} adalah materi yang sangat penting dan relevan bagi siswa ${kelas}. Dengan memahami dan menerapkan ${judul}, siswa akan mampu mengembangkan diri menjadi pribadi yang lebih baik, mandiri, dan bertanggung jawab. Proses pembelajaran ini diharapkan dapat menjadi bekal berharga bagi siswa dalam menghadapi berbagai tantangan kehidupan.`;
+        H. KESIMPULAN
+        ${judul} adalah materi yang sangat penting dan relevan bagi siswa ${kelas}. Dengan memahami dan menerapkan ${judul}, siswa akan mampu mengembangkan diri menjadi pribadi yang lebih baik, mandiri, dan bertanggung jawab.`;
         }
 
-        // Fungsi membuat RPL format tabel
-        function buatRPLTabel(judul, bidang, kelas, durasi) {
+        function buatRPLOtomatis(judul, bidang, kelas) {
             const fase = kelas.includes('X') ? 'E' : (kelas.includes('XI') ? 'F' : (kelas.includes('XII') ? 'F' : 'D'));
             return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
+        A. SPESIFIKASI
         +----------------------+--------------------------------------------------+
-        | A. SPESIFIKASI       |                                                  |
-        +----------------------+--------------------------------------------------+
-        | 1. Satuan Pendidikan |                                                  |
-        | 2. Nama Guru         |                                                  |
-        | 3. Kelas             | ${kelas} / Fase ${fase}                           |
-        | 4. Waktu             | ${durasi} menit                                   |
+        | 1. Satuan Pendidikan | ${kelas.includes('SMP') ? 'SMP' : kelas.includes('SMA') ? 'SMA' : 'SMK'} |
+        | 2. Nama Guru         |                                                   |
+        | 3. Kelas             | ${kelas}                                          |
+        | 4. Waktu             | 1 JPL (1 x Pertemuan)                             |
         | 5. Materi Layanan    | ${judul}                                          |
         | 6. Bidang Bimbingan  | ${bidang}                                         |
         +----------------------+--------------------------------------------------+
 
-        +----------------------+--------------------------------------------------+
-        | B. IDENTIFIKASI      |                                                  |
+        B. IDENTIFIKASI
         +----------------------+--------------------------------------------------+
         | 1. Kesiapan Murid    | Murid ${kelas} berada pada tahap perkembangan    |
         |                      | yang membutuhkan pemahaman tentang                |
         |                      | ${judul.toLowerCase()}. Sebagian murid sudah     |
         |                      | memiliki pengalaman terkait, namun masih         |
         |                      | perlu pendalaman dan penguatan konsep.           |
-        |                      | Kebutuhan: pemahaman konsep, contoh konkret,     |
-        |                      | dan kesempatan berlatih.                         |
         +----------------------+--------------------------------------------------+
-        | 2. Karakteristik     | Jenis Pengetahuan: Esensial (pengertian dan      |
-        |    Materi Layanan    | pentingnya ${judul.toLowerCase()}), Aplikatif    |
-        |                      | (penerapan dalam kehidupan), Nilai dan           |
-        |                      | Karakter (sikap positif terkait ${judul}).       |
-        |                      | Relevansi: sangat relevan dengan kehidupan       |
-        |                      | sehari-hari siswa.                               |
+        | 2. Karakteristik     | Pengetahuan Esensial: Pengertian dan pentingnya  |
+        |    Materi Layanan    | ${judul.toLowerCase()}. Pengetahuan Aplikatif:   |
+        |                      | Penerapan dalam kehidupan sehari-hari.           |
+        |                      | Pengetahuan Nilai dan Karakter: Sikap positif.   |
         +----------------------+--------------------------------------------------+
         | 3. Dimensi Profil    | [V] Kemandirian   [V] Penalaran Kritis          |
         |    Lulusan           | [V] Kolaborasi    [V] Komunikasi                 |
         |                      | [V] Kreativitas                                   |
         +----------------------+--------------------------------------------------+
 
-        +----------------------+--------------------------------------------------+
-        | C. DESAIN LAYANAN    |                                                  |
+        C. DESAIN LAYANAN
         +----------------------+--------------------------------------------------+
         | 1. Capaian Layanan   | Siswa memahami dan mampu menerapkan              |
         |                      | ${judul.toLowerCase()} dalam kehidupan sehari-hari. |
@@ -443,28 +658,20 @@
         |                      |    ${judul} dalam kehidupan sehari-hari.         |
         +----------------------+--------------------------------------------------+
 
+        D. PENGALAMAN BELAJAR
         +----------------------+--------------------------------------------------+
-        | D. PENGALAMAN        |                                                  |
-        |    BELAJAR           |                                                  |
+        | 1. Kegiatan Awal     | Ice breaking, apersepsi, penyampaian tujuan.     |
+        |    (10 menit)        |                                                  |
         +----------------------+--------------------------------------------------+
-        | 1. Kegiatan Awal     | Ice breaking, apersepsi, penyampaian tujuan,     |
-        |    (10 menit)        | dan motivasi awal untuk membangkitkan minat      |
-        |                      | siswa terhadap materi.                           |
-        +----------------------+--------------------------------------------------+
-        | 2. Kegiatan Inti     | a. Memahami: Penjelasan materi secara mendalam  |
-        |    (40 menit)        |    dengan contoh-contoh kontekstual.             |
-        |                      | b. Mengaplikasi: Diskusi kelompok, studi kasus,  |
-        |                      |    dan pengerjaan LKPD untuk mengasah            |
-        |                      |    pemahaman dan keterampilan.                   |
-        |                      | c. Merefleksi: Refleksi diri dan komitmen untuk  |
-        |                      |    menerapkan ${judul} dalam keseharian.         |
+        | 2. Kegiatan Inti     | Memahami: Penjelasan materi secara mendalam.     |
+        |    (40 menit)        | Mengaplikasi: Diskusi, studi kasus, dan LKPD.    |
+        |                      | Merefleksi: Refleksi diri dan komitmen.          |
         +----------------------+--------------------------------------------------+
         | 3. Kegiatan Penutup  | Kesimpulan, penguatan, doa, dan salam.           |
         |    (10 menit)        |                                                  |
         +----------------------+--------------------------------------------------+
 
-        +----------------------+--------------------------------------------------+
-        | E. ASESMEN           |                                                  |
+        E. ASESMEN
         +----------------------+--------------------------------------------------+
         | 1. Asesmen Awal      | Teknik: Tanya jawab dan ice breaking.            |
         +----------------------+--------------------------------------------------+
@@ -475,81 +682,25 @@
         +----------------------+--------------------------------------------------+
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        1. Bangun Pagi  : Memulai hari dengan semangat dan persiapan.
-        2. Beribadah    : Memohon petunjuk dan kekuatan dalam beraktivitas.
-        3. Berolahraga  : Menjaga kesehatan fisik agar tetap bugar.
-        4. Makan Sehat  : Mengonsumsi makanan bergizi untuk mendukung aktivitas.
-        5. Gemar Belajar: Terus belajar dan mengembangkan diri.
-        6. Bermasyarakat: Berinteraksi baik dengan orang lain.
-        7. Tidur Cukup  : Istirahat cukup untuk pemulihan energi.`;
+        1. Bangun Pagi
+        2. Beribadah
+        3. Berolahraga
+        4. Makan Sehat
+        5. Gemar Belajar
+        6. Bermasyarakat
+        7. Tidur Cukup`;
         }
 
-        // ========== FUNGSI GENERATE MATERI ==========
         function createMateri(id, judul, bidang, kelas, semester, lkpd, refleksi) {
-            const konten = buatKontenMateri(judul, kelas, bidang);
-            const rpl = buatRPLTabel(judul, bidang, kelas, 60);
-            const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.\n\nTujuan: mencairkan suasana, membangun kepercayaan diri, dan memicu rasa ingin tahu siswa tentang materi yang akan dipelajari.`;
+            const konten = buatKontenMateriOtomatis(judul, kelas);
+            const rpl = buatRPLOtomatis(judul, bidang, kelas);
+            const iceText = `🎮 Permainan interaktif tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
             const apersepsiText =
-                `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.\n\nTujuan: menggali pengetahuan awal siswa dan mengaitkan materi dengan pengalaman nyata mereka.`;
+                `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu?' Waktu 5 menit.`;
             const diskusiText =
-                `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.\n\nTujuan: mengembangkan kemampuan berpikir kritis, kerja sama, dan komunikasi siswa.`;
+                `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
             return { id, judul, bidang, kelas, semester, ice: iceText, apersepsi: apersepsiText, diskusi: diskusiText,
                 konten, rpl, refleksi, lkpd };
-        }
-
-        // ========== DATA JUDUL MATERI ==========
-        const judulSMP7S1 = [
-            "Kenali Dirimu, Temukan Potensimu",
-            "Aku Bangga Menjadi Siswa SMP",
-            "Membangun Kepercayaan Diri di Sekolah Baru",
-            "Aku dan Teman Baru: Membangun Pertemanan Positif",
-            "Mengenal Guru, Teman, dan Warga Sekolah",
-            "Stop Bullying: Jadilah Teman yang Aman",
-            "Belajar Efektif di Sekolah Baru",
-            "Kenali Gaya Belajarmu, Raih Prestasimu",
-            "Mengatur Waktu antara Belajar dan Bermain",
-            "Mengenal Potensi dan Cita-Citaku",
-            "Aku dan Masa Depanku",
-            "Mengenal Berbagai Profesi di Sekitarku"
-        ];
-        const bidangSMP7S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-
-        const judulSMP7S2 = [
-            "Menghargai Waktu dan Manajemen Waktu",
-            "Kebersihan dan Kerapian Diri",
-            "Berpikir Positif dan Optimis",
-            "Kerja Sama dan Gotong Royong",
-            "Menentukan Tujuan Hidup",
-            "Mengelola Uang Saku dengan Bijak",
-            "Mempersiapkan Diri Menghadapi Ujian",
-            "Menjadi Remaja yang Berkarakter",
-            "Komunikasi Efektif dengan Teman dan Guru",
-            "Mengatasi Rasa Takut dan Kecemasan",
-            "Mengembangkan Minat dan Bakat",
-            "Membangun Motivasi Belajar"
-        ];
-        const bidangSMP7S2 = ["Pribadi", "Pribadi", "Sosial", "Sosial", "Karier", "Karier", "Belajar", "Belajar", "Sosial",
-            "Pribadi", "Pribadi", "Belajar"
-        ];
-
-        function generateJudulOtomatis(jenjang) {
-            const map = {
-                'SMP': ['Mengenal Diri dan Potensi', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu',
-                    'Kepercayaan Diri', 'Pertemanan Positif', 'Kemandirian', 'Motivasi Belajar', 'Perencanaan Karir',
-                    'Cita-cita', 'Masa Depan', 'Profesi'
-                ],
-                'SMA': ['Karir dan Kuliah', 'Kesehatan Mental', 'Relasi Sosial', 'Manajemen Stres', 'Motivasi Belajar',
-                    'Perencanaan Masa Depan', 'Kemandirian', 'Komunikasi Efektif', 'Kepemimpinan', 'Etika dan Moral',
-                    'Kreativitas', 'Inovasi'
-                ],
-                'SMK': ['Etika Kerja', 'Kewirausahaan', 'Dunia Kerja', 'Manajemen Keuangan', 'Profesionalisme',
-                    'Kesiapan Kerja', 'Kompetensi', 'Sertifikasi', 'Praktik Kerja', 'CV dan Wawancara', 'Adaptasi',
-                    'Perencanaan Karir'
-                ]
-            };
-            return map[jenjang] || map['SMP'];
         }
 
         function generateDataOtomatis(jenjang, kelas, semester, prefix) {
@@ -583,12 +734,27 @@
         // ========== DATABASE ==========
         const allData = {};
 
-        // SMP
+        // SMP dengan materi Mengelola Emosi sebagai materi pertama
+        const smp7s1Data = [
+            {
+                id: 701,
+                judul: materiMengelolaEmosi.judul,
+                bidang: materiMengelolaEmosi.bidang,
+                kelas: materiMengelolaEmosi.kelas,
+                semester: 1,
+                ice: materiMengelolaEmosi.ice,
+                apersepsi: materiMengelolaEmosi.apersepsi,
+                diskusi: materiMengelolaEmosi.diskusi,
+                konten: materiMengelolaEmosi.konten,
+                rpl: materiMengelolaEmosi.rpl,
+                refleksi: materiMengelolaEmosi.refleksi,
+                lkpd: materiMengelolaEmosi.lkpd
+            },
+            ...generateDataOtomatis('SMP', 7, 1, 702).slice(0, 11)
+        ];
+
         allData['SMP'] = {};
-        allData['SMP']['7'] = {
-            '1': generateDataOtomatis('SMP', 7, 1, 701),
-            '2': generateDataOtomatis('SMP', 7, 2, 713)
-        };
+        allData['SMP']['7'] = { '1': smp7s1Data, '2': generateDataOtomatis('SMP', 7, 2, 713) };
         allData['SMP']['8'] = { '1': generateDataOtomatis('SMP', 8, 1, 801), '2': generateDataOtomatis('SMP', 8, 2, 813) };
         allData['SMP']['9'] = { '1': generateDataOtomatis('SMP', 9, 1, 901), '2': generateDataOtomatis('SMP', 9, 2, 913) };
 
@@ -677,7 +843,6 @@
                 opt.textContent = m.judul || 'Materi ' + (i + 1);
                 materiSelect.appendChild(opt);
             });
-            // Update dashboard
             document.getElementById('totalMateri').textContent = getTotalMateri();
             if (data.length > 0) {
                 materiSelect.value = '1';
@@ -721,7 +886,6 @@
                 return;
             }
 
-            // Tampilkan materi dengan fitur expand
             const kontenId = 'konten-' + Date.now();
             const isLong = m.konten && m.konten.length > 500;
 
@@ -741,7 +905,6 @@
                 <h4>⏱️ Durasi</h4><p>${durasiEl.value} menit</p>
             `;
 
-            // RPL
             let rpl = m.rpl || 'RPL belum tersedia.';
             rpl = rpl.replace(/Satuan Pendidikan/g, 'Satuan Pendidikan   : ' + jenjangEl.value);
             rpl = rpl.replace(/Nama Guru/g, 'Nama Guru           : ' + (namaGuruEl.value || '_______________'));
@@ -751,7 +914,6 @@
 
             lkpdText.value = m.lkpd || 'LKPD belum tersedia.';
 
-            // Refleksi
             if (m.refleksi) {
                 const lines = m.refleksi.split('\n').filter(line => line.trim());
                 let soalHTML = '';
@@ -1184,7 +1346,7 @@
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log('📚 Total 216 materi dengan konten berbobot');
-        console.log('📋 RPL format tabel sesuai permintaan');
+        console.log('📋 RPL format tabel sesuai file Anda (Mengelola Emosi)');
         console.log('📱 Gunakan 1 Google Form Universal untuk semua materi');
         console.log('📄 LKPD dan Refleksi bisa dicetak 1 lembar');
         console.log('💡 Fitur expand untuk konten panjang');
