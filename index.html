@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NaFaS BK - Bimbingan Klasikal Lengkap</title>
+    <title>PRO DIGITAL GURU BK - Bimbingan Klasikal Lengkap</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
@@ -169,9 +169,9 @@
 
     <header class="header">
         <div>
-            <h1>📘 NaFaS BK <small>Aplikasi Bimbingan Klasikal Lengkap</small></h1>
+            <h1>📘 PRO DIGITAL GURU BK <small>Aplikasi Bimbingan Klasikal Lengkap</small></h1><div style="font-size:14px;font-weight:700;margin-top:-6px;">by NaFaS BK</div>
         </div>
-        <div class="badge">© NaFaS BK</div>
+        <div class="badge">© PRO DIGITAL GURU BK</div>
     </header>
 
     <div class="welcome-banner">
@@ -349,277 +349,857 @@
     </div>
 
     <script>
-        // ================================================================
-        // DATA MATERI (SAMA SEPERTI SEBELUMNYA - DISINGKAT UNTUK EFISIENSI)
-        // ================================================================
+        /* ================================================================
+           PRO DIGITAL GURU BK
+           PAKET 1 — SMP KELAS VII SEMESTER 1
+           GANTI BLOK: const smp7s1Data = [...]
+           Jangan hapus bagian allData setelah blok ini.
+           ================================================================ */
 
-        // ========== MATERI MENGELOLA EMOSI ==========
-        const materiMengelolaEmosi = {
-            judul: "Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu, Jalani Hidup Lebih Bahagia!",
-            bidang: "Pribadi",
-            kelas: "VII - XII / Fase D-F",
-            ice: `🎮 "EKSPRESI EMOJI" (7 Menit)\nGuru menunjukkan kartu emoji (senang, biasa saja, marah, sedih, dll). Siswa menebak situasi yang bisa membuat seseorang merasa seperti emoji tersebut. Tujuan: melatih empati dan mengenali beragam emosi.`,
-            apersepsi: `💬 Guru menyampaikan kalimat pemantik: "Emosi tidak bisa dihilangkan, tapi bisa dikelola! Kenali emosimu, kendalikan dirimu, jalani hidup lebih bahagia!" Guru menanyakan tanggapan singkat murid mengenai kutipan tersebut. Waktu 5 menit.`,
-            diskusi: `🗣️ Diskusi kelompok tentang situasi sehari-hari yang sering memicu emosi tertentu pada remaja (seperti diejek teman, hasil ujian, atau masalah dengan keluarga). Waktu 20 menit.`,
-            konten: `MATERI MENGELOLA EMOSI: KENALI EMOSIMU, KENDALIKAN DIRIMU, JALANI HIDUP LEBIH BAHAGIA!
-
-        A. PENGERTIAN EMOSI
-        Emosi adalah perasaan yang muncul sebagai reaksi terhadap suatu keadaan atau peristiwa, seperti senang, sedih, marah, takut, kecewa, dan lain-lain. Emosi adalah bagian alami dari diri manusia.
-
-        B. TUJUAN MENGELOLA EMOSI
-        1. Memahami emosi yang dirasakan dengan lebih sadar.
-        2. Mengendalikan reaksi dengan bijak, bukan reaktif.
-        3. Membina hubungan yang baik dengan orang lain.
-        4. Membuat keputusan yang tepat dan tidak impulsif.
-
-        C. TANDA EMOSI TIDAK TERKELOLA
-        1. Mudah marah atau tersinggung.
-        2. Sulit fokus dan berkonsentrasi.
-        3. Menyakiti diri sendiri atau orang lain.
-        4. Menyesal setelah bereaksi.
-        5. Hubungan dengan orang lain terganggu.
-
-        D. CARA MENGELOLA EMOSI
-        1. Tarik napas dalam-dalam.
-        2. Tenangkan diri sejenak.
-        3. Pikirkan hal-hal positif.
-        4. Ungkapkan perasaan dengan kata yang baik.
-        5. Alihkan ke kegiatan positif.
-        6. Minta bantuan orang yang dipercaya.
-
-        E. LANGKAH 5R
-        1. R - Recognize (Kenali)
-        2. R - Relax (Tenangkan)
-        3. R - Reflect (Renungkan)
-        4. R - Respond (Tanggapi)
-        5. R - Result (Hasil)
-
-        F. STUDI KASUS - Rina
-        Rina adalah siswi kelas X yang sering merasa kesal ketika teman-temannya mengganggu saat belajar. Suatu hari, temannya mengambil buku catatannya tanpa izin. Rina sangat marah dan hampir membentak temannya. Namun, Rina teringat pelajaran mengelola emosi.
-
-        G. KESIMPULAN
-        Emosi adalah bagian dari diri kita. Kita tidak bisa menghilangkannya, tetapi kita bisa mengelolanya dengan bijak. Ingatlah selalu: "KENDALIKAN EMOSIMU, SEBELUM EMOSIMU MENGENDALIKANMU!"`,
-            rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        function buatRPLSMP7S1(judul, bidang, fokus, tujuanC, tujuanA, tujuanP, aktivitas, asesmen, tindakLanjut) {
+          return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
         A. SPESIFIKASI
-        Satuan Pendidikan   : SMP/SMA/SMK (sesuaikan)
-        Nama Guru           : 
-        Kelas               : (sesuaikan)
-        Waktu               : 1 JPL (1 x Pertemuan)
-        Materi Layanan      : Mengelola Emosi
-        Bidang Bimbingan    : Pribadi
+        1. Satuan Pendidikan : SMP
+        2. Nama Guru         : ..........................................................
+        3. Kelas / Semester  : VII / Ganjil
+        4. Waktu             : 1 JPL (60 Menit)
+        5. Materi Layanan    : ${judul}
+        6. Bidang Bimbingan  : ${bidang}
 
         B. IDENTIFIKASI
-        1. Kesiapan Murid: Murid berada pada tahap perkembangan penuh gejolak emosi.
-        2. Karakteristik Materi: Pengetahuan Esensial, Aplikatif, Nilai dan Karakter.
-        3. Dimensi Profil Lulusan: Kemandirian, Komunikasi, Kesehatan.
+        1. Kesiapan Murid
+        Siswa kelas VII sedang berada pada tahap penyesuaian dengan lingkungan sekolah baru. Siswa memiliki pengalaman, kebiasaan, dan cara berpikir yang beragam sehingga membutuhkan ruang belajar yang aman untuk mengenali diri, membangun relasi, dan mengembangkan kebiasaan positif.
+
+        2. Kebutuhan Murid
+        Siswa membutuhkan pengalaman belajar yang dekat dengan kehidupan sehari-hari, kesempatan berdiskusi, latihan mengambil keputusan, serta kegiatan reflektif yang menghasilkan langkah nyata.
+
+        3. Karakteristik Materi
+        Materi bersifat kontekstual, aplikatif, reflektif, dan dapat langsung diterapkan dalam kehidupan sekolah.
+
+        4. Dimensi Profil Lulusan
+        ☐ Iman & Takwa pada Tuhan YME
+        ☒ Penalaran Kritis
+        ☒ Kolaborasi
+        ☐ Kesehatan
+        ☐ Kewargaan
+        ☒ Kreativitas
+        ☒ Kemandirian
+        ☒ Komunikasi
 
         C. DESAIN LAYANAN
-        1. Capaian Layanan: Siswa memahami dan mampu mengelola emosi.
-        2. Topik: "Kenali Emosimu, Kendalikan Dirimu, Jalani Hidup Lebih Bahagia!"
-        3. Tujuan: Pengenalan, Akomodasi, Tindakan.
+        1. Capaian Layanan
+        Siswa memahami ${fokus}, mampu menganalisis situasi yang dekat dengan kehidupan mereka, serta menentukan tindakan positif yang dapat dilakukan.
 
-        D. PENGALAMAN BELAJAR
-        1. Kegiatan Awal (10 menit): Ice Breaking, apersepsi.
-        2. Kegiatan Inti (40 menit): Memahami, Mengaplikasikan, Merefleksi.
-        3. Kegiatan Penutup (10 menit): Kesimpulan, motivasi, doa.
+        2. Topik Layanan Kontekstual
+        "${judul}: ${fokus}"
 
-        E. ASESMEN
-        1. Asesmen Awal: Curah pendapat.
-        2. Asesmen Proses: Observasi.
-        3. Asesmen Akhir: LKPD dan refleksi.
+        3. Lintas Disiplin Ilmu
+        • Bimbingan dan Konseling: pengembangan pribadi, sosial, belajar, dan/atau karier.
+        • Bahasa Indonesia: menyampaikan pendapat, menganalisis kasus, dan melakukan refleksi.
+        • Informatika/teknologi: menggunakan media digital secara bijak bila relevan.
+        • Pendidikan Jasmani/Kesehatan: mendukung kebiasaan hidup dan pengelolaan diri bila relevan.
 
-        F. INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        1. Bangun Pagi 2. Beribadah 3. Berolahraga 4. Makan Sehat 5. Gemar Belajar 6. Bermasyarakat 7. Tidur Cukup`,
-            refleksi: `REFLEKSI DIRI (1 LEMBAR PADAT)
-        Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu
+        4. Tujuan Layanan
+        a. Pengenalan (C)
+        • ${tujuanC}
+        b. Akomodasi (A)
+        • ${tujuanA}
+        c. Tindakan (P)
+        • ${tujuanP}
 
-        Nama : ___________  Kelas : ___________  Tanggal : ___________
+        D. KERANGKA LAYANAN
+        1. Praktik Pedagogik
+        Model: Experiential Learning.
+        Metode: ice breaking, apersepsi, eksplorasi materi, studi kasus, diskusi, LKPD, presentasi/penguatan, refleksi, dan komitmen.
 
-        1. Emosi apa yang paling sering kamu rasakan?
-        ___________________________________________________
+        2. Kemitraan Pembelajaran
+        Guru BK sebagai fasilitator; teman sebaya sebagai mitra belajar; guru mata pelajaran/wali kelas sebagai pendukung; orang tua sebagai penguat kebiasaan di rumah.
 
-        2. Situasi apa yang biasanya memicu emosi tersebut?
-        ___________________________________________________
+        3. Lingkungan Pembelajaran
+        Aman, nyaman, tidak menghakimi, menghargai perbedaan, memberi kesempatan berbicara, dan mendorong siswa mencoba tanpa takut salah.
 
-        3. Bagaimana cara terbaik yang bisa kamu lakukan saat emosi muncul?
-        ___________________________________________________
+        4. Pemanfaatan Digital
+        Media digital digunakan secara terarah untuk membaca materi, mengerjakan LKPD, mengirim respons, atau melakukan refleksi sesuai fasilitas sekolah.
 
-        4. Apa manfaat mengelola emosi bagi dirimu?
-        ___________________________________________________
+        E. PENGALAMAN BELAJAR
+        1. Kegiatan Awal – 10 Menit
+        • Salam, doa, pengecekan kesiapan.
+        • Guru menyampaikan tujuan dan manfaat layanan.
+        • Ice breaking dan apersepsi.
+        • Guru membangun kesepakatan kelas: saling menghargai dan tidak mengejek.
 
-        5. Dari Langkah 5R, mana yang paling sulit kamu lakukan?
-        ___________________________________________________
+        2. Memahami – 15 Menit
+        • Guru menjelaskan konsep inti ${fokus}.
+        • Siswa menghubungkan materi dengan pengalaman sehari-hari.
+        • Guru memberikan contoh dan meluruskan miskonsepsi.
 
-        6. Komitmen saya untuk mengelola emosi:
-        ___________________________________________________
+        3. Mengaplikasi – 20 Menit
+        • Siswa mengerjakan aktivitas: ${aktivitas}
+        • Siswa berdiskusi dan menganalisis studi kasus.
+        • Beberapa siswa/kelompok menyampaikan hasil.
+        • Guru memberi penguatan dan umpan balik.
 
-        Tanda tangan siswa: _______________`,
-            lkpd: `LKPD "JURNAL EMOSIKU" (1 LEMBAR)
-        Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu
+        4. Merefleksi – 5 Menit
+        • Siswa mengidentifikasi pemahaman/kesadaran baru.
+        • Siswa menentukan satu kebiasaan atau tindakan yang akan dicoba.
 
-        Nama : ___________  Kelas : ___________  Tanggal : ___________
+        5. Penutup – 10 Menit
+        • Kesimpulan bersama.
+        • Membaca/menyampaikan komitmen.
+        • Kata penguatan guru.
+        • Doa dan salam.
 
-        A. STUDI KASUS - Rina
-        Rina adalah siswi kelas X yang sering merasa kesal dan marah ketika teman-temannya mengganggu saat belajar. Suatu hari, temannya mengambil buku catatannya tanpa izin. Rina sangat marah dan hampir membentak temannya.
+        F. ASESMEN
+        1. Asesmen Awal
+        Teknik: pertanyaan pemantik dan apersepsi untuk mengetahui pemahaman awal siswa.
 
-        B. PRAKTIKKAN LANGKAH 5R
-        1. R - Recognize (Kenali): _______________________________
-        2. R - Relax (Tenangkan): _______________________________
-        3. R - Reflect (Renungkan): _______________________________
-        4. R - Respond (Tanggapi): _______________________________
-        5. R - Result (Hasil): _______________________________
+        2. Asesmen Proses
+        Teknik: observasi keterlibatan, kerja sama, kemampuan mendengarkan, kemampuan menganalisis kasus, dan keberanian menyampaikan pendapat.
 
-        C. JURNAL EMOSIKU
-        1. Emosi yang sering saya rasakan: _____________________________
-        2. Penyebab emosi tersebut: ___________________________________
-        3. Cara terbaik mengelola emosi itu: __________________________
+        3. Asesmen Akhir
+        Teknik: LKPD dan refleksi.
+        Indikator: pemahaman konsep, relevansi analisis, kemampuan menghubungkan materi dengan kehidupan, serta kejelasan tindakan yang direncanakan.
 
-        D. KOMITMEN DIRI
-        Saya berkomitmen untuk: ______________________________________`
-        };
+        4. Tindak Lanjut
+        ${tindakLanjut}
 
-        // ========== FUNGSI GENERATE MATERI OTOMATIS ==========
-        function generateJudulOtomatis(jenjang) {
-            const map = {
-                'SMP': ['Mengenal Diri dan Potensi', 'Pergaulan Sehat', 'Belajar Efektif', 'Manajemen Waktu',
-                    'Kepercayaan Diri', 'Pertemanan Positif', 'Kemandirian', 'Motivasi Belajar', 'Perencanaan Karir',
-                    'Cita-cita', 'Masa Depanku', 'Profesi'
-                ],
-                'SMA': ['Karir dan Kuliah', 'Kesehatan Mental', 'Relasi Sosial', 'Manajemen Stres', 'Motivasi Belajar',
-                    'Perencanaan Masa Depan', 'Kemandirian', 'Komunikasi Efektif', 'Kepemimpinan', 'Etika dan Moral',
-                    'Kreativitas', 'Inovasi'
-                ],
-                'SMK': ['Etika Kerja', 'Kewirausahaan', 'Dunia Kerja', 'Manajemen Keuangan', 'Profesionalisme',
-                    'Kesiapan Kerja', 'Kompetensi', 'Sertifikasi', 'Praktik Kerja', 'CV dan Wawancara', 'Adaptasi',
-                    'Perencanaan Karir'
-                ]
-            };
-            return map[jenjang] || map['SMP'];
+        G. INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        1. Bangun Pagi: membangun kesiapan dan keteraturan aktivitas.
+        2. Beribadah: menumbuhkan rasa syukur, nilai positif, dan tanggung jawab.
+        3. Berolahraga: menjaga kebugaran dan disiplin diri.
+        4. Makan Sehat & Bergizi: mendukung kesiapan belajar.
+        5. Gemar Belajar: membangun kebiasaan belajar dan mencoba hal baru.
+        6. Bermasyarakat: membangun kepedulian, komunikasi, dan kerja sama.
+        7. Tidur Cukup: menjaga keseimbangan dan kesiapan menjalani aktivitas.
+
+        ......................................, .................................... 2026
+
+        Guru BK,
+
+        ..........................................................
+        NIP. ....................................................`;
         }
 
-        function buatKontenMateriOtomatis(judul, kelas) {
-            return `MATERI ${judul.toUpperCase()}\n\nA. PENGERTIAN\n${judul} adalah aspek penting dalam pengembangan diri siswa ${kelas}.\n\nB. TUJUAN PEMBELAJARAN\n1. Menjelaskan pengertian ${judul}.\n2. Mengidentifikasi aspek-aspek penting.\n3. Menerapkan nilai-nilai ${judul}.\n\nC. MANFAAT\n1. Meningkatkan kualitas hidup.\n2. Mengembangkan potensi diri.\n3. Membangun hubungan yang harmonis.\n\nD. CARA MENERAPKAN\n1. Mulai dari hal kecil.\n2. Konsisten.\n3. Evaluasi dan perbaiki.\n\nE. STUDI KASUS\nSeorang siswa bernama Andi menghadapi situasi yang berkaitan dengan ${judul}.\n\nF. KESIMPULAN\n${judul} adalah materi yang penting bagi siswa ${kelas}.`;
+        function buatMateriSMP7S1(id, judul, bidang, ice, apersepsi, konten, lkpd, refleksi, rpl) {
+          return { id, judul, bidang, kelas: 'VII / Fase D', semester: 1, ice, apersepsi,
+            diskusi: 'Diskusi kelompok dan penguatan berdasarkan studi kasus pada materi.',
+            konten, rpl, refleksi, lkpd };
         }
 
-        function buatRPLOtomatis(judul, bidang, kelas) {
-            return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
-        LAYANAN BIMBINGAN KLASIKAL
+        /* =========================
+           1. MENGELOLA EMOSI
+           ========================= */
+        const mSMP7_01 = buatMateriSMP7S1(
+          701,
+          'Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu',
+          'Pribadi',
+          `🎮 ICE BREAKING — "Emoji Bergerak" (7 menit)
+        Guru menyebutkan situasi sederhana: mendapat pujian, ditegur guru, kehilangan barang, mendapat pesan dari teman, atau kalah dalam permainan. Siswa memilih ekspresi tubuh yang sesuai dengan emosi yang mungkin muncul. Guru menegaskan bahwa emosi boleh muncul, tetapi tindakan tetap perlu dipilih dengan bijak.`,
+          `💬 APERSEPSI
+        1. Emosi apa yang paling sering muncul ketika kamu menghadapi masalah?
+        2. Apakah semua emosi itu buruk?
+        3. Apa yang biasanya kamu lakukan ketika sedang sangat kesal?
+        4. Apa akibatnya jika kita langsung bertindak saat emosi memuncak?
+        Guru menghubungkan jawaban dengan pentingnya mengenali, menenangkan, memahami, lalu memilih respons.`,
+          `MATERI BERMAKNA — MENGELOLA EMOSI
 
-        A. SPESIFIKASI
-        Satuan Pendidikan   : 
-        Nama Guru           : 
-        Kelas               : ${kelas}
-        Waktu               : 1 JPL
-        Materi Layanan      : ${judul}
-        Bidang Bimbingan    : ${bidang}
+        1. Emosi adalah sinyal
+        Emosi seperti senang, sedih, marah, takut, kecewa, malu, dan cemas merupakan bagian dari pengalaman manusia. Emosi memberi sinyal bahwa ada sesuatu yang sedang terjadi atau dianggap penting oleh diri kita.
 
-        B. IDENTIFIKASI
-        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
-        2. Karakteristik Materi: Konsep dan penerapan.
-        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis.
+        2. Emosi bukan musuh
+        Yang perlu dikelola bukan keberadaan emosinya, tetapi cara kita meresponsnya. Marah tidak otomatis berarti buruk. Yang perlu diperhatikan adalah tindakan setelah marah.
 
-        C. DESAIN LAYANAN
-        1. Capaian: Siswa memahami dan menerapkan.
-        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
-        3. Tujuan: Memahami dan menerapkan.
+        3. Kenali pemicu
+        Perhatikan situasi, pikiran, atau kejadian yang biasanya memunculkan emosi tertentu. Dengan mengenali pemicu, kita lebih siap memilih respons.
 
-        D. PENGALAMAN BELAJAR
-        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi.
-        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
-        3. Kegiatan Penutup (10 menit): Kesimpulan, doa.
+        4. Formula 5R
+        R1 Recognize — kenali emosi.
+        R2 Relax — beri jeda dan tenangkan diri.
+        R3 Reflect — pikirkan apa yang terjadi dan apa yang dibutuhkan.
+        R4 Respond — pilih respons yang aman dan tepat.
+        R5 Result — lihat akibat dari respons dan pelajari untuk berikutnya.
 
-        E. ASESMEN
-        1. Asesmen Awal: Tanya jawab.
-        2. Asesmen Proses: Observasi.
-        3. Asesmen Akhir: LKPD dan Refleksi.
+        5. Contoh
+        Ketika teman mengambil barang tanpa izin, kita boleh merasa kesal. Namun sebelum membentak, kita dapat berhenti sejenak, menenangkan diri, lalu mengatakan dengan tegas bahwa barang tersebut perlu dikembalikan dan meminta teman meminta izin.
 
-        F. INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        1. Bangun Pagi 2. Beribadah 3. Berolahraga 4. Makan Sehat 5. Gemar Belajar 6. Bermasyarakat 7. Tidur Cukup`;
-        }
+        Pesan utama: "Aku tidak selalu bisa memilih apa yang terjadi, tetapi aku dapat belajar memilih responsku."`,
+          `LKPD — "JURNAL EMOSIKU"
 
-        function createMateri(id, judul, bidang, kelas, semester, lkpd, refleksi) {
-            const konten = buatKontenMateriOtomatis(judul, kelas);
-            const rpl = buatRPLOtomatis(judul, bidang, kelas);
-            const iceText = `🎮 Permainan tentang "${judul}" - siswa berdiskusi dan berbagi pengalaman. Waktu 5 menit.`;
-            const apersepsiText =
-                `💬 Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"?' Waktu 5 menit.`;
-            const diskusiText =
-                `🗣️ Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
-            return { id, judul, bidang, kelas, semester, ice: iceText, apersepsi: apersepsiText, diskusi: diskusiText,
-                konten, rpl, refleksi, lkpd };
-        }
+        A. STUDI KASUS
+        Rina merasa kesal ketika temannya mengambil buku catatan tanpa izin. Ia hampir membentak temannya.
 
-        function generateDataOtomatis(jenjang, kelas, semester, prefix) {
-            const judulList = generateJudulOtomatis(jenjang);
-            const bidangList = ["Pribadi", "Pribadi", "Sosial", "Sosial", "Belajar", "Belajar", "Karier", "Karier", "Pribadi",
-                "Sosial", "Belajar", "Karier"
-            ];
-            const kelasLabel = {
-                '7': 'VII / Fase D',
-                '8': 'VIII / Fase D',
-                '9': 'IX / Fase D',
-                '10': 'X / Fase E',
-                '11': 'XI / Fase F',
-                '12': 'XII / Fase F'
-            };
-            const result = [];
-            for (let i = 0; i < judulList.length; i++) {
-                const id = prefix + i;
-                const judul = judulList[i] + ' ' + (jenjang === 'SMP' ? 'SMP' : jenjang);
-                const bidang = bidangList[i] || "Pribadi";
-                const kelasLabelStr = kelasLabel[String(kelas)] || `${kelas} / Fase`;
-                const lkpdText =
-                    `LKPD (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\nA. STUDI KASUS\nSeorang siswa bernama Andi menghadapi tantangan terkait ${judul}.\n\nPertanyaan:\n1. Apa masalah utama?\n2. Mengapa Andi kesulitan?\n3. Apa dampaknya?\n4. Apa solusinya?\n\nB. AKTIVITAS KELOMPOK\n1. Diskusikan kasus!\n2. Tuliskan hasil!\n\nC. REFLEKSI DIRI\n1. Apa yang saya pelajari?\n2. Komitmen saya:`;
-                const refleksiText =
-                    `REFLEKSI DIRI (1 LEMBAR)\n${judul}\n\nNama : ___________  Kelas : ___________  Tanggal : ___________\n\n1. Apa yang paling berkesan?\n___________________________________________________\n\n2. Bagaimana perasaanmu?\n___________________________________________________\n\n3. Apa yang akan kamu lakukan?\n___________________________________________________\n\n4. Komitmen saya:\n___________________________________________________\n\nTanda tangan siswa: _______________`;
-                result.push(createMateri(id, judul, bidang, kelasLabelStr, semester, lkpdText, refleksiText));
-            }
-            return result;
-        }
+        Pertanyaan:
+        1. Emosi apa yang mungkin dirasakan Rina?
+        2. Apa pemicunya?
+        3. Apa akibat jika Rina langsung membentak?
+        4. Bagaimana Rina dapat menggunakan 5R?
+        5. Respons seperti apa yang tegas tetapi tetap menghargai teman?
 
-        // ========== DATABASE ==========
-        const allData = {};
+        B. LATIHAN 5R
+        1. Recognize: Emosi saya adalah...
+        2. Relax: Cara saya memberi jeda adalah...
+        3. Reflect: Hal yang sebenarnya saya butuhkan adalah...
+        4. Respond: Respons yang akan saya pilih adalah...
+        5. Result: Hasil yang saya harapkan adalah...
 
+        C. KOMITMEN
+        Saat emosi muncul, saya akan mencoba...`,
+          `REFLEKSI — MENGELOLA EMOSI
+
+        1. Hal yang baru saya pahami tentang emosi adalah...
+        2. Pemicu emosi yang perlu saya kenali adalah...
+        3. Saat emosi memuncak, saya biasanya...
+        4. Respons yang ingin saya ubah adalah...
+        5. Cara menenangkan diri yang ingin saya coba adalah...
+        6. Apa yang akan saya lakukan agar emosi tidak merusak hubungan saya dengan orang lain?
+        7. Komitmen saya minggu ini adalah...
+
+        Kalimat penguat:
+        "Saya boleh merasakan emosi, tetapi saya belajar memilih tindakan."`,
+          buatRPLSMP7S1(
+            'Mengelola Emosi: Kenali Emosimu, Kendalikan Dirimu','Pribadi',
+            'pengenalan dan pengelolaan emosi',
+            'Siswa mampu menjelaskan fungsi emosi, mengenali beberapa emosi, dan mengidentifikasi pemicu emosi.',
+            'Siswa menerima bahwa emosi adalah bagian normal dari diri manusia dan memahami bahwa setiap orang dapat merasakan emosi yang berbeda.',
+            'Siswa mampu menggunakan langkah 5R dalam situasi sederhana dan memilih respons yang aman serta menghargai orang lain.',
+            'menganalisis kasus Rina, mempraktikkan langkah 5R, dan membuat jurnal emosi.',
+            'Siswa yang masih kesulitan dapat diarahkan pada latihan mengenali emosi dan pendampingan individual/kelompok; siswa yang sudah mampu dapat dilatih menjadi contoh komunikasi asertif.',
+            ''
+          )
+        );
+
+        /* =========================
+           2. KENALI DIRIMU
+           ========================= */
+        const mSMP7_02 = buatMateriSMP7S1(
+          702,'Kenali Dirimu, Temukan Potensimu','Pribadi dan Belajar',
+          `🎮 "Aku Hebat Karena..." (7 menit)
+        Siswa menyebutkan satu hal yang cukup baik dari dirinya. Jika belum menemukan jawaban, siswa boleh mengatakan "Saya sedang mencari tahu."`,
+          `💬 "Seberapa Kenal Kamu dengan Dirimu?"
+        Apa kegiatan yang membuatmu menikmati waktu? Hal apa yang sering dimintai bantuan oleh teman? Dalam situasi apa kamu merasa percaya diri?`,
+          `MATERI BERMAKNA — KENALI DIRIMU, TEMUKAN POTENSIMU
+
+        Mengenal diri berarti memahami minat, kekuatan, pengalaman, nilai, kebiasaan, dan cara kita menghadapi tantangan. Potensi adalah kemampuan atau kekuatan yang masih dapat dikembangkan.
+
+        Lima petunjuk potensi:
+        1. Minat — hal yang membuatmu tertarik.
+        2. Kekuatan — hal yang cukup kamu kuasai.
+        3. Pengalaman — kegiatan yang memberi pelajaran tentang kemampuanmu.
+        4. Nilai diri — hal yang kamu anggap penting.
+        5. Respons terhadap tantangan — cara kamu menghadapi kesulitan.
+
+        Potensi tidak sama dengan "sudah mahir". Kemampuan berkembang melalui latihan, pengalaman, umpan balik, dan kesempatan.
+
+        Formula: KENALI → COBA → KEMBANGKAN.
+        Jangan hanya membandingkan diri dengan teman. Bandingkan dirimu dengan dirimu yang sebelumnya: apa yang sudah berkembang dan apa yang ingin diperbaiki?`,
+          `LKPD — "JEJAK POTENSIKU"
+
+        A. STUDI KASUS
+        Raka merasa tidak punya potensi karena teman-temannya berprestasi. Padahal ia sering membuat desain presentasi, membantu teman menjelaskan ide, dan dipercaya mengatur tampilan tugas.
+
+        Pertanyaan:
+        1. Apa masalah Raka?
+        2. Petunjuk potensi apa yang terlihat?
+        3. Mengapa Raka tidak menyadarinya?
+        4. Apa kesalahan Raka saat membandingkan diri?
+        5. Apa saranmu?
+
+        B. PETA POTENSIKU
+        • Kegiatan yang saya sukai...
+        • Hal yang cukup saya kuasai...
+        • Hal yang sering dimintai bantuan...
+        • Pengalaman yang membuat saya bangga...
+        • Nilai yang penting bagi saya...
+        • Potensi yang ingin saya kembangkan...
+        • Langkah pertama saya...`,
+          `REFLEKSI — POTENSIKU
+
+        1. Hal baru yang saya sadari tentang diri saya...
+        2. Potensi yang mulai saya kenali...
+        3. Kekuatan yang selama ini kurang saya hargai...
+        4. Potensi yang ingin saya kembangkan satu bulan ke depan...
+        5. Langkah pertama yang akan saya lakukan...
+
+        Komitmen: "Saya tidak harus menjadi seperti orang lain. Saya akan mengenali diri, mengembangkan potensi, dan bertumbuh sedikit demi sedikit."`,
+          buatRPLSMP7S1(
+            'Kenali Dirimu, Temukan Potensimu','Pribadi dan Belajar',
+            'pengenalan diri dan pengembangan potensi',
+            'Siswa mampu menjelaskan makna potensi dan menyebutkan petunjuk potensi diri.',
+            'Siswa menerima keunikan dirinya dan menghargai perbedaan potensi teman.',
+            'Siswa mampu mengidentifikasi minimal tiga petunjuk potensi dan menentukan satu langkah pengembangan.',
+            'membedah kasus Raka, mengisi Peta Potensiku, dan memberikan umpan balik positif kepada teman.',
+            'Siswa yang masih bingung diarahkan mengeksplorasi pengalaman, minat, dan kekuatan melalui percakapan individual; siswa yang sudah menemukan potensi diarahkan mencoba pengalaman nyata.',
+            ''
+          )
+        );
+
+        /* =========================
+           3. IDENTITAS DIRI
+           ========================= */
+        const mSMP7_03 = buatMateriSMP7S1(
+          703,'Aku dan Identitasku: Mengenal Diri Lebih Dalam','Pribadi',
+          `🎮 "3 Hal Tentang Aku"
+        Tuliskan satu hal yang disukai, satu hal yang cukup dikuasai, dan satu hal unik tentang diri.`,
+          `💬 Apa yang membuatmu berbeda dari teman? Pernahkah kamu mengikuti sesuatu hanya karena teman? Apakah berbeda selalu berarti buruk?`,
+          `MATERI BERMAKNA — IDENTITAS DIRI
+
+        Identitas diri adalah pemahaman tentang siapa kita, termasuk karakter, nilai, minat, pengalaman, kebiasaan, dan hal yang penting bagi kita.
+
+        Identitas bukan hanya nama, umur, atau kelas. Identitas juga terlihat dari cara kita memperlakukan orang lain, menghadapi masalah, mengambil keputusan, dan menentukan nilai yang ingin kita pegang.
+
+        Mengenal diri adalah proses. Kita dapat menemukan sisi diri yang baru ketika mencoba pengalaman baru.
+
+        Jangan membangun identitas hanya dari label orang lain. "Saya gagal sekali" tidak sama dengan "saya orang gagal". "Saya belum berani tampil" juga tidak berarti "saya tidak akan pernah bisa tampil".
+
+        Menjadi diri sendiri bukan berarti menolak teman. Kita dapat berteman, bekerja sama, dan tetap memiliki pilihan serta nilai diri sendiri.`,
+          `LKPD — "PETA IDENTITASKU"
+
+        A. Enam Kotak Aku:
+        1. Aku suka...
+        2. Aku cukup mampu dalam...
+        3. Aku sedang belajar...
+        4. Orang lain mengenalku sebagai...
+        5. Nilai yang penting bagiku...
+        6. Aku ingin menjadi pribadi yang...
+
+        B. STUDI KASUS
+        Dina senang menggambar dan desain, tetapi mengikuti semua kegiatan teman karena takut dianggap tidak keren.
+
+        Pertanyaan:
+        1. Apa masalah Dina?
+        2. Mengapa ia mulai kehilangan kepercayaan pada dirinya?
+        3. Apakah mengikuti teman selalu salah?
+        4. Bagaimana Dina tetap berteman tanpa kehilangan dirinya?
+        5. Pelajaran apa yang dapat kamu ambil?`,
+          `REFLEKSI — AKU DAN IDENTITASKU
+
+        1. Hal baru yang saya sadari tentang diri saya...
+        2. Sisi positif yang kurang saya hargai...
+        3. Saya paling menjadi diri sendiri ketika...
+        4. Nilai yang ingin saya pegang...
+        5. Kebiasaan yang ingin saya ubah...
+        6. Saya ingin berkembang menjadi pribadi yang...
+        7. Langkah kecil saya...`,
+          buatRPLSMP7S1(
+            'Aku dan Identitasku: Mengenal Diri Lebih Dalam','Pribadi',
+            'pengenalan identitas dan karakter diri',
+            'Siswa mampu menjelaskan unsur identitas diri dan mengenali karakter, minat, serta nilai yang penting baginya.',
+            'Siswa menerima keunikan dirinya dan menghargai perbedaan identitas teman.',
+            'Siswa mampu menyusun gambaran positif tentang dirinya dan memilih satu karakter yang ingin dikembangkan.',
+            'mengisi Peta Identitasku dan menganalisis kasus Dina.',
+            'Siswa yang masih kesulitan diarahkan melakukan refleksi bertahap; siswa yang menunjukkan kebutuhan pendampingan dapat ditindaklanjuti secara individual.',
+            ''
+          )
+        );
+
+        /* =========================
+           4. LINGKUNGAN SEKOLAH
+           ========================= */
+        const mSMP7_04 = buatMateriSMP7S1(
+          704,'Mengenal Guru, Teman, dan Warga Sekolah','Sosial',
+          `🎮 "Siapa Aku di Sekolah?"
+        Siswa menyebutkan satu peran yang dapat dilakukan untuk membuat lingkungan sekolah menjadi lebih nyaman.`,
+          `💬 Siapa saja yang membantu kita di sekolah? Apa yang terjadi jika kita hanya mengenal teman sekelas tetapi tidak menghargai warga sekolah lainnya?`,
+          `MATERI BERMAKNA — MENGENAL WARGA SEKOLAH
+
+        Sekolah adalah komunitas. Di dalamnya ada siswa, guru, wali kelas, tenaga kependidikan, petugas kebersihan, petugas keamanan, pengelola perpustakaan, dan warga sekolah lainnya.
+
+        Setiap orang memiliki peran. Menghargai warga sekolah berarti menggunakan bahasa yang sopan, memahami aturan, menjaga fasilitas, meminta bantuan dengan baik, dan mengucapkan terima kasih.
+
+        Mengenal bukan berarti harus dekat secara pribadi dengan semua orang. Yang penting adalah mampu membangun interaksi yang sopan, aman, dan saling menghargai.
+
+        Budaya sekolah yang nyaman terbentuk dari kebiasaan kecil yang dilakukan bersama.`,
+          `LKPD — "PETA WARGA SEKOLAH"
+
+        A. Kelompokkan peran:
+        Guru — Wali Kelas — Tenaga Kependidikan — Petugas Kebersihan — Keamanan — Teman Sebaya.
+
+        B. STUDI KASUS
+        Seorang siswa membuang sampah sembarangan lalu marah ketika diingatkan petugas kebersihan.
+
+        Pertanyaan:
+        1. Apa yang keliru dari perilaku siswa?
+        2. Mengapa semua pekerjaan di sekolah perlu dihargai?
+        3. Bagaimana cara merespons teguran dengan baik?
+        4. Apa tindakan yang dapat dilakukan untuk menjaga sekolah?
+
+        C. AKSI KECIL
+        Tuliskan tiga tindakan penghargaan yang akan kamu lakukan minggu ini.`,
+          `REFLEKSI — AKU BAGIAN DARI SEKOLAH
+
+        1. Warga sekolah yang paling banyak membantu saya adalah...
+        2. Cara saya menunjukkan penghargaan kepada mereka...
+        3. Kebiasaan saya yang perlu diperbaiki...
+        4. Satu kontribusi kecil yang akan saya lakukan...
+        5. Mengapa sekolah membutuhkan kerja sama semua orang?`,
+          buatRPLSMP7S1(
+            'Mengenal Guru, Teman, dan Warga Sekolah','Sosial',
+            'interaksi positif dan budaya saling menghargai di sekolah',
+            'Siswa mampu mengenali peran berbagai warga sekolah dan menjelaskan pentingnya saling menghargai.',
+            'Siswa menunjukkan sikap menghargai pekerjaan dan kontribusi orang lain.',
+            'Siswa mampu memilih dan mempraktikkan perilaku sopan serta kontribusi positif di sekolah.',
+            'membuat Peta Warga Sekolah dan menganalisis kasus penghargaan terhadap warga sekolah.',
+            'Siswa yang membutuhkan dukungan sosial dapat diarahkan membangun komunikasi dengan wali kelas/guru BK dan dilatih keterampilan interaksi sederhana.',
+            ''
+          )
+        );
+
+        /* =========================
+           5. TEMAN BARU
+           ========================= */
+        const mSMP7_05 = buatMateriSMP7S1(
+          705,'Aku dan Teman Baru: Membangun Pertemanan Positif','Sosial',
+          `🎮 "Temukan Kesamaan"
+        Berpasangan dan temukan tiga kesamaan yang tidak menyangkut hal pribadi sensitif: hobi, makanan, kegiatan sekolah, atau cara belajar.`,
+          `💬 Apa yang membuat seseorang nyaman menjadi teman kita? Apakah teman baik harus selalu memiliki pendapat yang sama?`,
+          `MATERI BERMAKNA — PERTEMANAN POSITIF
+
+        Pertemanan sehat dibangun dari rasa aman, saling menghargai, komunikasi, batasan yang sehat, dan kemampuan menerima perbedaan.
+
+        Ciri pertemanan positif:
+        • dapat menjadi diri sendiri;
+        • saling menghargai;
+        • tidak memaksa;
+        • tidak mempermalukan;
+        • dapat mengatakan tidak;
+        • mendukung hal yang baik;
+        • menyelesaikan perbedaan dengan komunikasi.
+
+        Teman baik tidak harus selalu setuju. Perbedaan dapat dibicarakan tanpa merendahkan.
+
+        Jika seseorang terus menekan, mengancam, mempermalukan, atau membuat kita takut, kita perlu mencari bantuan dari orang dewasa yang dipercaya.`,
+          `LKPD — "TEMAN SEHAT, TEMAN AMAN"
+
+        A. STUDI KASUS
+        Bimo diajak kelompoknya menertawakan teman baru karena cara bicaranya berbeda. Bimo tidak nyaman tetapi takut kehilangan teman.
+
+        Pertanyaan:
+        1. Apa konflik yang dialami Bimo?
+        2. Nilai apa yang seharusnya dipertahankan?
+        3. Kalimat apa yang dapat Bimo gunakan untuk menolak ajakan?
+        4. Siapa yang dapat dimintai bantuan?
+        5. Bagaimana kelompok dapat membuat teman baru merasa aman?
+
+        B. CHECKLIST
+        Teman yang sehat biasanya: menghargai / memaksa / mendukung / mempermalukan / mendengarkan / mengancam.`,
+          `REFLEKSI — PERTEMANANKU
+
+        1. Saya merasa nyaman berteman ketika...
+        2. Sikap teman yang saya hargai...
+        3. Sikap saya yang ingin diperbaiki...
+        4. Bagaimana saya menunjukkan bahwa teman aman bersama saya?
+        5. Jika mengalami tekanan dari teman, saya akan...
+        6. Komitmen saya dalam membangun pertemanan positif...`,
+          buatRPLSMP7S1(
+            'Aku dan Teman Baru: Membangun Pertemanan Positif','Sosial',
+            'pertemanan sehat dan komunikasi yang menghargai',
+            'Siswa mampu menyebutkan ciri pertemanan positif dan mengenali perilaku yang membuat relasi tidak aman.',
+            'Siswa menghargai perbedaan dan memahami hak untuk memiliki batasan yang sehat.',
+            'Siswa mampu mempraktikkan cara menyampaikan penolakan secara sopan dan mencari bantuan ketika menghadapi tekanan sosial.',
+            'menganalisis kasus Bimo, menyusun respons penolakan, dan mengidentifikasi ciri pertemanan sehat.',
+            'Siswa yang mengalami masalah relasi dapat diberi ruang konsultasi individual/kelompok dan diarahkan kepada orang dewasa terpercaya.',
+            ''
+          )
+        );
+
+        /* =========================
+           6. STOP BULLYING
+           ========================= */
+        const mSMP7_06 = buatMateriSMP7S1(
+          706,'STOP Bullying: Jadilah Teman yang Aman','Sosial',
+          `🎮 "Aman atau Tidak Aman?"
+        Guru membacakan beberapa perilaku. Siswa mengangkat kartu/gerakan untuk menunjukkan apakah perilaku tersebut membuat lingkungan aman atau tidak aman.`,
+          `💬 Apa bedanya bercanda dengan menyakiti? Mengapa seseorang kadang diam ketika melihat temannya diperlakukan tidak baik?`,
+          `MATERI BERMAKNA — STOP BULLYING
+
+        Bullying adalah perilaku menyakiti atau merendahkan orang lain yang dilakukan secara berulang atau melibatkan ketimpangan kekuatan/posisi. Bentuknya dapat berupa fisik, verbal, sosial/relasional, maupun melalui ruang digital.
+
+        Bercanda tidak otomatis menjadi aman. Jika seseorang merasa tertekan, dipermalukan, takut, atau terus menjadi sasaran, situasinya perlu diperhatikan.
+
+        Peran siswa:
+        1. Jangan ikut menyakiti.
+        2. Jangan menjadi penonton yang memperkuat tindakan.
+        3. Beri dukungan yang aman kepada korban.
+        4. Simpan informasi yang diperlukan jika terjadi di ruang digital.
+        5. Laporkan kepada guru/orang dewasa terpercaya.
+
+        Keselamatan lebih penting daripada membalas.`,
+          `LKPD — "JADI TEMAN YANG AMAN"
+
+        STUDI KASUS
+        Beberapa siswa sering memanggil Ardi dengan julukan yang tidak ia sukai. Ketika Ardi meminta berhenti, mereka mengatakan, "Kan cuma bercanda."
+
+        Pertanyaan:
+        1. Apa masalah dalam kasus tersebut?
+        2. Mengapa kalimat "cuma bercanda" tidak otomatis membuat perilaku menjadi benar?
+        3. Apa yang dapat dilakukan Ardi?
+        4. Apa yang seharusnya dilakukan teman yang melihat?
+        5. Kepada siapa siswa dapat meminta bantuan?
+
+        AKSI KELOMPOK
+        Buat 5 aturan "Kelas Aman dan Bebas Bullying".`,
+          `REFLEKSI — MENJADI TEMAN YANG AMAN
+
+        1. Perilaku apa yang dapat membuat teman merasa tidak aman?
+        2. Bagaimana saya dapat menunjukkan dukungan kepada teman?
+        3. Jika melihat tindakan yang menyakiti teman, saya akan...
+        4. Orang dewasa yang dapat saya percaya untuk meminta bantuan adalah...
+        5. Komitmen saya untuk membuat kelas lebih aman...`,
+          buatRPLSMP7S1(
+            'STOP Bullying: Jadilah Teman yang Aman','Sosial',
+            'pencegahan bullying dan membangun lingkungan yang aman',
+            'Siswa mampu mengenali bentuk bullying dan membedakannya dari interaksi yang sehat.',
+            'Siswa menunjukkan kepedulian terhadap keamanan dan martabat teman.',
+            'Siswa mampu memilih tindakan aman: tidak ikut menyakiti, mendukung, dan melapor kepada orang dewasa terpercaya.',
+            'menganalisis kasus Ardi dan menyusun aturan Kelas Aman.',
+            'Jika siswa mengungkap pengalaman bullying, guru BK menindaklanjuti sesuai prosedur sekolah dan memastikan keselamatan siswa; tidak meminta siswa membuka pengalaman sensitif di depan kelas.',
+            ''
+          )
+        );
+
+        /* =========================
+           7. PERCAYA DIRI
+           ========================= */
+        const mSMP7_07 = buatMateriSMP7S1(
+          707,'Berani Percaya Diri di Lingkungan Baru','Pribadi',
+          `🎮 "Berani Coba"
+        Siswa memilih tantangan ringan: memperkenalkan diri, menyampaikan satu pendapat, atau memberi apresiasi kepada teman.`,
+          `💬 Kapan kamu merasa kurang percaya diri? Apakah percaya diri berarti tidak pernah takut?`,
+          `MATERI BERMAKNA — PERCAYA DIRI
+
+        Percaya diri bukan berarti selalu berani dan tidak pernah gugup. Percaya diri adalah keyakinan bahwa kita dapat mencoba, belajar, dan menghadapi situasi secara bertahap.
+
+        Rasa gugup adalah hal yang dapat terjadi. Kita dapat mengelolanya dengan persiapan, latihan, napas tenang, berbicara perlahan, dan memusatkan perhatian pada pesan yang ingin disampaikan.
+
+        Rumus sederhana:
+        KENALI → SIAPKAN → COBA → EVALUASI.
+
+        Hindari membangun percaya diri dengan merendahkan orang lain. Percaya diri yang sehat tetap menghargai orang lain.`,
+          `LKPD — "TANTANGAN BERANIKU"
+
+        STUDI KASUS
+        Fajar ingin bertanya kepada guru tetapi takut ditertawakan. Ia akhirnya diam meskipun belum memahami materi.
+
+        Pertanyaan:
+        1. Apa yang membuat Fajar ragu?
+        2. Apakah takut berarti tidak percaya diri?
+        3. Apa langkah persiapan yang dapat dilakukan?
+        4. Buat satu kalimat pertanyaan yang sopan.
+        5. Tantangan kecil apa yang dapat kamu coba minggu ini?
+
+        TABEL AKSI:
+        Situasi yang ingin saya hadapi | Persiapan | Tindakan kecil | Evaluasi.`,
+          `REFLEKSI — KEBERANIANKU
+
+        1. Situasi yang biasanya membuat saya ragu...
+        2. Hal yang sebenarnya saya takutkan...
+        3. Kekuatan yang saya miliki untuk menghadapinya...
+        4. Tantangan kecil yang berani saya coba...
+        5. Apa yang akan saya katakan kepada diri sendiri ketika gagal?
+        6. Komitmen saya...`,
+          buatRPLSMP7S1(
+            'Berani Percaya Diri di Lingkungan Baru','Pribadi',
+            'percaya diri yang sehat dan keberanian mencoba',
+            'Siswa mampu menjelaskan makna percaya diri dan membedakannya dari sikap sombong.',
+            'Siswa menerima rasa gugup sebagai pengalaman yang dapat dikelola.',
+            'Siswa mampu menentukan satu tantangan kecil dan langkah persiapan untuk mencobanya.',
+            'menganalisis kasus Fajar dan menyusun Tantangan Beraniku.',
+            'Siswa yang sangat menghindari situasi sosial dapat diberi tantangan bertahap dan dukungan individual sesuai kebutuhan.',
+            ''
+          )
+        );
+
+        /* =========================
+           8. BELAJAR EFEKTIF
+           ========================= */
+        const mSMP7_08 = buatMateriSMP7S1(
+          708,'Belajar Efektif: Temukan Cara Belajar yang Cocok','Belajar',
+          `🎮 "Fokus atau Terdistraksi?"
+        Guru menyebutkan aktivitas belajar. Siswa menentukan apakah membantu fokus atau mengganggu fokus dan menjelaskan alasannya.`,
+          `💬 Pernah belajar lama tetapi hasilnya sedikit? Apa yang mungkin membuat belajar kurang efektif?`,
+          `MATERI BERMAKNA — BELAJAR EFEKTIF
+
+        Belajar efektif bukan berarti belajar selama mungkin. Belajar efektif berarti menggunakan waktu dan strategi yang membantu kita memahami, mengingat, dan menggunakan pengetahuan.
+
+        Beberapa strategi:
+        • tentukan tujuan belajar;
+        • pecah tugas besar menjadi bagian kecil;
+        • belajar dalam sesi fokus;
+        • gunakan latihan mengingat kembali;
+        • buat contoh dengan kata sendiri;
+        • kurangi distraksi;
+        • istirahat secukupnya;
+        • evaluasi strategi.
+
+        Setiap siswa dapat menemukan strategi yang berbeda. Yang penting adalah mencoba, melihat hasil, lalu memperbaiki cara belajar.`,
+          `LKPD — "BEDAH KEBIASAAN BELAJARKU"
+
+        STUDI KASUS
+        Nadia belajar sambil membuka media sosial. Ia merasa sudah belajar dua jam, tetapi ketika diminta menjelaskan materi, ia masih bingung.
+
+        Pertanyaan:
+        1. Apa masalah utama Nadia?
+        2. Apa distraksi yang mungkin terjadi?
+        3. Bagaimana mengubah cara belajar Nadia?
+        4. Buat rencana belajar 30 menit yang realistis.
+        5. Bagaimana Nadia mengetahui apakah strateginya berhasil?
+
+        TANTANGAN:
+        Pilih satu strategi belajar baru dan coba selama beberapa hari.`,
+          `REFLEKSI — BELAJARKU
+
+        1. Cara belajar yang selama ini paling membantu saya...
+        2. Distraksi terbesar saya...
+        3. Strategi yang ingin saya coba...
+        4. Bagaimana saya akan mengukur keberhasilannya?
+        5. Jika strategi belum berhasil, apa yang akan saya ubah?
+        6. Komitmen belajar saya...`,
+          buatRPLSMP7S1(
+            'Belajar Efektif: Temukan Cara Belajar yang Cocok','Belajar',
+            'strategi belajar efektif dan pengelolaan fokus',
+            'Siswa mampu menjelaskan ciri belajar efektif dan mengenali faktor yang membantu atau mengganggu fokus.',
+            'Siswa memahami bahwa strategi belajar dapat berbeda dan dapat diperbaiki melalui pengalaman.',
+            'Siswa mampu menyusun dan mencoba satu strategi belajar yang realistis.',
+            'menganalisis kebiasaan Nadia dan membuat rencana belajar 30 menit.',
+            'Siswa yang mengalami kesulitan belajar berkelanjutan dapat diarahkan berdiskusi dengan guru BK, guru mata pelajaran, dan orang tua.',
+            ''
+          )
+        );
+
+        /* =========================
+           9. GAYA BELAJAR
+           ========================= */
+        const mSMP7_09 = buatMateriSMP7S1(
+          709,'Kenali Gaya Belajarmu, Raih Prestasimu','Belajar',
+          `🎮 "Cara Favoritku"
+        Siswa memilih cara yang paling sering membantu memahami sesuatu: melihat contoh, mendengar penjelasan, membaca, mencoba langsung, atau berdiskusi.`,
+          `💬 Apakah semua orang memahami pelajaran dengan cara yang sama? Apa yang terjadi jika satu cara belajar tidak cocok untuk kita?`,
+          `MATERI BERMAKNA — STRATEGI BELAJAR YANG BERAGAM
+
+        Siswa memiliki preferensi dan pengalaman belajar yang beragam. Namun, kita perlu berhati-hati agar tidak menganggap seseorang hanya dapat belajar melalui satu "gaya" yang kaku.
+
+        Lebih bermanfaat jika siswa mengenali strategi yang membantu pada tugas tertentu:
+        • visual: gunakan diagram, warna, peta konsep, atau contoh;
+        • verbal/auditori: menjelaskan dengan kata-kata, berdiskusi, atau mendengar penjelasan;
+        • membaca/menulis: membuat ringkasan dan pertanyaan;
+        • praktik: mencoba, melakukan simulasi, atau latihan.
+
+        Strategi dapat dikombinasikan. Tujuan akhirnya bukan menemukan label, tetapi menemukan cara belajar yang membantu.`,
+          `LKPD — "EKSPERIMEN STRATEGI BELAJAR"
+
+        STUDI KASUS
+        Dito merasa dirinya "bukan anak yang pintar" karena tidak memahami materi hanya dari membaca. Setelah mencoba membuat peta konsep dan menjelaskan kembali kepada teman, ia lebih mudah memahami.
+
+        Pertanyaan:
+        1. Apa yang berubah pada cara belajar Dito?
+        2. Mengapa satu cara belajar tidak harus cocok untuk semua tugas?
+        3. Strategi apa yang ingin kamu uji?
+        4. Bagaimana kamu mengukur hasilnya?
+
+        EKSPERIMEN 3 HARI:
+        Materi | Strategi | Hasil yang saya rasakan | Perbaikan.`,
+          `REFLEKSI — STRATEGI BELAJARKU
+
+        1. Strategi yang paling membantu saya untuk tugas tertentu...
+        2. Strategi yang ingin saya uji...
+        3. Kapan saya membutuhkan bantuan orang lain?
+        4. Apa yang saya pelajari dari eksperimen belajar?
+        5. Saya akan memperbaiki cara belajar dengan...`,
+          buatRPLSMP7S1(
+            'Kenali Gaya Belajarmu, Raih Prestasimu','Belajar',
+            'keragaman strategi belajar dan eksperimen cara belajar',
+            'Siswa mampu mengenali beberapa strategi belajar dan memahami bahwa cara belajar dapat dikombinasikan.',
+            'Siswa tidak memberi label kaku pada dirinya dan terbuka mencoba strategi berbeda.',
+            'Siswa mampu memilih dan menguji strategi belajar yang sesuai dengan tugas tertentu.',
+            'menganalisis kasus Dito dan melakukan eksperimen strategi belajar sederhana.',
+            'Siswa yang mengalami kesulitan dapat dibantu mengidentifikasi hambatan spesifik dan strategi yang lebih sesuai bersama guru.',
+            ''
+          )
+        );
+
+        /* =========================
+           10. MANAJEMEN WAKTU
+           ========================= */
+        const mSMP7_10 = buatMateriSMP7S1(
+          710,'Manajemen Waktu: Waktuku Berharga','Belajar',
+          `🎮 "Ke Mana Perginya 24 Jamku?"
+        Siswa memperkirakan penggunaan waktu untuk tidur, sekolah, belajar, perjalanan, bermain, gawai, keluarga, dan kegiatan lain.`,
+          `💬 Apakah semua aktivitas memiliki prioritas yang sama? Apa yang terjadi ketika tugas penting terus ditunda?`,
+          `MATERI BERMAKNA — MANAJEMEN WAKTU
+
+        Manajemen waktu adalah kemampuan mengatur penggunaan waktu berdasarkan prioritas, kebutuhan, dan tanggung jawab.
+
+        Bedakan:
+        • penting;
+        • mendesak;
+        • dapat dijadwalkan;
+        • dapat dikurangi/dihentikan.
+
+        Manajemen waktu bukan mengisi semua menit dengan kegiatan. Istirahat, tidur cukup, makan, dan waktu bersama keluarga juga penting.
+
+        Gunakan formula:
+        CATAT → PRIORITASKAN → JADWALKAN → LAKSANAKAN → EVALUASI.
+
+        Mulailah dari perubahan kecil dan realistis.`,
+          `LKPD — "AUDIT WAKTUKU"
+
+        STUDI KASUS
+        Rafi sering menunda tugas karena bermain gim dan menonton video. Ketika tugas menumpuk, ia tidur terlalu larut dan keesokan harinya sulit fokus.
+
+        Pertanyaan:
+        1. Apa pola masalah Rafi?
+        2. Aktivitas mana yang perlu diatur?
+        3. Mengapa tidur juga perlu menjadi prioritas?
+        4. Buat jadwal satu hari yang lebih seimbang.
+
+        TABEL:
+        Aktivitas | Prioritas | Waktu | Perubahan yang saya lakukan.`,
+          `REFLEKSI — WAKTUKU
+
+        1. Aktivitas yang paling banyak mengambil waktu saya...
+        2. Kebiasaan yang membuat waktu terbuang...
+        3. Prioritas yang perlu saya perbaiki...
+        4. Waktu istirahat yang perlu saya jaga...
+        5. Perubahan kecil selama 7 hari...
+        6. Komitmen saya...`,
+          buatRPLSMP7S1(
+            'Manajemen Waktu: Waktuku Berharga','Belajar',
+            'pengelolaan waktu, prioritas, dan keseimbangan aktivitas',
+            'Siswa mampu menjelaskan makna prioritas dan mengenali penggunaan waktu sehari-hari.',
+            'Siswa memahami pentingnya keseimbangan antara belajar, tanggung jawab, istirahat, dan aktivitas lain.',
+            'Siswa mampu menyusun perubahan kecil untuk mengatur waktu secara lebih realistis.',
+            'menganalisis pola waktu Rafi dan melakukan audit penggunaan waktu.',
+            'Siswa yang terus mengalami kesulitan mengatur tugas dapat diarahkan membuat jadwal sederhana bersama guru BK dan memantau perkembangannya.',
+            ''
+          )
+        );
+
+        /* =========================
+           11. KEBIASAAN POSITIF
+           ========================= */
+        const mSMP7_11 = buatMateriSMP7S1(
+          711,'Membangun Kebiasaan Positif Sejak Dini','Pribadi',
+          `🎮 "Kebiasaan Kecil"
+        Siswa menyebutkan satu kebiasaan kecil yang membantu dirinya menjalani hari dengan lebih baik.`,
+          `💬 Mengapa kita sering tahu apa yang baik tetapi sulit melakukannya secara konsisten?`,
+          `MATERI BERMAKNA — KEBIASAAN POSITIF
+
+        Kebiasaan terbentuk dari tindakan yang dilakukan berulang dalam situasi tertentu. Perubahan tidak harus besar.
+
+        Gunakan pola:
+        PEMICU → TINDAKAN → PENGUAT.
+
+        Contoh:
+        Setelah menaruh tas, siswa langsung merapikan perlengkapan sekolah.
+        Setelah selesai belajar, siswa menyiapkan kebutuhan esok hari.
+
+        Kebiasaan yang baik perlu:
+        • sederhana;
+        • spesifik;
+        • realistis;
+        • dilakukan konsisten;
+        • dievaluasi.
+
+        Jangan berkecil hati jika suatu hari terlewat. Kembali ke kebiasaan pada kesempatan berikutnya.`,
+          `LKPD — "DESAIN KEBIASAANKU"
+
+        STUDI KASUS
+        Salsa ingin lebih rajin membaca, tetapi membuat target terlalu besar sehingga hanya bertahan dua hari.
+
+        Pertanyaan:
+        1. Mengapa target Salsa sulit dipertahankan?
+        2. Bagaimana membuat target lebih kecil?
+        3. Apa pemicu yang dapat digunakan?
+        4. Apa penguat sederhana yang sehat?
+
+        BUAT RENCANA:
+        Kebiasaan | Pemicu | Tindakan kecil | Waktu | Cara mengecek.`,
+          `REFLEKSI — KEBIASAAN BARUKU
+
+        1. Kebiasaan positif yang sudah saya miliki...
+        2. Kebiasaan yang ingin saya bangun...
+        3. Pemicu yang akan saya gunakan...
+        4. Tindakan terkecil yang dapat saya lakukan...
+        5. Jika saya gagal satu hari, saya akan...
+        6. Komitmen 7 hari saya...`,
+          buatRPLSMP7S1(
+            'Membangun Kebiasaan Positif Sejak Dini','Pribadi',
+            'pembentukan kebiasaan positif dan konsistensi',
+            'Siswa mampu menjelaskan bagaimana kebiasaan terbentuk dan mengidentifikasi kebiasaan yang ingin dikembangkan.',
+            'Siswa memahami bahwa perubahan membutuhkan proses dan tidak harus sempurna setiap hari.',
+            'Siswa mampu membuat satu rencana kebiasaan kecil yang realistis dan dapat dipantau.',
+            'menganalisis kasus Salsa dan mendesain kebiasaan melalui pola Pemicu–Tindakan–Penguat.',
+            'Guru BK membantu siswa membuat target yang realistis dan memantau perkembangan tanpa memberi label negatif ketika target belum tercapai.',
+            ''
+          )
+        );
+
+        /* =========================
+           12. BIJAK BERMEDIA SOSIAL
+           ========================= */
+        const mSMP7_12 = buatMateriSMP7S1(
+          712,'Bijak Bermedia Sosial','Sosial',
+          `🎮 "Kirim atau Tunda?"
+        Guru memberikan contoh situasi pesan/postingan. Siswa menentukan: kirim sekarang, periksa dulu, atau tunda.`,
+          `💬 Apakah sesuatu yang boleh dikatakan secara langsung selalu tepat ditulis di media sosial? Apa akibat dari unggahan yang tidak dipikirkan?`,
+          `MATERI BERMAKNA — BIJAK BERMEDIA SOSIAL
+
+        Media sosial dapat digunakan untuk belajar, berkomunikasi, berkarya, dan membangun jejaring. Namun, setiap unggahan memiliki konsekuensi.
+
+        Gunakan prinsip THINK:
+        T — True: apakah informasinya benar?
+        H — Helpful: apakah bermanfaat?
+        I — Inspiring: apakah memberi dampak positif?
+        N — Necessary: apakah perlu dibagikan?
+        K — Kind: apakah disampaikan dengan baik?
+
+        Sebelum membagikan sesuatu, periksa sumber, pikirkan privasi, pertimbangkan perasaan orang lain, dan ingat bahwa jejak digital dapat bertahan.
+
+        Jangan membagikan data pribadi, foto, atau informasi orang lain tanpa pertimbangan dan izin yang sesuai.`,
+          `LKPD — "AUDIT UNGGAHANKU"
+
+        STUDI KASUS
+        Naya menerima foto temannya yang sedang melakukan kesalahan. Temannya mengajak mengunggah foto tersebut ke grup agar semua orang tertawa.
+
+        Pertanyaan:
+        1. Apa risiko tindakan tersebut?
+        2. Bagaimana menggunakan prinsip THINK?
+        3. Apa respons yang dapat Naya berikan kepada temannya?
+        4. Jika sudah terlanjur menyebar, apa langkah aman yang dapat dilakukan?
+        5. Kepada siapa siswa dapat meminta bantuan jika menghadapi masalah digital?
+
+        AKTIVITAS:
+        Buat 5 aturan pribadi sebelum mengunggah atau meneruskan sesuatu.`,
+          `REFLEKSI — JEJAK DIGITALKU
+
+        1. Kebiasaan digital yang sudah baik...
+        2. Kebiasaan yang perlu diperbaiki...
+        3. Prinsip THINK yang paling perlu saya ingat...
+        4. Apa yang akan saya lakukan sebelum meneruskan informasi?
+        5. Bagaimana saya menjaga privasi diri dan orang lain?
+        6. Komitmen digital saya...`,
+          buatRPLSMP7S1(
+            'Bijak Bermedia Sosial','Sosial',
+            'literasi digital, etika komunikasi, dan keamanan diri',
+            'Siswa mampu menjelaskan manfaat dan risiko media sosial serta menggunakan prinsip THINK sebelum membagikan sesuatu.',
+            'Siswa memahami pentingnya privasi, jejak digital, dan menghargai orang lain di ruang digital.',
+            'Siswa mampu menganalisis situasi digital dan menentukan tindakan yang lebih aman dan bertanggung jawab.',
+            'menganalisis kasus Naya, menggunakan prinsip THINK, dan membuat aturan pribadi bermedia sosial.',
+            'Jika siswa menghadapi masalah digital seperti ancaman, perundungan, atau penyebaran informasi pribadi, arahkan untuk meminta bantuan orang dewasa terpercaya dan mengikuti prosedur sekolah/platform yang sesuai.',
+            ''
+          )
+        );
+
+        /* ================================================================
+           DATABASE SMP VII SEMESTER 1 — VERSI LENGKAP
+           ================================================================ */
         const smp7s1Data = [
-            {
-                id: 701,
-                judul: materiMengelolaEmosi.judul,
-                bidang: materiMengelolaEmosi.bidang,
-                kelas: materiMengelolaEmosi.kelas,
-                semester: 1,
-                ice: materiMengelolaEmosi.ice,
-                apersepsi: materiMengelolaEmosi.apersepsi,
-                diskusi: materiMengelolaEmosi.diskusi,
-                konten: materiMengelolaEmosi.konten,
-                rpl: materiMengelolaEmosi.rpl,
-                refleksi: materiMengelolaEmosi.refleksi,
-                lkpd: materiMengelolaEmosi.lkpd
-            },
-            ...generateDataOtomatis('SMP', 7, 1, 702).slice(0, 11)
+          mSMP7_01, mSMP7_02, mSMP7_03, mSMP7_04,
+          mSMP7_05, mSMP7_06, mSMP7_07, mSMP7_08,
+          mSMP7_09, mSMP7_10, mSMP7_11, mSMP7_12
         ];
-
-        allData['SMP'] = {};
-        allData['SMP']['7'] = { '1': smp7s1Data, '2': generateDataOtomatis('SMP', 7, 2, 713) };
-        allData['SMP']['8'] = { '1': generateDataOtomatis('SMP', 8, 1, 801), '2': generateDataOtomatis('SMP', 8, 2, 813) };
-        allData['SMP']['9'] = { '1': generateDataOtomatis('SMP', 9, 1, 901), '2': generateDataOtomatis('SMP', 9, 2, 913) };
-
-        allData['SMA'] = {};
-        allData['SMA']['10'] = { '1': generateDataOtomatis('SMA', 10, 1, 1001), '2': generateDataOtomatis('SMA', 10, 2,
-                1013) };
-        allData['SMA']['11'] = { '1': generateDataOtomatis('SMA', 11, 1, 1101), '2': generateDataOtomatis('SMA', 11, 2,
-                1113) };
-        allData['SMA']['12'] = { '1': generateDataOtomatis('SMA', 12, 1, 1201), '2': generateDataOtomatis('SMA', 12, 2,
-                1213) };
-
-        allData['SMK'] = {};
-        allData['SMK']['10'] = { '1': generateDataOtomatis('SMK', 10, 1, 2001), '2': generateDataOtomatis('SMK', 10, 2,
-                2013) };
-        allData['SMK']['11'] = { '1': generateDataOtomatis('SMK', 11, 1, 2101), '2': generateDataOtomatis('SMK', 11, 2,
-                2113) };
-        allData['SMK']['12'] = { '1': generateDataOtomatis('SMK', 12, 1, 2201), '2': generateDataOtomatis('SMK', 12, 2,
-                2213) };
 
         // ================================================================
         // DOM ELEMENTS
@@ -795,7 +1375,7 @@
                             </div>
                         </div>
                         <div class="refleksi-footer">
-                            <span>© NaFaS BK</span>
+                            <span>© PRO DIGITAL GURU BK</span>
                             <span>1 Lembar</span>
                         </div>
                     </div>
@@ -947,7 +1527,7 @@
                         <div><strong>Tanggal :</strong> <span class="garis"></span></div>
                     </div>
                     <div class="content">${content}</div>
-                    <div class="footer">© NaFaS BK - 1 Lembar</div>
+                    <div class="footer">© PRO DIGITAL GURU BK - 1 Lembar</div>
                     <script>window.onload=function(){window.print();}<\/script>
                 </body>
                 </html>
@@ -986,7 +1566,7 @@
                         <div><strong>Tanggal :</strong> <span class="garis"></span></div>
                     </div>
                     <div class="content">${m.refleksi}</div>
-                    <div class="footer">© NaFaS BK - 1 Lembar</div>
+                    <div class="footer">© PRO DIGITAL GURU BK - 1 Lembar</div>
                     <script>window.onload=function(){ window.print(); }<\/script>
                 </body>
                 </html>
@@ -1010,7 +1590,7 @@
                 <body>
                     <h1>📘 NaFaS BK - Laporan</h1>
                     <pre>${content}</pre>
-                    <div class="footer">© NaFaS BK</div>
+                    <div class="footer">© PRO DIGITAL GURU BK</div>
                     <script>window.onload=function(){window.print();}<\/script>
                 </body>
                 </html>
@@ -1033,7 +1613,7 @@
         </style>
         </head>
         <body><h1>📘 NaFaS BK</h1><pre>${content}</pre>
-        <div class="footer">© NaFaS BK</div>
+        <div class="footer">© PRO DIGITAL GURU BK</div>
         </body></html>`;
             const blob = new Blob([htmlContent], { type: 'application/msword' });
             const url = URL.createObjectURL(blob);
@@ -1101,7 +1681,7 @@
                 .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:12px;color:#718096;}
                 </style></head>
                 <body><h1>📘 NaFaS BK - Materi</h1><pre>${content}</pre>
-                <div class="footer">© NaFaS BK</div>
+                <div class="footer">© PRO DIGITAL GURU BK</div>
                 <script>window.onload=function(){window.print();}<\/script>
                 </body></html>
             `);
@@ -1121,7 +1701,7 @@
                 .footer{margin-top:30px;border-top:2px solid #1A2A6A;padding-top:10px;text-align:center;font-size:12px;color:#718096;}
                 </style></head>
                 <body><h1>📘 NaFaS BK - RPL</h1><pre>${rplContent.textContent}</pre>
-                <div class="footer">© NaFaS BK</div>
+                <div class="footer">© PRO DIGITAL GURU BK</div>
                 <script>window.onload=function(){window.print();}<\/script>
                 </body></html>
             `);
