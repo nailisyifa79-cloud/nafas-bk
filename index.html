@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NaFaS BK - Bimbingan Klasikal Lengkap SMP, SMA, SMK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         * {
             margin: 0;
@@ -365,7 +367,6 @@
             color: #92400E;
         }
 
-        /* ===== LKPD MODE HP ===== */
         .lkpd-hp-box {
             background: #EBF5FB;
             border-radius: 12px;
@@ -444,7 +445,6 @@
             transform: scale(1.03);
         }
 
-        /* ===== REFLEKSI CETAK 1 LEMBAR ===== */
         .refleksi-print-wrapper {
             max-width: 100%;
             margin: 0 auto;
@@ -510,7 +510,6 @@
             color: var(--text-light);
         }
 
-        /* ===== LKPD CETAK 1 LEMBAR ===== */
         .lkpd-print-wrapper {
             max-width: 100%;
             margin: 0 auto;
@@ -574,6 +573,122 @@
             justify-content: space-between;
             font-size: 9px;
             color: var(--text-light);
+        }
+
+        .welcome-banner {
+            max-width: 1300px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, rgba(243, 229, 245, 0.9), rgba(225, 190, 231, 0.7), rgba(255, 248, 225, 0.9));
+            border-radius: 20px;
+            padding: 16px 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.08);
+        }
+        .welcome-banner .welcome-icon {
+            font-size: 2.2rem;
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        .welcome-banner .welcome-text h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 0;
+            line-height: 1.2;
+        }
+        .welcome-banner .welcome-text h2 span {
+            background: linear-gradient(135deg, var(--primary), #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .welcome-banner .welcome-text p {
+            color: var(--primary-light);
+            font-size: 0.95rem;
+            margin: 2px 0 0;
+            font-weight: 500;
+        }
+        .welcome-banner .welcome-text p i {
+            color: #f9d976;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-box {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 25px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        .modal-box h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+        .laporan-area {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .laporan-area pre {
+            white-space: pre-wrap;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-size: 13px;
+        }
+        .refleksi-area {
+            background: #f0fdf4;
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid #bbf7d0;
+            margin-top: 10px;
+        }
+        .refleksi-area textarea {
+            background: #fff;
+            min-height: 80px;
         }
 
         @media print {
@@ -659,132 +774,6 @@
                 font-size: 12px;
             }
         }
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-overlay.active {
-            display: flex;
-        }
-        .modal-box {
-            background: #fff;
-            border-radius: var(--radius);
-            padding: 25px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        .modal-box h3 {
-            color: var(--primary);
-            margin-bottom: 12px;
-        }
-        .modal-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-        .laporan-area {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid #e2e8f0;
-            margin-top: 10px;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-        .laporan-area pre {
-            white-space: pre-wrap;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            font-size: 13px;
-        }
-        .refleksi-area {
-            background: #f0fdf4;
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid #bbf7d0;
-            margin-top: 10px;
-        }
-        .refleksi-area textarea {
-            background: #fff;
-            min-height: 80px;
-        }
-        .link-share-box {
-            background: #ebf5fb;
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid #b8d4e8;
-            margin-top: 10px;
-        }
-        .link-share-box input {
-            background: #fff;
-        }
-
-        /* BANNER SELAMAT DATANG */
-        .welcome-banner {
-            max-width: 1300px;
-            margin: 0 auto 20px;
-            background: linear-gradient(135deg, rgba(243, 229, 245, 0.9), rgba(225, 190, 231, 0.7), rgba(255, 248, 225, 0.9));
-            border-radius: 20px;
-            padding: 16px 28px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(74, 20, 140, 0.08);
-        }
-        .welcome-banner .welcome-icon {
-            font-size: 2.2rem;
-            animation: floatIcon 3s ease-in-out infinite;
-        }
-        @keyframes floatIcon {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-        .welcome-banner .welcome-text h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 0;
-            line-height: 1.2;
-        }
-        .welcome-banner .welcome-text h2 span {
-            background: linear-gradient(135deg, var(--primary), var(--emas-gelap, #f39c12));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .welcome-banner .welcome-text p {
-            color: var(--primary-light);
-            font-size: 0.95rem;
-            margin: 2px 0 0;
-            font-weight: 500;
-        }
-        .welcome-banner .welcome-text p i {
-            color: #f9d976;
-        }
     </style>
 </head>
 <body>
@@ -861,19 +850,20 @@
                     <div class="form-group">
                         <label>🔗 Link Google Form (bagikan ke siswa)</label>
                         <div class="link-box">
-                            <input type="text" id="linkLkpdHp" value="https://forms.google.com/...isi_link_disini" readonly />
+                            <input type="text" id="linkLkpdHp" value="https://docs.google.com/forms/d/e/1FAIpQLSdummy/viewform" readonly />
                             <button class="btn-copy" onclick="copyLinkHp()"><i class="fas fa-copy"></i> Salin</button>
                             <a href="#" id="bukaLinkHp" target="_blank" class="btn-open"><i class="fas fa-external-link-alt"></i> Buka</a>
                             <button class="btn-generate" onclick="generateLinkHp()"><i class="fas fa-sync"></i> Ganti Link</button>
                         </div>
                     </div>
                     <div style="margin-top:10px;padding:10px;background:#fef3c7;border-radius:8px;font-size:12px;color:#92400E;">
-                        <strong>💡 Cara menggunakan:</strong>
+                        <strong>💡 Cara membuat Google Form & menghubungkan ke spreadsheet:</strong>
                         <ol style="margin-left:18px;margin-top:4px;">
-                            <li>Buat Google Form dengan pertanyaan sesuai LKPD</li>
-                            <li>Salin link Google Form dan tempel di atas</li>
-                            <li>Bagikan link ke siswa melalui WhatsApp/Telegram</li>
-                            <li>Hasil otomatis masuk ke spreadsheet Google</li>
+                            <li>Buka <strong>forms.google.com</strong> dan buat form baru dengan pertanyaan sesuai LKPD</li>
+                            <li>Klik <strong>"Respons"</strong> → ikon <strong>Google Sheets (📊)</strong> untuk membuat spreadsheet</li>
+                            <li>Salin link form dari tombol <strong>"Kirim"</strong> → <strong>"Link"</strong></li>
+                            <li>Tempel link di atas dan bagikan ke siswa</li>
+                            <li>Hasil jawaban siswa otomatis masuk ke spreadsheet yang sudah terhubung!</li>
                         </ol>
                     </div>
                 </div>
@@ -893,11 +883,11 @@
                 </div>
             </div>
 
-            <!-- Tab Refleksi - Mode Non-HP (1 Lembar PADAT) -->
+            <!-- Tab Refleksi -->
             <div id="tab-refleksi" class="tab-content">
                 <div style="background:#F0FDF4;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--success);">
                     <h4 style="color:var(--primary);margin-bottom:8px;">📝 Mode Non-HP <span class="mode-badge mode-nonhp">Tanpa HP</span></h4>
-                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar PADAT</strong> untuk menghemat kertas. Siswa bisa mengisi langsung di kertas.</p>
+                    <p style="font-size:13px;color:var(--text-light);">Refleksi dirancang <strong>1 lembar PADAT</strong> untuk menghemat kertas.</p>
                 </div>
                 <div class="refleksi-area" id="refleksiContainer">
                     <p style="color:var(--text-light);text-align:center;padding:10px;">Pilih materi terlebih dahulu untuk melihat refleksi</p>
@@ -916,7 +906,7 @@
             <!-- Tab Laporan -->
             <div id="tab-laporan" class="tab-content">
                 <div style="background:#FEF3C7;padding:14px;border-radius:12px;margin-bottom:12px;border-left:4px solid var(--accent);">
-                    <p style="font-size:13px;color:#92400E;">📊 <strong>Laporan Kegiatan Bimbingan Klasikal</strong><br>Lengkap dengan data materi, jumlah siswa, dan hasil kegiatan.</p>
+                    <p style="font-size:13px;color:#92400E;">📊 <strong>Laporan Kegiatan Bimbingan Klasikal</strong></p>
                 </div>
                 <div class="form-group"><label>Jumlah Siswa Hadir</label><input type="number" id="jumlahSiswa" value="32" min="1" max="40" /></div>
                 <div class="form-group"><label>Catatan Kegiatan</label><textarea id="catatanKegiatan" rows="3" placeholder="Catatan selama kegiatan..."></textarea></div>
@@ -2131,10 +2121,10 @@
             }
 
             // Update link HP
-            const baseUrl = 'https://forms.google.com/';
+            const baseUrl = 'https://docs.google.com/forms/d/e/';
             const linkId = m.id || Math.random().toString(36).substring(2, 8);
-            linkLkpdHp.value = baseUrl + linkId;
-            bukaLinkHp.href = baseUrl + linkId;
+            linkLkpdHp.value = baseUrl + linkId + '/viewform';
+            bukaLinkHp.href = baseUrl + linkId + '/viewform';
 
             // REFLEKSI
             if (m.refleksi) {
@@ -2256,9 +2246,9 @@
         }
 
         function generateLinkHp() {
-            const random = Math.floor(Math.random() * 10000);
-            const baseUrl = 'https://forms.google.com/';
-            const newLink = baseUrl + random;
+            const random = Math.random().toString(36).substring(2, 10);
+            const baseUrl = 'https://docs.google.com/forms/d/e/';
+            const newLink = baseUrl + random + '/viewform';
             linkLkpdHp.value = newLink;
             bukaLinkHp.href = newLink;
             showModal('🔄 Link Baru', 'Link Google Form baru telah dibuat!');
