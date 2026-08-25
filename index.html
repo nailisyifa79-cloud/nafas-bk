@@ -453,7 +453,80 @@
             color: var(--text-light);
         }
 
+        /* ===== LKPD CETAK 1 LEMBAR ===== */
+        .lkpd-print-wrapper {
+            max-width: 100%;
+            margin: 0 auto;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        .lkpd-print-wrapper .lkpd-header {
+            text-align: center;
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-bottom: 6px;
+        }
+        .lkpd-print-wrapper .lkpd-header h3 {
+            color: var(--primary);
+            font-size: 16px;
+            margin: 0;
+        }
+        .lkpd-print-wrapper .lkpd-header p {
+            color: var(--text-light);
+            font-size: 11px;
+            margin: 1px 0;
+        }
+        .lkpd-print-wrapper .lkpd-body .identitas {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 4px 10px;
+            margin-bottom: 6px;
+            font-size: 11px;
+        }
+        .lkpd-print-wrapper .lkpd-body .identitas div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .lkpd-print-wrapper .lkpd-body .identitas .garis {
+            flex: 1;
+            border-bottom: 1px solid #999;
+            min-width: 40px;
+        }
+        .lkpd-print-wrapper .lkpd-body .soal-lkpd {
+            margin: 3px 0;
+            padding: 2px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        .lkpd-print-wrapper .lkpd-body .soal-lkpd .nomor {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 10px;
+        }
+        .lkpd-print-wrapper .lkpd-body .soal-lkpd .jawaban-garis {
+            display: block;
+            border-bottom: 1px solid #ccc;
+            height: 22px;
+            margin-top: 1px;
+        }
+        .lkpd-print-wrapper .lkpd-footer {
+            margin-top: 6px;
+            border-top: 2px solid var(--primary);
+            padding-top: 4px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            color: var(--text-light);
+        }
+
         @media print {
+            .lkpd-print-wrapper {
+                padding: 5px 10px;
+            }
+            .lkpd-print-wrapper .lkpd-body .soal-lkpd .jawaban-garis {
+                height: 24px;
+                border-bottom: 1px solid #aaa;
+            }
             .refleksi-print-wrapper {
                 padding: 5px 10px;
             }
@@ -510,13 +583,6 @@
             .quiz-box {
                 border: 1px solid #ccc;
                 background: #fff;
-            }
-            .refleksi-print-wrapper {
-                max-height: none !important;
-                overflow: visible !important;
-            }
-            .refleksi-print-wrapper .refleksi-body .soal-refleksi .jawaban-garis {
-                height: 24px;
             }
         }
         ::-webkit-scrollbar {
@@ -786,7 +852,7 @@
                     <div class="form-group"><label>LKPD Berbasis Aktivitas</label><textarea id="lkpdText" rows="10" placeholder="LKPD akan muncul otomatis..."></textarea></div>
                     <div class="file-upload"><span style="font-size:24px;">📎</span><p>Upload file LKPD (PDF/DOC/DOCX)</p><input type="file" id="lkpdFile" accept=".pdf,.doc,.docx" /></div>
                     <button class="btn btn-success btn-block mt-10" id="saveLkpdBtn">💾 Simpan LKPD</button>
-                    <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD</button>
+                    <button class="btn btn-primary btn-block mt-10" id="cetakLkpdBtn">🖨️ Cetak LKPD (1 Lembar)</button>
                 </div>
             </div>
 
@@ -907,55 +973,193 @@
 
     <script>
         // ================================================================
-        // DATA MATERI LENGKAP - SEMUA JENJANG DAN KELAS
+        // DATA MATERI LENGKAP - DENGAN MATERI & RPL DARI FILE ANDA
         // ================================================================
 
-        // Fungsi untuk membuat RPL (TANPA GARIS BERLEBIH)
-        function generateRPL(judul, bidang, kelas, durasi) {
-            const fase = kelas.includes('X') ? 'E' : (kelas.includes('XI') ? 'F' : (kelas.includes('XII') ? 'F' : 'D'));
-            return `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        // ========== MATERI KENALI DIRIMU, TEMUKAN POTENSIMU (SMP KELAS 7) ==========
+        const materiKenaliDiri = {
+            id: 701,
+            judul: "Kenali Dirimu, Temukan Potensimu",
+            jenjang: "SMP",
+            kelas: "VII / Fase D",
+            semester: 1,
+            bidang: "Pribadi dan Belajar",
+            durasiDefault: 60,
+            topik: "Kenali Dirimu, Temukan Potensimu: Aku Punya Kekuatan yang Bisa Dikembangkan!",
+            ice: `🎮 "Aku Hebat Karena..." (7 Menit)\nGuru BK meminta siswa berdiri atau duduk melingkar. Siswa bergantian menyebutkan satu hal yang menurut mereka cukup baik dari dirinya, misalnya: "Saya cukup teliti", "Saya mudah bergaul", "Saya suka membantu", "Saya berani tampil", atau "Saya suka mencoba hal baru".\n\nAturan penting: siswa tidak boleh mengejek jawaban teman. Jika ada siswa yang merasa belum menemukan kelebihannya, ia boleh mengatakan, "Saya sedang mencari tahu." Guru BK menegaskan bahwa mengenali diri bukan berarti harus langsung menemukan semua kelebihan. Proses mengenali diri memang membutuhkan waktu dan pengalaman.\n\nPenguatan guru BK: "Setiap orang memiliki potensi. Potensi tidak selalu terlihat seperti nilai tinggi atau kemampuan tampil di depan kelas. Potensi bisa muncul dari cara kita berpikir, bekerja, berinteraksi, menyelesaikan masalah, atau ketekunan kita."`,
+            apersepsi: `💬 "Seberapa Kenal Kamu dengan Dirimu?" (5 Menit)\nGuru BK mengajukan pertanyaan cepat:\n\n1. Apa kegiatan yang membuat kamu lupa waktu karena menikmatinya?\n2. Hal apa yang biasanya orang lain minta bantuan kepadamu?\n3. Dalam situasi apa kamu merasa paling percaya diri?\n4. Apa hal yang ingin kamu kuasai tetapi sampai sekarang belum berkembang?\n5. Jika kamu diberi kesempatan mengikuti satu kegiatan sekolah sesuai kemampuanmu, kegiatan apa yang kamu pilih?\n\nGuru BK menghubungkan jawaban siswa dengan materi: "Jawaban kalian menunjukkan bahwa sebenarnya diri kita memiliki banyak sisi. Tantangannya adalah belajar mengenali pola tersebut agar potensi yang ada tidak hanya menjadi sesuatu yang kita miliki, tetapi dapat dikembangkan menjadi kemampuan yang bermanfaat."`,
+            diskusi: `🗣️ Diskusi Kelompok "Jejak Potensiku" (18 Menit)\nBentuk: diskusi kelompok kecil dilanjutkan pengisian individu. Siswa bekerja dalam kelompok 4-5 orang.\n\nStudi Kasus:\nRaka adalah siswa kelas VII. Nilai akademiknya cukup biasa. Ia sering merasa minder karena beberapa temannya berprestasi dalam lomba akademik. Ketika ada tugas kelompok, Raka justru sering diminta membuat desain presentasi, menyusun tampilan tugas, dan membantu teman menjelaskan ide agar lebih mudah dipahami. Raka menganggap hal itu bukan kemampuan khusus karena ia merasa "cuma membantu". Suatu hari, guru meminta siswa memilih kegiatan untuk sebuah proyek sekolah. Raka bingung karena ia tidak tahu apa kelebihannya. Ia kemudian berkata, "Kayaknya saya tidak punya potensi. Saya tidak sehebat teman-teman saya."\n\nAktivitas 1 - Bedah Kasus:\n1. Apa masalah utama yang dialami Raka?\n2. Petunjuk potensi apa yang sebenarnya terlihat dari perilaku Raka?\n3. Mengapa Raka merasa dirinya tidak memiliki potensi?\n4. Apa kesalahan cara berpikir Raka ketika membandingkan dirinya dengan teman?\n5. Jika kamu menjadi teman Raka, apa yang akan kamu katakan kepadanya?`,
+            materi: `MATERI KENALI DIRIMU, TEMUKAN POTENSIMU
+
+        A. Mengapa Kita Perlu Mengenal Diri?
+        Mengenal diri berarti memahami siapa diri kita secara lebih sadar: apa yang kita sukai, apa yang penting bagi kita, apa yang menjadi kekuatan kita, apa yang masih perlu dilatih, dan bagaimana kita biasanya menghadapi suatu situasi. Mengenal diri bukan berarti memberi label bahwa kita "memang seperti ini dan tidak bisa berubah". Sebaliknya, pengenalan diri menjadi titik awal untuk bertumbuh.
+
+        Siswa yang mengenal dirinya cenderung lebih mudah menentukan pilihan belajar, memilih kegiatan yang sesuai, membangun hubungan yang sehat, serta menetapkan tujuan yang realistis. Sebaliknya, siswa yang belum mengenal dirinya dapat mudah mengikuti pilihan teman, merasa minder ketika membandingkan diri, atau menganggap dirinya tidak memiliki kelebihan hanya karena kelebihannya berbeda dari orang lain.
+
+        B. Potensi Itu Apa?
+        Potensi adalah kemampuan atau kekuatan yang ada dalam diri dan masih dapat dikembangkan. Potensi tidak selalu langsung terlihat sebagai prestasi. Seorang siswa yang belum pernah menjadi juara lomba, misalnya, tetap mungkin memiliki potensi dalam komunikasi, kreativitas, kepemimpinan, ketelitian, kerja sama, pemecahan masalah, atau ketekunan.
+
+        Karena itu, jangan menyamakan potensi hanya dengan nilai akademik. Nilai dapat menjadi salah satu informasi tentang kemampuan belajar, tetapi bukan satu-satunya ukuran tentang siapa diri seseorang dan apa yang dapat ia kembangkan.
+
+        C. Kenali 5 Sumber Petunjuk Potensimu
+        1. Minat -- kegiatan yang membuatmu tertarik dan ingin terus mempelajarinya.
+        2. Kekuatan -- hal yang relatif mudah kamu lakukan atau sering mendapat apresiasi dari orang lain.
+        3. Pengalaman -- kegiatan yang pernah kamu lakukan dan memberi pelajaran tentang kemampuanmu.
+        4. Nilai diri -- hal-hal yang kamu anggap penting, misalnya kejujuran, kepedulian, kreativitas, tanggung jawab, atau keberanian.
+        5. Respons terhadap tantangan -- cara kamu bertindak ketika menghadapi masalah, kegagalan, atau tugas baru.
+
+        D. Potensi Tidak Sama dengan "Sudah Bisa"
+        Potensi adalah modal awal, sedangkan kemampuan berkembang melalui latihan, pengalaman, umpan balik, dan kesempatan. Siswa tidak perlu menunggu sampai merasa hebat untuk mulai mencoba. Justru dengan mencoba, seseorang memperoleh pengalaman yang membantu dirinya semakin memahami kekuatan dan bagian yang perlu dikembangkan.
+
+        E. Hati-Hati Membandingkan Diri
+        Membandingkan diri secara terus-menerus dengan teman dapat membuat kita hanya melihat kekurangan sendiri dan kelebihan orang lain. Setiap orang memiliki pengalaman, kesempatan, minat, kecepatan belajar, dan kondisi yang berbeda. Yang lebih penting adalah membandingkan diri hari ini dengan diri kita sebelumnya: apa yang sudah berkembang dan apa yang ingin diperbaiki.
+
+        F. Formula Sederhana: KENALI - COBA - KEMBANGKAN
+        KENALI: amati minat, kekuatan, pengalaman, nilai diri, dan responsmu terhadap tantangan.
+        COBA: berikan dirimu kesempatan mencoba kegiatan, tugas, peran, atau pengalaman baru yang relevan.
+        KEMBANGKAN: pilih potensi yang ingin dikuatkan, lalu latih secara bertahap, minta umpan balik, dan evaluasi perkembangannya.`,
+            rpl: `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
         LAYANAN BIMBINGAN KLASIKAL
 
         A. SPESIFIKASI
-        Satuan Pendidikan   : 
+        Satuan Pendidikan   : SMP
         Nama Guru           : 
-        Kelas               : ${kelas} / Fase ${fase}
-        Waktu               : ${durasi} menit
-        Materi Layanan      : ${judul}
-        Bidang Bimbingan    : ${bidang}
+        Kelas               : VII / Fase D
+        Waktu               : 60 menit
+        Materi Layanan      : Kenali Dirimu, Temukan Potensimu
+        Bidang Bimbingan    : Pribadi dan Belajar
 
         B. IDENTIFIKASI
-        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
-        2. Karakteristik Materi: Konsep dan penerapan.
-        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis
+        1. Kesiapan Murid:
+           Pengetahuan Awal: Siswa telah memiliki pengalaman mengikuti kegiatan belajar, organisasi, ekstrakurikuler, maupun aktivitas sosial di sekolah. Sebagian siswa sudah mengenali beberapa hal yang disukai, tetapi belum mampu menghubungkannya dengan potensi diri. Sebagian siswa masih menilai dirinya berdasarkan nilai akademik, prestasi, atau perbandingan dengan teman.
+           
+           Kebutuhan: Mengenali minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan sebagai petunjuk potensi. Memahami bahwa potensi berbeda pada setiap orang dan dapat dikembangkan. Mengurangi kebiasaan membandingkan diri secara tidak sehat. Menentukan satu potensi yang ingin dikembangkan dan langkah nyata untuk mengembangkannya.
+
+        2. Karakteristik Materi Layanan:
+           Jenis Pengetahuan: Pengetahuan Esensial: pengertian mengenal diri dan potensi serta pentingnya pengenalan diri. Pengetahuan Aplikatif: mengidentifikasi minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan; menganalisis studi kasus; serta menyusun langkah pengembangan potensi. Pengetahuan Nilai dan Karakter: percaya diri, kemandirian, reflektif, menghargai keunikan diri, terbuka terhadap umpan balik, dan mau bertumbuh.
+
+           Relevansi: sangat relevan karena siswa perlu mengenali kekuatan dan arah pengembangan dirinya dalam belajar, memilih kegiatan, membangun relasi, merencanakan karier, dan mengambil keputusan.
+
+        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis, Kolaborasi, Komunikasi, Kreativitas
 
         C. DESAIN LAYANAN
-        1. Capaian: Murid mampu memahami dan menerapkan.
-        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
-        3. Tujuan: Memahami dan menerapkan.
+        1. Capaian Layanan: Siswa memahami karakteristik dirinya, mampu mengenali potensi melalui minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan, serta mampu menentukan satu langkah nyata untuk mengembangkan potensi secara bertahap.
+
+        2. Topik Layanan Kontekstual: "Kenali Dirimu, Temukan Potensimu: Aku Punya Kekuatan yang Bisa Dikembangkan!"
+
+        3. Tujuan Layanan:
+           a. Pengenalan (C): Siswa mampu menjelaskan makna mengenal diri dan potensi. Siswa mampu menyebutkan sumber petunjuk potensi diri. Siswa mampu membedakan potensi dengan kemampuan yang sudah terlatih.
+           b. Akomodasi (A): Siswa menyadari bahwa setiap individu memiliki kekuatan yang berbeda. Siswa menerima dirinya tanpa harus menyamakan diri dengan teman. Siswa memiliki keyakinan bahwa potensi dapat dikembangkan melalui pengalaman dan latihan.
+           c. Tindakan (P): Siswa mampu mengidentifikasi minimal tiga petunjuk potensi dirinya. Siswa mampu menganalisis studi kasus dan memberikan solusi yang relevan. Siswa mampu memilih satu potensi yang akan dikembangkan dan menyusun langkah pertama yang realistis.
+
+        4. Kerangka Layanan:
+           a. Praktik Pedagogik: Model Experiential Learning. Metode: ice breaking "Aku Hebat Karena...", apersepsi, diskusi kelompok, studi kasus, LKPD "Jejak Potensiku", presentasi singkat, refleksi, dan komitmen.
+           b. Kemitraan Pembelajaran: Guru BK sebagai pendamping proses pengenalan diri dan pengembangan potensi. Teman sebaya sebagai sumber umpan balik positif.
+           c. Lingkungan Pembelajaran: Fisik: kelas yang aman, tidak menghakimi, dan memberi kesempatan siswa menyampaikan kekuatan dirinya. Budaya belajar: menghargai perbedaan, berani mencoba, reflektif, dan tidak mudah memberi label pada diri sendiri.
 
         D. PENGALAMAN BELAJAR
-        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
-        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
-        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
+        1. Kegiatan Awal (10 menit): Guru memberi salam, mengajak berdoa, menanyakan kabar, dan mengondisikan kelas. Guru menyampaikan tujuan layanan dan manfaat mengenal diri. Ice breaking "Aku Hebat Karena...". Apersepsi melalui pertanyaan tentang kegiatan yang disukai, hal yang sering dimintai bantuan, dan situasi ketika siswa merasa percaya diri.
+
+        2. Kegiatan Inti (40 menit):
+           - Memahami: Guru menjelaskan pentingnya mengenal diri dan makna potensi. Guru menjelaskan lima petunjuk potensi: minat, kekuatan, pengalaman, nilai diri, dan respons terhadap tantangan. Guru membahas bahwa potensi tidak sama dengan kemampuan yang sudah mahir. Guru mengenalkan formula KENALI - COBA - KEMBANGKAN.
+           - Mengaplikasi: Siswa dibagi menjadi kelompok 4-5 orang. Guru memberikan studi kasus Raka. Kelompok mengidentifikasi masalah, menemukan petunjuk potensi Raka, menganalisis cara berpikir Raka, dan memberikan saran. Siswa mengerjakan LKPD "Jejak Potensiku". Siswa melakukan aktivitas rekomendasi teman. Beberapa kelompok menyampaikan hasil diskusi.
+           - Merefleksi: Siswa menuliskan potensi yang mulai dikenali. Siswa menuliskan bagian diri yang ingin dikembangkan. Siswa menuliskan satu langkah nyata yang akan dilakukan dalam satu bulan ke depan.
+
+        3. Kegiatan Penutup (10 menit): Siswa bersama guru menyimpulkan bahwa setiap orang memiliki kekuatan yang berbeda dan potensi perlu dikembangkan. Siswa melengkapi kalimat: "Hari ini saya menyadari bahwa ...", "Potensi yang ingin saya kembangkan ...", dan "Langkah pertama saya ...". Guru menyampaikan kata bijak. Layanan diakhiri dengan doa dan salam.
 
         E. ASESMEN
-        1. Asesmen Awal: Tanya jawab
-        2. Asesmen Proses: Observasi
-        3. Asesmen Akhir: LKPD dan Refleksi
+        1. Asesmen Awal: Teknik: ice breaking "Aku Hebat Karena..." dan apersepsi.
+        2. Asesmen Proses: Teknik: observasi partisipasi, kemampuan mendengarkan, kualitas diskusi, kemampuan menemukan petunjuk potensi dalam kasus.
+        3. Asesmen Akhir: Teknik: LKPD "Jejak Potensiku" dan refleksi individu.
 
         INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
-        1. Bangun Pagi
-        2. Beribadah
-        3. Berolahraga
-        4. Makan Sehat
-        5. Gemar Belajar
-        6. Bermasyarakat
-        7. Tidur Cukup`;
-        }
+        1. Bangun Pagi: Mendorong siswa memulai aktivitas secara teratur dan menyiapkan waktu untuk refleksi.
+        2. Beribadah: Menguatkan rasa syukur atas keunikan diri dan menggunakan nilai-nilai positif sebagai arah pengembangan diri.
+        3. Berolahraga: Mengingatkan siswa bahwa potensi juga dapat ditemukan melalui aktivitas fisik.
+        4. Makan Sehat & Bergizi: Menjaga tubuh membantu kesiapan belajar dan eksplorasi diri.
+        5. Gemar Belajar: Mendorong siswa mencoba pengalaman baru, mencari pengetahuan, berlatih, dan menerima umpan balik.
+        6. Bermasyarakat: Mengembangkan kemampuan mengenali kekuatan orang lain, memberi apresiasi, dan bekerja sama.
+        7. Tidur Lebih Awal/Cukup: Mendorong keseimbangan hidup agar siswa memiliki energi untuk belajar dan mengembangkan potensi.`,
+            refleksi: `REFLEKSI DIRI (1 LEMBAR PADAT)
+        Kenali Dirimu, Temukan Potensimu
 
-        // Fungsi untuk generate materi dengan konten berbobot
-        function generateMateri(judulList, bidangList, studiKasusList, prefix, kelas, semester) {
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        1. Hal baru yang saya sadari tentang diri saya hari ini adalah:
+        ___________________________________________________
+
+        2. Satu potensi yang mulai saya kenali adalah:
+        ___________________________________________________
+
+        3. Selama ini saya sering menganggap diri saya ..., tetapi sekarang saya mulai memahami bahwa ...
+        ___________________________________________________
+
+        4. Potensi yang ingin saya kembangkan dalam satu bulan ke depan adalah ...
+        ___________________________________________________
+
+        5. Langkah pertama yang akan saya lakukan adalah ...
+        ___________________________________________________
+
+        Kalimat penutup: "Saya tidak harus menjadi seperti orang lain. Saya akan mengenali diri saya, mengembangkan potensi saya, dan bertumbuh sedikit demi sedikit."
+
+        Tanda tangan siswa: _______________`,
+            lkpd: `LKPD "Jejak Potensiku" (1 LEMBAR)
+        Kenali Dirimu, Temukan Potensimu
+
+        Nama : ___________  Kelas : ___________  Tanggal : ___________
+
+        A. STUDI KASUS - Raka
+        Raka adalah siswa kelas VII. Nilai akademiknya cukup biasa. Ia sering merasa minder karena beberapa temannya berprestasi dalam lomba akademik. Ketika ada tugas kelompok, Raka justru sering diminta membuat desain presentasi, menyusun tampilan tugas, dan membantu teman menjelaskan ide agar lebih mudah dipahami. Raka menganggap hal itu bukan kemampuan khusus karena ia merasa "cuma membantu". Suatu hari, guru meminta siswa memilih kegiatan untuk sebuah proyek sekolah. Raka bingung karena ia tidak tahu apa kelebihannya. Ia berkata, "Kayaknya saya tidak punya potensi. Saya tidak sehebat teman-teman saya."
+
+        B. BEDAH KASUS (Diskusi Kelompok)
+        1. Masalah utama Raka: ___________________________________________
+        2. Petunjuk potensi Raka: _________________________________________
+        3. Mengapa Raka merasa tidak punya potensi? ________________________
+        4. Kesalahan cara berpikir Raka: ___________________________________
+        5. Saran untuk Raka: ______________________________________________
+
+        C. JEJAK POTENSIKU (Isi Sendiri)
+        1. Kegiatan yang saya sukai: _______________________________________
+        2. Hal yang sering saya lakukan dengan baik: ________________________
+        3. Hal yang sering diminta bantuan teman: ___________________________
+        4. Pengalaman yang membuat saya bangga: ____________________________
+        5. Nilai yang penting bagi saya: ___________________________________
+        6. Potensi yang ingin saya kembangkan: _____________________________
+        7. Satu kegiatan yang akan saya coba: ______________________________
+
+        D. REKOMENDASI TEMAN
+        "Menurut saya, kamu memiliki kekuatan dalam ... karena saya melihat kamu ...."
+        (tulis untuk satu teman di kelompokmu)
+        _______________________________________________________________
+
+        Kata Bijak: "Jangan sibuk mencari siapa yang paling hebat. Kenali dirimu, temukan kekuatanmu, lalu kembangkan menjadi sesuatu yang bermanfaat."`,
+            kuis: {
+                soal: [
+                    { q: "Apa yang paling penting dari 'Kenali Dirimu, Temukan Potensimu'?", options: [
+                            "Menghafal teori", "Memahami dan menerapkan", "Mengerjakan tugas", "Mendapat nilai"
+                        ] },
+                    { q: "Bagaimana perasaanmu setelah mempelajari materi ini?", options: ["Biasa saja",
+                            "Senang dan termotivasi", "Bingung", "Tidak peduli"
+                        ] },
+                    { q: "Apa yang akan kamu lakukan setelah mempelajari materi ini?", options: ["Melupakan",
+                            "Menerapkan dalam kehidupan", "Menunggu tugas", "Tidak melakukan apa-apa"
+                        ] },
+                    { q: "Apa tantangan terbesar dalam menerapkan materi ini?", options: ["Tidak ada", "Konsistensi",
+                            "Tidak tahu caranya", "Malas"
+                        ] },
+                    { q: "Siapa yang bisa membantumu menerapkan materi ini?", options: ["Teman",
+                            "Guru dan orang tua", "Sendiri", "Tidak perlu"
+                        ] }
+                ]
+            }
+        };
+
+        // ================================================================
+        // DATA MATERI LAINNYA (GENERATE OTOMATIS UNTUK JENJANG LAIN)
+        // ================================================================
+
+        // Fungsi untuk generate materi lain dengan format sederhana
+        function generateMateriLain(judulList, bidangList, studiKasusList, prefix, kelas, semester) {
             const result = [];
             for (let i = 0; i < judulList.length; i++) {
                 const id = prefix + i;
@@ -998,7 +1202,45 @@
                     `Guru bertanya: 'Apa yang kamu ketahui tentang "${judul}"? Bagaimana pengalamanmu terkait hal ini?' Waktu 5 menit.`;
                 const diskusi =
                     `Diskusi kelompok tentang "${judul}" - siswa mendiskusikan penerapan, manfaat, dan tantangan. Waktu 20 menit.`;
-                const rpl = generateRPL(judul, bidang, kelas, 60);
+                const rpl = `RENCANA PELAKSANAAN LAYANAN (RPL) PEMBELAJARAN MENDALAM
+        LAYANAN BIMBINGAN KLASIKAL
+
+        A. SPESIFIKASI
+        Satuan Pendidikan   : 
+        Nama Guru           : 
+        Kelas               : ${kelas}
+        Waktu               : 60 menit
+        Materi Layanan      : ${judul}
+        Bidang Bimbingan    : ${bidang}
+
+        B. IDENTIFIKASI
+        1. Kesiapan Murid: Murid ${kelas} perlu memahami ${judul.toLowerCase()}.
+        2. Karakteristik Materi: Konsep dan penerapan.
+        3. Dimensi Profil Lulusan: Kemandirian, Penalaran Kritis
+
+        C. DESAIN LAYANAN
+        1. Capaian: Murid mampu memahami dan menerapkan.
+        2. Topik: "${judul} untuk Masa Depan Lebih Baik"
+        3. Tujuan: Memahami dan menerapkan.
+
+        D. PENGALAMAN BELAJAR
+        1. Kegiatan Awal (10 menit): Ice breaking, apersepsi, tujuan.
+        2. Kegiatan Inti (40 menit): Materi, LKPD, diskusi, refleksi.
+        3. Kegiatan Penutup (10 menit): Kesimpulan, komitmen, doa.
+
+        E. ASESMEN
+        1. Asesmen Awal: Tanya jawab
+        2. Asesmen Proses: Observasi
+        3. Asesmen Akhir: LKPD dan Refleksi
+
+        INTEGRASI 7 KEBIASAAN ANAK INDONESIA HEBAT
+        1. Bangun Pagi
+        2. Beribadah
+        3. Berolahraga
+        4. Makan Sehat
+        5. Gemar Belajar
+        6. Bermasyarakat
+        7. Tidur Cukup`;
 
                 const aktivitas = `LKPD BERBASIS AKTIVITAS
         "${judul}"
@@ -1024,7 +1266,6 @@
         2. Apa yang akan saya lakukan?
         3. Komitmen saya:`;
 
-                // === REFLEKSI 1 LEMBAR PADAT ===
                 const refleksi = `REFLEKSI DIRI (1 LEMBAR PADAT)
         ${judul}
 
@@ -1089,9 +1330,8 @@
 
         // ==================== DATA JUDUL MATERI SEMUA KELAS ====================
 
-        // SMP KELAS 7
-        const judulSMP7S1 = [
-            "Kenali Dirimu, Temukan Potensimu",
+        // SMP KELAS 7 - SISANYA (selain Kenali Dirimu)
+        const judulSMP7S1Lain = [
             "Aku Bangga Menjadi Siswa SMP",
             "Membangun Kepercayaan Diri di Sekolah Baru",
             "Aku dan Teman Baru: Membangun Pertemanan Positif",
@@ -1104,11 +1344,10 @@
             "Aku dan Masa Depanku",
             "Mengenal Berbagai Profesi di Sekitarku"
         ];
-        const bidangSMP7S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+        const bidangSMP7S1Lain = ["Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
             "Karier", "Karier", "Karier"
         ];
-        const studiKasusSMP7S1 = [
-            "Rina adalah siswa baru di SMP. Dia merasa canggung dan sulit bergaul karena merasa tidak memiliki kelebihan.",
+        const studiKasusSMP7S1Lain = [
             "Andi adalah siswa baru di SMP. Dia merasa canggung karena harus berganti seragam dan memiliki guru baru.",
             "Maya adalah siswa baru yang pendiam. Dia merasa tidak percaya diri karena merasa tidak sebaik teman-temannya.",
             "Toni adalah siswa baru yang pendiam. Dia sulit bergaul karena merasa malu.",
@@ -1154,571 +1393,505 @@
             "Siti sering malas belajar dan tidak punya motivasi."
         ];
 
-        // SMP KELAS 8
-        const judulSMP8S1 = [
-            "Aku di Usia Remaja: Apa yang Berubah?",
-            "Mengenal Kekuatan dan Kelemahan Diri",
-            "Growth Mindset: Aku Bisa Bertumbuh",
-            "Membangun Pertemanan yang Sehat",
-            "Berani Berkata Tidak pada Ajakan Negatif",
-            "Komunikasi Asertif: Berani Bicara dengan Tepat",
-            "Menemukan Strategi Belajar yang Cocok untukku",
-            "Mengatasi Prokrastinasi Akademik",
-            "Fokus Belajar di Tengah Gangguan Gadget",
-            "Mengenal Bakat dan Minat Lebih Dalam",
-            "Hobi Bisa Menjadi Potensi Masa Depan",
-            "Mengenal Berbagai Jalur Pendidikan Setelah SMP"
-        ];
-        const bidangSMP8S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMP8S1 = [
-            "Rina bingung dengan perubahan tubuh yang dialaminya.",
-            "Budi merasa tidak memiliki kelebihan apapun.",
-            "Siti sering berkata 'aku tidak bisa' ketika menghadapi pelajaran sulit.",
-            "Ani dan Rina bersahabat, tetapi Ani mulai menjauh karena Rina terlalu posesif.",
-            "Doni diajak temannya untuk mencoba rokok. Doni bingung harus bersikap.",
-            "Dina kesulitan menyampaikan pendapatnya. Dia sering diam meskipun tidak setuju.",
-            "Rudi sudah berusaha belajar keras tetapi nilainya tetap rendah.",
-            "Didi sering menunda mengerjakan tugas dan lebih memilih bermain game.",
-            "Rina sering kehilangan fokus saat belajar karena gadgetnya.",
-            "Doni senang menggambar dan selalu mendapat pujian dari teman-temannya.",
-            "Siti sangat suka memasak dan sering membantu ibunya di dapur.",
-            "Beni bingung mau melanjutkan ke SMA atau SMK setelah lulus SMP."
-        ];
-
-        const judulSMP8S2 = [
-            "Mengelola Konflik dengan Bijak",
-            "Kemandirian dalam Belajar",
-            "Perencanaan Karir dan Masa Depan",
-            "Kesehatan Mental Remaja",
-            "Menjaga Hubungan Sosial yang Positif",
-            "Mengembangkan Soft Skill",
-            "Menghadapi Perubahan dengan Bijak",
-            "Kreativitas dan Inovasi",
-            "Etika dan Moral dalam Kehidupan",
-            "Kepemimpinan Remaja",
-            "Membangun Relasi Positif",
-            "Mempersiapkan Masa Depan"
-        ];
-        const bidangSMP8S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMP8S2 = [
-            "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
-            "Budi selalu bergantung pada orang tua untuk belajar.",
-            "Siti bingung memilih karir untuk masa depannya.",
-            "Doni sering merasa stres dan cemas tanpa alasan yang jelas.",
-            "Rina kesulitan menjaga hubungan dengan teman-temannya.",
-            "Budi belum memiliki soft skill yang cukup.",
-            "Siti kesulitan menghadapi perubahan di lingkungannya.",
-            "Rina belum bisa mengembangkan kreativitasnya.",
-            "Doni sering melanggar aturan dan tidak memiliki etika.",
-            "Siti ingin menjadi pemimpin tetapi belum punya keberanian.",
-            "Rudi kesulitan membangun relasi dengan orang baru.",
-            "Budi belum punya rencana untuk masa depannya."
-        ];
-
-        // SMP KELAS 9
-        const judulSMP9S1 = [
-            "Perencanaan Studi Lanjut dan Karir",
-            "Mengenal Dunia Kerja dan Profesi",
-            "Membangun Mental Juara",
-            "Mengelola Kecemasan Masa Depan",
-            "Memilih Jurusan yang Tepat di SMA/SMK",
-            "Mengembangkan Potensi Diri",
-            "Keterampilan Hidup (Life Skills)",
-            "Membangun Kepercayaan Diri",
-            "Etika Profesi dan Dunia Kerja",
-            "Menghadapi Tantangan Hidup",
-            "Membangun Jaringan dan Relasi",
-            "Persiapan Menghadapi Dunia Baru"
-        ];
-        const bidangSMP9S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMP9S1 = [
-            "Rudi merasa terbebani dengan ujian kelulusan dan bingung memilih sekolah lanjutan.",
-            "Siti ingin bekerja setelah lulus tetapi belum tahu dunia kerja yang sebenarnya.",
-            "Budi sering menyerah saat menghadapi kegagalan dan tidak punya mental juara.",
-            "Rina sering cemas memikirkan masa depannya dan tidak bisa tidur.",
-            "Doni bingung memilih jurusan di SMA/SMK yang sesuai dengan bakatnya.",
-            "Siti belum bisa mengembangkan potensi yang dimilikinya.",
-            "Rudi tidak memiliki keterampilan hidup yang cukup.",
-            "Maya sering merasa tidak percaya diri dengan kemampuannya.",
-            "Budi tidak tahu etika yang baik di dunia kerja.",
-            "Rina sering menghindari tantangan dan tidak berani mencoba hal baru.",
-            "Doni tidak memiliki jaringan pertemanan yang luas.",
-            "Siti takut menghadapi dunia baru setelah lulus SMP."
-        ];
-
-        const judulSMP9S2 = [
-            "Mempersiapkan Diri Menghadapi Dunia Baru",
-            "Mengembangkan Keterampilan",
-            "Membangun Mental Tangguh",
-            "Menentukan Pilihan Karir",
-            "Mengelola Keuangan Pribadi",
-            "Kewirausahaan dan Peluang Usaha",
-            "Etika di Tempat Kerja",
-            "Membangun Portofolio Diri",
-            "Menghadapi Seleksi Masuk Sekolah",
-            "Mengembangkan Sikap Profesional",
-            "Membangun Jaringan Sosial",
-            "Menjadi Pribadi yang Produktif"
-        ];
-        const bidangSMP9S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMP9S2 = [
-            "Rina takut menghadapi lingkungan SMA yang baru.",
-            "Budi belum memiliki keterampilan yang cukup untuk masa depan.",
-            "Siti sering menyerah saat menghadapi kesulitan.",
-            "Doni bingung menentukan pilihan karirnya.",
-            "Rina tidak bisa mengelola keuangannya dengan baik.",
-            "Budi ingin berwirausaha tetapi tidak tahu caranya.",
-            "Siti tidak tahu etika yang baik di tempat kerja.",
-            "Rina belum memiliki portofolio untuk masa depannya.",
-            "Doni takut menghadapi seleksi masuk sekolah lanjutan.",
-            "Siti belum memiliki sikap profesional.",
-            "Rudi kesulitan membangun jaringan sosial.",
-            "Budi sering malas dan tidak produktif."
-        ];
-
-        // SMA KELAS 10
-        const judulSMA10S1 = [
-            "Selamat Datang di SMA: Saatnya Bertumbuh",
-            "Mengenal Identitas dan Potensi Diri",
-            "Membangun Kepercayaan Diri sebagai Siswa SMA",
-            "Membangun Pertemanan Positif di SMA",
-            "Komunikasi Efektif dengan Teman dan Guru",
-            "Bijak Bermedia Sosial di Era Digital",
-            "Adaptasi dengan Pola Belajar SMA",
-            "Kenali Gaya Belajar dan Strategi Belajarmu",
-            "Manajemen Waktu Siswa SMA",
-            "Kenali Bakat, Minat, dan Potensi Akademikmu",
-            "Mengenal Dunia Perkuliahan dan Berbagai Jurusan",
-            "Cita-Cita Bukan Sekadar Impian: Mulai Merancang Masa Depan"
-        ];
-        const bidangSMA10S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA10S1 = [
-            "Rina baru masuk SMA dan merasa canggung dengan lingkungan baru.",
-            "Budi merasa bingung dengan identitasnya di lingkungan SMA.",
-            "Siti sering merasa tidak percaya diri karena lingkungan SMA yang baru.",
-            "Doni kesulitan mencari teman di SMA karena dia pemalu.",
-            "Rina kesulitan berkomunikasi dengan gurunya.",
-            "Ani sering kecanduan media sosial dan menghabiskan waktu berjam-jam.",
-            "Budi kaget dengan volume pelajaran di SMA yang jauh lebih banyak.",
-            "Siti belum menemukan gaya belajar yang cocok.",
-            "Doni sering kelelahan karena tidak bisa mengatur waktu.",
-            "Rina belum tahu apa bakat dan minatnya.",
-            "Budi tertarik kuliah di jurusan teknik.",
-            "Siti memiliki cita-cita menjadi pengacara."
-        ];
-
-        const judulSMA10S2 = [
-            "Growth Mindset: Belum Bisa Bukan Berarti Tidak Bisa",
-            "Mengelola Emosi dan Stres sebagai Pelajar",
-            "Membangun Kebiasaan Positif untuk Masa Depan",
-            "Pertemanan Sehat dan Batasan Diri",
-            "Belajar Menghargai Perbedaan",
-            "Menyelesaikan Konflik Tanpa Drama",
-            "Mengatasi Prokrastinasi Akademik",
-            "Meningkatkan Motivasi dan Konsentrasi Belajar",
-            "Strategi Belajar Menghadapi Penilaian",
-            "Eksplorasi Jurusan Kuliah Sesuai Potensi",
-            "Mengenal Beasiswa dan Peluang Pendidikan",
-            "Career Journey: Dari SMA Menuju Masa Depan"
-        ];
-        const bidangSMA10S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA10S2 = [
-            "Doni sering berkata 'aku tidak bisa matematika' dan menyerah sebelum mencoba.",
-            "Rina sering stres menghadapi tekanan akademik.",
-            "Budi ingin membangun kebiasaan belajar yang baik tetapi sering tergoda.",
-            "Siti memiliki teman yang sering mempengaruhinya negatif.",
-            "Ani sering merasa kesal dengan teman-temannya yang berbeda pandangan.",
-            "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
-            "Doni sering menunda belajar dan lebih memilih bermain game.",
-            "Siti sering kehilangan fokus saat belajar.",
-            "Rudi selalu panik saat menghadapi ujian.",
-            "Rina ingin kuliah di jurusan psikologi.",
-            "Budi ingin kuliah tetapi khawatir dengan biaya.",
-            "Siti ingin membuat peta karir dari SMA menuju masa depan."
-        ];
-
-        // SMA KELAS 11
-        const judulSMA11S1 = [
-            "Mengenal Diri Lebih Dalam di Masa Remaja Akhir",
-            "Mengelola Stres dan Tekanan Akademik",
-            "Membangun Resiliensi: Bangkit Saat Mengalami Kegagalan",
-            "Membangun Relasi Sehat di Masa Remaja",
-            "Komunikasi Asertif dalam Kehidupan Sehari-hari",
-            "Menjadi Teman yang Supportive",
-            "Strategi Belajar untuk Mencapai Target Akademik",
-            "Manajemen Waktu dan Prioritas",
-            "Mengatasi Burnout dan Kelelahan Belajar",
-            "Mengenal Potensi Diri untuk Pilihan Masa Depan",
-            "Eksplorasi Jurusan Kuliah dan Prospeknya",
-            "Mengenal Dunia Perkuliahan dan Dunia Kerja"
-        ];
-        const bidangSMA11S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA11S1 = [
-            "Rina merasa bingung dengan identitasnya di masa remaja akhir.",
-            "Budi selalu stres menghadapi ujian dan tugas yang menumpuk.",
-            "Siti gagal dalam lomba akademik dan merasa sangat kecewa.",
-            "Doni merasa hubungannya dengan Rina tidak sehat.",
-            "Ani kesulitan menyampaikan pendapatnya.",
-            "Rudi bingung bagaimana membantu temannya yang sedang bermasalah.",
-            "Siti ingin mencapai peringkat 10 besar di kelas.",
-            "Doni sering kewalahan mengatur waktu.",
-            "Rina merasa sangat lelah dan kehilangan motivasi belajar.",
-            "Budi belum tahu potensi apa yang dia miliki.",
-            "Siti tertarik dengan jurusan psikologi.",
-            "Rudi ingin tahu bagaimana dunia perkuliahan dan dunia kerja."
-        ];
-
-        const judulSMA11S2 = [
-            "Membangun Mental Tangguh Menghadapi Masa Depan",
-            "Mengambil Keputusan dengan Bijak",
-            "Personal Responsibility: Aku Bertanggung Jawab atas Masa Depanku",
-            "Membangun Networking Sejak Sekolah",
-            "Etika Komunikasi di Dunia Digital",
-            "Kolaborasi dan Kerja Tim untuk Masa Depan",
-            "Strategi Belajar Efektif Menuju Kelas XII",
-            "Menentukan Target Akademik Kelas XII",
-            "Belajar Cerdas, Bukan Sekadar Belajar Keras",
-            "Kuliah, Kerja, atau Wirausaha? Kenali Pilihanmu",
-            "Menyusun Rencana Karier Setelah SMA",
-            "Personal Branding untuk Masa Depan"
-        ];
-        const bidangSMA11S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA11S2 = [
-            "Rina sering merasa cemas menghadapi masa depan.",
-            "Budi bingung memilih antara keinginan orang tua atau passion-nya.",
-            "Siti sering menyalahkan orang lain atas kegagalannya.",
-            "Doni bingung bagaimana cara membangun networking yang baik.",
-            "Rina sering berkomentar negatif di media sosial.",
-            "Budi kesulitan bekerja dalam tim.",
-            "Siti ingin mempersiapkan diri menghadapi kelas XII.",
-            "Doni ingin menentukan target akademik yang realistis.",
-            "Rina sering belajar dengan sistem kebut semalam.",
-            "Budi bingung memilih antara kuliah, kerja, atau wirausaha.",
-            "Siti ingin menyusun rencana karir yang jelas.",
-            "Rudi ingin membangun citra diri yang positif."
-        ];
-
-        // SMA KELAS 12
-        const judulSMA12S1 = [
-            "Perencanaan Karir dan Masa Depan",
-            "Mengelola Kecemasan Masa Depan",
-            "Membangun Mental Tangguh",
-            "Menentukan Pilihan Studi dan Karir",
-            "Mengenal Dunia Kerja",
-            "Membangun Portofolio",
-            "Keterampilan Hidup",
-            "Mengembangkan Potensi Diri",
-            "Etika Profesi",
-            "Menghadapi Seleksi Masuk PTN",
-            "Membangun Jaringan",
-            "Persiapan Menghadapi Dunia Kerja"
-        ];
-        const bidangSMA12S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA12S1 = [
-            "Rina bingung memilih karir yang tepat untuk masa depannya.",
-            "Budi sering cemas memikirkan masa depannya setelah lulus SMA.",
-            "Siti sering menyerah saat menghadapi kegagalan.",
-            "Doni bingung memilih antara kuliah atau langsung bekerja.",
-            "Rina belum tahu bagaimana dunia kerja yang sebenarnya.",
-            "Budi belum memiliki portofolio untuk melamar kerja.",
-            "Siti tidak memiliki keterampilan hidup yang cukup.",
-            "Rina belum bisa mengembangkan potensinya.",
-            "Doni tidak tahu etika yang baik di dunia kerja.",
-            "Siti takut menghadapi seleksi masuk PTN.",
-            "Rudi belum memiliki jaringan yang luas.",
-            "Budi belum siap menghadapi dunia kerja."
-        ];
-
-        const judulSMA12S2 = [
-            "Mempersiapkan Diri Menghadapi Dunia Baru",
-            "Mengembangkan Keterampilan Profesional",
-            "Membangun Mental Siap Kerja",
-            "Menentukan Pilihan Karir",
-            "Mengelola Keuangan",
-            "Kewirausahaan",
-            "Etika di Tempat Kerja",
-            "Membangun Portofolio",
-            "Menghadapi Seleksi Kerja",
-            "Mengembangkan Sikap Profesional",
-            "Membangun Jaringan Sosial",
-            "Menjadi Pribadi yang Produktif"
-        ];
-        const bidangSMA12S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMA12S2 = [
-            "Rina takut menghadapi dunia setelah lulus SMA.",
-            "Budi belum memiliki keterampilan profesional yang cukup.",
-            "Siti sering merasa tidak siap untuk bekerja.",
-            "Doni bingung menentukan pilihan karirnya.",
-            "Rina tidak bisa mengelola keuangannya dengan baik.",
-            "Budi ingin berwirausaha tetapi tidak tahu caranya.",
-            "Siti tidak tahu etika yang baik di tempat kerja.",
-            "Rina belum memiliki portofolio yang menarik.",
-            "Doni takut menghadapi seleksi kerja.",
-            "Siti belum memiliki sikap profesional.",
-            "Rudi kesulitan membangun jaringan sosial.",
-            "Budi sering malas dan tidak produktif."
-        ];
-
-        // SMK KELAS 10
-        const judulSMK10S1 = [
-            "Aku Siap Menjadi Siswa SMK",
-            "Mengenal Potensi Diri dan Karakterku",
-            "Membangun Kepercayaan Diri di Lingkungan SMK",
-            "Membangun Pertemanan Positif di SMK",
-            "Komunikasi Efektif dengan Guru dan Teman",
-            "Budaya Positif dan Etika di Lingkungan Sekolah",
-            "Beradaptasi dengan Sistem Belajar di SMK",
-            "Belajar Efektif di Program Keahlian",
-            "Manajemen Waktu antara Teori dan Praktik",
-            "Mengenal Program Keahlian dan Prospek Kariernya",
-            "Mengenal Dunia Industri Sejak Kelas X",
-            "Dari Sekolah Menuju Dunia Kerja"
-        ];
-        const bidangSMK10S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK10S1 = [
-            "Rina baru masuk SMK dan merasa canggung dengan lingkungan baru.",
-            "Budi belum tahu apa potensi dan karakter yang dia miliki.",
-            "Siti sering merasa tidak percaya diri karena lingkungan SMK yang baru.",
-            "Doni kesulitan mencari teman di SMK karena dia pemalu.",
-            "Rina kesulitan berkomunikasi dengan gurunya.",
-            "Ani sering melanggar aturan sekolah tanpa menyadari bahwa itu tidak baik.",
-            "Budi kaget dengan sistem belajar di SMK yang menggabungkan teori dan praktik.",
-            "Siti kesulitan memahami mata pelajaran kejuruan.",
-            "Doni sering kewalahan mengatur waktu antara belajar teori dan praktik.",
-            "Rina belum tahu apa program keahlian yang dia ambil dan prospek kerjanya.",
-            "Budi belum tahu bagaimana dunia industri yang sebenarnya.",
-            "Siti bertanya-tanya bagaimana proses dari sekolah menuju dunia kerja."
-        ];
-
-        const judulSMK10S2 = [
-            "Growth Mindset: Kompetensi Bisa Dikembangkan",
-            "Disiplin, Tanggung Jawab, dan Etos Kerja",
-            "Mengelola Emosi Saat Belajar dan Praktik",
-            "Kerja Sama dalam Tim Praktik",
-            "Etika Komunikasi di Lingkungan Kerja",
-            "Menghargai Perbedaan di Lingkungan Sekolah dan Industri",
-            "Meningkatkan Kompetensi melalui Latihan dan Praktik",
-            "Mengatasi Kesulitan Belajar pada Mata Pelajaran Kejuruan",
-            "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
-            "Kompetensi yang Dicari Dunia Kerja",
-            "Soft Skill dan Hard Skill untuk Siswa SMK",
-            "Membuat Peta Karier Sesuai Kompetensi Keahlian"
-        ];
-        const bidangSMK10S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK10S2 = [
-            "Doni sering berkata 'aku tidak bisa' ketika menghadapi pelajaran kejuruan yang sulit.",
-            "Rina sering datang terlambat dan tidak mengerjakan tugas tepat waktu.",
-            "Siti sering marah dan frustasi saat mengalami kesulitan dalam praktik.",
-            "Budi kesulitan bekerja dalam tim praktik karena dia lebih suka bekerja sendiri.",
-            "Rina tidak tahu bagaimana cara berkomunikasi yang baik di lingkungan kerja.",
-            "Ani sering merasa kesal dengan teman-temannya yang berbeda latar belakang.",
-            "Doni ingin meningkatkan kompetensinya, tetapi dia belum tahu cara yang efektif.",
-            "Siti kesulitan memahami mata pelajaran kejuruan.",
-            "Budi ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
-            "Rina belum tahu kompetensi apa yang dicari oleh dunia kerja.",
-            "Siti belum tahu perbedaan antara soft skill dan hard skill.",
-            "Doni ingin membuat peta karier yang jelas."
-        ];
-
-        // SMK KELAS 11
-        const judulSMK11S1 = [
-            "Mengenal Diri dan Kompetensi di Kelas XI",
-            "Membangun Etos Kerja dan Profesionalisme",
-            "Mengelola Stres dan Tekanan di Kelas XI",
-            "Membangun Relasi Positif dengan Teman dan Guru",
-            "Komunikasi Efektif di Lingkungan Sekolah dan Praktik",
-            "Etika Profesi dan Budaya Kerja",
-            "Strategi Belajar Efektif Menghadapi Uji Kompetensi",
-            "Manajemen Waktu Kelas XI",
-            "Meningkatkan Kompetensi melalui Praktik Kerja",
-            "Mengenal Peluang Karier Sesuai Kompetensi Keahlian",
-            "Persiapan Praktik Kerja Industri (PKL)",
-            "Membangun Portofolio dan Sertifikasi Kompetensi"
-        ];
-        const bidangSMK11S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK11S1 = [
-            "Budi merasa bingung dengan kompetensi yang harus dia kuasai di kelas XI.",
-            "Rina sering datang terlambat dan malas-malasan saat praktik.",
-            "Siti sering merasa stres menghadapi uji kompetensi dan tugas yang menumpuk.",
-            "Doni sering bertengkar dengan teman sekelompoknya saat praktik.",
-            "Rina kesulitan berkomunikasi dengan instruktur praktik.",
-            "Ani sering melanggar aturan di tempat praktik tanpa menyadari.",
-            "Budi kesulitan belajar untuk menghadapi uji kompetensi.",
-            "Siti sering kewalahan mengatur waktu antara belajar, praktik, dan kegiatan lainnya.",
-            "Doni ingin meningkatkan kompetensinya, tetapi dia tidak tahu cara yang efektif.",
-            "Rina belum tahu peluang karier apa yang sesuai dengan kompetensi keahliannya.",
-            "Budi akan menjalani PKL, tetapi dia belum tahu apa yang harus dia persiapkan.",
-            "Siti belum memiliki portofolio dan sertifikasi yang mendukung karirnya."
-        ];
-
-        const judulSMK11S2 = [
-            "Membangun Mental Juara di Dunia Industri",
-            "Mengambil Keputusan dan Bertanggung Jawab",
-            "Mengelola Keuangan Pribadi dan Mandiri",
-            "Membangun Tim dan Kolaborasi di Tempat Kerja",
-            "Etika Komunikasi di Dunia Industri",
-            "Menghargai Perbedaan dan Keberagaman di Tempat Kerja",
-            "Belajar dari Pengalaman Praktik Kerja Industri",
-            "Meningkatkan Kompetensi melalui Sertifikasi dan Pelatihan",
-            "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
-            "Mengenal Dunia Kerja dan Tantangannya",
-            "Soft Skill yang Dibutuhkan Dunia Industri",
-            "Menyusun Rencana Karier dan Pengembangan Diri"
-        ];
-        const bidangSMK11S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK11S2 = [
-            "Rina sering merasa down dan tidak percaya diri saat menghadapi tantangan di dunia industri.",
-            "Budi bingung harus mengambil keputusan penting tentang masa depannya.",
-            "Siti belum bisa mengelola keuangannya dengan baik. Dia sering boros.",
-            "Doni kesulitan bekerja dalam tim di tempat PKL.",
-            "Rina tidak tahu bagaimana cara berkomunikasi yang baik di dunia industri.",
-            "Ani sering merasa kesal dengan rekan kerja yang berbeda latar belakang.",
-            "Budi ingin belajar dari pengalaman PKL-nya.",
-            "Siti ingin meningkatkan kompetensinya melalui sertifikasi.",
-            "Doni ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
-            "Rina belum tahu apa saja tantangan yang akan dia hadapi di dunia kerja.",
-            "Siti belum tahu soft skill apa yang dibutuhkan oleh dunia industri.",
-            "Budi ingin menyusun rencana karier yang jelas."
-        ];
-
-        // SMK KELAS 12
-        const judulSMK12S1 = [
-            "Selamat Datang di Tahun Terakhir: Siap Lulus, Siap Bekerja",
-            "Membangun Mental Siap Kerja",
-            "Mengelola Stres Menjelang Kelulusan dan Dunia Kerja",
-            "Etika Komunikasi Profesional",
-            "Membangun Relasi Profesional",
-            "Sikap Profesional di Dunia Kerja",
-            "Strategi Menyelesaikan Tugas Akhir dan Ujian",
-            "Mengatur Waktu antara Sekolah, PKL, dan Persiapan Kerja",
-            "Belajar Mandiri untuk Mengembangkan Kompetensi",
-            "Siap Kerja: Apa yang Harus Dipersiapkan?",
-            "CV yang Menarik untuk Lulusan SMK",
-            "Rahasia Lolos Wawancara Kerja"
-        ];
-        const bidangSMK12S1 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK12S1 = [
-            "Rina merasa cemas memasuki tahun terakhir SMK. Dia khawatir tidak bisa lulus.",
-            "Budi sering merasa tidak percaya diri untuk bekerja.",
-            "Siti sering stres menghadapi ujian dan tugas akhir.",
-            "Doni tidak tahu bagaimana cara berkomunikasi yang profesional di tempat kerja.",
-            "Rina belum memiliki relasi profesional yang mendukung karirnya.",
-            "Ani sering melanggar aturan di tempat PKL tanpa menyadari.",
-            "Budi kesulitan menyelesaikan tugas akhirnya.",
-            "Siti kewalahan mengatur waktu antara sekolah, PKL, dan persiapan kerja.",
-            "Doni ingin mengembangkan kompetensinya, tetapi dia belum bisa belajar mandiri.",
-            "Rina belum tahu apa yang harus dia persiapkan untuk memasuki dunia kerja.",
-            "Budi tidak tahu bagaimana membuat CV yang menarik.",
-            "Siti takut menghadapi wawancara kerja."
-        ];
-
-        const judulSMK12S2 = [
-            "Siap Menghadapi Kehidupan Setelah Lulus",
-            "Percaya Diri Memasuki Dunia Kerja",
-            "Mental Adaptif: Siap Menghadapi Perubahan",
-            "Etika di Tempat Kerja: Sikap yang Dicari Perusahaan",
-            "Bekerja dalam Tim dan Menghadapi Perbedaan",
-            "Membangun Personal Branding yang Profesional",
-            "Upskilling dan Reskilling: Terus Belajar Setelah Lulus",
-            "Membangun Kebiasaan Belajar Sepanjang Hayat",
-            "Belajar dari Kegagalan Menuju Kesuksesan",
-            "Kuliah, Kerja, atau Wirausaha? Pilih Jalanmu",
-            "Strategi Mencari dan Melamar Pekerjaan",
-            "My Career Plan: Rencana Karier Setelah Lulus SMK"
-        ];
-        const bidangSMK12S2 = ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
-            "Karier", "Karier", "Karier"
-        ];
-        const studiKasusSMK12S2 = [
-            "Rina merasa takut menghadapi kehidupan setelah lulus SMK.",
-            "Budi sering merasa tidak percaya diri saat melamar pekerjaan.",
-            "Siti kesulitan beradaptasi dengan perubahan di tempat kerja.",
-            "Doni tidak tahu bagaimana etika yang baik di tempat kerja.",
-            "Rina kesulitan bekerja dalam tim.",
-            "Ani tidak memiliki personal branding yang baik.",
-            "Budi ingin terus belajar setelah lulus, tetapi dia belum tahu caranya.",
-            "Siti ingin membangun kebiasaan belajar sepanjang hayat.",
-            "Doni sering menyerah saat mengalami kegagalan.",
-            "Rina bingung memilih antara kuliah, kerja, atau wirausaha.",
-            "Budi tidak tahu bagaimana strategi mencari dan melamar pekerjaan.",
-            "Siti ingin membuat rencana karir yang jelas."
-        ];
-
         // ================================================================
         // GABUNGKAN SEMUA DATA KE DALAM DATABASE
         // ================================================================
 
+        // Data SMP Kelas 7 Semester 1 - dengan Kenali Dirimu sebagai materi pertama
+        const smp7s1Data = [
+            materiKenaliDiri,
+            ...generateMateriLain(judulSMP7S1Lain, bidangSMP7S1Lain, studiKasusSMP7S1Lain, 702, "VII / Fase D", 1)
+        ];
+
         const materiDatabase = {
             'SMP': {
                 '7': {
-                    '1': generateMateri(judulSMP7S1, bidangSMP7S1, studiKasusSMP7S1, 701, "VII / Fase D", 1),
-                    '2': generateMateri(judulSMP7S2, bidangSMP7S2, studiKasusSMP7S2, 713, "VII / Fase D", 2)
+                    '1': smp7s1Data,
+                    '2': generateMateriLain(judulSMP7S2, bidangSMP7S2, studiKasusSMP7S2, 713, "VII / Fase D", 2)
                 },
                 '8': {
-                    '1': generateMateri(judulSMP8S1, bidangSMP8S1, studiKasusSMP8S1, 801, "VIII / Fase D", 1),
-                    '2': generateMateri(judulSMP8S2, bidangSMP8S2, studiKasusSMP8S2, 813, "VIII / Fase D", 2)
+                    '1': generateMateriLain([
+                        "Aku di Usia Remaja: Apa yang Berubah?",
+                        "Mengenal Kekuatan dan Kelemahan Diri",
+                        "Growth Mindset: Aku Bisa Bertumbuh",
+                        "Membangun Pertemanan yang Sehat",
+                        "Berani Berkata Tidak pada Ajakan Negatif",
+                        "Komunikasi Asertif: Berani Bicara dengan Tepat",
+                        "Menemukan Strategi Belajar yang Cocok untukku",
+                        "Mengatasi Prokrastinasi Akademik",
+                        "Fokus Belajar di Tengah Gangguan Gadget",
+                        "Mengenal Bakat dan Minat Lebih Dalam",
+                        "Hobi Bisa Menjadi Potensi Masa Depan",
+                        "Mengenal Berbagai Jalur Pendidikan Setelah SMP"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina bingung dengan perubahan tubuh yang dialaminya.",
+                        "Budi merasa tidak memiliki kelebihan apapun.",
+                        "Siti sering berkata 'aku tidak bisa' ketika menghadapi pelajaran sulit.",
+                        "Ani dan Rina bersahabat, tetapi Ani mulai menjauh karena Rina terlalu posesif.",
+                        "Doni diajak temannya untuk mencoba rokok. Doni bingung harus bersikap.",
+                        "Dina kesulitan menyampaikan pendapatnya. Dia sering diam meskipun tidak setuju.",
+                        "Rudi sudah berusaha belajar keras tetapi nilainya tetap rendah.",
+                        "Didi sering menunda mengerjakan tugas dan lebih memilih bermain game.",
+                        "Rina sering kehilangan fokus saat belajar karena gadgetnya.",
+                        "Doni senang menggambar dan selalu mendapat pujian dari teman-temannya.",
+                        "Siti sangat suka memasak dan sering membantu ibunya di dapur.",
+                        "Beni bingung mau melanjutkan ke SMA atau SMK setelah lulus SMP."
+                    ], 801, "VIII / Fase D", 1),
+                    '2': generateMateriLain([
+                        "Mengelola Konflik dengan Bijak",
+                        "Kemandirian dalam Belajar",
+                        "Perencanaan Karir dan Masa Depan",
+                        "Kesehatan Mental Remaja",
+                        "Menjaga Hubungan Sosial yang Positif",
+                        "Mengembangkan Soft Skill",
+                        "Menghadapi Perubahan dengan Bijak",
+                        "Kreativitas dan Inovasi",
+                        "Etika dan Moral dalam Kehidupan",
+                        "Kepemimpinan Remaja",
+                        "Membangun Relasi Positif",
+                        "Mempersiapkan Masa Depan"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
+                        "Budi selalu bergantung pada orang tua untuk belajar.",
+                        "Siti bingung memilih karir untuk masa depannya.",
+                        "Doni sering merasa stres dan cemas tanpa alasan yang jelas.",
+                        "Rina kesulitan menjaga hubungan dengan teman-temannya.",
+                        "Budi belum memiliki soft skill yang cukup.",
+                        "Siti kesulitan menghadapi perubahan di lingkungannya.",
+                        "Rina belum bisa mengembangkan kreativitasnya.",
+                        "Doni sering melanggar aturan dan tidak memiliki etika.",
+                        "Siti ingin menjadi pemimpin tetapi belum punya keberanian.",
+                        "Rudi kesulitan membangun relasi dengan orang baru.",
+                        "Budi belum punya rencana untuk masa depannya."
+                    ], 813, "VIII / Fase D", 2)
                 },
                 '9': {
-                    '1': generateMateri(judulSMP9S1, bidangSMP9S1, studiKasusSMP9S1, 901, "IX / Fase D", 1),
-                    '2': generateMateri(judulSMP9S2, bidangSMP9S2, studiKasusSMP9S2, 913, "IX / Fase D", 2)
+                    '1': generateMateriLain([
+                        "Perencanaan Studi Lanjut dan Karir",
+                        "Mengenal Dunia Kerja dan Profesi",
+                        "Membangun Mental Juara",
+                        "Mengelola Kecemasan Masa Depan",
+                        "Memilih Jurusan yang Tepat di SMA/SMK",
+                        "Mengembangkan Potensi Diri",
+                        "Keterampilan Hidup (Life Skills)",
+                        "Membangun Kepercayaan Diri",
+                        "Etika Profesi dan Dunia Kerja",
+                        "Menghadapi Tantangan Hidup",
+                        "Membangun Jaringan dan Relasi",
+                        "Persiapan Menghadapi Dunia Baru"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rudi merasa terbebani dengan ujian kelulusan dan bingung memilih sekolah lanjutan.",
+                        "Siti ingin bekerja setelah lulus tetapi belum tahu dunia kerja yang sebenarnya.",
+                        "Budi sering menyerah saat menghadapi kegagalan dan tidak punya mental juara.",
+                        "Rina sering cemas memikirkan masa depannya dan tidak bisa tidur.",
+                        "Doni bingung memilih jurusan di SMA/SMK yang sesuai dengan bakatnya.",
+                        "Siti belum bisa mengembangkan potensi yang dimilikinya.",
+                        "Rudi tidak memiliki keterampilan hidup yang cukup.",
+                        "Maya sering merasa tidak percaya diri dengan kemampuannya.",
+                        "Budi tidak tahu etika yang baik di dunia kerja.",
+                        "Rina sering menghindari tantangan dan tidak berani mencoba hal baru.",
+                        "Doni tidak memiliki jaringan pertemanan yang luas.",
+                        "Siti takut menghadapi dunia baru setelah lulus SMP."
+                    ], 901, "IX / Fase D", 1),
+                    '2': generateMateriLain([
+                        "Mempersiapkan Diri Menghadapi Dunia Baru",
+                        "Mengembangkan Keterampilan",
+                        "Membangun Mental Tangguh",
+                        "Menentukan Pilihan Karir",
+                        "Mengelola Keuangan Pribadi",
+                        "Kewirausahaan dan Peluang Usaha",
+                        "Etika di Tempat Kerja",
+                        "Membangun Portofolio Diri",
+                        "Menghadapi Seleksi Masuk Sekolah",
+                        "Mengembangkan Sikap Profesional",
+                        "Membangun Jaringan Sosial",
+                        "Menjadi Pribadi yang Produktif"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina takut menghadapi lingkungan SMA yang baru.",
+                        "Budi belum memiliki keterampilan yang cukup untuk masa depan.",
+                        "Siti sering menyerah saat menghadapi kesulitan.",
+                        "Doni bingung menentukan pilihan karirnya.",
+                        "Rina tidak bisa mengelola keuangannya dengan baik.",
+                        "Budi ingin berwirausaha tetapi tidak tahu caranya.",
+                        "Siti tidak tahu etika yang baik di tempat kerja.",
+                        "Rina belum memiliki portofolio untuk masa depannya.",
+                        "Doni takut menghadapi seleksi masuk sekolah lanjutan.",
+                        "Siti belum memiliki sikap profesional.",
+                        "Rudi kesulitan membangun jaringan sosial.",
+                        "Budi sering malas dan tidak produktif."
+                    ], 913, "IX / Fase D", 2)
                 }
             },
             'SMA': {
                 '10': {
-                    '1': generateMateri(judulSMA10S1, bidangSMA10S1, studiKasusSMA10S1, 1001, "X / Fase E", 1),
-                    '2': generateMateri(judulSMA10S2, bidangSMA10S2, studiKasusSMA10S2, 1013, "X / Fase E", 2)
+                    '1': generateMateriLain([
+                        "Selamat Datang di SMA: Saatnya Bertumbuh",
+                        "Mengenal Identitas dan Potensi Diri",
+                        "Membangun Kepercayaan Diri sebagai Siswa SMA",
+                        "Membangun Pertemanan Positif di SMA",
+                        "Komunikasi Efektif dengan Teman dan Guru",
+                        "Bijak Bermedia Sosial di Era Digital",
+                        "Adaptasi dengan Pola Belajar SMA",
+                        "Kenali Gaya Belajar dan Strategi Belajarmu",
+                        "Manajemen Waktu Siswa SMA",
+                        "Kenali Bakat, Minat, dan Potensi Akademikmu",
+                        "Mengenal Dunia Perkuliahan dan Berbagai Jurusan",
+                        "Cita-Cita Bukan Sekadar Impian: Mulai Merancang Masa Depan"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina baru masuk SMA dan merasa canggung dengan lingkungan baru.",
+                        "Budi merasa bingung dengan identitasnya di lingkungan SMA.",
+                        "Siti sering merasa tidak percaya diri karena lingkungan SMA yang baru.",
+                        "Doni kesulitan mencari teman di SMA karena dia pemalu.",
+                        "Rina kesulitan berkomunikasi dengan gurunya.",
+                        "Ani sering kecanduan media sosial dan menghabiskan waktu berjam-jam.",
+                        "Budi kaget dengan volume pelajaran di SMA yang jauh lebih banyak.",
+                        "Siti belum menemukan gaya belajar yang cocok.",
+                        "Doni sering kelelahan karena tidak bisa mengatur waktu.",
+                        "Rina belum tahu apa bakat dan minatnya.",
+                        "Budi tertarik kuliah di jurusan teknik.",
+                        "Siti memiliki cita-cita menjadi pengacara."
+                    ], 1001, "X / Fase E", 1),
+                    '2': generateMateriLain([
+                        "Growth Mindset: Belum Bisa Bukan Berarti Tidak Bisa",
+                        "Mengelola Emosi dan Stres sebagai Pelajar",
+                        "Membangun Kebiasaan Positif untuk Masa Depan",
+                        "Pertemanan Sehat dan Batasan Diri",
+                        "Belajar Menghargai Perbedaan",
+                        "Menyelesaikan Konflik Tanpa Drama",
+                        "Mengatasi Prokrastinasi Akademik",
+                        "Meningkatkan Motivasi dan Konsentrasi Belajar",
+                        "Strategi Belajar Menghadapi Penilaian",
+                        "Eksplorasi Jurusan Kuliah Sesuai Potensi",
+                        "Mengenal Beasiswa dan Peluang Pendidikan",
+                        "Career Journey: Dari SMA Menuju Masa Depan"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Doni sering berkata 'aku tidak bisa matematika' dan menyerah sebelum mencoba.",
+                        "Rina sering stres menghadapi tekanan akademik.",
+                        "Budi ingin membangun kebiasaan belajar yang baik tetapi sering tergoda.",
+                        "Siti memiliki teman yang sering mempengaruhinya negatif.",
+                        "Ani sering merasa kesal dengan teman-temannya yang berbeda pandangan.",
+                        "Rina dan Rudi bertengkar karena kesalahpahaman kecil.",
+                        "Doni sering menunda belajar dan lebih memilih bermain game.",
+                        "Siti sering kehilangan fokus saat belajar.",
+                        "Rudi selalu panik saat menghadapi ujian.",
+                        "Rina ingin kuliah di jurusan psikologi.",
+                        "Budi ingin kuliah tetapi khawatir dengan biaya.",
+                        "Siti ingin membuat peta karir dari SMA menuju masa depan."
+                    ], 1013, "X / Fase E", 2)
                 },
                 '11': {
-                    '1': generateMateri(judulSMA11S1, bidangSMA11S1, studiKasusSMA11S1, 1101, "XI / Fase F", 1),
-                    '2': generateMateri(judulSMA11S2, bidangSMA11S2, studiKasusSMA11S2, 1113, "XI / Fase F", 2)
+                    '1': generateMateriLain([
+                        "Mengenal Diri Lebih Dalam di Masa Remaja Akhir",
+                        "Mengelola Stres dan Tekanan Akademik",
+                        "Membangun Resiliensi: Bangkit Saat Mengalami Kegagalan",
+                        "Membangun Relasi Sehat di Masa Remaja",
+                        "Komunikasi Asertif dalam Kehidupan Sehari-hari",
+                        "Menjadi Teman yang Supportive",
+                        "Strategi Belajar untuk Mencapai Target Akademik",
+                        "Manajemen Waktu dan Prioritas",
+                        "Mengatasi Burnout dan Kelelahan Belajar",
+                        "Mengenal Potensi Diri untuk Pilihan Masa Depan",
+                        "Eksplorasi Jurusan Kuliah dan Prospeknya",
+                        "Mengenal Dunia Perkuliahan dan Dunia Kerja"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina merasa bingung dengan identitasnya di masa remaja akhir.",
+                        "Budi selalu stres menghadapi ujian dan tugas yang menumpuk.",
+                        "Siti gagal dalam lomba akademik dan merasa sangat kecewa.",
+                        "Doni merasa hubungannya dengan Rina tidak sehat.",
+                        "Ani kesulitan menyampaikan pendapatnya.",
+                        "Rudi bingung bagaimana membantu temannya yang sedang bermasalah.",
+                        "Siti ingin mencapai peringkat 10 besar di kelas.",
+                        "Doni sering kewalahan mengatur waktu.",
+                        "Rina merasa sangat lelah dan kehilangan motivasi belajar.",
+                        "Budi belum tahu potensi apa yang dia miliki.",
+                        "Siti tertarik dengan jurusan psikologi.",
+                        "Rudi ingin tahu bagaimana dunia perkuliahan dan dunia kerja."
+                    ], 1101, "XI / Fase F", 1),
+                    '2': generateMateriLain([
+                        "Membangun Mental Tangguh Menghadapi Masa Depan",
+                        "Mengambil Keputusan dengan Bijak",
+                        "Personal Responsibility: Aku Bertanggung Jawab atas Masa Depanku",
+                        "Membangun Networking Sejak Sekolah",
+                        "Etika Komunikasi di Dunia Digital",
+                        "Kolaborasi dan Kerja Tim untuk Masa Depan",
+                        "Strategi Belajar Efektif Menuju Kelas XII",
+                        "Menentukan Target Akademik Kelas XII",
+                        "Belajar Cerdas, Bukan Sekadar Belajar Keras",
+                        "Kuliah, Kerja, atau Wirausaha? Kenali Pilihanmu",
+                        "Menyusun Rencana Karier Setelah SMA",
+                        "Personal Branding untuk Masa Depan"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina sering merasa cemas menghadapi masa depan.",
+                        "Budi bingung memilih antara keinginan orang tua atau passion-nya.",
+                        "Siti sering menyalahkan orang lain atas kegagalannya.",
+                        "Doni bingung bagaimana cara membangun networking yang baik.",
+                        "Rina sering berkomentar negatif di media sosial.",
+                        "Budi kesulitan bekerja dalam tim.",
+                        "Siti ingin mempersiapkan diri menghadapi kelas XII.",
+                        "Doni ingin menentukan target akademik yang realistis.",
+                        "Rina sering belajar dengan sistem kebut semalam.",
+                        "Budi bingung memilih antara kuliah, kerja, atau wirausaha.",
+                        "Siti ingin menyusun rencana karir yang jelas.",
+                        "Rudi ingin membangun citra diri yang positif."
+                    ], 1113, "XI / Fase F", 2)
                 },
                 '12': {
-                    '1': generateMateri(judulSMA12S1, bidangSMA12S1, studiKasusSMA12S1, 1201, "XII / Fase F", 1),
-                    '2': generateMateri(judulSMA12S2, bidangSMA12S2, studiKasusSMA12S2, 1213, "XII / Fase F", 2)
+                    '1': generateMateriLain([
+                        "Perencanaan Karir dan Masa Depan",
+                        "Mengelola Kecemasan Masa Depan",
+                        "Membangun Mental Tangguh",
+                        "Menentukan Pilihan Studi dan Karir",
+                        "Mengenal Dunia Kerja",
+                        "Membangun Portofolio",
+                        "Keterampilan Hidup",
+                        "Mengembangkan Potensi Diri",
+                        "Etika Profesi",
+                        "Menghadapi Seleksi Masuk PTN",
+                        "Membangun Jaringan",
+                        "Persiapan Menghadapi Dunia Kerja"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina bingung memilih karir yang tepat untuk masa depannya.",
+                        "Budi sering cemas memikirkan masa depannya setelah lulus SMA.",
+                        "Siti sering menyerah saat menghadapi kegagalan.",
+                        "Doni bingung memilih antara kuliah atau langsung bekerja.",
+                        "Rina belum tahu bagaimana dunia kerja yang sebenarnya.",
+                        "Budi belum memiliki portofolio untuk melamar kerja.",
+                        "Siti tidak memiliki keterampilan hidup yang cukup.",
+                        "Rina belum bisa mengembangkan potensinya.",
+                        "Doni tidak tahu etika yang baik di dunia kerja.",
+                        "Siti takut menghadapi seleksi masuk PTN.",
+                        "Rudi belum memiliki jaringan yang luas.",
+                        "Budi belum siap menghadapi dunia kerja."
+                    ], 1201, "XII / Fase F", 1),
+                    '2': generateMateriLain([
+                        "Mempersiapkan Diri Menghadapi Dunia Baru",
+                        "Mengembangkan Keterampilan Profesional",
+                        "Membangun Mental Siap Kerja",
+                        "Menentukan Pilihan Karir",
+                        "Mengelola Keuangan",
+                        "Kewirausahaan",
+                        "Etika di Tempat Kerja",
+                        "Membangun Portofolio",
+                        "Menghadapi Seleksi Kerja",
+                        "Mengembangkan Sikap Profesional",
+                        "Membangun Jaringan Sosial",
+                        "Menjadi Pribadi yang Produktif"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina takut menghadapi dunia setelah lulus SMA.",
+                        "Budi belum memiliki keterampilan profesional yang cukup.",
+                        "Siti sering merasa tidak siap untuk bekerja.",
+                        "Doni bingung menentukan pilihan karirnya.",
+                        "Rina tidak bisa mengelola keuangannya dengan baik.",
+                        "Budi ingin berwirausaha tetapi tidak tahu caranya.",
+                        "Siti tidak tahu etika yang baik di tempat kerja.",
+                        "Rina belum memiliki portofolio yang menarik.",
+                        "Doni takut menghadapi seleksi kerja.",
+                        "Siti belum memiliki sikap profesional.",
+                        "Rudi kesulitan membangun jaringan sosial.",
+                        "Budi sering malas dan tidak produktif."
+                    ], 1213, "XII / Fase F", 2)
                 }
             },
             'SMK': {
                 '10': {
-                    '1': generateMateri(judulSMK10S1, bidangSMK10S1, studiKasusSMK10S1, 1001, "X / Fase E", 1),
-                    '2': generateMateri(judulSMK10S2, bidangSMK10S2, studiKasusSMK10S2, 1013, "X / Fase E", 2)
+                    '1': generateMateriLain([
+                        "Aku Siap Menjadi Siswa SMK",
+                        "Mengenal Potensi Diri dan Karakterku",
+                        "Membangun Kepercayaan Diri di Lingkungan SMK",
+                        "Membangun Pertemanan Positif di SMK",
+                        "Komunikasi Efektif dengan Guru dan Teman",
+                        "Budaya Positif dan Etika di Lingkungan Sekolah",
+                        "Beradaptasi dengan Sistem Belajar di SMK",
+                        "Belajar Efektif di Program Keahlian",
+                        "Manajemen Waktu antara Teori dan Praktik",
+                        "Mengenal Program Keahlian dan Prospek Kariernya",
+                        "Mengenal Dunia Industri Sejak Kelas X",
+                        "Dari Sekolah Menuju Dunia Kerja"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina baru masuk SMK dan merasa canggung dengan lingkungan baru.",
+                        "Budi belum tahu apa potensi dan karakter yang dia miliki.",
+                        "Siti sering merasa tidak percaya diri karena lingkungan SMK yang baru.",
+                        "Doni kesulitan mencari teman di SMK karena dia pemalu.",
+                        "Rina kesulitan berkomunikasi dengan gurunya.",
+                        "Ani sering melanggar aturan sekolah tanpa menyadari bahwa itu tidak baik.",
+                        "Budi kaget dengan sistem belajar di SMK yang menggabungkan teori dan praktik.",
+                        "Siti kesulitan memahami mata pelajaran kejuruan.",
+                        "Doni sering kewalahan mengatur waktu antara belajar teori dan praktik.",
+                        "Rina belum tahu apa program keahlian yang dia ambil dan prospek kerjanya.",
+                        "Budi belum tahu bagaimana dunia industri yang sebenarnya.",
+                        "Siti bertanya-tanya bagaimana proses dari sekolah menuju dunia kerja."
+                    ], 1001, "X / Fase E", 1),
+                    '2': generateMateriLain([
+                        "Growth Mindset: Kompetensi Bisa Dikembangkan",
+                        "Disiplin, Tanggung Jawab, dan Etos Kerja",
+                        "Mengelola Emosi Saat Belajar dan Praktik",
+                        "Kerja Sama dalam Tim Praktik",
+                        "Etika Komunikasi di Lingkungan Kerja",
+                        "Menghargai Perbedaan di Lingkungan Sekolah dan Industri",
+                        "Meningkatkan Kompetensi melalui Latihan dan Praktik",
+                        "Mengatasi Kesulitan Belajar pada Mata Pelajaran Kejuruan",
+                        "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
+                        "Kompetensi yang Dicari Dunia Kerja",
+                        "Soft Skill dan Hard Skill untuk Siswa SMK",
+                        "Membuat Peta Karier Sesuai Kompetensi Keahlian"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Doni sering berkata 'aku tidak bisa' ketika menghadapi pelajaran kejuruan yang sulit.",
+                        "Rina sering datang terlambat dan tidak mengerjakan tugas tepat waktu.",
+                        "Siti sering marah dan frustasi saat mengalami kesulitan dalam praktik.",
+                        "Budi kesulitan bekerja dalam tim praktik karena dia lebih suka bekerja sendiri.",
+                        "Rina tidak tahu bagaimana cara berkomunikasi yang baik di lingkungan kerja.",
+                        "Ani sering merasa kesal dengan teman-temannya yang berbeda latar belakang.",
+                        "Doni ingin meningkatkan kompetensinya, tetapi dia belum tahu cara yang efektif.",
+                        "Siti kesulitan memahami mata pelajaran kejuruan.",
+                        "Budi ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
+                        "Rina belum tahu kompetensi apa yang dicari oleh dunia kerja.",
+                        "Siti belum tahu perbedaan antara soft skill dan hard skill.",
+                        "Doni ingin membuat peta karier yang jelas."
+                    ], 1013, "X / Fase E", 2)
                 },
                 '11': {
-                    '1': generateMateri(judulSMK11S1, bidangSMK11S1, studiKasusSMK11S1, 1101, "XI / Fase F", 1),
-                    '2': generateMateri(judulSMK11S2, bidangSMK11S2, studiKasusSMK11S2, 1113, "XI / Fase F", 2)
+                    '1': generateMateriLain([
+                        "Mengenal Diri dan Kompetensi di Kelas XI",
+                        "Membangun Etos Kerja dan Profesionalisme",
+                        "Mengelola Stres dan Tekanan di Kelas XI",
+                        "Membangun Relasi Positif dengan Teman dan Guru",
+                        "Komunikasi Efektif di Lingkungan Sekolah dan Praktik",
+                        "Etika Profesi dan Budaya Kerja",
+                        "Strategi Belajar Efektif Menghadapi Uji Kompetensi",
+                        "Manajemen Waktu Kelas XI",
+                        "Meningkatkan Kompetensi melalui Praktik Kerja",
+                        "Mengenal Peluang Karier Sesuai Kompetensi Keahlian",
+                        "Persiapan Praktik Kerja Industri (PKL)",
+                        "Membangun Portofolio dan Sertifikasi Kompetensi"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Budi merasa bingung dengan kompetensi yang harus dia kuasai di kelas XI.",
+                        "Rina sering datang terlambat dan malas-malasan saat praktik.",
+                        "Siti sering merasa stres menghadapi uji kompetensi dan tugas yang menumpuk.",
+                        "Doni sering bertengkar dengan teman sekelompoknya saat praktik.",
+                        "Rina kesulitan berkomunikasi dengan instruktur praktik.",
+                        "Ani sering melanggar aturan di tempat praktik tanpa menyadari.",
+                        "Budi kesulitan belajar untuk menghadapi uji kompetensi.",
+                        "Siti sering kewalahan mengatur waktu antara belajar, praktik, dan kegiatan lainnya.",
+                        "Doni ingin meningkatkan kompetensinya, tetapi dia tidak tahu cara yang efektif.",
+                        "Rina belum tahu peluang karier apa yang sesuai dengan kompetensi keahliannya.",
+                        "Budi akan menjalani PKL, tetapi dia belum tahu apa yang harus dia persiapkan.",
+                        "Siti belum memiliki portofolio dan sertifikasi yang mendukung karirnya."
+                    ], 1101, "XI / Fase F", 1),
+                    '2': generateMateriLain([
+                        "Membangun Mental Juara di Dunia Industri",
+                        "Mengambil Keputusan dan Bertanggung Jawab",
+                        "Mengelola Keuangan Pribadi dan Mandiri",
+                        "Membangun Tim dan Kolaborasi di Tempat Kerja",
+                        "Etika Komunikasi di Dunia Industri",
+                        "Menghargai Perbedaan dan Keberagaman di Tempat Kerja",
+                        "Belajar dari Pengalaman Praktik Kerja Industri",
+                        "Meningkatkan Kompetensi melalui Sertifikasi dan Pelatihan",
+                        "Membangun Kebiasaan Belajar dan Berlatih Secara Konsisten",
+                        "Mengenal Dunia Kerja dan Tantangannya",
+                        "Soft Skill yang Dibutuhkan Dunia Industri",
+                        "Menyusun Rencana Karier dan Pengembangan Diri"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina sering merasa down dan tidak percaya diri saat menghadapi tantangan di dunia industri.",
+                        "Budi bingung harus mengambil keputusan penting tentang masa depannya.",
+                        "Siti belum bisa mengelola keuangannya dengan baik. Dia sering boros.",
+                        "Doni kesulitan bekerja dalam tim di tempat PKL.",
+                        "Rina tidak tahu bagaimana cara berkomunikasi yang baik di dunia industri.",
+                        "Ani sering merasa kesal dengan rekan kerja yang berbeda latar belakang.",
+                        "Budi ingin belajar dari pengalaman PKL-nya.",
+                        "Siti ingin meningkatkan kompetensinya melalui sertifikasi.",
+                        "Doni ingin membangun kebiasaan belajar dan berlatih secara konsisten.",
+                        "Rina belum tahu apa saja tantangan yang akan dia hadapi di dunia kerja.",
+                        "Siti belum tahu soft skill apa yang dibutuhkan oleh dunia industri.",
+                        "Budi ingin menyusun rencana karier yang jelas."
+                    ], 1113, "XI / Fase F", 2)
                 },
                 '12': {
-                    '1': generateMateri(judulSMK12S1, bidangSMK12S1, studiKasusSMK12S1, 1201, "XII / Fase F", 1),
-                    '2': generateMateri(judulSMK12S2, bidangSMK12S2, studiKasusSMK12S2, 1213, "XII / Fase F", 2)
+                    '1': generateMateriLain([
+                        "Selamat Datang di Tahun Terakhir: Siap Lulus, Siap Bekerja",
+                        "Membangun Mental Siap Kerja",
+                        "Mengelola Stres Menjelang Kelulusan dan Dunia Kerja",
+                        "Etika Komunikasi Profesional",
+                        "Membangun Relasi Profesional",
+                        "Sikap Profesional di Dunia Kerja",
+                        "Strategi Menyelesaikan Tugas Akhir dan Ujian",
+                        "Mengatur Waktu antara Sekolah, PKL, dan Persiapan Kerja",
+                        "Belajar Mandiri untuk Mengembangkan Kompetensi",
+                        "Siap Kerja: Apa yang Harus Dipersiapkan?",
+                        "CV yang Menarik untuk Lulusan SMK",
+                        "Rahasia Lolos Wawancara Kerja"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina merasa cemas memasuki tahun terakhir SMK. Dia khawatir tidak bisa lulus.",
+                        "Budi sering merasa tidak percaya diri untuk bekerja.",
+                        "Siti sering stres menghadapi ujian dan tugas akhir.",
+                        "Doni tidak tahu bagaimana cara berkomunikasi yang profesional di tempat kerja.",
+                        "Rina belum memiliki relasi profesional yang mendukung karirnya.",
+                        "Ani sering melanggar aturan di tempat PKL tanpa menyadari.",
+                        "Budi kesulitan menyelesaikan tugas akhirnya.",
+                        "Siti kewalahan mengatur waktu antara sekolah, PKL, dan persiapan kerja.",
+                        "Doni ingin mengembangkan kompetensinya, tetapi dia belum bisa belajar mandiri.",
+                        "Rina belum tahu apa yang harus dia persiapkan untuk memasuki dunia kerja.",
+                        "Budi tidak tahu bagaimana membuat CV yang menarik.",
+                        "Siti takut menghadapi wawancara kerja."
+                    ], 1201, "XII / Fase F", 1),
+                    '2': generateMateriLain([
+                        "Siap Menghadapi Kehidupan Setelah Lulus",
+                        "Percaya Diri Memasuki Dunia Kerja",
+                        "Mental Adaptif: Siap Menghadapi Perubahan",
+                        "Etika di Tempat Kerja: Sikap yang Dicari Perusahaan",
+                        "Bekerja dalam Tim dan Menghadapi Perbedaan",
+                        "Membangun Personal Branding yang Profesional",
+                        "Upskilling dan Reskilling: Terus Belajar Setelah Lulus",
+                        "Membangun Kebiasaan Belajar Sepanjang Hayat",
+                        "Belajar dari Kegagalan Menuju Kesuksesan",
+                        "Kuliah, Kerja, atau Wirausaha? Pilih Jalanmu",
+                        "Strategi Mencari dan Melamar Pekerjaan",
+                        "My Career Plan: Rencana Karier Setelah Lulus SMK"
+                    ], ["Pribadi", "Pribadi", "Pribadi", "Sosial", "Sosial", "Sosial", "Belajar", "Belajar", "Belajar",
+                        "Karier", "Karier", "Karier"
+                    ], [
+                        "Rina merasa takut menghadapi kehidupan setelah lulus SMK.",
+                        "Budi sering merasa tidak percaya diri saat melamar pekerjaan.",
+                        "Siti kesulitan beradaptasi dengan perubahan di tempat kerja.",
+                        "Doni tidak tahu bagaimana etika yang baik di tempat kerja.",
+                        "Rina kesulitan bekerja dalam tim.",
+                        "Ani tidak memiliki personal branding yang baik.",
+                        "Budi ingin terus belajar setelah lulus, tetapi dia belum tahu caranya.",
+                        "Siti ingin membangun kebiasaan belajar sepanjang hayat.",
+                        "Doni sering menyerah saat mengalami kegagalan.",
+                        "Rina bingung memilih antara kuliah, kerja, atau wirausaha.",
+                        "Budi tidak tahu bagaimana strategi mencari dan melamar pekerjaan.",
+                        "Siti ingin membuat rencana karir yang jelas."
+                    ], 1213, "XII / Fase F", 2)
                 }
             }
         };
@@ -1847,32 +2020,30 @@
                 return;
             }
 
-            const studiKasusMatch = m.aktivitas.match(/STUDI KASUS\n([\s\S]*?)(?=\n\n|$)/);
+            // Tampilkan materi
+            const studiKasusMatch = m.aktivitas ? m.aktivitas.match(/STUDI KASUS\n([\s\S]*?)(?=\n\n|$)/) : null;
             const studiKasusText = studiKasusMatch ? studiKasusMatch[1].trim() : '';
 
             materiDisplay.innerHTML = `
-                <h4>🧊 Ice Breaking</h4><p>${m.ice}</p>
-                <h4>🧠 Apersepsi</h4><p>${m.apersepsi}</p>
-                <h4>💬 Diskusi</h4><p>${m.diskusi}</p>
-                <h4>📖 Materi</h4><p style="white-space:pre-wrap;line-height:1.8;">${m.konten}</p>
+                <h4>🧊 Ice Breaking</h4><p style="white-space:pre-wrap;">${m.ice || 'Belum tersedia'}</p>
+                <h4>🧠 Apersepsi</h4><p style="white-space:pre-wrap;">${m.apersepsi || 'Belum tersedia'}</p>
+                <h4>💬 Diskusi</h4><p style="white-space:pre-wrap;">${m.diskusi || 'Belum tersedia'}</p>
+                <h4>📖 Materi</h4><p style="white-space:pre-wrap;line-height:1.8;">${m.konten || 'Belum tersedia'}</p>
                 <h4>📝 LKPD Berbasis Aktivitas</h4>
-                <div class="studi-kasus-box">
-                    <div class="label">📌 STUDI KASUS</div>
-                    <p style="white-space:pre-wrap;">${studiKasusText}</p>
-                </div>
-                <p style="white-space:pre-wrap;">${m.aktivitas}</p>
+                ${studiKasusText ? `<div class="studi-kasus-box"><div class="label">📌 STUDI KASUS</div><p style="white-space:pre-wrap;">${studiKasusText}</p></div>` : ''}
+                <p style="white-space:pre-wrap;">${m.aktivitas || 'Belum tersedia'}</p>
                 <h4>⏱️ Durasi</h4><p>${durasiEl.value} menit</p>
-                <h4>🏷️ Topik</h4><p><em>${m.topik}</em></p>
+                <h4>🏷️ Topik</h4><p><em>${m.topik || 'Belum tersedia'}</em></p>
             `;
 
-            // RPL tanpa garis berlebih
-            let rpl = m.rpl;
+            // RPL
+            let rpl = m.rpl || 'RPL belum tersedia.';
             rpl = rpl.replace(/Satuan Pendidikan\s*:\s*/g, `Satuan Pendidikan   : ${jenjangEl.value}`);
             rpl = rpl.replace(/Nama Guru\s*:\s*/g, `Nama Guru           : ${namaGuruEl.value || '_______________'}`);
-            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas}`);
+            rpl = rpl.replace(/Kelas\s*:\s*/g, `Kelas               : ${m.kelas || ''}`);
             rpl = rpl.replace(/Waktu\s*:\s*/g, `Waktu               : ${durasiEl.value} menit`);
-            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul}`);
-            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang}`);
+            rpl = rpl.replace(/Materi Layanan\s*:\s*/g, `Materi Layanan      : ${m.judul || ''}`);
+            rpl = rpl.replace(/Bidang Bimbingan\s*:\s*/g, `Bidang Bimbingan    : ${m.bidang || ''}`);
             // Hapus garis-garis berlebih
             rpl = rpl.replace(/───+/g, '');
             rpl = rpl.replace(/─+/g, '');
@@ -1880,11 +2051,15 @@
             rpl = rpl.replace(/⎯+/g, '');
             rplContent.textContent = rpl;
 
-            lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
+            // LKPD - gunakan lkpd dari data atau aktivitas
+            if (m.lkpd) {
+                lkpdText.value = m.lkpd;
+            } else {
+                lkpdText.value = m.aktivitas || 'LKPD belum tersedia.';
+            }
 
             // === REFLEKSI 1 LEMBAR PADAT ===
             if (m.refleksi) {
-                // Ambil 6 soal dari refleksi
                 const lines = m.refleksi.split('\n').filter(line => line.trim());
                 let soalItems = [];
                 let currentSoal = '';
@@ -1912,7 +2087,7 @@
                     <div class="refleksi-print-wrapper">
                         <div class="refleksi-header">
                             <h3>📘 REFLEKSI DIRI (1 LEMBAR PADAT)</h3>
-                            <p>${m.judul}</p>
+                            <p>${m.judul || ''}</p>
                             <p style="font-size:10px;color:var(--text-light);">${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
                         </div>
                         <div class="refleksi-body">
@@ -1940,7 +2115,7 @@
             }
 
             // Update KUIS
-            previewJudul.textContent = m.judul;
+            previewJudul.textContent = m.judul || 'Materi';
             if (m.kuis && m.kuis.soal) {
                 let html = '';
                 m.kuis.soal.forEach((s, i) => {
@@ -2023,7 +2198,6 @@
             const catatan = catatanKegiatan.value || 'Tidak ada catatan.';
             const tanggal = new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 
-            // Laporan TANPA garis berlebih
             const laporan = `
         LAPORAN KEGIATAN BIMBINGAN KLASIKAL
         NaFaS BK
@@ -2120,28 +2294,68 @@
             if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
             const m = getMateri(parseInt(materiSelect.value));
             const title = m ? m.judul : 'LKPD';
+
+            // Format LKPD menjadi 1 lembar
+            const lines = content.split('\n').filter(line => line.trim());
+            let lkpdHTML = '';
+            let isKasus = false;
+            let isPertanyaan = false;
+
+            for (let line of lines) {
+                line = line.trim();
+                if (line.includes('STUDI KASUS') || line.includes('A. STUDI KASUS')) {
+                    isKasus = true;
+                    lkpdHTML += `<div style="margin:4px 0;font-weight:700;color:#1A2A6A;">${line}</div>`;
+                } else if (line.match(/^\d+\./)) {
+                    isPertanyaan = true;
+                    lkpdHTML +=
+                        `<div class="soal-lkpd"><span class="nomor">${line}</span><span class="jawaban-garis"></span></div>`;
+                } else if (line.includes('Nama') || line.includes('Kelas') || line.includes('Tanggal')) {
+                    // skip
+                } else if (isKasus && line && !line.includes('Pertanyaan')) {
+                    lkpdHTML += `<div style="font-size:11px;padding-left:10px;">${line}</div>`;
+                } else if (line && !line.includes('Pertanyaan') && !line.includes('Aktivitas') && !line.includes('Refleksi')) {
+                    if (!line.match(/^[A-Z]\./)) {
+                        lkpdHTML += `<div style="font-size:11px;padding-left:10px;">${line}</div>`;
+                    }
+                }
+            }
+
             printWin.document.write(`
                 <html><head><title>LKPD - ${title}</title>
                 <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 40px; max-width: 800px; margin: auto; line-height: 1.8; }
-                    .header-print { text-align: center; margin-bottom: 25px; border-bottom: 3px solid #1A2A6A; padding-bottom: 15px; }
-                    .header-print h1 { color: #1A2A6A; font-size: 24px; margin: 0; }
-                    .header-print p { color: #718096; margin: 5px 0; }
-                    .content { white-space: pre-wrap; font-family: 'Segoe UI', Arial, sans-serif; font-size: 13px; line-height: 1.8; padding: 10px; }
-                    .footer { margin-top: 30px; border-top: 2px solid #1A2A6A; padding-top: 10px; text-align: center; font-size: 12px; color: #718096; }
-                    @media print { body { padding: 20px; } }
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 15px; max-width: 700px; margin: auto; line-height: 1.4; font-size: 11px; }
+                    .header-print { text-align: center; border-bottom: 2px solid #1A2A6A; padding-bottom: 5px; margin-bottom: 6px; }
+                    .header-print h2 { color: #1A2A6A; font-size: 18px; margin: 0; }
+                    .header-print p { color: #718096; margin: 1px 0; font-size: 11px; }
+                    .identitas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 10px; margin-bottom: 6px; font-size: 11px; }
+                    .identitas div { display: flex; align-items: center; gap: 4px; }
+                    .identitas .garis { flex: 1; border-bottom: 1px solid #999; min-width: 40px; }
+                    .soal-lkpd { margin: 3px 0; padding: 2px 0; border-bottom: 1px dashed #e0e0e0; }
+                    .soal-lkpd .nomor { font-weight: 600; color: #1A2A6A; font-size: 10px; }
+                    .soal-lkpd .jawaban-garis { display: block; border-bottom: 1px solid #ccc; height: 20px; margin-top: 1px; }
+                    .footer { margin-top: 6px; border-top: 2px solid #1A2A6A; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; color: #718096; }
+                    .kasus-text { font-size: 11px; padding-left: 10px; margin: 2px 0; }
+                    @media print { body { padding: 8px; } .soal-lkpd .jawaban-garis { height: 22px; border-bottom: 1px solid #aaa; } }
                 </style>
                 </head>
                 <body>
                     <div class="header-print">
-                        <h1>📘 NaFaS BK</h1>
-                        <p><strong>LKPD Berbasis Aktivitas</strong></p>
+                        <h2>📘 LKPD (1 LEMBAR)</h2>
+                        <p><strong>${title}</strong></p>
                         <p>${jenjangEl.value} Kelas ${kelasEl.value} - Semester ${semesterEl.value}</p>
-                        <p>Materi: ${title}</p>
                         <p>Nama Guru: ${namaGuruEl.value || '_______________'}</p>
                     </div>
-                    <div class="content">${content}</div>
-                    <div class="footer">Dicetak dari NaFaS BK © NaFaS BK</div>
+                    <div class="identitas">
+                        <div><strong>Nama :</strong> <span class="garis"></span></div>
+                        <div><strong>Kelas :</strong> <span class="garis"></span></div>
+                        <div><strong>Tanggal :</strong> <span class="garis"></span></div>
+                    </div>
+                    ${lkpdHTML}
+                    <div class="footer">
+                        <span>© NaFaS BK</span>
+                        <span>1 Lembar</span>
+                    </div>
                     <script>window.onload=function(){window.print();}<\/script>
                 </body>
                 </html>
@@ -2158,7 +2372,6 @@
             const printWin = window.open('', '_blank', 'width=800,height=600');
             if (!printWin) { showModal('⚠️ Pop-up', 'Izinkan pop-up.'); return; }
 
-            // Ambil 6 soal dari refleksi
             const lines = m.refleksi.split('\n').filter(line => line.trim());
             let soalItems = [];
             let currentSoal = '';
@@ -2185,15 +2398,15 @@
             printWin.document.write(`
                 <html><head><title>Refleksi - ${m.judul}</title>
                 <style>
-                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; line-height: 1.4; }
-                    .header-print { text-align: center; border-bottom: 2px solid #1A2A6A; padding-bottom: 6px; margin-bottom: 8px; }
+                    body { font-family: 'Segoe UI', Arial, sans-serif; padding: 15px; max-width: 700px; margin: auto; line-height: 1.4; }
+                    .header-print { text-align: center; border-bottom: 2px solid #1A2A6A; padding-bottom: 5px; margin-bottom: 6px; }
                     .header-print h2 { color: #1A2A6A; font-size: 18px; margin: 0; }
-                    .header-print p { color: #718096; margin: 1px 0; font-size: 12px; }
+                    .header-print p { color: #718096; margin: 1px 0; font-size: 11px; }
                     .identitas { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px 10px; margin-bottom: 6px; font-size: 11px; }
                     .identitas div { display: flex; align-items: center; gap: 4px; }
                     .identitas .garis { flex: 1; border-bottom: 1px solid #999; min-width: 40px; }
-                    .footer { margin-top: 8px; border-top: 2px solid #1A2A6A; padding-top: 4px; text-align: center; font-size: 10px; color: #718096; display: flex; justify-content: space-between; }
-                    @media print { body { padding: 10px; } }
+                    .footer { margin-top: 6px; border-top: 2px solid #1A2A6A; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; color: #718096; }
+                    @media print { body { padding: 8px; } }
                 </style>
                 </head>
                 <body>
@@ -2538,8 +2751,8 @@
 
         console.log('✅ NaFaS BK siap digunakan!');
         console.log(`Total materi: ${totalMateri} materi dari semua jenjang dan kelas`);
-        console.log('📝 RPL & Laporan tanpa garis berlebih');
-        console.log('📝 Refleksi dicetak 1 lembar PADAT');
+        console.log('📝 Materi "Kenali Dirimu, Temukan Potensimu" sudah dimasukkan dengan RPL lengkap!');
+        console.log('📝 LKPD & Refleksi dicetak 1 lembar PADAT');
         console.log('🔗 Link kuis bisa dibuka siswa!');
     </script>
 </body>
